@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="wms">
+
+		<provider>org.hibernate.ejb.HibermatePersistence</provider>
+		<class>com.wms.model.entity.Anexo</class>
+		<class>com.wms.model.entity.CategoriaItem</class>
+		<class>com.wms.model.entity.CentroCusto</class>
+		<class>com.wms.model.entity.Cliente</class>
+		<class>com.wms.model.entity.Colaborador</class>
+		<class>com.wms.model.entity.ComentarioObra</class>
+		<class>com.wms.model.entity.ContaBancaria</class>
+		<class>com.wms.model.entity.ContaPagar</class>
+		<class>com.wms.model.entity.ContaReceber</class>
+		<class>com.wms.model.entity.Empresa</class>
+		<class>com.wms.model.entity.Fase</class>
+		<class>com.wms.model.entity.FaseObra</class>
+		<class>com.wms.model.entity.FormaPagamento</class>
+		<class>com.wms.model.entity.Fornecedor</class>
+		<class>com.wms.model.entity.Funcao</class>
+		<class>com.wms.model.entity.Item</class>
+		<class>com.wms.model.entity.Lancamento</class>
+		<class>com.wms.model.entity.Obra</class>
+		<class>com.wms.model.entity.OpcaoPagamento</class>
+		<class>com.wms.model.entity.Parcela</class>
+		<class>com.wms.model.entity.SubcategoriaItem</class>
+		<class>com.wms.model.entity.Tarefa</class>
+		<class>com.wms.model.entity.TarefaObra</class>
+		<class>com.wms.model.entity.UnidadeObra</class>
+		<class>com.wms.model.entity.Usuario</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/wms_db" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="admin" />
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- atualiza o banco, gera as tabelas se for preciso -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+</persistence>
