@@ -17,7 +17,7 @@ public class Anexo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_anexo")
-	private int idAnexo;
+	private Integer idAnexo;
 
 	@Lob
 	private byte[] arquivo;
@@ -59,7 +59,7 @@ public class Anexo implements Serializable {
 		return this.idAnexo;
 	}
 
-	public void setIdAnexo(int idAnexo) {
+	public void setIdAnexo(Integer idAnexo) {
 		this.idAnexo = idAnexo;
 	}
 
