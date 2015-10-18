@@ -20,7 +20,7 @@ public class CategoriaItem implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_categoria_item")
-	private int idCategoriaItem;
+	private Integer idCategoriaItem;
 
 	private String descricao;
 
@@ -33,11 +33,11 @@ public class CategoriaItem implements Serializable {
 	public CategoriaItem() {
 	}
 
-	public int getIdCategoriaItem() {
+	public Integer getIdCategoriaItem() {
 		return this.idCategoriaItem;
 	}
 
-	public void setIdCategoriaItem(int idCategoriaItem) {
+	public void setIdCategoriaItem(Integer idCategoriaItem) {
 		this.idCategoriaItem = idCategoriaItem;
 	}
 

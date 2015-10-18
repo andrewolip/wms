@@ -17,9 +17,9 @@ public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_item")
-	private int idItem;
+	private Integer idItem;
 
 	private String descricao;
 
@@ -46,11 +46,11 @@ public class Item implements Serializable {
 	public Item() {
 	}
 
-	public int getIdItem() {
+	public Integer getIdItem() {
 		return this.idItem;
 	}
 
-	public void setIdItem(int idItem) {
+	public void setIdItem(Integer idItem) {
 		this.idItem = idItem;
 	}
 

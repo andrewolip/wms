@@ -18,9 +18,9 @@ public class ContaPagar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_conta_pagar")
-	private int idContaPagar;
+	private Integer idContaPagar;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_pagamento")
@@ -31,7 +31,7 @@ public class ContaPagar implements Serializable {
 	private Date dataVencimento;
 
 	@Column(name="n_parcelas")
-	private int nParcelas;
+	private Integer nParcelas;
 
 	@Column(name="nota_fiscal")
 	private String notaFiscal;
@@ -41,10 +41,10 @@ public class ContaPagar implements Serializable {
 	private byte status;
 
 	@Column(name="tipo_conta")
-	private int tipoConta;
+	private Integer tipoConta;
 
 	@Column(name="tipo_pagamento")
-	private int tipoPagamento;
+	private Integer tipoPagamento;
 
 	@Column(name="valor_conta")
 	private BigDecimal valorConta;
@@ -77,11 +77,11 @@ public class ContaPagar implements Serializable {
 	public ContaPagar() {
 	}
 
-	public int getIdContaPagar() {
+	public Integer getIdContaPagar() {
 		return this.idContaPagar;
 	}
 
-	public void setIdContaPagar(int idContaPagar) {
+	public void setIdContaPagar(Integer idContaPagar) {
 		this.idContaPagar = idContaPagar;
 	}
 
@@ -101,11 +101,11 @@ public class ContaPagar implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public int getNParcelas() {
+	public Integer getNParcelas() {
 		return this.nParcelas;
 	}
 
-	public void setNParcelas(int nParcelas) {
+	public void setNParcelas(Integer nParcelas) {
 		this.nParcelas = nParcelas;
 	}
 
@@ -133,19 +133,19 @@ public class ContaPagar implements Serializable {
 		this.status = status;
 	}
 
-	public int getTipoConta() {
+	public Integer getTipoConta() {
 		return this.tipoConta;
 	}
 
-	public void setTipoConta(int tipoConta) {
+	public void setTipoConta(Integer tipoConta) {
 		this.tipoConta = tipoConta;
 	}
 
-	public int getTipoPagamento() {
+	public Integer getTipoPagamento() {
 		return this.tipoPagamento;
 	}
 
-	public void setTipoPagamento(int tipoPagamento) {
+	public void setTipoPagamento(Integer tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
 

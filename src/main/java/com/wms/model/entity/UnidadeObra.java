@@ -20,9 +20,9 @@ public class UnidadeObra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_unidade_obra")
-	private String idUnidadeObra;
+	private Integer idUnidadeObra;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_entrega")
@@ -80,11 +80,11 @@ public class UnidadeObra implements Serializable {
 	public UnidadeObra() {
 	}
 
-	public String getIdUnidadeObra() {
+	public Integer getIdUnidadeObra() {
 		return this.idUnidadeObra;
 	}
 
-	public void setIdUnidadeObra(String idUnidadeObra) {
+	public void setIdUnidadeObra(Integer idUnidadeObra) {
 		this.idUnidadeObra = idUnidadeObra;
 	}
 

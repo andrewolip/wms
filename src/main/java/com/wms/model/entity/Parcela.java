@@ -16,9 +16,9 @@ public class Parcela implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_parcela")
-	private int idParcela;
+	private Integer idParcela;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_vencimento")
@@ -49,11 +49,11 @@ public class Parcela implements Serializable {
 	public Parcela() {
 	}
 
-	public int getIdParcela() {
+	public Integer getIdParcela() {
 		return this.idParcela;
 	}
 
-	public void setIdParcela(int idParcela) {
+	public void setIdParcela(Integer idParcela) {
 		this.idParcela = idParcela;
 	}
 

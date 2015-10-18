@@ -20,9 +20,9 @@ public class ContaReceber implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_conta")
-	private int idConta;
+	private Integer idConta;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_pagamento")
@@ -43,10 +43,10 @@ public class ContaReceber implements Serializable {
 	private byte status;
 
 	@Column(name="tipo_conta")
-	private int tipoConta;
+	private Integer tipoConta;
 
 	@Column(name="tipo_pagamento")
-	private int tipoPagamento;
+	private Integer tipoPagamento;
 
 	@Column(name="valor_conta")
 	private BigDecimal valorConta;
@@ -72,11 +72,11 @@ public class ContaReceber implements Serializable {
 	public ContaReceber() {
 	}
 
-	public int getIdConta() {
+	public Integer getIdConta() {
 		return this.idConta;
 	}
 
-	public void setIdConta(int idConta) {
+	public void setIdConta(Integer idConta) {
 		this.idConta = idConta;
 	}
 
@@ -96,11 +96,11 @@ public class ContaReceber implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public int getNParcelas() {
+	public Integer getNParcelas() {
 		return this.nParcelas;
 	}
 
-	public void setNParcelas(int nParcelas) {
+	public void setNParcelas(Integer nParcelas) {
 		this.nParcelas = nParcelas;
 	}
 
@@ -128,19 +128,19 @@ public class ContaReceber implements Serializable {
 		this.status = status;
 	}
 
-	public int getTipoConta() {
+	public Integer getTipoConta() {
 		return this.tipoConta;
 	}
 
-	public void setTipoConta(int tipoConta) {
+	public void setTipoConta(Integer tipoConta) {
 		this.tipoConta = tipoConta;
 	}
 
-	public int getTipoPagamento() {
+	public Integer getTipoPagamento() {
 		return this.tipoPagamento;
 	}
 
-	public void setTipoPagamento(int tipoPagamento) {
+	public void setTipoPagamento(Integer tipoPagamento) {
 		this.tipoPagamento = tipoPagamento;
 	}
 

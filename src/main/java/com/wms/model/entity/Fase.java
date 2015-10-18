@@ -15,9 +15,9 @@ public class Fase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_fase")
-	private int idFase;
+	private Integer idFase;
 
 	private String descricao;
 
@@ -31,11 +31,11 @@ public class Fase implements Serializable {
 	public Fase() {
 	}
 
-	public int getIdFase() {
+	public Integer getIdFase() {
 		return this.idFase;
 	}
 
-	public void setIdFase(int idFase) {
+	public void setIdFase(Integer idFase) {
 		this.idFase = idFase;
 	}
 

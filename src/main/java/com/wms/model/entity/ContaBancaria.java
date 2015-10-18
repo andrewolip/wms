@@ -16,13 +16,13 @@ public class ContaBancaria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_conta_bancaria")
-	private int idContaBancaria;
+	private Integer idContaBancaria;
 
 	private String agencia;
 
-	private int banco;
+	private Integer banco;
 
 	@Column(name="conta_bancaria")
 	private String contaBancaria;
@@ -36,11 +36,11 @@ public class ContaBancaria implements Serializable {
 	public ContaBancaria() {
 	}
 
-	public int getIdContaBancaria() {
+	public Integer getIdContaBancaria() {
 		return this.idContaBancaria;
 	}
 
-	public void setIdContaBancaria(int idContaBancaria) {
+	public void setIdContaBancaria(Integer idContaBancaria) {
 		this.idContaBancaria = idContaBancaria;
 	}
 
@@ -52,11 +52,11 @@ public class ContaBancaria implements Serializable {
 		this.agencia = agencia;
 	}
 
-	public int getBanco() {
+	public Integer getBanco() {
 		return this.banco;
 	}
 
-	public void setBanco(int banco) {
+	public void setBanco(Integer banco) {
 		this.banco = banco;
 	}
 
