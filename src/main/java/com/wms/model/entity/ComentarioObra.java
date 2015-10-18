@@ -15,12 +15,12 @@ public class ComentarioObra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_comentario")
-	private int idComentario;
+	private Integer idComentario;
 
 	@Column(name="obra_numero_contrato")
-	private int obraNumeroContrato;
+	private Integer obraNumeroContrato;
 
 	//bi-directional many-to-one association to Obra
 	@ManyToOne
@@ -29,19 +29,19 @@ public class ComentarioObra implements Serializable {
 	public ComentarioObra() {
 	}
 
-	public int getIdComentario() {
+	public Integer getIdComentario() {
 		return this.idComentario;
 	}
 
-	public void setIdComentario(int idComentario) {
+	public void setIdComentario(Integer idComentario) {
 		this.idComentario = idComentario;
 	}
 
-	public int getObraNumeroContrato() {
+	public Integer getObraNumeroContrato() {
 		return this.obraNumeroContrato;
 	}
 
-	public void setObraNumeroContrato(int obraNumeroContrato) {
+	public void setObraNumeroContrato(Integer obraNumeroContrato) {
 		this.obraNumeroContrato = obraNumeroContrato;
 	}
 

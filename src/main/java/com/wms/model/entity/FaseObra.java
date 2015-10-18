@@ -20,9 +20,9 @@ public class FaseObra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_fase_obra")
-	private int idFaseObra;
+	private Integer idFaseObra;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_inicio")
@@ -42,7 +42,7 @@ public class FaseObra implements Serializable {
 
 	private String observacao;
 
-	private int status;
+	private Integer status;
 
 	@Column(name="valor_previsto")
 	private BigDecimal valorPrevisto;
@@ -72,11 +72,11 @@ public class FaseObra implements Serializable {
 	public FaseObra() {
 	}
 
-	public int getIdFaseObra() {
+	public Integer getIdFaseObra() {
 		return this.idFaseObra;
 	}
 
-	public void setIdFaseObra(int idFaseObra) {
+	public void setIdFaseObra(Integer idFaseObra) {
 		this.idFaseObra = idFaseObra;
 	}
 
@@ -120,11 +120,11 @@ public class FaseObra implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

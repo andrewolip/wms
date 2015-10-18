@@ -15,9 +15,9 @@ public class Funcao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_funcao")
-	private int idFuncao;
+	private Integer idFuncao;
 
 	private String descricao;
 
@@ -30,11 +30,11 @@ public class Funcao implements Serializable {
 	public Funcao() {
 	}
 
-	public int getIdFuncao() {
+	public Integer getIdFuncao() {
 		return this.idFuncao;
 	}
 
-	public void setIdFuncao(int idFuncao) {
+	public void setIdFuncao(Integer idFuncao) {
 		this.idFuncao = idFuncao;
 	}
 

@@ -18,9 +18,9 @@ public class SubcategoriaItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_subcategoria_item")
-	private int idSubcategoriaItem;
+	private Integer idSubcategoriaItem;
 
 	private String descricao;
 
@@ -43,11 +43,11 @@ public class SubcategoriaItem implements Serializable {
 	public SubcategoriaItem() {
 	}
 
-	public int getIdSubcategoriaItem() {
+	public Integer getIdSubcategoriaItem() {
 		return this.idSubcategoriaItem;
 	}
 
-	public void setIdSubcategoriaItem(int idSubcategoriaItem) {
+	public void setIdSubcategoriaItem(Integer idSubcategoriaItem) {
 		this.idSubcategoriaItem = idSubcategoriaItem;
 	}
 

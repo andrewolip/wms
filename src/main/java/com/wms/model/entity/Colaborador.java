@@ -18,7 +18,7 @@ public class Colaborador implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_funcionario")
-	private int idFuncionario;
+	private Integer idFuncionario;
 
 	private String bairro;
 
@@ -43,7 +43,7 @@ public class Colaborador implements Serializable {
 	private String numero;
 
 	@Column(name="numero_contrato")
-	private int numeroContrato;
+	private Integer numeroContrato;
 
 	private String rg;
 
@@ -68,11 +68,11 @@ public class Colaborador implements Serializable {
 	public Colaborador() {
 	}
 
-	public int getIdFuncionario() {
+	public Integer getIdFuncionario() {
 		return this.idFuncionario;
 	}
 
-	public void setIdFuncionario(int idFuncionario) {
+	public void setIdFuncionario(Integer idFuncionario) {
 		this.idFuncionario = idFuncionario;
 	}
 
@@ -148,11 +148,11 @@ public class Colaborador implements Serializable {
 		this.numero = numero;
 	}
 
-	public int getNumeroContrato() {
+	public Integer getNumeroContrato() {
 		return this.numeroContrato;
 	}
 
-	public void setNumeroContrato(int numeroContrato) {
+	public void setNumeroContrato(Integer numeroContrato) {
 		this.numeroContrato = numeroContrato;
 	}
 

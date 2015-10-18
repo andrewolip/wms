@@ -19,7 +19,7 @@ public class CentroCusto implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_centro_custo")
-	private int idCentroCusto;
+	private Integer idCentroCusto;
 
 	private String descricao;
 
@@ -38,11 +38,11 @@ public class CentroCusto implements Serializable {
 	public CentroCusto() {
 	}
 
-	public int getIdCentroCusto() {
+	public Integer getIdCentroCusto() {
 		return this.idCentroCusto;
 	}
 
-	public void setIdCentroCusto(int idCentroCusto) {
+	public void setIdCentroCusto(Integer idCentroCusto) {
 		this.idCentroCusto = idCentroCusto;
 	}
 

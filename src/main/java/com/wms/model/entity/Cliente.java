@@ -19,7 +19,7 @@ public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_cliente")
-	private int idCliente;
+	private Integer idCliente;
 
 	private String bairro;
 
@@ -53,11 +53,11 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public int getIdCliente() {
+	public Integer getIdCliente() {
 		return this.idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(Integer idCliente) {
 		this.idCliente = idCliente;
 	}
 

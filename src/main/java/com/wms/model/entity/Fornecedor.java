@@ -17,9 +17,9 @@ public class Fornecedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_fornecedor")
-	private int idFornecedor;
+	private Integer idFornecedor;
 
 	private String contato;
 
@@ -42,7 +42,7 @@ public class Fornecedor implements Serializable {
 	public Fornecedor() {
 	}
 
-	public int getIdFornecedor() {
+	public Integer getIdFornecedor() {
 		return this.idFornecedor;
 	}
 

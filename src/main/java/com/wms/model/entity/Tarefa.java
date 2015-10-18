@@ -15,9 +15,9 @@ public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_tarefa")
-	private int idTarefa;
+	private Integer idTarefa;
 
 	private String descricao;
 
@@ -30,11 +30,11 @@ public class Tarefa implements Serializable {
 	public Tarefa() {
 	}
 
-	public int getIdTarefa() {
+	public Integer getIdTarefa() {
 		return this.idTarefa;
 	}
 
-	public void setIdTarefa(int idTarefa) {
+	public void setIdTarefa(Integer idTarefa) {
 		this.idTarefa = idTarefa;
 	}
 

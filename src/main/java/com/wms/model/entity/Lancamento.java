@@ -17,9 +17,9 @@ public class Lancamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_lancamento")
-	private int idLancamento;
+	private Integer idLancamento;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_lancamento")
@@ -52,11 +52,11 @@ public class Lancamento implements Serializable {
 	public Lancamento() {
 	}
 
-	public int getIdLancamento() {
+	public Integer getIdLancamento() {
 		return this.idLancamento;
 	}
 
-	public void setIdLancamento(int idLancamento) {
+	public void setIdLancamento(Integer idLancamento) {
 		this.idLancamento = idLancamento;
 	}
 

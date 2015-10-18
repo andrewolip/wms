@@ -55,7 +55,7 @@ public class Anexo implements Serializable {
 	public Anexo() {
 	}
 
-	public int getIdAnexo() {
+	public Integer getIdAnexo() {
 		return this.idAnexo;
 	}
 

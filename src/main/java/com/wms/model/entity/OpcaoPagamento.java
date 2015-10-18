@@ -16,9 +16,9 @@ public class OpcaoPagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_opcao_pagamento")
-	private int idOpcaoPagamento;
+	private Integer idOpcaoPagamento;
 
 	@Column(name="a_vista")
 	private byte aVista;
@@ -36,11 +36,11 @@ public class OpcaoPagamento implements Serializable {
 	public OpcaoPagamento() {
 	}
 
-	public int getIdOpcaoPagamento() {
+	public Integer getIdOpcaoPagamento() {
 		return this.idOpcaoPagamento;
 	}
 
-	public void setIdOpcaoPagamento(int idOpcaoPagamento) {
+	public void setIdOpcaoPagamento(Integer idOpcaoPagamento) {
 		this.idOpcaoPagamento = idOpcaoPagamento;
 	}
 

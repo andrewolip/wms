@@ -18,9 +18,9 @@ public class FormaPagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_dados_pagamento")
-	private int idDadosPagamento;
+	private Integer idDadosPagamento;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_desconto_cheque")
@@ -78,11 +78,11 @@ public class FormaPagamento implements Serializable {
 	public FormaPagamento() {
 	}
 
-	public int getIdDadosPagamento() {
+	public Integer getIdDadosPagamento() {
 		return this.idDadosPagamento;
 	}
 
-	public void setIdDadosPagamento(int idDadosPagamento) {
+	public void setIdDadosPagamento(Integer idDadosPagamento) {
 		this.idDadosPagamento = idDadosPagamento;
 	}
 
