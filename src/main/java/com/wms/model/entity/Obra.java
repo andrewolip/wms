@@ -19,9 +19,9 @@ public class Obra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_obra")
-	private int idObra;
+	private Integer idObra;
 
 	@Column(name="custo_previsto")
 	private BigDecimal custoPrevisto;
@@ -68,11 +68,11 @@ public class Obra implements Serializable {
 	public Obra() {
 	}
 
-	public int getIdObra() {
+	public Integer getIdObra() {
 		return this.idObra;
 	}
 
-	public void setIdObra(int idObra) {
+	public void setIdObra(Integer idObra) {
 		this.idObra = idObra;
 	}
 

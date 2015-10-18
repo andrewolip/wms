@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$('#top-menu-items').load('templates/top-menu-items.html');
+	$('#top-menu-items').load('../pages/templates/top-menu-items.html');
 });
