@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$('#header').load('templates/header.html');
+	$('#header').load('../pages/templates/header.html');
 });

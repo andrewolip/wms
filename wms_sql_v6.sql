@@ -27,7 +27,7 @@ USE `wms_db` ;
 DROP TABLE IF EXISTS `wms_db`.`obra` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`obra` (
-  `id_obra` INT NOT NULL COMMENT '',
+  `id_obra` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nome` VARCHAR(100) NOT NULL COMMENT '',
   `descricao` VARCHAR(1000) NULL COMMENT '',
   `data_inicio` DATE NULL COMMENT '',
@@ -45,7 +45,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `wms_db`.`comentario_obra` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`comentario_obra` (
-  `id_comentario` INT NOT NULL COMMENT '',
+  `id_comentario` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `obra_numero_contrato` INT(11) NOT NULL COMMENT '',
   `obra_id_obra` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id_comentario`)  COMMENT '',
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `wms_db`.`centro_custo` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`centro_custo` (
-  `id_centro_custo` INT NOT NULL COMMENT '',
+  `id_centro_custo` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `id_obra` INT NOT NULL COMMENT '',
   `descricao` VARCHAR(1000) NULL COMMENT '',
   `saldo_atual` DECIMAL(10,2) NULL COMMENT '',
@@ -177,7 +177,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`opcao_pagamento` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`opcao_pagamento` (
-  `id_opcao_pagamento` INT NOT NULL COMMENT '',
+  `id_opcao_pagamento` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
   `descricao` VARCHAR(45) NULL COMMENT '',
   `a_vista` TINYINT(1) NULL COMMENT '',
@@ -220,7 +220,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`forma_pagamento` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`forma_pagamento` (
-  `id_dados_pagamento` INT NOT NULL COMMENT '',
+  `id_dados_pagamento` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `descricao` VARCHAR(255) CHARACTER SET 'big5' COLLATE 'big5_bin' NULL COMMENT '',
   `forma_pagamento` INT NULL COMMENT '',
   `data_desconto_cheque` DATE NULL COMMENT '',
@@ -302,7 +302,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`unidade_obra` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`unidade_obra` (
-  `id_unidade_obra` VARCHAR(45) NOT NULL COMMENT '',
+  `id_unidade_obra` int(11) NOT NULL AUTO_INCREMENT COMMENT '',
   `nome_obra` VARCHAR(100) NOT NULL COMMENT '',
   `descricao` VARCHAR(1000) NULL COMMENT '',
   `valor_previsto_venda` DECIMAL(10,2) NULL DEFAULT NULL COMMENT '',
@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `wms_db`.`conta_receber` (
   `n_parcelas` INT(11) NULL DEFAULT NULL COMMENT '',
   `status` TINYINT(1) NOT NULL COMMENT '',
   `id_dados_pagamento` INT NOT NULL COMMENT '',
-  `id_unidade_obra` VARCHAR(45) NOT NULL COMMENT '',
+  `id_unidade_obra` INT(11) NOT NULL COMMENT '',
   PRIMARY KEY (`id_conta`)  COMMENT '',
   INDEX `fk_conta_receber_forma_pagamento1_idx` (`id_dados_pagamento` ASC)  COMMENT '',
   INDEX `fk_conta_receber_unidade_obra1_idx` (`id_unidade_obra` ASC)  COMMENT '',
@@ -378,7 +378,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`lancamento` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`lancamento` (
-  `id_lancamento` INT(11) NOT NULL COMMENT '',
+  `id_lancamento` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
   `valor_lancamento` DECIMAL(10,0) NOT NULL COMMENT '',
   `data_lancamento` DATE NOT NULL COMMENT '',
   `observacao` VARCHAR(1000) NULL DEFAULT NULL COMMENT '',
@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `wms_db`.`anexo` (
   `descricao` TEXT NULL COMMENT '',
   `arquivo` BLOB NOT NULL COMMENT '',
   `id_lancamento` INT(11) NULL COMMENT '',
-  `id_unidade_obra` VARCHAR(45) NULL COMMENT '',
+  `id_unidade_obra` INT(11) NULL COMMENT '',
   `id_obra` INT NULL COMMENT '',
   `id_conta_pagar` INT(11) NULL COMMENT '',
   `id_conta_receber` INT(11) NULL COMMENT '',
@@ -506,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `wms_db`.`fase_obra` (
   `observacao` VARCHAR(255) NULL DEFAULT NULL COMMENT '',
   `status` INT(11) NOT NULL COMMENT '',
   `id_fase` INT(11) NOT NULL COMMENT '',
-  `id_unidade_obra` VARCHAR(45) NOT NULL COMMENT '',
+  `id_unidade_obra` INT(11) NOT NULL COMMENT '',
   `id_conta` INT(11) NOT NULL COMMENT '',
   PRIMARY KEY (`id_fase_obra`)  COMMENT '',
   INDEX `fk_fase_obra_fase1_idx` (`id_fase` ASC)  COMMENT '',
@@ -598,7 +598,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`parcela` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`parcela` (
-  `id_parcela` INT(11) NOT NULL COMMENT '',
+  `id_parcela` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
   `n_parcela` DECIMAL(10,0) NOT NULL COMMENT '',
   `data_vencimento` DATE NOT NULL COMMENT '',
   `valor_parcela` DECIMAL(10,0) NOT NULL COMMENT '',
@@ -667,7 +667,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `wms_db`.`conta_pagar_has_item` ;
 
 CREATE TABLE IF NOT EXISTS `wms_db`.`conta_pagar_has_item` (
-  `id_conta_pagar` INT(11) NOT NULL COMMENT '',
+  `id_conta_pagar` INT(11) NOT NULL AUTO_INCREMENT COMMENT '',
   `id_item` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id_conta_pagar`, `id_item`)  COMMENT '',
   INDEX `fk_conta_pagar_has_item_item1_idx` (`id_item` ASC)  COMMENT '',

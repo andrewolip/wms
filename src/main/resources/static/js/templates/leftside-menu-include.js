@@ -1,3 +1,3 @@
 $(document).ready(function() {
-	$('#leftside-menu-items').load('templates/leftside-menu-items.html');
+	$('#leftside-menu-items').load('../pages/templates/leftside-menu-items.html');
 });

@@ -15,10 +15,10 @@
     <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../exemplo/css/sb-admin.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,16 +71,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form" class="form-horizontal">
+                            <form id="#obraForm" role="form" class="form-horizontal">
                               <div class="form-group">
                                 <label for="nome">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Nome da Obra">
+                                <input type="text" class="form-control" id="nomeObra" placeholder="Nome da Obra">
                             </div>
                             <div class="form-group">
                                 <label for="descricao">Descrição</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea id="descricaoObra" class="form-control" rows="3"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-success">Inserir</button>
+                            <button id="btnInserirObra" type="submit" class="btn btn-success">Inserir</button>
                         </form>
                     </div>
                 </div>
@@ -97,19 +97,21 @@
 
 
     <!-- jQuery -->
-    <script src="../exemplo/js/jquery.js"></script>
+    <script src="../js/plugins/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../exemplo/js/bootstrap.min.js"></script>
+    <script src="../js/plugins/bootstrap.min.js"></script>
 
     <!-- Inclui Header-->
-    <script src="../exemplo/js/plugins/shared/header-include.js"></script>
+    <script src="../js/templates/header-include.js"></script>
 
     <!-- Inclui Menu no Topo-->
-    <script src="../exemplo/js/plugins/shared/top-menu-include.js"></script>
+    <script src="../js/templates/top-menu-include.js"></script>
 
     <!-- Inclui Menu a esquerda-->
-    <script src="../exemplo/js/plugins/shared/leftside-menu-include.js"></script>
+    <script src="../js/templates/leftside-menu-include.js"></script>
+    
+    <script src="../js/obra.js"></script>
 
 </body>
 
