@@ -33,7 +33,7 @@ public class ContaReceber implements Serializable {
 	private Date dataVencimento;
 
 	@Column(name="n_parcelas")
-	private int nParcelas;
+	private Integer nParcelas;
 
 	@Column(name="nota_fiscal")
 	private String notaFiscal;

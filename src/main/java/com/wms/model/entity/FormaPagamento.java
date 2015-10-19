@@ -37,16 +37,16 @@ public class FormaPagamento implements Serializable {
 	private String descricao;
 
 	@Column(name="dia_fechamento_credito")
-	private int diaFechamentoCredito;
+	private Integer diaFechamentoCredito;
 
 	@Column(name="dia_vencimento_creditol")
-	private int diaVencimentoCreditol;
+	private Integer diaVencimentoCreditol;
 
 	@Column(name="forma_pagamento")
-	private int formaPagamento;
+	private Integer formaPagamento;
 
 	@Column(name="num_parcelas")
-	private int numParcelas;
+	private Integer numParcelas;
 
 	private String observacao;
 
@@ -118,35 +118,35 @@ public class FormaPagamento implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public int getDiaFechamentoCredito() {
+	public Integer getDiaFechamentoCredito() {
 		return this.diaFechamentoCredito;
 	}
 
-	public void setDiaFechamentoCredito(int diaFechamentoCredito) {
+	public void setDiaFechamentoCredito(Integer diaFechamentoCredito) {
 		this.diaFechamentoCredito = diaFechamentoCredito;
 	}
 
-	public int getDiaVencimentoCreditol() {
+	public Integer getDiaVencimentoCreditol() {
 		return this.diaVencimentoCreditol;
 	}
 
-	public void setDiaVencimentoCreditol(int diaVencimentoCreditol) {
+	public void setDiaVencimentoCreditol(Integer diaVencimentoCreditol) {
 		this.diaVencimentoCreditol = diaVencimentoCreditol;
 	}
 
-	public int getFormaPagamento() {
+	public Integer getFormaPagamento() {
 		return this.formaPagamento;
 	}
 
-	public void setFormaPagamento(int formaPagamento) {
+	public void setFormaPagamento(Integer formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}
 
-	public int getNumParcelas() {
+	public Integer getNumParcelas() {
 		return this.numParcelas;
 	}
 
-	public void setNumParcelas(int numParcelas) {
+	public void setNumParcelas(Integer numParcelas) {
 		this.numParcelas = numParcelas;
 	}
 

@@ -46,7 +46,7 @@ public class Fornecedor implements Serializable {
 		return this.idFornecedor;
 	}
 
-	public void setIdFornecedor(int idFornecedor) {
+	public void setIdFornecedor(Integer idFornecedor) {
 		this.idFornecedor = idFornecedor;
 	}
 

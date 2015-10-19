@@ -25,13 +25,13 @@ public class Parcela implements Serializable {
 	private Date dataVencimento;
 
 	@Column(name="id_boleto")
-	private int idBoleto;
+	private Integer idBoleto;
 
 	@Column(name="id_cartao_credito")
-	private int idCartaoCredito;
+	private Integer idCartaoCredito;
 
 	@Column(name="id_cheque")
-	private int idCheque;
+	private Integer idCheque;
 
 	@Column(name="n_parcela")
 	private BigDecimal nParcela;
@@ -65,27 +65,27 @@ public class Parcela implements Serializable {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public int getIdBoleto() {
+	public Integer getIdBoleto() {
 		return this.idBoleto;
 	}
 
-	public void setIdBoleto(int idBoleto) {
+	public void setIdBoleto(Integer idBoleto) {
 		this.idBoleto = idBoleto;
 	}
 
-	public int getIdCartaoCredito() {
+	public Integer getIdCartaoCredito() {
 		return this.idCartaoCredito;
 	}
 
-	public void setIdCartaoCredito(int idCartaoCredito) {
+	public void setIdCartaoCredito(Integer idCartaoCredito) {
 		this.idCartaoCredito = idCartaoCredito;
 	}
 
-	public int getIdCheque() {
+	public Integer getIdCheque() {
 		return this.idCheque;
 	}
 
-	public void setIdCheque(int idCheque) {
+	public void setIdCheque(Integer idCheque) {
 		this.idCheque = idCheque;
 	}
 
