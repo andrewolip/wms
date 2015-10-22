@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	$('#btnInserirObra').click(function(e) {
 		e.preventDefault();
 		
@@ -26,6 +27,7 @@ $(document).ready(function() {
 		});
 		
 	});
+	
 	
 	function limparTela() {
 		$('#nomeObra').val('');

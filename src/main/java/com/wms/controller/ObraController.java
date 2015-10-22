@@ -7,30 +7,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wms.model.entity.Obra;
-import com.wms.model.repository.ObraRepository;
+import com.wms.model.service.ObraService;
 
 @RestController
 @RequestMapping(value = "/obra")
 public class ObraController {
 
+	private ObraService obraService;
+	
 	@Autowired
-	private ObraRepository obraRepository;
+	public void setObraService(ObraService obraService) {
+		this.obraService = obraService;
+	}
 
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	public void inserir(@RequestBody Obra obra) {
-		obraRepository.save(obra);
-	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	public Obra create(@RequestBody Obra obra) {
-		return obraRepository.save(obra);
+		obraService.salvar(obra);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
@@ -45,7 +42,7 @@ public class ObraController {
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public List<Obra> findAll() {
-		return (List<Obra>) obraRepository.findAll();
+		return obraService.listarObras();
 	}
 
 }
