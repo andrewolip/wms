@@ -43,7 +43,7 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Obra</h1>
+						<h1 class="page-header">Obras</h1>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
 							</li>
@@ -56,56 +56,97 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<div ng-controller="ObraController">
-								<table class="table table-striped table-hover"
-									ng-init="listarObras()">
-									
-									<tr>
-										<th>ID</th>
-										<th>Nome da Obra</th>
-										<th>Descrição</th>
-									</tr>
-									<tr ng-repeat="obra in obras">
-										<td>{{ obra.idObra }}}</td>
-										<td>{{ obra.nome }}</td>
-										<td>{{ obra.descricao }}</td>
-									</tr>
+							<div ng-controller="ObraController" ng-init="listarObras()">
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="Digite o que procura">
+								</div>
+
+								<table st-table="obras" class="table table-striped">
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Nome</th>
+											<th>Editar</th>
+											<th>Excluir</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="obra in obras">
+											<td>{{obra.idObra}}</td>
+											<td>{{obra.nome}}</td>
+											<td><button class="btn btn-warning" ng-click="editarObra(obra)">Editar</button></td>
+											<td><button class="btn btn-danger" ng-click="apagarObra(obra)">Apagar</button></td>
+										</tr>
+									</tbody>
 								</table>
-							</div>
+
+
+								<script type="text/ng-template" id="modalObraContent.html">
+
+        							<div class="modal-header">
+            							<h3>Nova Obra</h3>
+        							</div>
+        							<form name="obraForm">
+          								<div class="modal-body">
+            								<label>Nome</label>
+            								<input class="form-control" type="text" ng-model="obra.nome" name="nome" required />
+            								<label>Descrição</label>
+            								<textarea id="descricaoObra" class="form-control" rows="3" ng-model="obra.descricao" name="descricao"></textarea>
+
+          								</div>
+          								<div class="modal-footer">
+              								<button class="btn btn-primary" ng-click="cancelar()">Cancel</button>
+              								<button class="btn btn-success" type="submit" ng-click="salvarObra(obra)" ng-disabled="!obra.nome">Inserir</button>
+          								</div>
+       								 </form>
+    							</script>
+
+								<button class="btn btn-primary" ng-click="open()"><i class="glyphicon glyphicon-plus"> </i>Adicionar Obra</button>
+								<div ng-show="selected">Selection from a modal: {{
+									selected }}</div>
+								</div>
+							<!-- ObraController -->
 						</div>
+						<!-- col-lg-12->
 					</div>
 				</div>
 
 			</div>
 			<!-- /.container-fluid -->
 
-		</div>
-		<!-- /#page-wrapper -->
+					</div>
+					<!-- /#page-wrapper -->
 
-		<!-- jQuery -->
-		<script src="../js/plugins/jquery.js"></script>
+					<!-- jQuery -->
+					<script src="../js/plugins/jquery.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="../js/plugins/bootstrap.min.js"></script>
+					<!-- Bootstrap Core JavaScript -->
+					<script src="../js/plugins/bootstrap.min.js"></script>
 
-		<!-- Inclui Header-->
-		<script src="../js/templates/header-include.js"></script>
+					<!-- Inclui Header-->
+					<script src="../js/templates/header-include.js"></script>
 
-		<!-- Inclui Menu no Topo-->
-		<script src="../js/templates/top-menu-include.js"></script>
+					<!-- Inclui Menu no Topo-->
+					<script src="../js/templates/top-menu-include.js"></script>
 
-		<!-- Inclui Menu a esquerda-->
-		<script src="../js/templates/leftside-menu-include.js"></script>
+					<!-- Inclui Menu a esquerda-->
+					<script src="../js/templates/leftside-menu-include.js"></script>
 
-		<script src="../js/plugins/angular.js"></script>
+					<script src="../js/plugins/angular.js"></script>
 
-		<script src="../js/App.js"></script>
+					<!-- Bootstrap-UI -->
+					<script src="../js/plugins/ui-bootstrap-tpls-0.14.3.min.js"></script>
 
-		<script src="../js/obra/ObraService.js"></script>
+					<script src="../js/App.js"></script>
 
-		<script src="../js/obra/ObraController.js"></script>
+					<script src="../js/plugins/smart-table.js"></script>
 
-	</div>
+					<script src="../js/obra/ObraController.js"></script>
+					
+					<script src="../js/obra/ObraService.js"></script>
+
+				</div>
 </body>
 
 </html>

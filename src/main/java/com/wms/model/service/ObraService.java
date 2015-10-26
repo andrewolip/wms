@@ -22,8 +22,8 @@ public class ObraService {
 		obraRepository.save(obra);
 	}
 	
-	public void delete(Obra obra) {
-		obraRepository.delete(obra);
+	public void remover(Integer id) {
+		obraRepository.delete(id);
 	}
 	
 	public List<Obra> listarObras() {

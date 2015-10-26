@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +15,7 @@ import com.wms.model.entity.Obra;
 import com.wms.model.service.ObraService;
 
 @RestController
-@RequestMapping(value = "/obra")
+@RequestMapping(value = "/obras")
 public class ObraController {
 
 	private ObraService obraService;
@@ -25,7 +26,6 @@ public class ObraController {
 	}
 
 	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
 	public void inserir(@RequestBody Obra obra) {
 		obraService.salvar(obra);
 	}
@@ -35,9 +35,9 @@ public class ObraController {
 
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete() {
-
+	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	public void delete(@RequestBody Obra obra) {
+		obraService.remover(obra.getIdObra());
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
