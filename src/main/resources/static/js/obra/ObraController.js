@@ -2,12 +2,13 @@ app.controller('ObraController', [ '$scope', '$http', '$uibModal',
 		function($scope, $http, $uibModal) {
 	
 			$scope.obra = {};
-			$scope.obras = []
+			$scope.obras = [];
 
 			$scope.listarObras = function() {
 				$http.get('http://localhost:8080/obras/listar', {}).then(function(response) {
 					$scope.obras = response.data;
 		    	});
+				console.log("A lista é: " + $scope.obras);
 			};
 
 			$scope.salvarObra = function(obra) {
