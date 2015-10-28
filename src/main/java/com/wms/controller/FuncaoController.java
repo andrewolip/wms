@@ -3,29 +3,28 @@ package com.wms.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.wms.model.entity.Funcao;
-import com.wms.model.repository.FuncaoRepository;
+import com.wms.model.service.FuncaoService;
 
 @RestController
-@RequestMapping(value = "/funcao")
+@RequestMapping(value = "/funcoes")
 public class FuncaoController {
 
+	private FuncaoService funcaoService;
+	
 	@Autowired
-	private FuncaoRepository funcaoRepository;
-
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public void inserir(@RequestBody Funcao funcao) {
-		funcaoRepository.save(funcao);
+	public void setFuncaoService(FuncaoService funcaoService) {
+		this.funcaoService = funcaoService;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseBody
-	public Funcao create(@RequestBody Funcao funcao) {
-		return funcaoRepository.save(funcao);
+	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
+	public void inserir(@RequestBody Funcao funcao) {
+		funcaoService.salvar(funcao);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
@@ -33,14 +32,14 @@ public class FuncaoController {
 
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete() {
-
+	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	public void delete(@RequestBody Funcao funcao) {
+		funcaoService.remover(funcao.getIdFuncao());
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public List<Funcao> findAll() {
-		return (List<Funcao>) funcaoRepository.findAll();
+		return funcaoService.listarFuncoes();
 	}
 
-}	
+}
