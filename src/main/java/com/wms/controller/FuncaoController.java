@@ -29,7 +29,7 @@ public class FuncaoController {
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public void atualizar(@RequestBody Funcao funcao) {
-
+		funcaoService.salvar(funcao);
 	}
 
 	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
@@ -42,4 +42,9 @@ public class FuncaoController {
 		return funcaoService.listarFuncoes();
 	}
 
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public Funcao findById(@RequestBody Integer idFuncao) {
+		return funcaoService.getFuncao(idFuncao);
+	}
 }
+
