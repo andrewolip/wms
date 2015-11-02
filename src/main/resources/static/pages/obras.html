@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<meta name="description" content=""/>
-		<meta name="author" content=""/>
-		
-		<title>WMS - Works Management System</title>
-		
-		<!-- Bootstrap Core CSS -->
-		<link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
-		
-		<!-- Custom CSS -->
-		<link href="../css/sb-admin.css" rel="stylesheet"/>
-		
-		<!-- Custom Fonts -->
-		<link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet"/>
-	</head>
-	
-	<body ng-app="WmsApp">
-		<div id="wrapper">
-	
-			<!-- Navigation -->
-			<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-				<div id="header"></div>
-				<div id="top-menu-items"></div>
-				<div id="leftside-menu-items"></div>
-			</nav>
-	
-			<div id="page-wrapper">
-				<div class="container-fluid">
-					<!-- Page Heading -->
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>WMS - Works Management System</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="../css/sb-admin.css" rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet" />
+</head>
+
+<body ng-app="WmsApp">
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div id="header"></div>
+			<div id="top-menu-items"></div>
+			<div id="leftside-menu-items"></div>
+		</nav>
+
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<!-- Page Heading -->
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Obras</h1>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
+							<li class="active"><i class="fa fa-file"></i> Obras</li>
+						</ol>
+					</div>
+				</div>
+				<!-- /.row -->
+
+				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<h1 class="page-header">Obras</h1>
-							<ol class="breadcrumb">
-								<li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
-								<li class="active"><i class="fa fa-file"></i> Obras</li>
-							</ol>
-						</div>
-					</div>
-					<!-- /.row -->
-	
-					<div class="container">
-						<div class="row">
-							<div class="col-lg-12">
-								<div ng-controller="ObraController" ng-init="listarObras()">
+							<div ng-controller="ObraController" ng-init="listarObras()">
 								<div class="form-group">
-									<input type="text" class="form-control"
+									<input ng-model="buscaObra" type="text" class="form-control"
 										placeholder="Digite o que procura">
 								</div>
 
@@ -62,39 +62,40 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="obra in obras">
+										<tr ng-repeat="obra in obras | filter: buscaObra">
 											<td>{{obra.idObra}}</td>
-											<td>{{obra.nome}}</td>
-											<td><button class="btn btn-warning" ng-click="editarObra(obra)">Editar</button></td>
-											<td><button class="btn btn-danger" ng-click="apagarObra(obra)">Apagar</button></td>
+											<td><a href="">{{obra.nome}}</a></td>
+											<td><button class="btn btn-warning"
+													ng-click="editarObra(obra)">Editar</button></td>
+											<td><button class="btn btn-danger"
+													ng-click="apagarObra(obra)">Apagar</button></td>
 										</tr>
 									</tbody>
 								</table>
-	
-									<script type="text/ng-template" id="modalObraContent.html">
-
-        							<div class="modal-header">
-            							<h3>Nova Obra</h3>
-        							</div>
-        							<form name="obraForm">
-          								<div class="modal-body">
-            								<label>Nome</label>
-            								<input class="form-control" type="text" ng-model="obra.nome" name="nome" required />
-            								<label>Descrição</label>
-            								<textarea id="descricaoObra" class="form-control" rows="3" ng-model="obra.descricao" name="descricao"></textarea>
-
-          								</div>
-          								<div class="modal-footer">
-              								<button class="btn btn-primary" ng-click="cancelar()">Cancel</button>
-              								<button class="btn btn-success" type="submit" ng-click="salvarObra(obra)" ng-disabled="!obra.nome">Inserir</button>
-          								</div>
-       								 </form>
-    							</script>
-
-								<button class="btn btn-primary" ng-click="open()"><i class="glyphicon glyphicon-plus"> </i>Adicionar Obra</button>
-								<div ng-show="selected">Selection from a modal: {{
-									selected }}</div>
-								</div>
+								
+								    <script type="text/ng-template" id="modalObraContent.html">
+                                    	<div class="modal-header">
+            								<h3 class="modal-title">Nova Obra</h3>
+        								</div>
+       
+         								<form name="obraForm">
+											<div class="modal-body">
+          										<label>Nome</label>
+            									<input class="form-control" type="text" ng-model="obra.nome" name="nome" ng-required="true" />
+            									<label>Descrição</label>
+            									<textarea class="form-control" rows="3" ng-model="obra.descricao" name="descricao"></textarea>
+											</div>
+        								</form>
+        
+										<div ng-show="obraForm.nome.$invalid && obraForm.nome.$dirty" class="alert alert-danger">Por favor, preencha o nome da Obra!</div>
+        								<div class="modal-footer">
+            								<button class="btn btn-primary" ng-click="inserir(obra)" ng-disabled="!obra.nome">Inserir</button>
+            								<button class="btn btn-warning" ng-click="$dismiss()">Cancelar</button>
+        								</div>
+    								</script>
+								
+								    <button class="btn btn-success" ng-click="open()"><span class="glyphicon glyphicon-plus"></span>Adicionar Obra</button>
+								
 							<!-- ObraController -->
 						</div>
 						<!-- col-lg-12-->
@@ -103,39 +104,37 @@
 
 			</div>
 			<!-- /.container-fluid -->
-	
-			</div>
-			<!-- /#page-wrapper -->
-	
-			<!-- jQuery -->
-			<script src="../js/plugins/jquery.js"></script>
-	
-			<!-- Bootstrap Core JavaScript -->
-			<script src="../js/plugins/bootstrap.min.js"></script>
-	
-			<!-- Inclui Header-->
-			<script src="../js/templates/header-include.js"></script>
-	
-			<!-- Inclui Menu no Topo-->
-			<script src="../js/templates/top-menu-include.js"></script>
-	
-			<!-- Inclui Menu a esquerda-->
-			<script src="../js/templates/leftside-menu-include.js"></script>
-	
-			<script src="../js/plugins/angular.js"></script>
-	
-			<!-- Bootstrap-UI -->
-			<script src="../js/plugins/ui-bootstrap-tpls-0.14.3.min.js"></script>
-	
-			<script src="../js/App.js"></script>
-	
-			<script src="../js/plugins/smart-table.js"></script>
-	
-			<script src="../js/obra/ObraController.js"></script>
-	
-			<script src="../js/obra/ObraService.js"></script>
-	
+
 		</div>
-	</body>
+		<!-- /#page-wrapper -->
+
+		<!-- jQuery -->
+		<script src="../js/plugins/jquery.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../js/plugins/bootstrap.min.js"></script>
+
+		<!-- Inclui Header-->
+		<script src="../js/templates/header-include.js"></script>
+
+		<!-- Inclui Menu no Topo-->
+		<script src="../js/templates/top-menu-include.js"></script>
+
+		<!-- Inclui Menu a esquerda-->
+		<script src="../js/templates/leftside-menu-include.js"></script>
+
+		<script src="../js/plugins/angular.js"></script>
+
+		<!-- Bootstrap-UI -->
+		<script src="../js/plugins/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+		<script src="../js/App.js"></script>
+
+		<script src="../js/plugins/smart-table.js"></script>
+
+		<script src="../js/obra/ObraController.js"></script>
+
+	</div>
+</body>
 
 </html>
