@@ -52,7 +52,7 @@
 										placeholder="Digite o que procura">
 								</div>
 
-								<table st-table="obras" class="table table-striped">
+								<table ng-table="obrasTable" st-table="obras" class="table table-striped">
 									<thead>
 										<tr>
 											<th>ID</th>
@@ -64,11 +64,12 @@
 									<tbody>
 										<tr ng-repeat="obra in obras | filter: buscaObra">
 											<td>{{obra.idObra}}</td>
-											<td><a href="">{{obra.nome}}</a></td>
+											<td><a href="#">{{obra.nome}}</a></td>
 											<td><button class="btn btn-warning"
-													ng-click="editarObra(obra)">Editar</button></td>
-											<td><button class="btn btn-danger"
-													ng-click="apagarObra(obra)">Apagar</button></td>
+													ng-click="editarObra(obra.idObra)">Editar</button></td>
+											<td><button class="btn btn-danger" 
+													confirmed-click="apagarObra(obra)"
+													ng-confirm-click="Tem certeza de que deseja apagar a obra?">Apagar</button></td>
 										</tr>
 									</tbody>
 								</table>
@@ -124,6 +125,8 @@
 		<script src="../js/templates/leftside-menu-include.js"></script>
 
 		<script src="../js/plugins/angular.js"></script>
+		
+		<script src="../js/plugins/angular-route.js"></script>
 
 		<!-- Bootstrap-UI -->
 		<script src="../js/plugins/ui-bootstrap-tpls-0.14.3.min.js"></script>
