@@ -1,1 +1,1 @@
-var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap']);
+var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages']);

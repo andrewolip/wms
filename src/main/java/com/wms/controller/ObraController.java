@@ -25,14 +25,14 @@ public class ObraController {
 		this.obraService = obraService;
 	}
 
-	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
 	public void inserir(@RequestBody Obra obra) {
 		obraService.salvar(obra);
-	}
+	} */
 
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
 	public void atualizar(@RequestBody Obra obra) {
-
+		obraService.salvar(obra);
 	}
 
 	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
