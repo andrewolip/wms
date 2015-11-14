@@ -1,25 +1,26 @@
-app.controller('ObrasController', [ '$scope', '$http', '$uibModal', '$log',
-		'obraService', function($scope, $http, $uibModal, $log, obraService) {
+app.controller('ObrasController', [ '$scope', '$uibModal', '$log',
+		'obrasService', function($scope, $uibModal, $log, obrasService) {
 
 			$scope.obra = {};
 			$scope.obras = [];
 
 			$scope.listarObras = function() {
-				obraService.listarObras().success(function(data) {
+				obrasService.listarObras().success(function(data) {
 					$scope.obras = data;
 				});
 			};
 
 			$scope.inserirObra = function(obra) {
-				obraService.inserirObra(obra).success(function() {
+				obrasService.inserirObra(obra).success(function() {
 					$scope.obra = obra;
+					obrasService.listarObras();
 				}).error(function(error) {
 					console(error);
 				});
 			}
 
 			$scope.apagarObra = function(obra) {
-				obraService.apagarObra(obra).success(function(data) {
+				obrasService.apagarObra(obra).success(function(data) {
 					$scope.listarObras();
 				}).error(function(error) {
 					console(error);
@@ -48,19 +49,3 @@ app.controller('ObrasController', [ '$scope', '$http', '$uibModal', '$log',
 			};
 		} ]);
 
-app.controller('ObrasInstanceController', function($scope, $http,
-		$uibModalInstance, $log, obra) {
-	$scope.obra = obra;
-
-	$scope.cancelar = function() {
-		$uibModalInstance.dismiss('cancelar');
-	};
-
-	$scope.atualizar = function(obra) {
-		$http.put('/obras/atualizar', obra).success(function(data) {
-			$uibModalInstance.close();
-		}).error(function(error) {
-			resultado = error.Message;
-		});
-	};
-});

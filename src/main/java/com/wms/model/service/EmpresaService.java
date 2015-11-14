@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wms.model.entity.Empresa;
-import com.wms.model.entity.Funcao;
 import com.wms.model.repository.EmpresaRepository;
-import com.wms.model.repository.FuncaoRepository;
-
-import scala.annotation.meta.setter;
 
 @Service
 public class EmpresaService {

@@ -1,6 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-    	<meta http-equiv="refresh" content="0; url=pages/dashboard.html" />
-    </head>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>WMS - Works Management System</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="css/sb-admin.css" rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link href="css/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+<!-- Boostrap Edit -->
+<link href="css/bootstrap/bootstrap-edit.css" rel="stylesheet" />
+</head>
+
+<body ng-app="WmsApp">
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div id="header"></div>
+			<div id="top-menu-items"></div>
+			<div id="leftside-menu-items"></div>
+		</nav>
+
+		<div id="page-wrapper">
+			<div class="container-fluid">
+			
+			<div ng-view></div>
+			
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/plugins/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/plugins/bootstrap.min.js"></script>
+
+	<!-- Inclui Header-->
+	<script src="js/templates/header-include.js"></script>
+
+	<!-- Inclui Menu no Topo-->
+	<script src="js/templates/top-menu-include.js"></script>
+
+	<!-- Inclui Menu a esquerda-->
+	<script src="js/templates/leftside-menu-include.js"></script>
+
+	<script src="js/plugins/angular.min.js"></script>
+
+	<!-- Bootstrap-UI -->
+	<script src="js/plugins/modules/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+	<!-- Módulo da Aplicação -->
+	<script src="js/App.js"></script>
+	
+	<!-- AngularJS Route -->
+	<script src="js/plugins/modules/angular-route.js"></script>
+	
+	<!-- Smart Table -->
+	<script src="js/plugins/modules/smart-table.js"></script>
+	
+	<!-- Obras -->
+	<script src="js/obras/ObrasController.js"></script>
+	<script src="js/obras/ObrasInstanceController.js"></script>
+	<script src="js/obras/ObrasService.js"></script>
+	<script src="js/obras/ObrasDirective.js"></script>
+	
+	<!-- Diretiva de Confirmação -->
+	<script src="js/directives/ConfirmDirective.js"></script>
+
+	<script src="js/plugins/modules/angular-messages.min.js"></script>
+
+</body>
+
 </html>
