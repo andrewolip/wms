@@ -30,7 +30,7 @@ public class ObraService {
 		return (List<Obra>) obraRepository.findAll();
 	}
 	
-	public Obra getObra(Integer id) {
+	public Obra buscarObra(Integer id) {
 		return obraRepository.findOne(id);
 	}
 	

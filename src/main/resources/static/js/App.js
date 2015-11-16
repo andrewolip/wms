@@ -11,5 +11,10 @@ app.config(function ($routeProvider) {
 	when('/obras', {
 		templateUrl: 'pages/obras.html',
 		controller: 'ObrasController'
-	});	
+	}).
+	
+	when('/obra/:idObra', {
+		templateUrl: 'pages/obra.html',
+		controller: 'UnidadeController'
+	});
 });

@@ -1,10 +1,14 @@
-app.factory('obrasService', ['$http', function($http) {
+app.factory('obrasService', ['$http', '$location', function($http, $location) {
 	var factory = {};
 	var obra = {};
 	var obras = [];
-	
+
 	factory.salvarObra = function(obra) {
 		return $http.post('/obras/inserir', obra);
+	}
+	
+	factory.buscarObra = function(id) {
+		return $http.get('/obras/buscar/' + id);
 	}
 	
 	factory.listarObras = function() {
