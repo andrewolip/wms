@@ -1,20 +1,23 @@
-var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ngRoute']);
+var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ui.router']);
 
-
-app.config(function ($routeProvider) {
+app.config(function config($stateProvider) {
 	
-	$routeProvider.when('/dashboard', {
-		templateUrl: 'pages/dashboard.html',
-		controller: 'DashboardController'
-	}).
+	$stateProvider.state("dashboard", {
+		url: "/dashboard",
+		controller: "DashboardController",
+		templateUrl: "pages/dashboard.html"
+	});
 	
-	when('/obras', {
-		templateUrl: 'pages/obras.html',
-		controller: 'ObrasController'
-	}).
+	$stateProvider.state("obras", {
+		url: "/obras",
+		templateUrl: "pages/obras.html",
+		controller: "ObrasController"
+		
+	});
 	
-	when('/obra/:idObra', {
-		templateUrl: 'pages/obra.html',
-		controller: 'UnidadeController'
+	$stateProvider.state("obra", {
+		url: "/obra/:idObra?nome",
+		templateUrl: "pages/obra.html",
+		controller: "UnidadesController"
 	});
 });

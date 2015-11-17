@@ -34,9 +34,11 @@
 
 		<div id="page-wrapper">
 			<div class="container-fluid">
+
+			<!-- <div ng-view></div> -->
 			
-			<div ng-view></div>
-			
+			<ui-view></ui-view>
+
 			</div>
 			<!-- /.container-fluid -->
 		</div>
@@ -46,6 +48,10 @@
 
 	<!-- jQuery -->
 	<script src="js/plugins/jquery.js"></script>
+
+	<script src="js/plugins/angular.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/plugins/bootstrap.min.js"></script>
@@ -59,31 +65,28 @@
 	<!-- Inclui Menu a esquerda-->
 	<script src="js/templates/leftside-menu-include.js"></script>
 
-	<script src="js/plugins/angular.min.js"></script>
-
 	<!-- Bootstrap-UI -->
 	<script src="js/plugins/modules/ui-bootstrap-tpls-0.14.3.min.js"></script>
 
 	<!-- Módulo da Aplicação -->
 	<script src="js/App.js"></script>
-	
+
 	<!-- AngularJS Route -->
 	<script src="js/plugins/modules/angular-route.js"></script>
-	
+
 	<!-- Smart Table -->
 	<script src="js/plugins/modules/smart-table.js"></script>
-	
+
 	<!-- Obras -->
 	<script src="js/obras/ObrasController.js"></script>
 	<script src="js/obras/ObrasInstanceController.js"></script>
 	<script src="js/obras/ObrasService.js"></script>
-	<script src="js/obras/ObraDirective.js"></script>
 
 	<!-- Unidades -->
 	<script src="js/unidade/UnidadeService.js"></script>
 	<script src="js/unidade/UnidadesInstanceController.js"></script>
 	<script src="js/unidade/UnidadeController.js"></script>
-	
+
 	<!-- Diretiva de Confirmação -->
 	<script src="js/directives/ConfirmDirective.js"></script>
 

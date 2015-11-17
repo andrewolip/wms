@@ -43,7 +43,7 @@
 						<tbody>
 							<tr ng-repeat="obra in obras | filter: buscaObra">
 								<td style="width: 15%;">{{obra.idObra}}</td>
-								<td><a href="" ng-href="#/obra/{{obra.idObra}}">{{obra.nome}}</a></td>
+								<td><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">{{obra.nome}}</a></td>
 								<td style="width: 10%;"><button class="btn btn-warning"
 										ng-click="modalUpdate('lg', obra)">Editar</button></td>
 								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerObra(obra)">Remover</button></td>

@@ -1,16 +1,12 @@
-app
-		.controller(
-				'ObrasController',
-				[
+app.controller('ObrasController',				[
 						'$scope',
 						'$uibModal',
 						'$log',
 						'obrasService',
 						'$window',
 						'$location',
-						'unidadeService',
 						function($scope, $uibModal, $log, obrasService,
-								$window, $location, unidadeService) {
+								$window, $location) {
 
 							$scope.obra = {};
 							$scope.obras = [];
@@ -78,4 +74,4 @@ app
 													+ new Date());
 										});
 							};
-						} ]);
+}]);

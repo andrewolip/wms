@@ -1,7 +1,7 @@
 <!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Obra {{obra.idObra}}</h1>
+		<h1 class="page-header">Obra {{obra.nome}}</h1>
 		<ol class="breadcrumb">
 			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Obra</a></li>
 			<li class="active"><i class="fa fa-file"></i> Obra</li>
@@ -39,7 +39,6 @@
 								<th>Excluir</th>
 							</tr>
 						</thead>
-
 						<tbody>
 							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
 								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
