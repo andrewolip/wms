@@ -20,4 +20,10 @@ app.config(function config($stateProvider) {
 		templateUrl: "pages/obra.html",
 		controller: "UnidadesController"
 	});
+	
+	$stateProvider.state("funcoes", {
+		url: "/funcoes",
+		templateUrl: "pages/funcoes.html",
+		controller: "FuncaoController"
+	});
 });
