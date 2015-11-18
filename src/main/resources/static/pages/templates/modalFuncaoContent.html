@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h3 class="modal-title">Função</h3>
+</div>
+
+<form name="funcaoForm">
+	<div class="modal-body">
+		<label>Nome</label> <input class="form-control" type="text"
+			ng-model="funcao.nome" name="nome" maxLength="25"
+			placeholder="Digite o nome da função" ng-required="true" /> <label>Descrição</label>
+		<textarea class="form-control" rows="3" ng-model="funcao.descricao"
+			name="descricao"></textarea>
+	</div>
+</form>
+
+<div ng-show="funcaoForm.nome.$invalid && funcaoForm.nome.$dirty"
+	class="alert alert-danger">Por favor, preencha o nome da função!</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="atualizar(funcao)"
+		ng-disabled="!funcao.nome">Salvar</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>

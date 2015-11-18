@@ -33,5 +33,9 @@ public class FuncaoService {
 	public Funcao getFuncao(Integer id) {
 		return funcaoRepository.findOne(id);
 	}
+
+	public Funcao buscarFuncao(Integer id) {
+		return funcaoRepository.findOne(id);
+	}
 	
 }

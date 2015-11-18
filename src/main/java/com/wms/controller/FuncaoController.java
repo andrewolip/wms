@@ -22,17 +22,17 @@ public class FuncaoController {
 		this.funcaoService = funcaoService;
 	}
 
-/*	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public void inserir(@RequestBody Funcao funcao) {
-		funcaoService.salvar(funcao);
-	} */
+	@RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
+	public Funcao buscar(@RequestBody Funcao funcao) {
+		return this.funcaoService.buscarFuncao(funcao.getIdFuncao());
+	}
 
 	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
 	public void atualizar(@RequestBody Funcao funcao) {
 		funcaoService.salvar(funcao);
 	}
 
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void delete(@RequestBody Funcao funcao) {
 		funcaoService.remover(funcao.getIdFuncao());
 	}
