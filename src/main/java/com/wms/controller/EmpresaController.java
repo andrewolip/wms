@@ -32,7 +32,7 @@ public class EmpresaController {
 		empresaService.salvar(empresa);
 	}
 
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void delete(@RequestBody Empresa empresa) {
 		empresaService.remover(empresa.getIdEmpresa());
 	}

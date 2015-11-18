@@ -1,72 +1,78 @@
-app.controller('ColaboradorController', [
-		'$scope',
-		'$http',
-		'$uibModal',
-		'$log',
-		function($scope, $http, $uibModal, $log) {
+app.controller('ColaboradorController',				[
+						'$scope',
+						'$uibModal',
+						'$log',
+						'colaboradorService',
+						'$window',
+						'$location',
+						function($scope, $uibModal, $log, colaboradorService,
+								$window, $location) {
 
-			$scope.colaborador = {};
-			$scope.colaboradores = [];
+							$scope.colaborador = {};
+							$scope.colaboradores = [];
 
-			$scope.listarColaboradores = function() {
-				$http.get('/colaboradores/listar', {}).then(
-						function(response) {
-							$scope.colaboradores = response.data;
-				});
-			};
+							$scope.listarColaboradores = function() {
+								colaboradorService.listarColaboradores().success(
+										function(data) {
+											$scope.colaboradores = data;
+										});
+							};
+							
+							$scope.inserirColaborador = function(colaborador) {
+								colaboradorService.inserirColaborador(colaborador).success(
+										function() {
+											$scope.colaborador = colaborador;
+											colaboradorService.listarColaboradores();
+										}).error(function(error) {
+									console(error);
+								});
+							}
 
-			$scope.apagarColaborador = function(colaborador) {
-				$http({
-					url : '/colaboradores/apagar/' + colaborador.idColaborador,
-					method : 'DELETE',
-					data : colaborador,
-					headers : {
-						"Content-Type" : "application/json;charset=utf-8"
-					}
-				}).success(function(data) {
-					$scope.listarColaboradores();
-				}, function(error) {
-					console.log(error);
-				});
-			};
+							$scope.removerColaborador = function(colaborador) {
 
-			// Abre a Modal ao clicar em 'Adicionar Colaborador'
-			$scope.modalUpdate = function (size, selectedColaborador) {
+								var deleteColaborador = $window
+										.confirm('Tem certeza que gostaria de remover a colaborador '
+												+ colaborador.nome + '?');
 
-			    var modalInstance = $uibModal.open({
-			      templateUrl: 'modalColaboradorContent.html',
-			      controller: 'ColaboradorInstanceController',
-			      size: size,
-			      resolve: {
-			    	  colaborador: function () {
-			          return selectedColaborador;
-			        }
-			      }
-			    });
+								if (deleteColaborador) {
+									colaboradorService.removerColaborador(colaborador).success(
+											function(data) {
+												$scope.listarColaboradores();
+											}).error(function(error) {
+										console(error);
+									});
+								} else{}
+							}
+							
+							$scope.buscarColaborador = function(id) {
+								colaboradorService.buscarColaborador(id).success(function(data) {
+									$scope.colaborador = data;
+								}).error(function(msg) {
+									$log.info(msg);
+								});
+							}
+							
+							// Abre a Modal ao clicar em 'Adicionar Colaborador'
+							$scope.modalUpdate = function(size, selectedColaborador) {
 
-			    modalInstance.result.then(function (selectedItem) {
-			      $scope.selected = selectedItem;
-			    }, function () {
-			      $log.info('Modal foi fechada em: ' + new Date());
-			    });
-			  };
-		} ]);
+								var modalInstance = $uibModal.open({
+									templateUrl : 'pages/templates/modalColaboradorContent.html',
+									controller : 'ColaboradorInstanceController',
+									size : size,
+									resolve : {
+										colaborador : function() {
+											return angular.copy(selectedColaborador);
+										}
+									}
+								});
 
-
-app.controller('ColaboradorInstanceController', function($scope, $http, $uibModalInstance, $log, colaborador) {
-	$scope.colaborador = colaborador;
-	
-	$scope.cancelar = function () {
-	    $uibModalInstance.dismiss('cancelar');
-	 };
-	 
-	 $scope.atualizar = function (colaborador) {
-		 console.log(colaborador);
-		 $http.put('/colaboradores/atualizar', colaborador)
-			.success(function(data) {
-				$uibModalInstance.close();
-			}).error(function(error) {
-				resultado = error.Message;
-			});
-	 };
-});
+								modalInstance.result.then(
+										function(selectedItem) {
+											$scope.selected = selectedItem;
+											$scope.listarColaboradores();
+										}, function() {
+											$log.info('Modal foi fechada em: '
+													+ new Date());
+										});
+							};
+}]);
