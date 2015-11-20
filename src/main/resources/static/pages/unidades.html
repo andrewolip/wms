@@ -1,0 +1,68 @@
+﻿<!-- Page Heading -->
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Obra {{obra.nome}}</h1>
+
+		<ul class="nav nav-tabs">
+		  <li><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">Geral</a></li>
+		  <li><a ui-sref="funcionarios({idObra: obra.idObra, nome: obra.nome})">Funcionários</a></li>
+		  <li class="active"><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">Unidades</a></li>
+		  <li><a ui-sref="comentarios({idObra: obra.idObra, nome: obra.nome})">Comentários</a></li>
+		  <li><a ui-sref="anexos({idObra: obra.idObra, nome: obra.nome})">Anexos</a></li>
+		</ul>
+
+		<ol class="breadcrumb">
+			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Obra</a></li>
+			<li class="active"><i class="fa fa-file"></i> Obra</li>
+		</ol>
+	</div>	
+</div>
+
+
+<!-- /.row -->
+<div class="container">
+	<div ng-init="listarUnidades()">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-2">
+				<div class="form-group">
+					<input ng-model="buscaUnidade" type="text" class="form-control"
+						placeholder="Digite o nome ou ID da Unidade">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<button class="btn btn-success" ng-click="modalUpdate(lg, null)">
+					<span class="glyphicon glyphicon-plus"></span>Adicionar Unidade
+				</button>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+				<div class="table-responsive">
+					<table st-table="unidades" class="table table-striped"
+						st-pagination-scroll>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nome</th>
+								<th>Editar</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
+								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
+								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nome}}</a></td>
+								<td style="width: 10%;"><button class="btn btn-warning"
+										ng-click="modalUpdate('lg', obra)">Editar</button></td>
+								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUnidade(unidade)">Remover</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- ObraController -->
+	</div>
+</div>

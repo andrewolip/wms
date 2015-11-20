@@ -1,15 +1,21 @@
-app.controller('ObrasController',				[
+﻿app.controller('ObrasController',				[
 						'$scope',
 						'$uibModal',
 						'$log',
 						'obrasService',
 						'$window',
 						'$location',
+						'$stateParams',
 						function($scope, $uibModal, $log, obrasService,
-								$window, $location) {
+								$window, $location, $stateParams) {
 
-							$scope.obra = {};
 							$scope.obras = [];
+							$scope.obra = {
+								idObra: $stateParams.idObra,
+								nome: $stateParams.nome
+							};
+
+							$log.info($scope.obra);
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
@@ -19,7 +25,7 @@ app.controller('ObrasController',				[
 							};
 
 							$scope.inserirObra = function(obra) {
-								obrasService.inserirObra(obra).success(
+								obraService.inserirObra(obra).success(
 										function() {
 											$scope.obra = obra;
 											obrasService.listarObras();

@@ -18,7 +18,7 @@ app.config(function config($stateProvider) {
 	$stateProvider.state("obra", {
 		url: "/obra/:idObra?nome",
 		templateUrl: "pages/obra.html",
-		controller: "UnidadesController"
+		controller: "ObrasController"
 	});
 	
 	$stateProvider.state("funcoes", {
@@ -67,5 +67,11 @@ app.config(function config($stateProvider) {
 		url: "/usuarios",
 		templateUrl: "pages/usuarios.html",
 		controller: "UsuarioController"
+	});
+
+	$stateProvider.state("unidades", {
+		url: "/unidades",
+		templateUrl: "pages/unidades.html",
+		controller: "UnidadesController"
 	});
 });

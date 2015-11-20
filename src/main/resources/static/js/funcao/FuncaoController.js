@@ -18,16 +18,6 @@ app.controller('FuncaoController',				[
 										});
 							};
 							
-							$scope.inserirFuncao = function(funcao) {
-								funcaoService.inserirFuncao(funcao).success(
-										function() {
-											$scope.funcao = funcao;
-											funcaoService.listarFuncoes();
-										}).error(function(error) {
-									console(error);
-								});
-							}
-
 							$scope.removerFuncao = function(funcao) {
 
 								var deleteFuncao = $window

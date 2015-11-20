@@ -11,11 +11,7 @@ app.controller('UnidadesController',				[
 						function($scope, $uibModal, $log, obrasService,
 								$window, $location, unidadeService, $stateParams, $state) {
 
-							$scope.obra = {
-									idObra: $stateParams.idObra,
-									nome: $stateParams.nome
-							};
-							
+							$scope.obra = {};
 							$scope.obras = [];
 							
 							$scope.listarObras = function() {
@@ -51,8 +47,8 @@ app.controller('UnidadesController',				[
 								} else{}
 							}
 							
-							$scope.buscarObra = function(id) {
-								obrasService.buscarObra(id).success(function(data) {
+							$scope.buscarObra = function(obra) {
+								obrasService.buscarObra(obra.idObra).success(function(data) {
 									$scope.obra = data;
 								}).error(function(msg) {
 									$log.info(msg);
