@@ -1,10 +1,24 @@
 ﻿<!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
-		
-		<div class="page-header">
-			<h2 class="col-lg-6">{{obra.nome}}</h2>
-			<h2 class="col-lg-4 col-lg-offset-2">Valor Investido: {{obra.custoRealizado}}</h2>
+		<div class="row">
+			<div class="page-header">
+				<div class="col-lg-6">
+					<h2>{{obra.nome}}</h2>
+				</div>
+
+				<div class="col-lg-4 col-lg-offset-2">
+					<h2>Valor Investido: {{obra.custoRealizado}}</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+				Endereço: <br />
+				Responsável: <br />
+				Status: <br /><br />		
+			</div>	
 		</div>
 	</div>
 	<div class="col-lg-12">
@@ -23,19 +37,7 @@
 
 		<div class="container">
 			<div class="row" style="margin-bottom: 20px;">
-				<div class="col-lg-4">
-					<fieldset>
-						<legend>Info Obra</legend>
-						
-						Nome: <br />
-						Endereço: <br />
-						Responsável: <br />
-						Status da Obra: <br />
-						
-					</fieldset>
-				</div>
-
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<fieldset>
 						<legend>Orçamento</legend>
 						
@@ -47,7 +49,7 @@
 					</fieldset>
 				</div>
 
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<fieldset>
 						<legend>Datas</legend>
 						Data do Início: <br />
