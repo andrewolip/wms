@@ -14,8 +14,23 @@
 								idObra: $stateParams.idObra,
 								nome: $stateParams.nome
 							};
+							
+							$log.info($stateParams);
+							
+							/* var init = function() {
+								obrasService.buscarObra($stateParams.idObra).success(function(data) {
+									$scope.obra = data;
+								});	
+							}							
+							
+							init(); */
+							
+							
 
-							$log.info($scope.obra);
+						/*	$scope.compartilhar = function(newObra){
+								$scope.obra = obrasService.objetoCompartilhado(newObra);
+								$log.info($scope.obra);
+							} */
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(

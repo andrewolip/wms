@@ -1,7 +1,12 @@
-app.factory('obrasService', ['$http', '$location', function($http, $location) {
+app.factory('obrasService', ['$http', '$location', '$log', function($http, $location, $log) {
 	var factory = {};
 	var obra = {};
 	var obras = [];
+	
+	factory.objetoCompartilhado = function(newObra) {
+		obra = newObra;
+		return obra;
+	}
 
 	factory.salvarObra = function(obra) {
 		return $http.post('/obras/inserir', obra);

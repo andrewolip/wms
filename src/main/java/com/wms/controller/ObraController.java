@@ -3,6 +3,7 @@ package com.wms.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,8 +29,8 @@ public class ObraController {
 	} */
 	
 	@RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
-	public Obra buscar(@RequestBody Obra obra) {
-		return this.obraService.buscarObra(obra.getIdObra());
+	public Obra buscar(@PathVariable Integer id) {
+		return this.obraService.buscarObra(id);
 	}
 
 	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
@@ -38,8 +39,8 @@ public class ObraController {
 	}
 
 	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
-	public void delete(@RequestBody Obra obra) {
-		obraService.remover(obra.getIdObra());
+	public void delete(@PathVariable Integer id) {
+		obraService.remover(id);
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)

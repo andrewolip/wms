@@ -21,7 +21,7 @@ app.factory('unidadeService', ['$http', function($http) {
 	
 	factory.removerUnidade = function(unidade) {
 		return $http({
-			url : '/unidades/apagar/' + unidades.idUnidadeObra,
+			url : '/unidades/remover/' + unidades.idUnidadeObra,
 			method : 'DELETE',
 			data : unidade,
 			headers : {

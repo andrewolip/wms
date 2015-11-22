@@ -9,62 +9,75 @@ app.controller('UnidadesController',				[
 						'$stateParams',
 						'$state',
 						function($scope, $uibModal, $log, obrasService,
-								$window, $location, unidadeService, $stateParams, $state) {
+								$window, $location, unidadeService, $stateParams) {
 
-							$scope.obra = {};
-							$scope.obras = [];
+							$scope.obra = {
+								idObra: $stateParams.idObra,
+								nome: $stateParams.nome
+							};
+
+							$scope.unidade = {};
 							
-							$scope.listarObras = function() {
-								obrasService.listarObras().success(
+							$scope.unidades = [];
+							
+						/*	var init = function() {
+								obrasService.buscarObra($stateParams.idObra).success(function(data) {
+									$scope.obra = data;
+								});	
+							}	
+
+							init(); */
+							
+							$scope.listarUnidades = function() {
+								unidadeService.listarUnidades().success(
 										function(data) {
-											$scope.obras = data;
+											$scope.unidades = data;
 										});
 							};
 
-							$scope.inserirObra = function(obra) {
-								obrasService.inserirObra(obra).success(
+							$scope.salvarUnidade = function(unidade) {
+								unidadeService.salvarUnidade(unidade).success(
 										function() {
-											$scope.obra = obra;
-											obrasService.listarObras();
+											$scope.unidade = unidade;
 										}).error(function(error) {
 									console(error);
 								});
 							}
 
-							$scope.removerObra = function(obra) {
+							$scope.removerUnidade = function(unidade) {
 
-								var deleteObra = $window
-										.confirm('Tem certeza que gostaria de apagar a obra '
-												+ obra.nome + '?');
+								var deleteUnidade = $window
+										.confirm('Tem certeza que gostaria de apagar a Unidade '
+												+ unidade.nome + '?');
 
-								if (deleteObra) {
-									obrasService.apagarObra(obra).success(
+								if (deleteUnidade) {
+									unidadeService.removerUnidade(unidade).success(
 											function(data) {
-												$scope.listarObras();
+												$scope.listarUnidades();
 											}).error(function(error) {
 										console(error);
 									});
 								} else{}
 							}
 							
-							$scope.buscarObra = function(obra) {
-								obrasService.buscarObra(obra.idObra).success(function(data) {
-									$scope.obra = data;
+							$scope.buscarUnidade = function(unidade) {
+								unidadeService.buscarUnidade(unidade.idUnidade).success(function(data) {
+									$scope.unidade = data;
 								}).error(function(msg) {
 									$log.info(msg);
 								});
 							}
 							
-							// Abre a Modal ao clicar em 'Adicionar Obra'
-							$scope.modalUpdate = function(size, selectedObra) {
+							// Abre a Modal ao clicar em 'Adicionar Unidade'
+							$scope.modalUpdate = function(tamanho, unidadeSelecionada) {
 
 								var modalInstance = $uibModal.open({
-									templateUrl : 'pages/templates/modalObrasContent.html',
-									controller : 'ObrasInstanceController',
-									size : size,
+									templateUrl : 'pages/templates/modalUnidadesContent.html',
+									controller : 'UnidadesInstanceController',
+									size : tamanho,
 									resolve : {
-										obra : function() {
-											return selectedObra;
+										unidade : function() {
+											return unidadeSelecionada;
 										}
 									}
 								});

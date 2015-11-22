@@ -16,9 +16,10 @@ app.config(function config($stateProvider) {
 	});
 	
 	$stateProvider.state("obra", {
-		url: "/obra/:idObra?nome",
+		url: "/obra/",
 		templateUrl: "pages/obra.html",
-		controller: "ObrasController"
+		controller: "ObrasController",
+		params: {idObra: null, nome: null}
 	});
 	
 	$stateProvider.state("funcoes", {
@@ -70,8 +71,9 @@ app.config(function config($stateProvider) {
 	});
 
 	$stateProvider.state("unidades", {
-		url: "/unidades",
+		url: "/unidades/",
 		templateUrl: "pages/unidades.html",
-		controller: "UnidadesController"
+		controller: "UnidadesController",
+		params: {idObra: null, nome: null}
 	});
 });
