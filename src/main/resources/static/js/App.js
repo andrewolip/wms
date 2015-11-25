@@ -21,6 +21,12 @@ app.config(function config($stateProvider) {
 		controller: "ObrasController",
 		params: {idObra: null, nome: null}
 	});
+
+	$stateProvider.state("contasPagar", {
+		url: "/contasPagar",
+		templateUrl: "pages/contasPagar.html",
+		controller: "ContaPagarController"
+	});
 	
 	$stateProvider.state("funcoes", {
 		url: "/funcoes",
