@@ -38,7 +38,7 @@ public class ContaPagar implements Serializable {
 
 	private String observacao;
 
-	private byte status;
+	private Integer status;
 
 	@Column(name="tipo_conta")
 	private Integer tipoConta;
@@ -49,30 +49,14 @@ public class ContaPagar implements Serializable {
 	@Column(name="valor_conta")
 	private BigDecimal valorConta;
 
-	//bi-directional many-to-one association to Anexo
-	@OneToMany(mappedBy="contaPagar")
-	private List<Anexo> anexos;
-
 	//bi-directional many-to-one association to Fornecedor
 	@ManyToOne
 	@JoinColumn(name="id_fornecedor")
 	private Fornecedor fornecedor;
 
-	//bi-directional many-to-many association to Item
-	@ManyToMany(mappedBy="contaPagars")
-	private List<Item> items;
-
-	//bi-directional many-to-one association to FaseObra
+	//bi-directional many-to-one association to ItemConta
 	@OneToMany(mappedBy="contaPagar")
-	private List<FaseObra> faseObras;
-
-	//bi-directional many-to-one association to FormaPagamento
-	@OneToMany(mappedBy="contaPagar")
-	private List<FormaPagamento> formaPagamentos;
-
-	//bi-directional many-to-one association to Lancamento
-	@OneToMany(mappedBy="contaPagar")
-	private List<Lancamento> lancamentos;
+	private List<ItemConta> itensConta;
 
 	public ContaPagar() {
 	}
@@ -125,11 +109,11 @@ public class ContaPagar implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public byte getStatus() {
+	public Integer getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -157,28 +141,6 @@ public class ContaPagar implements Serializable {
 		this.valorConta = valorConta;
 	}
 
-	public List<Anexo> getAnexos() {
-		return this.anexos;
-	}
-
-	public void setAnexos(List<Anexo> anexos) {
-		this.anexos = anexos;
-	}
-
-	public Anexo addAnexo(Anexo anexo) {
-		getAnexos().add(anexo);
-		anexo.setContaPagar(this);
-
-		return anexo;
-	}
-
-	public Anexo removeAnexo(Anexo anexo) {
-		getAnexos().remove(anexo);
-		anexo.setContaPagar(null);
-
-		return anexo;
-	}
-
 	public Fornecedor getFornecedor() {
 		return this.fornecedor;
 	}
@@ -187,78 +149,26 @@ public class ContaPagar implements Serializable {
 		this.fornecedor = fornecedor;
 	}
 
-	public List<Item> getItems() {
-		return this.items;
+	public List<ItemConta> getItensConta() {
+		return this.itensConta;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setItensConta(List<ItemConta> itensConta) {
+		this.itensConta = itensConta;
 	}
 
-	public List<FaseObra> getFaseObras() {
-		return this.faseObras;
+	public ItemConta addItensConta(ItemConta itensConta) {
+		getItensConta().add(itensConta);
+		itensConta.setContaPagar(this);
+
+		return itensConta;
 	}
 
-	public void setFaseObras(List<FaseObra> faseObras) {
-		this.faseObras = faseObras;
-	}
+	public ItemConta removeItensConta(ItemConta itensConta) {
+		getItensConta().remove(itensConta);
+		itensConta.setContaPagar(null);
 
-	public FaseObra addFaseObra(FaseObra faseObra) {
-		getFaseObras().add(faseObra);
-		faseObra.setContaPagar(this);
-
-		return faseObra;
-	}
-
-	public FaseObra removeFaseObra(FaseObra faseObra) {
-		getFaseObras().remove(faseObra);
-		faseObra.setContaPagar(null);
-
-		return faseObra;
-	}
-
-	public List<FormaPagamento> getFormaPagamentos() {
-		return this.formaPagamentos;
-	}
-
-	public void setFormaPagamentos(List<FormaPagamento> formaPagamentos) {
-		this.formaPagamentos = formaPagamentos;
-	}
-
-	public FormaPagamento addFormaPagamento(FormaPagamento formaPagamento) {
-		getFormaPagamentos().add(formaPagamento);
-		formaPagamento.setContaPagar(this);
-
-		return formaPagamento;
-	}
-
-	public FormaPagamento removeFormaPagamento(FormaPagamento formaPagamento) {
-		getFormaPagamentos().remove(formaPagamento);
-		formaPagamento.setContaPagar(null);
-
-		return formaPagamento;
-	}
-
-	public List<Lancamento> getLancamentos() {
-		return this.lancamentos;
-	}
-
-	public void setLancamentos(List<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
-	}
-
-	public Lancamento addLancamento(Lancamento lancamento) {
-		getLancamentos().add(lancamento);
-		lancamento.setContaPagar(this);
-
-		return lancamento;
-	}
-
-	public Lancamento removeLancamento(Lancamento lancamento) {
-		getLancamentos().remove(lancamento);
-		lancamento.setContaPagar(null);
-
-		return lancamento;
+		return itensConta;
 	}
 
 }

@@ -30,6 +30,7 @@
 		<class>com.wms.model.entity.TarefaObra</class>
 		<class>com.wms.model.entity.UnidadeObra</class>
 		<class>com.wms.model.entity.Usuario</class>
+		<class>com.wms.model.entity.ItemConta</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -1,9 +1,7 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -28,17 +26,12 @@ public class SubcategoriaItem implements Serializable {
 
 	//bi-directional many-to-one association to Item
 	@OneToMany(mappedBy="subcategoriaItem")
-	private List<Item> items;
+	private List<Item> itens;
 
 	//bi-directional many-to-one association to CategoriaItem
 	@ManyToOne
 	@JoinColumn(name="id_categoria_item")
 	private CategoriaItem categoriaItem;
-
-	//bi-directional many-to-one association to Fornecedor
-	@ManyToOne
-	@JoinColumn(name="id_fornecedor")
-	private Fornecedor fornecedor;
 
 	public SubcategoriaItem() {
 	}
@@ -67,26 +60,26 @@ public class SubcategoriaItem implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Item> getItems() {
-		return this.items;
+	public List<Item> getItens() {
+		return this.itens;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
 	}
 
-	public Item addItem(Item item) {
-		getItems().add(item);
-		item.setSubcategoriaItem(this);
+	public Item addIten(Item iten) {
+		getItens().add(iten);
+		iten.setSubcategoriaItem(this);
 
-		return item;
+		return iten;
 	}
 
-	public Item removeItem(Item item) {
-		getItems().remove(item);
-		item.setSubcategoriaItem(null);
+	public Item removeIten(Item iten) {
+		getItens().remove(iten);
+		iten.setSubcategoriaItem(null);
 
-		return item;
+		return iten;
 	}
 
 	public CategoriaItem getCategoriaItem() {
@@ -95,14 +88,6 @@ public class SubcategoriaItem implements Serializable {
 
 	public void setCategoriaItem(CategoriaItem categoriaItem) {
 		this.categoriaItem = categoriaItem;
-	}
-
-	public Fornecedor getFornecedor() {
-		return this.fornecedor;
-	}
-
-	public void setFornecedor(Fornecedor fornecedor) {
-		this.fornecedor = fornecedor;
 	}
 
 }

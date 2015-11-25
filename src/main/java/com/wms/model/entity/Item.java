@@ -1,10 +1,7 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import java.util.List;
 
 
 /**
@@ -24,19 +21,6 @@ public class Item implements Serializable {
 	private String descricao;
 
 	private String nome;
-
-	//bi-directional many-to-many association to ContaPagar
-	@ManyToMany
-	@JoinTable(
-		name="conta_pagar_has_item"
-		, joinColumns={
-			@JoinColumn(name="id_item")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="id_conta_pagar")
-			}
-		)
-	private List<ContaPagar> contaPagars;
 
 	//bi-directional many-to-one association to SubcategoriaItem
 	@ManyToOne
@@ -68,14 +52,6 @@ public class Item implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public List<ContaPagar> getContaPagars() {
-		return this.contaPagars;
-	}
-
-	public void setContaPagars(List<ContaPagar> contaPagars) {
-		this.contaPagars = contaPagars;
 	}
 
 	public SubcategoriaItem getSubcategoriaItem() {

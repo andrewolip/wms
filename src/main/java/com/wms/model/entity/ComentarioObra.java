@@ -24,6 +24,7 @@ public class ComentarioObra implements Serializable {
 
 	//bi-directional many-to-one association to Obra
 	@ManyToOne
+	@JoinColumn(name="id_obra")
 	private Obra obra;
 
 	public ComentarioObra() {

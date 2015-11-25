@@ -53,6 +53,7 @@ public class Colaborador implements Serializable {
 
 	//bi-directional many-to-one association to Obra
 	@ManyToOne
+	@JoinColumn(name="id_obra")
 	private Obra obra;
 
 	//bi-directional many-to-one association to Empresa

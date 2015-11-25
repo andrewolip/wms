@@ -1,9 +1,7 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -33,11 +31,7 @@ public class Fornecedor implements Serializable {
 
 	//bi-directional many-to-one association to ContaPagar
 	@OneToMany(mappedBy="fornecedor")
-	private List<ContaPagar> contaPagars;
-
-	//bi-directional many-to-one association to SubcategoriaItem
-	@OneToMany(mappedBy="fornecedor")
-	private List<SubcategoriaItem> subcategoriaItems;
+	private List<ContaPagar> contasPagar;
 
 	public Fornecedor() {
 	}
@@ -90,48 +84,26 @@ public class Fornecedor implements Serializable {
 		this.telefone = telefone;
 	}
 
-	public List<ContaPagar> getContaPagars() {
-		return this.contaPagars;
+	public List<ContaPagar> getContasPagar() {
+		return this.contasPagar;
 	}
 
-	public void setContaPagars(List<ContaPagar> contaPagars) {
-		this.contaPagars = contaPagars;
+	public void setContasPagar(List<ContaPagar> contasPagar) {
+		this.contasPagar = contasPagar;
 	}
 
-	public ContaPagar addContaPagar(ContaPagar contaPagar) {
-		getContaPagars().add(contaPagar);
-		contaPagar.setFornecedor(this);
+	public ContaPagar addContasPagar(ContaPagar contasPagar) {
+		getContasPagar().add(contasPagar);
+		contasPagar.setFornecedor(this);
 
-		return contaPagar;
+		return contasPagar;
 	}
 
-	public ContaPagar removeContaPagar(ContaPagar contaPagar) {
-		getContaPagars().remove(contaPagar);
-		contaPagar.setFornecedor(null);
+	public ContaPagar removeContasPagar(ContaPagar contasPagar) {
+		getContasPagar().remove(contasPagar);
+		contasPagar.setFornecedor(null);
 
-		return contaPagar;
-	}
-
-	public List<SubcategoriaItem> getSubcategoriaItems() {
-		return this.subcategoriaItems;
-	}
-
-	public void setSubcategoriaItems(List<SubcategoriaItem> subcategoriaItems) {
-		this.subcategoriaItems = subcategoriaItems;
-	}
-
-	public SubcategoriaItem addSubcategoriaItem(SubcategoriaItem subcategoriaItem) {
-		getSubcategoriaItems().add(subcategoriaItem);
-		subcategoriaItem.setFornecedor(this);
-
-		return subcategoriaItem;
-	}
-
-	public SubcategoriaItem removeSubcategoriaItem(SubcategoriaItem subcategoriaItem) {
-		getSubcategoriaItems().remove(subcategoriaItem);
-		subcategoriaItem.setFornecedor(null);
-
-		return subcategoriaItem;
+		return contasPagar;
 	}
 
 }
