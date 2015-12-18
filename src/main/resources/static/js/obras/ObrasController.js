@@ -12,25 +12,8 @@
 							$scope.obras = [];
 							$scope.obra = {
 								idObra: $stateParams.idObra,
-								nome: $stateParams.nome
+								nome: $stateParams.nome,
 							};
-							
-							$log.info($stateParams);
-							
-							/* var init = function() {
-								obrasService.buscarObra($stateParams.idObra).success(function(data) {
-									$scope.obra = data;
-								});	
-							}							
-							
-							init(); */
-							
-							
-
-						/*	$scope.compartilhar = function(newObra){
-								$scope.obra = obrasService.objetoCompartilhado(newObra);
-								$log.info($scope.obra);
-							} */
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
@@ -38,16 +21,6 @@
 											$scope.obras = data;
 										});
 							};
-
-							$scope.inserirObra = function(obra) {
-								obraService.inserirObra(obra).success(
-										function() {
-											$scope.obra = obra;
-											obrasService.listarObras();
-										}).error(function(error) {
-									console(error);
-								});
-							}
 
 							$scope.removerObra = function(obra) {
 
@@ -82,7 +55,7 @@
 									size : size,
 									resolve : {
 										obra : function() {
-											return selectedObra;
+											return angular.copy(selectedObra);
 										}
 									}
 								});
@@ -90,6 +63,7 @@
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
+											$scope.listarObras();
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());

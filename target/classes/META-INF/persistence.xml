@@ -31,6 +31,7 @@
 		<class>com.wms.model.entity.UnidadeObra</class>
 		<class>com.wms.model.entity.Usuario</class>
 		<class>com.wms.model.entity.ItemConta</class>
+		<class>com.wms.model.entity.Localizacao</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

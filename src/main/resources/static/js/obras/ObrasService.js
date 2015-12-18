@@ -1,6 +1,8 @@
 app.factory('obrasService', ['$http', '$location', '$log', function($http, $location, $log) {
 	var factory = {};
-	var obra = {};
+	var obra = {
+		localizacao: {}
+	};
 	var obras = [];
 	
 	factory.objetoCompartilhado = function(newObra) {
