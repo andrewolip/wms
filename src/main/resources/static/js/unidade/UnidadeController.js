@@ -11,10 +11,7 @@ app.controller('UnidadeController',				[
 						function($scope, $uibModal, $log, obrasService,
 								$window, $location, unidadeService, $stateParams) {
 
-							$scope.obra = {
-								idObra: $stateParams.idObra,
-								nome: $stateParams.nome
-							};
+							$scope.obra = $stateParams;
 
 							$scope.unidade = {};
 							
