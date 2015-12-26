@@ -4,11 +4,11 @@
 		<h1 class="page-header">{{obra.nome}}</h1>
 
 		<ul class="nav nav-tabs">
-		  <li><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">Geral</a></li>
-		  <li><a ui-sref="funcionarios({idObra: obra.idObra})">Funcionários</a></li>
-		  <li class="active"><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">Unidades</a></li>
-		  <li><a ui-sref="comentarios({idObra: obra.idObra})">Comentários</a></li>
-		  <li><a ui-sref="anexos({idObra: obra.idObra})">Anexos</a></li>
+		  <li><a ui-sref="obra(obra)">Geral</a></li>
+		  <li><a ui-sref="funcionarios(obra)">Funcionários</a></li>
+		  <li class="active"><a ui-sref="obra(obra)">Unidades</a></li>
+		  <li><a ui-sref="comentarios(obra)">Comentários</a></li>
+		  <li><a ui-sref="anexos(obra)">Anexos</a></li>
 		</ul>
 
 		<ol class="breadcrumb">

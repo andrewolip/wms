@@ -6,27 +6,12 @@
 	<div class="modal-body">
 		<label>Nome da Unidade</label>
 		<input class="form-control" type="text"
-			ng-model="unidadeForm.nome" name="nome" maxLength="25"
+			ng-model="unidade.nome" name="nome" maxLength="25"
 			placeholder="Digite o nome da Unidade" ng-required="true" />
-			
-			<label>Valor Previsto da Venda</label>
-			<input class=form-control type="text" ng-model="unidadeForm.nome" name="valorPrevistoVenda">
-			
-			<label>Data de Início</label>
-			<input class=form-control type="text" ng-model="unidadeForm.dataInicio" name="dataInicio">
-			
-			<label>Data Prevista de Termino</label>
-			<input class=form-control type="text" ng-model="unidadeForm.dataPrevistaTermino" name="dataPrevistaTermino">
-			
-			<label>Data da Venda</label>
-			<input class=form-control type="text" ng-model="unidadeForm.dataVenda" name="dataVenda">
-			
-			<label>Data da Entrega</label>
-			<input class=form-control type="text" ng-model="unidadeForm.dataEntrega" name="dataEntrega">
-			
+				
 		<label>Descrição</label>
 		<textarea class="form-control" rows="3"
-			ng-model="unidadeForm.descricao" name="descricao"></textarea>
+			ng-model="unidade.descricao" name="descricao"></textarea>
 	</div>
 </form>
 
@@ -34,6 +19,6 @@
 	class="alert alert-danger">Por favor, preencha o nome da Unidade!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="atualizar(unidade)"
-		ng-disabled="!unidadeForm.nome">Inserir</button>
+		ng-disabled="!unidade.nome">Inserir</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

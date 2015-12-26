@@ -1,4 +1,4 @@
-app.controller('UnidadesController',				[
+app.controller('UnidadeController',				[
 						'$scope',
 						'$uibModal',
 						'$log',
@@ -73,7 +73,7 @@ app.controller('UnidadesController',				[
 
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalUnidadesContent.html',
-									controller : 'UnidadesInstanceController',
+									controller : 'UnidadeInstanceController',
 									size : tamanho,
 									resolve : {
 										unidade : function() {

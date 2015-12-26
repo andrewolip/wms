@@ -2,6 +2,10 @@ var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages',
 
 app.config(function config($stateProvider) {
 	
+	var obraObject = {idObra: null, nome: null, dataInicio: null, localizacao: {uf: null, localidade: null, logradouro: null,
+		cep: null}, dataTermino: null, dataPrevistaTermino: null, unidades: []};
+	
+	
 	$stateProvider.state("dashboard", {
 		url: "/dashboard",
 		controller: "DashboardController",
@@ -12,14 +16,13 @@ app.config(function config($stateProvider) {
 		url: "/obras",
 		templateUrl: "pages/obras.html",
 		controller: "ObrasController"
-		
 	});
 	
 	$stateProvider.state("obra", {
 		url: "/obra/",
 		templateUrl: "pages/obra.html",
 		controller: "ObrasController",
-		params: {idObra: null, nome: null}
+		params: obraObject
 	});
 
 	$stateProvider.state("contasPagar", {
@@ -79,7 +82,7 @@ app.config(function config($stateProvider) {
 	$stateProvider.state("unidades", {
 		url: "/unidades/",
 		templateUrl: "pages/unidades.html",
-		controller: "UnidadesController",
-		params: {idObra: null, nome: null}
+		controller: "UnidadeController",
+		params: obraObject
 	});
 });

@@ -10,10 +10,7 @@
 								$window, $location, $stateParams) {
 
 							$scope.obras = [];
-							$scope.obra = {
-								idObra: $stateParams.idObra,
-								nome: $stateParams.nome,
-							};
+							$scope.obra = $stateParams;	
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(

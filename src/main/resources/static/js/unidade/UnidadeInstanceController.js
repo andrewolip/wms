@@ -1,4 +1,4 @@
-app.controller('UnidadesInstanceController', function($scope,
+app.controller('UnidadeInstanceController', function($scope,
 		$uibModalInstance, $log,unidadeService, unidade) {
 	$scope.unidade = unidade;
 
