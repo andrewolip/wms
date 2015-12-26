@@ -1,4 +1,4 @@
-var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ui.router']);
+var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ui.router', 'ui.utils.masks']);
 
 app.config(function config($stateProvider) {
 	
@@ -82,7 +82,7 @@ app.config(function config($stateProvider) {
 	$stateProvider.state("unidades", {
 		url: "/unidades/",
 		templateUrl: "pages/unidades.html",
-		controller: "UnidadeController",
+		controller: "ObrasController",
 		params: obraObject
 	});
 });

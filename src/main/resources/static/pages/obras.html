@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalUpdate('md')">
+				<button class="btn btn-success" ng-click="modalObrasUpdate('md')">
 					<span class="glyphicon glyphicon-plus"></span>Adicionar Obra
 				</button>
 			</div>
@@ -53,7 +53,7 @@
 								<td>{{obra.localizacao.localidade}}</td>
 								<td>{{obra.localizacao.bairro}}</td>
 								<td style="width: 10%;"><button class="btn btn-warning"
-										ng-click="modalUpdate('lg', obra)">Editar</button></td>
+										ng-click="modalObrasUpdate('md', obra)">Editar</button></td>
 								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerObra(obra)">Remover</button></td>
 							</tr>
 						</tbody>

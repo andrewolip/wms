@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalUpdate()">
+				<button class="btn btn-success" ng-click="modalUnidadeUpdate('md')">
 					<span class="glyphicon glyphicon-plus"></span>Adicionar Unidade
 				</button>
 			</div>
@@ -54,7 +54,7 @@
 								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
 								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nome}}</a></td>
 								<td style="width: 10%;"><button class="btn btn-warning"
-										ng-click="modalUpdate('lg', unidade)">Editar</button></td>
+										ng-click="modalUnidadesUpdate('md', unidade)">Editar</button></td>
 								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUnidade(unidade)">Remover</button></td>
 							</tr>
 						</tbody>

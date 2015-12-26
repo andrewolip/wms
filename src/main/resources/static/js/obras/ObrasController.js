@@ -44,7 +44,7 @@
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Obra'
-							$scope.modalUpdate = function(size, selectedObra) {
+							$scope.modalObrasUpdate = function(size, selectedObra) {
 
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalObrasContent.html',
@@ -61,6 +61,29 @@
 										function(selectedItem) {
 											$scope.selected = selectedItem;
 											$scope.listarObras();
+										}, function() {
+											$log.info('Modal foi fechada em: '
+													+ new Date());
+										});
+							};
+							
+							// Abre a Modal ao clicar em 'Adicionar Unidade'
+							$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
+
+								var modalInstance = $uibModal.open({
+									templateUrl : 'pages/templates/modalUnidadesContent.html',
+									controller : 'ObrasInstanceController',
+									size : tamanho,
+									resolve : {
+										obra : function() {
+											return unidadeSelecionada;
+										}
+									}
+								});
+
+								modalInstance.result.then(
+										function(selectedItem) {
+											$scope.selected = selectedItem;
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());

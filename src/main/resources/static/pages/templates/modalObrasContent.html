@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<label class="col-lg-2 control-label">CEP</label>
 				<div class="col-lg-3">
-	 				<input class="form-control" type="text" ng-model="obra.localizacao.cep" name="cep" maxLength="8" required="true">
+	 				<input class="form-control" type="text" ng-model="obra.localizacao.cep" name="cep" maxLength="9" required="true" ui-br-cep-mask>
 	 			</div>
  				<div>
  					<input type="button" class="btn btn-primary" ng-click="buscarCep(obra.localizacao)" ng-disabled="!obra.localizacao.cep" value="Carregar">
@@ -79,7 +79,7 @@
 	class="alert alert-danger">Por favor, preencha o endereço!</div>
 	
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="atualizar(obra)"
+	<button class="btn btn-primary" ng-click="atualizarObra(obra)"
 		ng-disabled="!obra.nome  || !obra.localizacao.uf || !obra.localizacao.bairro || !obra.localizacao.logradouro">Inserir</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

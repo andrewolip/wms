@@ -1,5 +1,5 @@
 app.controller('ObrasInstanceController', function($scope,
-		$uibModalInstance, $log, obrasService, buscaCepService, obra) {
+		$uibModalInstance, $log, obrasService, buscaCepService, obra, $stateParams) {
 
 	$scope.obra = obra;
 	
@@ -13,9 +13,14 @@ app.controller('ObrasInstanceController', function($scope,
 		$uibModalInstance.dismiss('cancelar');
 	};
 
-	$scope.atualizar = function(obra) {
-		//$log.info(obra.localizacao.localidade);
-
+	$scope.atribuirUnidadeAObra = function(unidade) {
+		$scope.obra = $stateParams;
+		$scope.obra.unidades.push(unidade);
+		
+		$scope.atualizarObra($scope.obra);
+	}
+	
+	$scope.atualizarObra = function(obra) {
 		obrasService.atualizarObra(obra).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
