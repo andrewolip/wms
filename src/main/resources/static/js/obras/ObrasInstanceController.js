@@ -1,9 +1,7 @@
 app.controller('ObrasInstanceController', function($scope,
 		$uibModalInstance, $log, obrasService, buscaCepService, obra) {
 
-	$scope.obra = {};
-	$scope.obra.localizacao = {};
-
+	$scope.obra = obra;
 	
 	$scope.buscarCep = function(localizacao) {
 		buscaCepService.buscarCep(localizacao).success(function(data, status){
