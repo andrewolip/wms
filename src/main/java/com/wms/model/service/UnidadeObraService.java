@@ -34,4 +34,8 @@ public class UnidadeObraService {
 		return (List<UnidadeObra>) this.unidadeObraRepository.findAll();
 	}
 	
+	public List<UnidadeObra> listarPeloNome(String nomeDaObra) {
+		return this.unidadeObraRepository.findByNomeObra(nomeDaObra);
+	}
+	
 }

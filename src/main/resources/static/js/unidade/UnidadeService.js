@@ -2,10 +2,6 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 	var factory = {};
 	var unidade = {};
 	
-	factory.salvarUnidade = function(unidade) {
-		return $http.post('/unidades/inserir', unidade);
-	}
-	
 	factory.buscarUnidade = function(id) {
 		return $http.get('/unidades/buscar/' + id);
 	}
@@ -27,6 +23,10 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 	
 	factory.atualizarUnidade = function(unidade) {
 		return $http.put('/unidades/atualizar', unidade);
+	}
+	
+	factory.listarPeloNome = function(obra) {
+		return $http.get('/unidades/listarPeloNome', obra.nome);
 	}
 	
 	return factory;

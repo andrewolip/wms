@@ -1,5 +1,5 @@
 app.controller('ObrasInstanceController', function($scope,
-		$uibModalInstance, $log, obrasService, buscaCepService, obra, $stateParams) {
+		$uibModalInstance, $log, obrasService, unidadeService, buscaCepService, obra, $stateParams) {
 
 	$scope.obra = obra;
 	
@@ -15,9 +15,12 @@ app.controller('ObrasInstanceController', function($scope,
 
 	$scope.atribuirUnidadeAObra = function(unidade) {
 		$scope.obra = $stateParams;
+		
 		$scope.obra.unidades.push(unidade);
 		
-		$scope.atualizarObra($scope.obra);
+		$log.info($scope.obra);
+		
+		obrasService.atualizarObra($scope.obra);
 	}
 	
 	$scope.atualizarObra = function(obra) {

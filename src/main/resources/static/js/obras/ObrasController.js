@@ -3,10 +3,11 @@
 						'$uibModal',
 						'$log',
 						'obrasService',
+						'unidadeService',
 						'$window',
 						'$location',
 						'$stateParams',
-						function($scope, $uibModal, $log, obrasService,
+						function($scope, $uibModal, $log, obrasService, unidadeService,
 								$window, $location, $stateParams) {
 
 							$scope.obras = [];
@@ -44,15 +45,15 @@
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Obra'
-							$scope.modalObrasUpdate = function(size, selectedObra) {
+							$scope.modalObrasUpdate = function(tamanho, obraSelecionada) {
 
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalObrasContent.html',
 									controller : 'ObrasInstanceController',
-									size : size,
+									size : tamanho,
 									resolve : {
 										obra : function() {
-											return angular.copy(selectedObra);
+											return angular.copy(obraSelecionada);
 										}
 									}
 								});
@@ -76,7 +77,7 @@
 									size : tamanho,
 									resolve : {
 										obra : function() {
-											return unidadeSelecionada;
+											return angular.copy(unidadeSelecionada);
 										}
 									}
 								});
@@ -84,6 +85,7 @@
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
+											unidadeService.listarPeloNome($scope.obra);
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());
