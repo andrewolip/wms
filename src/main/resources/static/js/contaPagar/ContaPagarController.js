@@ -21,8 +21,7 @@ app.controller('ContaPagarController',				[
 							$scope.removerContaPagar = function(contaPagar) {
 
 								var deleteContaPagar = $window
-										.confirm('Tem certeza que gostaria de remover a conta a pagar '
-												+ contaPagar.nome + '?');
+										.confirm('Tem certeza que gostaria de remover a conta a pagar ?');
 
 								if (deleteContaPagar) {
 									contaPagarService.removerContaPagar(contaPagar).success(
@@ -64,4 +63,18 @@ app.controller('ContaPagarController',				[
 													+ new Date());
 										});
 							};
+							
+							$scope.addFornecedor = function(size, selectedFornecedor) {
+								var modalInstance = $uibModal.open({
+									templateUrl : 'pages/templates/modalFornecedorContent.html',
+									controller : 'FornecedorInstanceController',
+									size : size,
+									resolve : {
+										contaPagar : function() {
+											return angular.copy(selectedFornecedor);
+										}
+									}
+								});
+							};
+							
 }]);

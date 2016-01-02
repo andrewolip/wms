@@ -11,17 +11,17 @@
 				</td>
 				<td>
 					<input class="form-control" type="text"
-						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="25"
+						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15"
 						placeholder="Digite o nº da nota fiscal" ng-required="true" /> 
 				</td>
 				<td>
 					<label>Categoria de Itens</label> 
 				</td>
 				<td>
-					<select class="form-control" type="text"
-						ng-model="contaPagar.tipoConta" name="tipoConta" maxLength="25"
+					<select class="form-control"
+						ng-model="contaPagar.tipoConta" name="tipoConta"
 						ng-required="true">
-						<option value="" selected="true">Selecione a categoria</option>
+						<option value="">Selecione a categoria</option>
 						<option value="1">Materiais</option>
 						<option value="2">Despesas Gerais</option>
 						<option value="3">Honorários</option>
@@ -35,12 +35,15 @@
 					<label>Fornecedor</label>
 				</td>
 				<td> 
-					<select class="form-control" type="text"
-						ng-model="contaPagar.fornecedor" name="fornecedor" maxLength="25"
-						ng-required="true">
-						<option value="" selected="true">Selecione o fornecedor</option>
-						<option value="1">Fornecedor 1</option>
-					</select> 
+					<div ng-controller="FornecedorController">
+						<div ng-init="listarFornecedores()" >
+							<select class="form-control" 
+									ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores" 
+									ng-model="contaPagar.fornecedor">
+								<option value="">Selecione o fornecedor</option>
+							</select>
+						</div>
+					</div>
 				</td>
 				<td>
 					<label>Valor Total</label> 
@@ -55,10 +58,10 @@
 					<label>Forma de Pagamento</label> 
 				</td>
 				<td>
-					<select class="form-control" type="text"
+					<select class="form-control"
 						ng-model="contaPagar.tipoPagamento" name="tipoPagamento"
 						ng-required="true">
-						<option value="" selected="true">Selecione a forma de pagamento</option>
+						<option value="">Selecione a forma de pagamento</option>
 						<option value="1">Forma 1</option>
 					</select> 
 				</td>
@@ -72,21 +75,12 @@
 				</td>
 			</tr>
 		</table>
-	
-	
-<!-- 		ok<th>ID</th> -->
-<!-- 		ok<th>Nº Nota Fiscal</th> -->
-<!-- 		ok<th>Fornecedor</th> -->
-<!-- 		ok<th>Tipo</th> -->
-<!-- 		<th>Forma Pagamento</th> -->
-<!-- 		<th>Nº de Parcelas</th> -->
-<!-- 		ok<th>Data Vencimento</th> -->
-<!-- 		ok<th>Valor</th> -->
+
 	</div>
 </form>
 
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
-	class="alert alert-danger">Por favor, preencha o nome da conta a pagar!</div>
+	class="alert alert-danger">Por favor, preencha o nº da nota fiscal</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="atualizar(contaPagar)"
 		ng-disabled="!contaPagar.notaFiscal">Salvar</button>

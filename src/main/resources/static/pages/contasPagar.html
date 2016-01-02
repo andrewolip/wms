@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalUpdate('lg',null)">
+				<button class="btn btn-success" ng-click="modalUpdate('lg', null)">
 					<span class="glyphicon glyphicon-plus"></span>  Adicionar Conta a Pagar
 				</button>
 			</div>
@@ -33,7 +33,6 @@
 						st-pagination-scroll>
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Nº Nota Fiscal</th>
 								<th>Fornecedor</th>
 								<th>Tipo</th>
@@ -41,19 +40,27 @@
 								<th>Nº de Parcelas</th>
 								<th>Data Vencimento</th>
 								<th>Valor</th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<tr ng-repeat="contaPagar in contasPagar | filter: buscaContaPagar">
-								<td>{{contaPagar.idContaPagar}}</td>
 								<td>{{contaPagar.notaFiscal}}</td>
 								<td>{{contaPagar.fornecedor.nome}}</td>
 								<td>{{contaPagar.tipoConta}}</td>
 								<td>{{contaPagar.tipoPagamento}}</td>
-								<td>{{contaPagar.nParcelas}}</td>
+								<td>{{contaPagar.nparcelas}}</td>
 								<td>{{contaPagar.dataVencimento}}</td>
-								<td>{{contaPagar.valorConta}}</td>
+								<td>{{contaPagar.vRmodalalorConta}}</td>
+								<td>
+									<button class="btn btn-warning"
+                                        ng-click="modalUpdate('lg', contaPagar)">Editar</button>
+                                </td>
+                                <td style="width: 10%;">
+                                	<button class="btn btn-danger" ng-click="removerContaPagar(contaPagar)">Remover</button>
+                                </td>
 							</tr>
 						</tbody>
 					</table>

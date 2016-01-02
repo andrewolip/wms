@@ -7,7 +7,8 @@ app.controller('ContaPagarInstanceController', function($scope,
 	};
 
 	$scope.atualizar = function(contaPagar) {
-		console.log("instanceController.js");
+		console.log("ContaPagarInstanceController.js atualizar");
+		console.log(contaPagar);
 		contaPagarService.atualizarContaPagar(contaPagar).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {

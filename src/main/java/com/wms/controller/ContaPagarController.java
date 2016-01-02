@@ -29,7 +29,6 @@ public class ContaPagarController {
 
 	@RequestMapping(value = "/atualizar", method = RequestMethod.PUT)
 	public void atualizar(@RequestBody ContaPagar contaPagar) {
-		System.out.println("REST/atualizar");
 		contaPagarService.salvar(contaPagar);
 	}
 

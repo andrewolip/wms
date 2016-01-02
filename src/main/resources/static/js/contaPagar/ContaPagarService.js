@@ -12,6 +12,8 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 	}
 	
 	factory.listarContasPagar = function() {
+		console.log("ContaPagarService.js");
+		console.log(contasPagar);
 		return $http.get('/contasPagar/listar');
 	}
 	
@@ -27,7 +29,7 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 	}
 	
 	factory.atualizarContaPagar = function(contaPagar) {
-		console.log("service.js:");
+		console.log("ContaPagarService.js atualizar");
 		console.log(contaPagar);
 		return $http.put('/contasPagar/atualizar', contaPagar);
 	}
