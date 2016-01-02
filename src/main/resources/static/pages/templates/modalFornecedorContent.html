@@ -1,0 +1,100 @@
+﻿<div class="modal-header">
+	<h3 class="modal-title">Fornecedor</h3>
+</div>
+
+<form name="fornecedorForm">
+	<div class="modal-body" style="height:450px;">
+		<!--<label>Pessoa</label> 
+		<select class="form-control"
+			ng-model="fornecedor.pessoa" name="pessoa"
+			ng-required="true">
+			<option value="">Selecione a categoria</option>
+			<option value="1">Pessoa Física</option>
+			<option value="2">Pessoa Jurídica</option>
+		</select>-->
+
+		<div class="col-xs-7">
+			<label>Nome do Fornecedor</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.nome" name="nome" maxLength="25"
+				placeholder="Nome do fornecedor" ng-required="true" />
+		</div>
+
+		<div class="col-xs-5">
+			<label>Nome do Contato</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.contato" name="contato" maxLength="25"
+				placeholder="Nome do contato" ng-required="true" />
+		</div>
+
+		<div class="col-xs-12">
+			<label>Descrição</label>
+			<textarea class="form-control" rows="3" ng-model="fornecedor.descricao"
+				placeholder="Descrição" name="descricao">
+			</textarea>
+		</div>
+
+		<div class="col-xs-7">
+			<label>Telefone</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.telefone" name="telefone" maxLength="13"
+				placeholder="Telefone" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-5">
+			<label>CEP</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.cep" name="cep" maxLength="9"
+				placeholder="CEP" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-7">
+			<label>Logradouro</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.logradouro" name="logradouro"
+				placeholder="Logradouro" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-5">
+			<label>Número</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.numero" name="numero" maxLength="6"
+				placeholder="Número" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-7">
+			<label>Bairro</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.bairro" name="bairro" maxLength="25"
+				placeholder="Bairro" ng-required="false" /> 
+		</div>
+		<div class="col-xs-5">
+			<label>Complemento</label> 
+			<input class="form-control" type="text" maxLength="25"
+				ng-model="fornecedor.complemento" name="complemento"
+				placeholder="Complemento" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-7">
+			<label>Cidade</label> 
+			<input class="form-control" type="text"
+				ng-model="fornecedor.cidade" name="cidade" maxLength="25"
+				placeholder="Cidade" ng-required="false" /> 
+		</div>
+
+		<div class="col-xs-5">
+			<label>Estado</label> 
+			<input class="form-control" type="text" maxLength="2"
+				ng-model="fornecedor.estado" name="estado"
+				placeholder="Estado" ng-required="false" /> 
+		</div>
+	</div>
+</form>
+
+<div ng-show="fornecedorForm.nome.$invalid && fornecedorForm.nome.$dirty"
+	class="alert alert-danger">Por favor, preencha o nome do fornecedor!</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="atualizar(fornecedor)"
+		ng-disabled="!fornecedor.nome">Salvar</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>

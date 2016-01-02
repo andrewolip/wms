@@ -2,7 +2,6 @@ package com.wms.model.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -19,19 +18,31 @@ public class Fornecedor implements Serializable {
 	@Column(name="id_fornecedor")
 	private Integer idFornecedor;
 
+	private Boolean ativo;
+
+	private String bairro;
+
+	private String cep;
+
+	private String cidade;
+
+	private String complemento;
+
 	private String contato;
+
+	private String descricao;
 
 	private String email;
 
+	private String estado;
+
+	private String logradouro;
+
 	private String nome;
 
-	private String observacao;
+	private String numero;
 
 	private String telefone;
-
-	//bi-directional many-to-one association to ContaPagar
-	@OneToMany(mappedBy="fornecedor")
-	private List<ContaPagar> contasPagar;
 
 	public Fornecedor() {
 	}
@@ -44,12 +55,60 @@ public class Fornecedor implements Serializable {
 		this.idFornecedor = idFornecedor;
 	}
 
+	public Boolean getAtivo() {
+		return this.ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	public String getBairro() {
+		return this.bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getCep() {
+		return this.cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getCidade() {
+		return this.cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getComplemento() {
+		return this.complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
 	public String getContato() {
 		return this.contato;
 	}
 
 	public void setContato(String contato) {
 		this.contato = contato;
+	}
+
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getEmail() {
@@ -60,6 +119,22 @@ public class Fornecedor implements Serializable {
 		this.email = email;
 	}
 
+	public String getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getLogradouro() {
+		return this.logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
 	public String getNome() {
 		return this.nome;
 	}
@@ -68,12 +143,12 @@ public class Fornecedor implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getObservacao() {
-		return this.observacao;
+	public String getNumero() {
+		return this.numero;
 	}
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public String getTelefone() {
@@ -82,28 +157,6 @@ public class Fornecedor implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public List<ContaPagar> getContasPagar() {
-		return this.contasPagar;
-	}
-
-	public void setContasPagar(List<ContaPagar> contasPagar) {
-		this.contasPagar = contasPagar;
-	}
-
-	public ContaPagar addContasPagar(ContaPagar contasPagar) {
-		getContasPagar().add(contasPagar);
-		contasPagar.setFornecedor(this);
-
-		return contasPagar;
-	}
-
-	public ContaPagar removeContasPagar(ContaPagar contasPagar) {
-		getContasPagar().remove(contasPagar);
-		contasPagar.setFornecedor(null);
-
-		return contasPagar;
 	}
 
 }

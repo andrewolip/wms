@@ -18,7 +18,6 @@
 		<class>com.wms.model.entity.Fase</class>
 		<class>com.wms.model.entity.FaseObra</class>
 		<class>com.wms.model.entity.FormaPagamento</class>
-		<class>com.wms.model.entity.Fornecedor</class>
 		<class>com.wms.model.entity.Funcao</class>
 		<class>com.wms.model.entity.Item</class>
 		<class>com.wms.model.entity.Lancamento</class>
@@ -31,6 +30,7 @@
 		<class>com.wms.model.entity.UnidadeObra</class>
 		<class>com.wms.model.entity.Usuario</class>
 		<class>com.wms.model.entity.ItemConta</class>
+		<class>com.wms.model.entity.Fornecedor</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

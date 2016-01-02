@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <button class="btn btn-success" ng-click="modalUpdate()">
+                <button class="btn btn-success" ng-click="modalUpdate('lg', fornecedor)">
                     <span class="glyphicon glyphicon-plus"></span>  Adicionar Fornecedor
                 </button>
             </div>
@@ -33,18 +33,20 @@
                         st-pagination-scroll>
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th></th>
-                                <th></th>
+                                <th>Fornecedor</th>
+                                <th>Telefone</th>
+                                <th>Contato</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr ng-repeat="fornecedor in fornecedores | filter: buscaFornecedor">
-                                <td style="width: 15%;">{{fornecedor.idFornecedor}}</td>
-                                <td><a ng-click="modalUpdate('lg', fornecedor)">{{fornecedor.nome}}</a></td>
-                                <td style="width: 10%;"><button class="btn btn-warning"
+                                <td>
+                                    <a ng-click="modalUpdate('lg', fornecedor)">{{fornecedor.nome}}</a>
+                                </td>
+                                <td>{{fornecedor.telefone}}</td>
+                                <td>{{fornecedor.contato}}</td>
+                                <td><button class="btn btn-warning"
                                         ng-click="modalUpdate('lg', fornecedor)">Editar</button></td>
                                 <td style="width: 10%;"><button class="btn btn-danger" ng-click="removerFornecedor(fornecedor)">Remover</button></td>
                             </tr>
