@@ -3,34 +3,15 @@
 						'$uibModal',
 						'$log',
 						'obrasService',
+						'unidadeService',
 						'$window',
 						'$location',
 						'$stateParams',
-						function($scope, $uibModal, $log, obrasService,
+						function($scope, $uibModal, $log, obrasService, unidadeService,
 								$window, $location, $stateParams) {
 
 							$scope.obras = [];
-							$scope.obra = {
-								idObra: $stateParams.idObra,
-								nome: $stateParams.nome
-							};
-							
-							$log.info($stateParams);
-							
-							/* var init = function() {
-								obrasService.buscarObra($stateParams.idObra).success(function(data) {
-									$scope.obra = data;
-								});	
-							}							
-							
-							init(); */
-							
-							
-
-						/*	$scope.compartilhar = function(newObra){
-								$scope.obra = obrasService.objetoCompartilhado(newObra);
-								$log.info($scope.obra);
-							} */
+							$scope.obra = $stateParams;	
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
@@ -38,16 +19,6 @@
 											$scope.obras = data;
 										});
 							};
-
-							$scope.inserirObra = function(obra) {
-								obraService.inserirObra(obra).success(
-										function() {
-											$scope.obra = obra;
-											obrasService.listarObras();
-										}).error(function(error) {
-									console(error);
-								});
-							}
 
 							$scope.removerObra = function(obra) {
 
@@ -74,15 +45,15 @@
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Obra'
-							$scope.modalUpdate = function(size, selectedObra) {
+							$scope.modalObrasUpdate = function(tamanho, obraSelecionada) {
 
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalObrasContent.html',
 									controller : 'ObrasInstanceController',
-									size : size,
+									size : tamanho,
 									resolve : {
 										obra : function() {
-											return selectedObra;
+											return angular.copy(obraSelecionada);
 										}
 									}
 								});
@@ -90,6 +61,31 @@
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
+											$scope.listarObras();
+										}, function() {
+											$log.info('Modal foi fechada em: '
+													+ new Date());
+										});
+							};
+							
+							// Abre a Modal ao clicar em 'Adicionar Unidade'
+							$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
+
+								var modalInstance = $uibModal.open({
+									templateUrl : 'pages/templates/modalUnidadesContent.html',
+									controller : 'ObrasInstanceController',
+									size : tamanho,
+									resolve : {
+										obra : function() {
+											return angular.copy(unidadeSelecionada);
+										}
+									}
+								});
+
+								modalInstance.result.then(
+										function(selectedItem) {
+											$scope.selected = selectedItem;
+											unidadeService.listarPeloNome($scope.obra);
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());

@@ -44,6 +44,17 @@ public class UnidadeObra implements Serializable {
 
 	@Column(name="nome_obra")
 	private String nomeObra;
+	
+	@Column(name="nome_unidade")
+	private String nomeUnidade;
+
+	public String getNomeUnidade() {
+		return nomeUnidade;
+	}
+
+	public void setNomeUnidade(String nomeUnidade) {
+		this.nomeUnidade = nomeUnidade;
+	}
 
 	@Column(name="valor_previsto_venda")
 	private BigDecimal valorPrevistoVenda;

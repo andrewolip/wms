@@ -15,17 +15,18 @@
 
 		<div class="row">
 			<div class="col-lg-6">
-				Endereço: <br />
-				Responsável: <br />
-				Status: <br /><br />		
+				<b>Endereço: </b> {{obra.localizacao.logradouro}} <br />
+				<b>Bairro: </b> {{obra.localizacao.bairro}} <br />
+				<b>Cidade: </b> {{obra.localizacao.localidade}} <br />
+				<b>Status: </b> {{obra.status}} <br /><br />		
 			</div>	
 		</div>
 	</div>
 	<div class="col-lg-12">
 		<ul class="nav nav-tabs">
-		  <li class="active"><a ui-sref="obra({idObra: obra.idObra, nome: obra.nome})">Geral</a></li>
+		  <li class="active"><a ui-sref="obra(obra)">Geral</a></li>
 		  <li><a ui-sref="funcionarios">Funcionários</a></li>
-		  <li><a ui-sref="unidades({idObra: obra.idObra, nome: obra.nome})">Unidades</a></li>
+		  <li><a ui-sref="unidades(obra)">Unidades</a></li>
 		  <li><a ui-sref="comentarios">Comentários</a></li>
 		  <li><a ui-sref="anexos">Anexos</a></li>
 		</ul>

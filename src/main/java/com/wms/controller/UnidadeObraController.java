@@ -44,4 +44,9 @@ public class UnidadeObraController {
 		return unidadeObraService.listarUnidades();
 	}
 	
+	@RequestMapping(value="/listarPeloNome/{nome}", method=RequestMethod.GET)
+	public List<UnidadeObra> listarPeloNome(@PathVariable String nome) {
+		return unidadeObraService.listarPeloNome(nome);
+	}
+	
 }

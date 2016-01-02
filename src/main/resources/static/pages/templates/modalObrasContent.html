@@ -2,20 +2,85 @@
 	<h3 class="modal-title">Obra</h3>
 </div>
 
-<form name="obraForm">
+<form class="form-horizontal" name="obraForm">
 	<div class="modal-body">
-		<label>Nome</label> <input class="form-control" type="text"
-			ng-model="obra.nome" name="nome" maxLength="25"
-			placeholder="Digite o nome da Obra" ng-required="true" /> <label>Descrição</label>
-		<textarea class="form-control" rows="3" ng-model="obra.descricao"
-			name="descricao"></textarea>
-	</div>
+
+		<fieldset class="scheduler-border">
+			<legend class="scheduler-border">Informações sobre a Obra</legend>
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Nome</label>
+			 	<div class="col-lg-7">
+			 		<input class="form-control" text="text" ng-model="obra.nome" name="nome" required="true" placeholder="Digite o nome da Obra">
+			 	</div>
+			 </div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label">CEP</label>
+				<div class="col-lg-3">
+	 				<input class="form-control" type="text" ng-model="obra.localizacao.cep" name="cep" maxLength="9" required="true" ui-br-cep-mask>
+	 			</div>
+ 				<div>
+ 					<input type="button" class="btn btn-primary" ng-click="buscarCep(obra.localizacao)" ng-disabled="!obra.localizacao.cep" value="Carregar">
+ 				</div>
+			</div>
+
+			<div class="form-group">
+			 	<label class="col-lg-2 control-label">UF</label>
+			 	<div class="col-lg-3">
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.uf" name="uf" required="true" disabled>
+			 	</div>
+				</div>
+
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Cidade</label>
+			 	<div class="col-lg-6">
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.localidade" name="localidade" required="true" disabled>
+			 	</div>
+			 </div>
+
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Bairro</label>
+			 	<div class="col-lg-7">
+			 		<input class="form-control" text="text" ng-model="obra.localizacao.bairro" name="bairro" required="true">
+			 	</div>
+			 </div>
+
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Endereço</label>
+			 	<div class="col-lg-7">
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.logradouro" name="logradouro" required="true" placeholder="Ex: Rua das Flores, 1000">
+			 	</div>
+			 </div>
+
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Descrição</label>
+				<div class="col-lg-10">
+			 		<textarea class="form-control" rows="3" ng-model="obra.descricao" name="descricao"></textarea>
+				</div>
+			 </div>
+		</fieldset>
+	</div>	 
+		  
 </form>
 
 <div ng-show="obraForm.nome.$invalid && obraForm.nome.$dirty"
-	class="alert alert-danger">Por favor, preencha o nome da Obra!</div>
+	class="alert alert-danger">Por favor, preencha o nome!</div>
+
+<div ng-show="obraForm.cep.$invalid && obraForm.cep.$dirty"
+	class="alert alert-danger">Por favor, preencha o CEP!</div>
+
+<div ng-show="obraForm.uf.$invalid && obraForm.uf.$dirty"
+	class="alert alert-danger">Por favor, preencha o UF!</div>
+
+<div ng-show="obraForm.bairro.$invalid && obraForm.bairro.$dirty"
+	class="alert alert-danger">Por favor, preencha o bairro!</div>
+
+<div ng-show="obraForm.logradouro.$invalid && obraForm.logradouro.$dirty"
+	class="alert alert-danger">Por favor, preencha o endereço!</div>
+	
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="atualizar(obra)"
-		ng-disabled="!obra.nome">Inserir</button>
+	<button class="btn btn-primary" ng-click="atualizarObra(obra)"
+		ng-disabled="!obra.nome  || !obra.localizacao.uf || !obra.localizacao.bairro || !obra.localizacao.logradouro">Inserir</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>
+
