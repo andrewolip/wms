@@ -10,24 +10,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wms.model.entity.Obra;
+import com.wms.model.entity.UnidadeObra;
 import com.wms.model.service.ObraService;
+import com.wms.model.service.UnidadeObraService;
 
 @RestController
 @RequestMapping(value = "/obras")
 public class ObraController {
 
 	private ObraService obraService;
+	private UnidadeObraService unidadeObraService;
 	
 	@Autowired
 	public void setObraService(ObraService obraService) {
 		this.obraService = obraService;
 	}
-
-	/*	@RequestMapping(value = "/inserir", method = RequestMethod.POST)
-	public void inserir(@RequestBody Obra obra) {
-		obraService.salvar(obra);
-	} */
 	
+	@Autowired
+	public void setUnidadeObraService(UnidadeObraService unidadeObraService) {
+		this.unidadeObraService = unidadeObraService;
+	}
+
 	@RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
 	public Obra buscar(@PathVariable Integer id) {
 		return this.obraService.buscarObra(id);
@@ -46,6 +49,11 @@ public class ObraController {
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public List<Obra> findAll() {
 		return obraService.listarObras();
+	}
+
+	@RequestMapping(value = "/salvar/{id}/unidades", method = RequestMethod.POST)
+	public void inserirUnidade(@RequestBody UnidadeObra unidade) {
+		unidadeObraService.salvar(unidade);
 	}
 
 }

@@ -42,19 +42,8 @@ public class UnidadeObra implements Serializable {
 
 	private String descricao;
 
-	@Column(name="nome_obra")
-	private String nomeObra;
-	
 	@Column(name="nome_unidade")
 	private String nomeUnidade;
-
-	public String getNomeUnidade() {
-		return nomeUnidade;
-	}
-
-	public void setNomeUnidade(String nomeUnidade) {
-		this.nomeUnidade = nomeUnidade;
-	}
 
 	@Column(name="valor_previsto_venda")
 	private BigDecimal valorPrevistoVenda;
@@ -92,6 +81,14 @@ public class UnidadeObra implements Serializable {
 	public UnidadeObra() {
 	}
 
+	public String getNomeUnidade() {
+		return nomeUnidade;
+	}
+
+	public void setNomeUnidade(String nomeUnidade) {
+		this.nomeUnidade = nomeUnidade;
+	}
+	
 	public Integer getIdUnidadeObra() {
 		return this.idUnidadeObra;
 	}
@@ -138,14 +135,6 @@ public class UnidadeObra implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public String getNomeObra() {
-		return this.nomeObra;
-	}
-
-	public void setNomeObra(String nomeObra) {
-		this.nomeObra = nomeObra;
 	}
 
 	public BigDecimal getValorPrevistoVenda() {
