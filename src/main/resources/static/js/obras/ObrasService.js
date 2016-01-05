@@ -14,6 +14,10 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 		return $http.post('/obras/inserir', obra);
 	}
 	
+	factory.salvarUnidadeObra = function(unidade, obra) {
+		return $http.post('/obras/' + obra.idObra + '/unidades', unidade);
+	}
+	
 	factory.buscarObra = function(id) {
 		return $http.get('/obras/buscar/' + id);
 	}

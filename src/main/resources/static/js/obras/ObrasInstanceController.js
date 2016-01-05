@@ -1,5 +1,5 @@
 app.controller('ObrasInstanceController', function($scope,
-		$uibModalInstance, $log, obrasService, unidadeService, buscaCepService, obra, $stateParams) {
+		$uibModalInstance, $log, obrasService, buscaCepService, obra) {
 
 	$scope.obra = obra;
 	
@@ -13,16 +13,6 @@ app.controller('ObrasInstanceController', function($scope,
 		$uibModalInstance.dismiss('cancelar');
 	};
 
-	$scope.atribuirUnidadeAObra = function(unidade) {
-		$scope.obra = $stateParams;
-		
-		$scope.obra.unidades.push(unidade);
-		
-		$log.info($scope.obra);
-		
-		obrasService.atualizarObra($scope.obra);
-	}
-	
 	$scope.atualizarObra = function(obra) {
 		obrasService.atualizarObra(obra).success(function(data) {
 			$uibModalInstance.close();
@@ -30,4 +20,13 @@ app.controller('ObrasInstanceController', function($scope,
 			resultado = error.Message;
 		});
 	};
+	
+	$scope.salvarUnidade = function(unidade) {
+		$log.info('Chamou');
+	//	obrasService.salvarUnidadeObra(unidade, obra).success(function(data) {
+	//		$uibModalInstance.close();
+		//}).erro(function(error) {
+			//resultado = error.Message;
+	//	});
+	}
 });
