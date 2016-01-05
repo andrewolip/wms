@@ -1,7 +1,9 @@
 app.controller('ObrasInstanceController', function($scope,
-		$uibModalInstance, $log, obrasService, buscaCepService, obra) {
+		$uibModalInstance, $log, obrasService, buscaCepService, obra, $stateParams) {
 
 	$scope.obra = obra;
+	$scope.unidade = {};
+	$scope.unidade.idObra = $stateParams.idObra;
 	
 	$scope.buscarCep = function(localizacao) {
 		buscaCepService.buscarCep(localizacao).success(function(data, status){
@@ -21,15 +23,17 @@ app.controller('ObrasInstanceController', function($scope,
 		});
 	};
 	
-	$scope.salvarUnidade = function(unidade, obra) {
+	$scope.salvarUnidade = function(unidade) {
 		
-		$log.info("salvarUnidade");
+	/*	$log.info("salvarUnidade");
 		$log.info(unidade);
 		$log.info(obra);
 		obrasService.salvarUnidadeObra(unidade, obra).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
 			resultado = error.Message;
-		});
+		}); */
+		
+		$log.info(unidade);
 	}
 });

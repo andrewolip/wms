@@ -87,7 +87,7 @@
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
-											unidadeService.listarPeloNome($scope.obra);
+										//	unidadeService.listarPeloNome($scope.obra);
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());

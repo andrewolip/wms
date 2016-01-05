@@ -51,10 +51,11 @@ public class ObraController {
 		return obraService.listarObras();
 	}
 
-	@RequestMapping(value = "/salvar/obra/unidades", method = RequestMethod.POST)
-	public void inserirUnidade(UnidadeObra unidade, @RequestBody Obra obra) {
-		obra.addUnidadeObra(unidade);
-		obraService.salvar(obra);
+	@RequestMapping(value = "/salvar/unidades", method = RequestMethod.POST)
+	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
+		//obra.addUnidadeObra(unidade);
+		//obraService.salvar(obra);
+		unidadeObraService.salvar(unidadeObra);
 	}
 
 }
