@@ -51,7 +51,7 @@ public class ObraController {
 		return obraService.listarObras();
 	}
 
-	@RequestMapping(value = "/{id}/unidades", method = RequestMethod.POST)
+	@RequestMapping(value = "/salvar/{id}/unidades", method = RequestMethod.POST)
 	public void inserirUnidade(@RequestBody UnidadeObra unidade) {
 		unidadeObraService.salvar(unidade);
 	}
