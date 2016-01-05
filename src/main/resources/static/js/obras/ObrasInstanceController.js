@@ -21,12 +21,15 @@ app.controller('ObrasInstanceController', function($scope,
 		});
 	};
 	
-	$scope.salvarUnidade = function(unidade) {
-		$log.info('Chamou');
-	//	obrasService.salvarUnidadeObra(unidade, obra).success(function(data) {
-	//		$uibModalInstance.close();
-		//}).erro(function(error) {
-			//resultado = error.Message;
-	//	});
+	$scope.salvarUnidade = function(unidade, obra) {
+		
+		$log.info("salvarUnidade");
+		$log.info(unidade);
+		$log.info(obra);
+		obrasService.salvarUnidadeObra(unidade, obra).success(function(data) {
+			$uibModalInstance.close();
+		}).error(function(error) {
+			resultado = error.Message;
+		});
 	}
 });

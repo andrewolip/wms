@@ -1,8 +1,6 @@
 /target/
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 *.MF
-target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-*.MF
 target/m2e-wtp/web-resources/META-INF/maven/wms/wms/pom.properties
 .settings/org.eclipse.jpt.entitygen.new-mysql.wms_db
 .settings/org.eclipse.jpt.entitygen.wms_db.wms_db
