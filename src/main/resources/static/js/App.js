@@ -5,7 +5,6 @@ app.config(function config($stateProvider) {
 	var obraObject = {idObra: null, nome: null, dataInicio: null, localizacao: {uf: null, localidade: null, logradouro: null,
 		cep: null}, dataTermino: null, dataPrevistaTermino: null, unidades: []};
 	
-	
 	$stateProvider.state("dashboard", {
 		url: "/dashboard",
 		controller: "DashboardController",
@@ -83,6 +82,6 @@ app.config(function config($stateProvider) {
 		url: "/unidades/",
 		templateUrl: "pages/unidades.html",
 		controller: "ObrasController",
-		params: obraObject
+		params: {idUnidadeObra: null, idObra: null, descricao: null, nomeUnidade: null}
 	});
 });

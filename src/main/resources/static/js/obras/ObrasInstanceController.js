@@ -25,15 +25,13 @@ app.controller('ObrasInstanceController', function($scope,
 	
 	$scope.salvarUnidade = function(unidade) {
 		
-	/*	$log.info("salvarUnidade");
 		$log.info(unidade);
-		$log.info(obra);
-		obrasService.salvarUnidadeObra(unidade, obra).success(function(data) {
+		
+		obrasService.salvarUnidadeObra(unidade).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
 			resultado = error.Message;
-		}); */
+		}); 
 		
-		$log.info(unidade);
 	}
 });
