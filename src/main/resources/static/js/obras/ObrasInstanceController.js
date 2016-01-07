@@ -3,7 +3,7 @@ app.controller('ObrasInstanceController', function($scope,
 
 	$scope.obra = obra;
 	$scope.unidade = {};
-	$scope.unidade.idObra = $stateParams.idObra;
+	$scope.unidade.obra = $stateParams;
 	
 	$scope.buscarCep = function(localizacao) {
 		buscaCepService.buscarCep(localizacao).success(function(data, status){
@@ -25,13 +25,11 @@ app.controller('ObrasInstanceController', function($scope,
 	
 	$scope.salvarUnidade = function(unidade) {
 		
-		$log.info(unidade);
-		
 		obrasService.salvarUnidadeObra(unidade).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
 			resultado = error.Message;
-		}); 
+		});  
 		
 	}
 });

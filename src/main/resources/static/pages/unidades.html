@@ -18,10 +18,9 @@
 	</div>	
 </div>
 
-
 <!-- /.row -->
 <div class="container">
-	<div ng-init="listarUnidades()">
+	<div ng-init="listarUnidadesPorObra()">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-2">
 				<div class="form-group">
@@ -52,10 +51,11 @@
 						<tbody>
 							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
 								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
-								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nome}}</a></td>
+								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nomeUnidade}}</a></td>
 								<td style="width: 10%;"><button class="btn btn-warning"
 										ng-click="modalUnidadesUpdate('md', unidade)">Editar</button></td>
 								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUnidade(unidade)">Remover</button></td>
+								
 							</tr>
 						</tbody>
 					</table>

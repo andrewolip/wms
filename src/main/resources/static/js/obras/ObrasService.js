@@ -15,7 +15,7 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 	}
 	
 	factory.salvarUnidadeObra = function(unidade) {
-		return $http.post('/obras/salvar/unidades', unidade); 
+		return $http.post('/unidades/salvar', unidade); 
 	}
 	
 	factory.buscarObra = function(id) {
@@ -24,6 +24,14 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 	
 	factory.listarObras = function() {
 		return $http.get('/obras/listar');
+	}
+	
+	factory.listarUnidades = function() {
+		return $http.get('unidades/listar');
+	}
+
+	factory.listarUnidadesPorObra = function(id) {
+		return $http.get('unidades/listar/' + id);
 	}
 	
 	factory.apagarObra = function(obra) {

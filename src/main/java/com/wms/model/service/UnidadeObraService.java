@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wms.model.entity.Obra;
 import com.wms.model.entity.UnidadeObra;
 import com.wms.model.repository.UnidadeObraRepository;
 
@@ -32,6 +33,10 @@ public class UnidadeObraService {
 	
 	public List<UnidadeObra> listarUnidades() {
 		return (List<UnidadeObra>) this.unidadeObraRepository.findAll();
+	}
+	
+	public List<UnidadeObra> listarPorObra(Integer id) {
+		return this.unidadeObraRepository.findByObraIdObra(id);
 	}
 	
 }

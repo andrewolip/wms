@@ -10,9 +10,13 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 		return $http.get('/unidades/listar');
 	}
 	
+	factory.listarUnidadesPorObra = function(id) {
+		return $http.get('unidades/listar/' + id);
+	}
+	
 	factory.apagarUnidade = function(unidade) {
 		return $http({
-			url : '/unidades/apagar/' + unidade.idUnidade,
+			url : 'unidades/apagar/' + unidade.idUnidade,
 			method : 'DELETE',
 			data : unidade,
 			headers : {
@@ -21,12 +25,8 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 		});
 	}
 	
-	factory.atualizarUnidade = function(unidade) {
-		return $http.put('/unidades/atualizar', unidade);
-	}
-	
-	factory.listarPeloNome = function(obra) {
-		return $http.get('/unidades/listarPeloNome', obra.nome);
+	factory.salvarUnidade = function(unidade) {
+		return $http.post('unidades/salvar', unidade);
 	}
 	
 	return factory;

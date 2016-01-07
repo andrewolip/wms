@@ -70,10 +70,6 @@ public class Obra implements Serializable {
 	//bi-directional many-to-one association to ComentarioObra
 	@OneToMany(mappedBy="obra")
 	private List<ComentarioObra> comentarioObras;
-
-	//bi-directional many-to-one association to UnidadeObra
-	@OneToMany(mappedBy="obra", cascade = CascadeType.ALL)
-	private List<UnidadeObra> unidadeObras;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_localizacao")
@@ -233,29 +229,7 @@ public class Obra implements Serializable {
 
 		return comentarioObra;
 	}
-
-	public List<UnidadeObra> getUnidadeObras() {
-		return this.unidadeObras;
-	}
-
-	public void setUnidadeObras(List<UnidadeObra> unidadeObras) {
-		this.unidadeObras = unidadeObras;
-	}
-
-	public UnidadeObra addUnidadeObra(UnidadeObra unidadeObra) {
-		getUnidadeObras().add(unidadeObra);
-		unidadeObra.setObra(this);
-
-		return unidadeObra;
-	}
-
-	public UnidadeObra removeUnidadeObra(UnidadeObra unidadeObra) {
-		getUnidadeObras().remove(unidadeObra);
-		unidadeObra.setObra(null);
-
-		return unidadeObra;
-	}
-
+	
 	public Localizacao getLocalizacao() {
 		return localizacao;
 	}

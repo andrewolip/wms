@@ -51,11 +51,19 @@ public class ObraController {
 		return obraService.listarObras();
 	}
 
-	@RequestMapping(value = "/salvar/unidades", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/salvar/unidades", method = RequestMethod.POST)
 	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
-		//obra.addUnidadeObra(unidade);
-		//obraService.salvar(obra);
 		unidadeObraService.salvar(unidadeObra);
+	}		
+	
+	@RequestMapping(value = "/listar/{id}/unidades", method = RequestMethod.GET)
+	public List<UnidadeObra> listarUnidadesPorObra(@PathVariable Integer id) {
+		return unidadeObraService.listarPorObra(id);
 	}
+	
+	@RequestMapping(value = "/apagar/unidades/{id}", method = RequestMethod.DELETE)
+	public void removerUnidade(@PathVariable Integer id) {
+		unidadeObraService.remover(id);
+	} */
 
 }
