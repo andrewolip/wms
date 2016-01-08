@@ -14,9 +14,9 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 		return $http.get('unidades/listar/' + id);
 	}
 	
-	factory.apagarUnidade = function(unidade) {
+	factory.removerUnidade = function(unidade) {
 		return $http({
-			url : 'unidades/apagar/' + unidade.idUnidade,
+			url : 'unidades/apagar/' + unidade.idUnidadeObra,
 			method : 'DELETE',
 			data : unidade,
 			headers : {
@@ -25,7 +25,7 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 		});
 	}
 	
-	factory.salvarUnidade = function(unidade) {
+	factory.salvarUnidadeObra = function(unidade) {
 		return $http.post('unidades/salvar', unidade);
 	}
 	

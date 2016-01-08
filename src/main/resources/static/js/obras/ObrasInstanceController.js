@@ -1,5 +1,5 @@
 app.controller('ObrasInstanceController', function($scope,
-		$uibModalInstance, $log, obrasService, buscaCepService, obra, $stateParams) {
+		$uibModalInstance, $log, obrasService, unidadeService, buscaCepService, obra, $stateParams) {
 
 	$scope.obra = obra;
 	$scope.unidade = {};
@@ -25,7 +25,7 @@ app.controller('ObrasInstanceController', function($scope,
 	
 	$scope.salvarUnidade = function(unidade) {
 		
-		obrasService.salvarUnidadeObra(unidade).success(function(data) {
+		unidadeService.salvarUnidadeObra(unidade).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
 			resultado = error.Message;

@@ -36,11 +36,11 @@
 												+ obra.nome + '?');
 
 								if (deleteObra) {
-									obrasService.apagarObra(obra).success(
+									obrasService.removerObra(obra).success(
 											function(data) {
 												$scope.listarObras();
 											}).error(function(error) {
-										console(error);
+										$log.info(error)
 									});
 								} else{}
 							}
@@ -51,7 +51,7 @@
 										+ unidade.nomeUnidade + '?');
 
 						if (deleteUnidade) {
-							unidadeService.apagarUnidade(unidade).success(
+							unidadeService.removerUnidade(unidade).success(
 									function(data) {
 										$scope.listarUnidadesPorObra();
 									}).error(function(error) {
@@ -109,7 +109,7 @@
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
-											unidadeService.listarUnidadesPorObra($scope.obra.idObra);
+											$scope.listarUnidadesPorObra();
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());
