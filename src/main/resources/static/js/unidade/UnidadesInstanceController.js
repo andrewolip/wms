@@ -1,5 +1,5 @@
-app.controll('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, unidadeService, $stateParams) {
+app.controller('UnidadesInstanceController', function($scope,
+		$uibModalInstance, $log, unidadeService, unidade, $stateParams) {
 	
 	$scope.unidade = {};
 	$scope.unidade.obra = $stateParams;
@@ -15,5 +15,4 @@ app.controll('UnidadesInstanceController', function($scope,
 			resultado = error.Message;
 		});  
 	}
-	
 });

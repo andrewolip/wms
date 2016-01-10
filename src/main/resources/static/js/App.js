@@ -81,7 +81,22 @@ app.config(function config($stateProvider) {
 	$stateProvider.state("unidades", {
 		url: "/unidades/",
 		templateUrl: "pages/unidades.html",
-		controller: "ObrasController",
+		controller: "UnidadesController",
 		params: obraObject
 	});
+	
+	$stateProvider.state("anexos", {
+		url: "/anexos/",
+		templateUrl: "pages/anexos.html",
+		controller: "AnexosController",
+		params: null
+	});
+	
+	$stateProvider.state("comentarios", {
+		url: "/comentarios",
+		templateUrl: "/comentarios/",
+		controller: "ComentariosController",
+		params: null
+	})
+	
 });

@@ -14,10 +14,6 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 		return $http.post('/obras/inserir', obra);
 	}
 	
-	/*factory.salvarUnidadeObra = function(unidade) {
-		 return $http.post('/unidades/salvar', unidade); 
-	} */
-	
 	factory.buscarObra = function(id) {
 		return $http.get('/obras/buscar/' + id);
 	}
@@ -25,14 +21,6 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 	factory.listarObras = function() {
 		return $http.get('/obras/listar');
 	}
-	
-/*	factory.listarUnidades = function() {
-		return $http.get('unidades/listar');
-	}
-
-	factory.listarUnidadesPorObra = function(id) {
-		return $http.get('unidades/listar/' + id);
-	} */
 	
 	factory.removerObra = function(obra) {
 		return $http({

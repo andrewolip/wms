@@ -2,8 +2,6 @@ app.controller('ObrasInstanceController', function($scope,
 		$uibModalInstance, $log, obrasService, unidadeService, buscaCepService, obra, $stateParams) {
 
 	$scope.obra = obra;
-	$scope.unidade = {};
-	$scope.unidade.obra = $stateParams;
 	
 	$scope.buscarCep = function(localizacao) {
 		buscaCepService.buscarCep(localizacao).success(function(data, status){
@@ -23,13 +21,4 @@ app.controller('ObrasInstanceController', function($scope,
 		});
 	};
 	
-	$scope.salvarUnidade = function(unidade) {
-		
-		unidadeService.salvarUnidadeObra(unidade).success(function(data) {
-			$uibModalInstance.close();
-		}).error(function(error) {
-			resultado = error.Message;
-		});  
-		
-	}
 });

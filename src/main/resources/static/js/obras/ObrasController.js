@@ -3,16 +3,14 @@
 						'$uibModal',
 						'$log',
 						'obrasService',
-						'unidadeService',
 						'$window',
 						'$location',
 						'$stateParams',
-						function($scope, $uibModal, $log, obrasService, unidadeService,
+						function($scope, $uibModal, $log, obrasService,
 								$window, $location, $stateParams) {
 
 							$scope.obras = [];
 							$scope.obra = $stateParams;
-							$scope.unidades = [];
 
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
@@ -20,14 +18,6 @@
 											$scope.obras = data;
 										});
 							};
-							
-							$scope.listarUnidadesPorObra = function() {
-								unidadeService.listarUnidadesPorObra($scope.obra.idObra).success(function(data) {
-									$scope.unidades = data;
-								}).error(function(error) {
-									$log.error(error);
-								});
-							}
 
 							$scope.removerObra = function(obra) {
 
@@ -43,21 +33,6 @@
 										$log.info(error)
 									});
 								} else{}
-							}
-							
-							$scope.removerUnidade = function(unidade){
-								var deleteUnidade = $window
-								.confirm('Tem certeza que gostaria de apagar a unidade '
-										+ unidade.nomeUnidade + '?');
-
-						if (deleteUnidade) {
-							unidadeService.removerUnidade(unidade).success(
-									function(data) {
-										$scope.listarUnidadesPorObra();
-									}).error(function(error) {
-								$log.error(error);
-							});
-						} else{} 
 							}
 							
 							$scope.buscarObra = function(id) {
@@ -93,26 +68,4 @@
 										});
 							};
 							
-							// Abre a Modal ao clicar em 'Adicionar Unidade'
-							$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
-								var modalInstance = $uibModal.open({
-									templateUrl : 'pages/templates/modalUnidadesContent.html',
-									controller : 'ObrasInstanceController',
-									size : tamanho,
-									resolve : {
-										obra : function() {
-											return angular.copy(unidadeSelecionada);
-										}
-									}
-								});
-
-								modalInstance.result.then(
-										function(selectedItem) {
-											$scope.selected = selectedItem;
-											$scope.listarUnidadesPorObra();
-										}, function() {
-											$log.info('Modal foi fechada em: '
-													+ new Date());
-										});
-							};
 }]);

@@ -23,7 +23,7 @@ public class UnidadeObraController {
 		this.unidadeObraService = unidadeObraService;
 	}
 	
-	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
+	@RequestMapping(value = "/salvar", method = RequestMethod.PUT)
 	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
 		unidadeObraService.salvar(unidadeObra);
 	}		

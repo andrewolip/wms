@@ -19,18 +19,12 @@ import com.wms.model.service.UnidadeObraService;
 public class ObraController {
 
 	private ObraService obraService;
-	private UnidadeObraService unidadeObraService;
 	
 	@Autowired
 	public void setObraService(ObraService obraService) {
 		this.obraService = obraService;
 	}
 	
-	@Autowired
-	public void setUnidadeObraService(UnidadeObraService unidadeObraService) {
-		this.unidadeObraService = unidadeObraService;
-	}
-
 	@RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
 	public Obra buscar(@PathVariable Integer id) {
 		return this.obraService.buscarObra(id);
@@ -50,20 +44,5 @@ public class ObraController {
 	public List<Obra> findAll() {
 		return obraService.listarObras();
 	}
-
-/*	@RequestMapping(value = "/salvar/unidades", method = RequestMethod.POST)
-	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
-		unidadeObraService.salvar(unidadeObra);
-	}		
-	
-	@RequestMapping(value = "/listar/{id}/unidades", method = RequestMethod.GET)
-	public List<UnidadeObra> listarUnidadesPorObra(@PathVariable Integer id) {
-		return unidadeObraService.listarPorObra(id);
-	}
-	
-	@RequestMapping(value = "/apagar/unidades/{id}", method = RequestMethod.DELETE)
-	public void removerUnidade(@PathVariable Integer id) {
-		unidadeObraService.remover(id);
-	} */
 
 }

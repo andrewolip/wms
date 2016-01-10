@@ -26,7 +26,7 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 	}
 	
 	factory.salvarUnidadeObra = function(unidade) {
-		return $http.post('unidades/salvar', unidade);
+		return $http.put('unidades/salvar', unidade);
 	}
 	
 	return factory;
