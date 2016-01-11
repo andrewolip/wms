@@ -13,6 +13,19 @@
 			 		<input class="form-control" text="text" ng-model="obra.nome" name="nome" required="true" placeholder="Digite o nome da Obra">
 			 	</div>
 			 </div>
+			 
+			 <div class="form-group">
+			 	<label class="col-lg-2 control-label">Coordenador</label>
+				 <div ng-controller="UsuarioController">
+					 <div ng-init="listarCoordenadores()">
+						 <select class="form-control" 
+						 	ng-options="usuario as usuario.nome for usuario in usuarios" 
+								ng-model="obra.coordenador">
+							<option value="">Selecione o coordenador</option>
+						</select>
+					</div>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<label class="col-lg-2 control-label">CEP</label>
@@ -58,6 +71,7 @@
 			 		<textarea class="form-control" rows="3" ng-model="obra.descricao" name="descricao"></textarea>
 				</div>
 			 </div>
+			 
 		</fieldset>
 	</div>	 
 		  

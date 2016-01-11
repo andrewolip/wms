@@ -9,7 +9,16 @@
 		<input class="form-control" type="text"
 			ng-model="unidade.nomeUnidade" name="nome" maxLength="25"
 			placeholder="Digite o nome da Unidade" ng-required="true" />
-				
+		<label>Coordenador</label>
+		<div ng-controller="UsuarioController">
+			<div ng-init="listarCoordenadores()" >
+				<select class="form-control" 
+						ng-options="usuario as usuario.nome for usuario in usuarios" 
+						ng-model="contaPagar.usuario">
+					<option value="">Selecione o coordenador</option>
+				</select>
+			</div>
+		</div>
 		<label>Descrição</label>
 		<textarea class="form-control" rows="3"
 			ng-model="unidade.descricao" name="descricao"></textarea>

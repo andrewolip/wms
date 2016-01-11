@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -54,6 +55,12 @@ public class Obra implements Serializable {
 	private String descricao;
 
 	private String nome;
+	
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="id_usuario")
+	private Usuario coordenador;
+
 
 	//bi-directional many-to-one association to Anexo
 	@OneToMany(mappedBy="obra")
@@ -238,6 +245,13 @@ public class Obra implements Serializable {
 		this.localizacao = localizacao;
 	}
 	
-	
+	public Usuario getCoordenador() {
+		return this.coordenador;
+	}
+
+	public void setUsuario(Usuario coordenador) {
+		this.coordenador = coordenador;
+	}
+
 
 }

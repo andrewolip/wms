@@ -1,8 +1,16 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 /**
@@ -11,6 +19,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idUsuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,9 +36,9 @@ public class Usuario implements Serializable {
 
 	private String senha;
 
-	//bi-directional many-to-one association to UnidadeObra
-	@OneToMany(mappedBy="usuario")
-	private List<UnidadeObra> unidadeObras;
+//	//bi-directional many-to-one association to UnidadeObra
+//	@OneToMany(mappedBy="coordenador")
+//	private List<Obra> obras;
 
 	public Usuario() {
 	}
@@ -74,26 +83,26 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public List<UnidadeObra> getUnidadeObras() {
-		return this.unidadeObras;
-	}
+//	public List<Obra> getObras() {
+//		return this.obras;
+//	}
+//
+//	public void setObras(List<Obra> obras) {
+//		this.obras = obras;
+//	}
 
-	public void setUnidadeObras(List<UnidadeObra> unidadeObras) {
-		this.unidadeObras = unidadeObras;
-	}
-
-	public UnidadeObra addUnidadeObra(UnidadeObra unidadeObra) {
-		getUnidadeObras().add(unidadeObra);
-		unidadeObra.setUsuario(this);
-
-		return unidadeObra;
-	}
-
-	public UnidadeObra removeUnidadeObra(UnidadeObra unidadeObra) {
-		getUnidadeObras().remove(unidadeObra);
-		unidadeObra.setUsuario(null);
-
-		return unidadeObra;
-	}
+//	public Obra addObra(Obra obra) {
+//		getObras().add(obra);
+//		obra.setUsuario(this);
+//
+//		return obra;
+//	}
+//
+//	public Obra removeObra(Obra obra) {
+//		getObras().remove(obra);
+//		obra.setUsuario(null);
+//
+//		return obra;
+//	}
 
 }
