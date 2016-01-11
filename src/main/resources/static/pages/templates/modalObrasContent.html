@@ -17,7 +17,7 @@
 			 <div class="form-group">
 			 	<label class="col-lg-2 control-label">Coordenador</label>
 				 <div ng-controller="UsuarioController">
-					 <div ng-init="listarCoordenadores()">
+					 <div class="col-lg-7" ng-init="listarCoordenadores()">
 						 <select class="form-control" 
 						 	ng-options="usuario as usuario.nome for usuario in usuarios" 
 								ng-model="obra.coordenador">
