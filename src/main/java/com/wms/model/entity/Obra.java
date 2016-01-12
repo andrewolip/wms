@@ -77,7 +77,7 @@ public class Obra implements Serializable {
 	@OneToMany(mappedBy="obra")
 	private List<ComentarioObra> comentarioObras;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="id_localizacao")
 	private Localizacao localizacao;
 
@@ -251,6 +251,4 @@ public class Obra implements Serializable {
 	public void setUsuario(Usuario coordenador) {
 		this.coordenador = coordenador;
 	}
-
-
 }
