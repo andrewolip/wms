@@ -21,7 +21,7 @@
 					<select class="form-control"
 						ng-model="contaPagar.tipoConta" name="tipoConta"
 						ng-required="true">
-						<option value="">Selecione a categoria</option>
+						<option value="" ng-selected="true">Selecione a categoria</option>
 						<option value="1">Materiais</option>
 						<option value="2">Despesas Gerais</option>
 						<option value="3">Honorários</option>
@@ -38,9 +38,9 @@
 					<div ng-controller="FornecedorController">
 						<div ng-init="listarFornecedores()" >
 							<select class="form-control" 
-									ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores" 
+									ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores track by fornecedor.nome" 
 									ng-model="contaPagar.fornecedor">
-								<option value="">Selecione o fornecedor</option>
+								<option value="" ng-selected="true">Selecione o fornecedor</option>
 							</select>
 						</div>
 					</div>
@@ -60,8 +60,8 @@
 				<td>
 					<select class="form-control"
 						ng-model="contaPagar.tipoPagamento" name="tipoPagamento"
-						ng-required="true">
-						<option value="">Selecione a forma de pagamento</option>
+						ng-required="true" >
+						<option value="" ng-selected="true">Selecione a forma de pagamento</option>
 						<option value="1">Forma 1</option>
 					</select> 
 				</td>

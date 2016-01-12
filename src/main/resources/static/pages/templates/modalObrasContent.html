@@ -19,9 +19,9 @@
 				 <div ng-controller="UsuarioController">
 					 <div class="col-lg-7" ng-init="listarCoordenadores()">
 						 <select class="form-control" 
-						 	ng-options="usuario as usuario.nome for usuario in usuarios" 
+						 	ng-options="usuario as usuario.nome for usuario in usuarios track by usuario.nome" 
 								ng-model="obra.coordenador">
-							<option value="">Selecione o coordenador</option>
+							<option value="" ng-select="true">Selecione o coordenador</option>
 						</select>
 					</div>
 				</div>
