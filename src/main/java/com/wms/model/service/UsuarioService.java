@@ -14,8 +14,6 @@ public class UsuarioService {
 	
 	private UsuarioRepository usuarioRepository;
 	
-	
-	
 	@Autowired
     public void setFuncaoRepository(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;

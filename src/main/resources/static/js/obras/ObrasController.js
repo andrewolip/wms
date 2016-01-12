@@ -11,7 +11,7 @@
 
 							$scope.obras = [];
 							$scope.obra = $stateParams;
-
+							
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
 										function(data) {

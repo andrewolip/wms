@@ -56,11 +56,10 @@ public class Obra implements Serializable {
 
 	private String nome;
 	
-	//bi-directional many-to-one association to Usuario
+	//unidirectional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
 	private Usuario coordenador;
-
 
 	//bi-directional many-to-one association to Anexo
 	@OneToMany(mappedBy="obra")

@@ -14,11 +14,11 @@ app.controller('ObrasInstanceController', function($scope,
 	};
 
 	$scope.atualizarObra = function(obra) {
-		obrasService.atualizarObra(obra).success(function(data) {
+		 obrasService.atualizarObra(obra).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
 			resultado = error.Message;
-		});
+		});   
 	};
 	
 });
