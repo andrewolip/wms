@@ -2,26 +2,37 @@
 	<h3 class="modal-title">Unidade</h3>
 </div>
 
-<form name="unidadeForm">
+<form class="form-horizontal" name="unidadeForm">
 	<div class="modal-body">
 		<input class="form-control" type="hidden" ng-model="unidade.idObra">
-		<label>Nome da Unidade</label>
-		<input class="form-control" type="text"
-			ng-model="unidade.nomeUnidade" name="nome" maxLength="25"
-			placeholder="Digite o nome da Unidade" ng-required="true" />
-		<label>Coordenador</label>
-		<div ng-controller="UsuarioController">
-			<div ng-init="listarCoordenadores()" >
-				<select class="form-control" 
-						ng-options="usuario as usuario.nome for usuario in usuarios" 
-						ng-model="contaPagar.usuario">
-					<option value="">Selecione o coordenador</option>
-				</select>
-			</div>
+		
+		<div class="col-lg-6">
+			<fieldset class="scheduler-border">
+				<legend class="scheduler-border">Informações sobre a Obra</legend>
+			
+				<label>Nome da Unidade</label>
+				<input class="form-control" type="text"
+					ng-model="unidade.nomeUnidade" name="nome" maxLength="25"
+					placeholder="Digite o nome da Unidade" ng-required="true" />
+				<label>Data de Início</label>
+				<input class="form-control" type="text" name="dataInicio" />
+				<label>Data de Entrega</label>
+				<input class="form-control" type="text" name="dataEntrega">
+				<label>Descrição</label>
+				<textarea class="form-control" rows="3"
+					ng-model="unidade.descricao" name="descricao"></textarea>						
+			</fieldset>
 		</div>
-		<label>Descrição</label>
-		<textarea class="form-control" rows="3"
-			ng-model="unidade.descricao" name="descricao"></textarea>
+
+		<div class="col-lg-6">
+			<fieldset class="scheduler-border">
+				<legend class="scheduler-border">Previsões</legend>
+				<label>Data Prevista de Conclusão da Obra</label>
+				<input class="form-control" type="text" name="dataPrevistaTermino" ng-required="true">
+				<label>Valor Previsto para Venda</label>
+				<input class="form-control" type="text" name="dataPrevistaVenda" ng-required="true">
+			</fieldset>
+		</div>
 	</div>
 </form>
 
