@@ -77,7 +77,7 @@ public class Obra implements Serializable {
 	@OneToMany(mappedBy="obra")
 	private List<ComentarioObra> comentarioObras;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="id_localizacao")
 	private Localizacao localizacao;
 
