@@ -18,3 +18,16 @@ legend.scheduler-border {
     padding:0 10px;
     border-bottom:none;
 }
+
+/* Estilo para DatePicker */
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }

@@ -1,4 +1,4 @@
-var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ui.router', 'ui.utils.masks']);
+var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages', 'ui.router', 'ui.utils.masks', 'ngAnimate']);
 
 app.config(function config($stateProvider) {
 	
