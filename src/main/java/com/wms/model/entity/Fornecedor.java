@@ -1,6 +1,7 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -20,12 +21,6 @@ public class Fornecedor implements Serializable {
 
 	private Boolean ativo;
 
-	private String bairro;
-
-	private String cep;
-
-	private String cidade;
-
 	private String complemento;
 
 	private String contato;
@@ -34,15 +29,15 @@ public class Fornecedor implements Serializable {
 
 	private String email;
 
-	private String estado;
-
-	private String logradouro;
-
 	private String nome;
 
 	private String numero;
 
 	private String telefone;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="id_localizacao")
+	private Localizacao localizacao;
 
 	public Fornecedor() {
 	}
@@ -61,30 +56,6 @@ public class Fornecedor implements Serializable {
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
-	}
-
-	public String getBairro() {
-		return this.bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getCep() {
-		return this.cep;
-	}
-
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
-
-	public String getCidade() {
-		return this.cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
 	}
 
 	public String getComplemento() {
@@ -117,22 +88,6 @@ public class Fornecedor implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getLogradouro() {
-		return this.logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
 	}
 
 	public String getNome() {

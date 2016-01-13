@@ -14,6 +14,9 @@ app.controller('ObrasInstanceController', function($scope,
 	};
 
 	$scope.atualizarObra = function(obra) {
+		
+		$log.info(obra);
+		
 		 obrasService.atualizarObra(obra).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {

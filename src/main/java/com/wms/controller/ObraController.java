@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wms.model.entity.Obra;
-import com.wms.model.entity.UnidadeObra;
 import com.wms.model.service.ObraService;
 import com.wms.model.service.UnidadeObraService;
 
@@ -45,4 +44,5 @@ public class ObraController {
 		return obraService.listarObras();
 	}
 
+	
 }

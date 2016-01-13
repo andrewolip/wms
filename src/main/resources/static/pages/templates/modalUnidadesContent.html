@@ -16,7 +16,7 @@
 					placeholder="Digite o nome da Unidade" ng-required="true" />
 				<label>Data de Início</label>
 					<p class="col-lg-5 input-group">
-	              		<input type="text" class="form-control" name="dataInicio" uib-datepicker-popup="{{format}}" ng-model="unidade.dataInicio" is-open="dataInicio.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+	              		<input type="text" class="form-control" name="dataInicio" uib-datepicker-popup="{{format}}" ng-model="unidade.dataInicio" is-open="dataInicio.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataInicio()" ng-blur="dataInicioChange(unidade)">
 	              		<span class="input-group-btn">
 	                		<button type="button" class="btn btn-default" ng-click="abrirDataInicio()"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
@@ -31,15 +31,15 @@
 		<div class="col-lg-6">
 			<fieldset class="scheduler-border">
 				<legend class="scheduler-border">Previsões</legend>
-				<label>Data Prevista de Conclusão da Obra</label>
+				<label>Previsão de Termino da Obra</label>
 				<p class="col-lg-6 input-group">
-	              		<input type="text" class="form-control" name="dataPrevistaTermino" uib-datepicker-popup="{{format}}" ng-model="unidade.dataPrevistaTermino" is-open="dataPrevistaTermino.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+	              		<input type="text" class="form-control" name="dataPrevistaTermino" uib-datepicker-popup="{{format}}" ng-model="unidade.dataPrevistaTermino" is-open="dataPrevistaTermino.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataPrevistaTermino()" ng-blur="dataPrevistaChange(unidade)" >
 	              		<span class="input-group-btn">
 	                		<button type="button" class="btn btn-default" ng-click="abrirDataPrevistaTermino()"><i class="glyphicon glyphicon-calendar"></i></button>
 	              		</span>
            			</p>
 				<label>Custo Previsto</label>
-  				<input class="form-control" ng-required="true" ng-model="unidade.custoPrevisto" maxLength="20" ui-money-mask/>
+  				<input class="form-control" ng-model="unidade.custoPrevisto" maxLength="20"  ng-required="true" placeholder="Valor previsto para conclusão desta Unidade" ui-money-mask/>
 			</fieldset>
 		</div>
 	</div>
@@ -49,6 +49,6 @@
 	class="alert alert-danger">Por favor, preencha o nome da Unidade!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="salvarUnidade(unidade)"
-		ng-disabled="!unidade.nomeUnidade">Inserir</button>
+		ng-disabled="!unidade.nomeUnidade || !unidade.dataInicio || !unidade.dataPrevistaTermino">Inserir</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

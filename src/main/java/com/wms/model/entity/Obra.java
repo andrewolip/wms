@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.ws.rs.DELETE;
 
 
 /**
@@ -55,6 +56,9 @@ public class Obra implements Serializable {
 	private String descricao;
 
 	private String nome;
+	
+	@OneToMany(mappedBy="obra", cascade = CascadeType.REMOVE)
+	private List<UnidadeObra> unidades;
 	
 	//unidirectional many-to-one association to Usuario
 	@ManyToOne
