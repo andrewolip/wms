@@ -1,50 +1,49 @@
 Geral
-- Relatórios
-- Busca avançada e paginação
-- Publicar o sistema na web ou criar uma rede wireless utilizando o modem (testar)
 - Todos os principais CRUDs do sistema
-- Padrões de Projeto
+- Busca avançada e paginação
 - Criar um WebServer para comunicar os dispositivos clientes
-
-Dashboard e Template
-- Informações / Atalhos / Boas-vindas
-- Logotipo WMS
-- Menu Superior (Notificações e Perfil)
-- Cores das fontes e do background
-- Ícones
+- Relatórios
+- Publicar o sistema na web ou criar uma rede wireless utilizando o modem (testar)
+- Padrões de Projeto
 
 Obras
 OK - Selecionar Coordenador 
-- Excluir Obra = excluir tudo relacionado à obra (dentro de obra)
 - Botão para cadastrar uma conta a pagar da obra
-- Cadastrar Comentários
+- Excluir Obra = excluir tudo relacionado à obra (dentro de obra)
 - Visualizar cronograma geral da obra (Visão das unidades cadastradas)
 - Definir como será quando a Obra tiver apenas uma unidade (uma unidade é criada automaticamente para cada obra sempre?)
+- Cadastrar Comentários
 
 Unidades da Obra
 - Botão para Cadastrar conta a receber da unidade
 - Cadastrar fases
 
 Contas a Pagar
-- Relacionar a conta a Obra/Unidade/Fase
+OK - Relacionar a conta a Obra/Unidade/Fase
 - Atribuir itens para criar objetos ItemConta
-OK - Ao editar, mostrar a opção Selecione o Fornecedor
-
-Anexo
-- Permitir o cadastro de anexo para os CRUDs
-- Formatos: PNG, JPG, JPEG, DOC e PDF
-- Sem visualização do anexo no sistema, apenas download na versão inicial
 
 Lançamento
-- Estorno do lançamento
-- Dar baixa no orçamento
 - vincular a uma conta a pagar/receber
+- Dar baixa no orçamento
+- Estorno do lançamento
+
+Cronogramas
+- Cronograma de Obra: mostra as datas de inicio e fim (previstas e realizadas) da Obra e das unidades cadastradas
+- Cronograma da Unidade da Obra: mostra as datas de inicio e fim (previstas e realizadas), valores (previstos e realizados) das fases, por unidade da Obra. Angular Gantt.
+- Pode ser acessado pela tela obra.html, unidade.html e pelo menu (sendo necessário selecionar a Obra e a Unidade neste caso)
 
 Login e Segurança
 - SpringSecurity ou Filter Java
 - Definir as diferenças de acessos dos usuarios
 
-Cronogramas
-- Cronograma de Obra: mostra as datas de inicio e fim (previstas e realizadas) da Obra e das unidades cadastradas
-- Cronograma da Unidade da Obra: mostra as datas de inicio e fim (previstas e realizadas), valores (previstos e realizados) das fases, por unidade da Obra
-- Pode ser acessado pela tela obra.html, unidade.html e pelo menu (sendo necessário selecionar a Obra e a Unidade neste caso)
+Dashboard e Template
+- Menu Superior (Notificações e Perfil)
+- Informações / Atalhos / Boas-vindas
+- Logotipo WMS
+- Cores das fontes e do background
+- Ícones
+
+Anexo
+- Permitir o cadastro de anexo para os CRUDs
+- Formatos: PNG, JPG, JPEG, DOC e PDF
+- Sem visualização do anexo no sistema, apenas download na versão inicial
