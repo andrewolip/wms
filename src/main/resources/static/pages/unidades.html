@@ -44,6 +44,9 @@
 							<tr>
 								<th>ID</th>
 								<th>Nome</th>
+								<th>Data de Início</th>
+								<th>Previsao para Termino</th>
+								<th>Custo Previsto</th>
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
@@ -52,6 +55,9 @@
 							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
 								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
 								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nomeUnidade}}</a></td>
+								<td>{{unidade.dataInicio}}</td>
+								<td>{{unidade.dataPrevistaTermino}}</td>
+								<td>{{unidade.custoPrevisto}}</td>
 								<td style="width: 10%;"><button class="btn btn-warning"
 										ng-click="modalUnidadeUpdate('lg', unidade)">Editar</button></td>
 								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUnidade(unidade)">Remover</button></td>

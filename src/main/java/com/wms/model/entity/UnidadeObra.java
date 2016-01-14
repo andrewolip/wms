@@ -1,12 +1,23 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -45,11 +56,14 @@ public class UnidadeObra implements Serializable {
 	@Column(name="nome_unidade")
 	private String nomeUnidade;
 
-	@Column(name="valor_previsto_venda")
-	private BigDecimal valorPrevistoVenda;
+	@Column(name="custo_previsto")
+	private BigDecimal custoPrevisto;
 
-	@Column(name="valor_realizado_venda")
-	private BigDecimal valorRealizadoVenda;
+	@Column(name="custo_realizado")
+	private BigDecimal custoRealizado;
+	
+	@Column(name="valor_venda")
+	private BigDecimal valorVenda;
 
 	//bi-directional many-to-one association to Anexo
 	@OneToMany(mappedBy="unidadeObra")
@@ -68,7 +82,6 @@ public class UnidadeObra implements Serializable {
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 
-	//bi-directional many-to-one association to Obra
 	@ManyToOne
 	@JoinColumn(name="id_obra")
 	private Obra obra;
@@ -132,20 +145,28 @@ public class UnidadeObra implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public BigDecimal getValorPrevistoVenda() {
-		return this.valorPrevistoVenda;
+	public BigDecimal getCustoPrevisto() {
+		return custoPrevisto;
 	}
 
-	public void setValorPrevistoVenda(BigDecimal valorPrevistoVenda) {
-		this.valorPrevistoVenda = valorPrevistoVenda;
+	public void setCustoPrevisto(BigDecimal custoPrevisto) {
+		this.custoPrevisto = custoPrevisto;
 	}
 
-	public BigDecimal getValorRealizadoVenda() {
-		return this.valorRealizadoVenda;
+	public BigDecimal getCustoRealizado() {
+		return custoRealizado;
 	}
 
-	public void setValorRealizadoVenda(BigDecimal valorRealizadoVenda) {
-		this.valorRealizadoVenda = valorRealizadoVenda;
+	public void setCustoRealizado(BigDecimal custoRealizado) {
+		this.custoRealizado = custoRealizado;
+	}
+
+	public BigDecimal getValorVenda() {
+		return valorVenda;
+	}
+
+	public void setValorVenda(BigDecimal valorVenda) {
+		this.valorVenda = valorVenda;
 	}
 
 	public List<Anexo> getAnexos() {

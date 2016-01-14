@@ -18,6 +18,7 @@ public class UnidadeObraController {
 
 	UnidadeObraService unidadeObraService;
 	
+	
 	@Autowired
 	public void setUnidadeObraService(UnidadeObraService unidadeObraService) {
 		this.unidadeObraService = unidadeObraService;
@@ -42,6 +43,5 @@ public class UnidadeObraController {
 	public void removerUnidade(@PathVariable Integer id) {
 		unidadeObraService.remover(id);
 	}
-	
 	
 }

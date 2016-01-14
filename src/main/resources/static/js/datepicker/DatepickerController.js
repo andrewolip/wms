@@ -1,28 +1,9 @@
-app.controller('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, unidadeService, unidade, $stateParams) {
-	
-	$scope.unidade = {};
-	$scope.unidade.obra = $stateParams;
-	
+app.controller('DatepickerController', '$scope', [function($scope){
 	//DatePicker
 	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
 	$scope.altInputFormats = ['dd-MM-yyyy'];
-	$scope.maxDate;
-	$scope.minDate;
 
-	$scope.cancelar = function() {
-		$uibModalInstance.dismiss('cancelar');
-	};
-	
-	$scope.salvarUnidade = function(unidade) {
-		unidadeService.salvarUnidadeObra(unidade).success(function(data) {
-			$uibModalInstance.close();
-		}).error(function(error) {
-			resultado = error.Message;
-		});  
-	}
-	
 	$scope.dataInicio = {
 			aberto: false
 	};
@@ -38,6 +19,14 @@ app.controller('UnidadesInstanceController', function($scope,
 	  $scope.clear = function() {
 	    $scope.dt = null;
 	  };
+
+	/*  $scope.toggleMin = function() {
+	    $scope.minDate = $scope.minDate ? null : new Date();
+	  }; 
+
+	  $scope.toggleMin(); */
+	  
+	  $scope.maxDate = new Date(2030, 12, 31);
 
 	  $scope.abrirDataInicio = function() {
 	    $scope.dataInicio.aberto = true;
@@ -70,13 +59,5 @@ app.controller('UnidadesInstanceController', function($scope,
 
 	    return '';
 	  };
-	  
-	  $scope.dataInicioChange = function(unidade) {
-		  $scope.minDate = unidade.dataInicio;
-	  }
-	  
-	  $scope.dataPrevistaChange = function(unidade) {
-		  $scope.maxDate = unidade.dataPrevistaTermino;
-	  }
-	  
-});
+	
+}]);
