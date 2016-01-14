@@ -27,6 +27,21 @@
 		</div>
 
 		<div class="row">
+		
+			<div ng-init="listarObras()" style="width: 30%;">
+				<select class="form-control" data-ng-model="obraAtual" 
+					data-ng-options="obra as obra.nome for obra in obras" 
+					data-ng-change="listarUnidadesPorObra()">
+					<option value="" ng-selected="true">Selecione a obra</option>
+				</select>
+				<select class="form-control" data-ng-model="unidadeAtual" 
+					data-ng-options="unidade as unidade.nomeUnidade for unidade in unidades"
+					data-ng-show='unidades.length'
+					data-ng-change="listarContasPagarPorUnidade()">
+					<option value="" ng-selected="true">Selecione a unidade da obra</option>
+				</select>
+			</div>
+			
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="table-responsive">
 					<table st-table="contasPagar" class="table table-striped"
@@ -47,7 +62,7 @@
 
 						<tbody>
 							<tr ng-repeat="contaPagar in contasPagar | filter: buscaContaPagar">
-								<td>{{contaPagar.notaFiscal}}</td>
+								<td><a ui-sref="contaPagar(contaPagar)">{{contaPagar.notaFiscal}}</a></td>
 								<td>{{contaPagar.fornecedor.nome}}</td>
 								<td>{{contaPagar.tipoConta}}</td>
 								<td>{{contaPagar.tipoPagamento}}</td>

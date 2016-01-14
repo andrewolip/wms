@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wms.model.entity.ContaPagar;
+import com.wms.model.entity.Obra;
+import com.wms.model.entity.UnidadeObra;
 import com.wms.model.repository.ContaPagarRepository;
 
 @Service
@@ -38,4 +40,11 @@ public class ContaPagarService {
 		return contaPagarRepository.findOne(id);
 	}
 	
+	public List<ContaPagar> listarPorObra(Obra obra) {
+		return this.contaPagarRepository.findByObra(obra);
+	}
+	
+	public List<ContaPagar> listarPorUnidade(UnidadeObra unidadeObra) {
+		return this.contaPagarRepository.findByUnidadeObra(unidadeObra);
+	}
 }

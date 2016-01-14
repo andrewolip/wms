@@ -38,4 +38,8 @@ public class UnidadeObraService {
 		return this.unidadeObraRepository.findByObraIdObra(id);
 	}
 	
+	public UnidadeObra buscarUnidadeObra(Integer id) {
+		return unidadeObraRepository.findOne(id);
+	}
+	
 }

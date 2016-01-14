@@ -65,7 +65,19 @@ public class ContaPagar implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_fornecedor")
 	private Fornecedor fornecedor;
-
+	
+	@ManyToOne
+	@JoinColumn(name="id_obra")
+	private Obra obra;
+	
+	@ManyToOne
+	@JoinColumn(name="id_unidade_obra")
+	private UnidadeObra unidadeObra;
+	
+	@ManyToOne
+	@JoinColumn(name="id_fase_obra")
+	private FaseObra faseObra;
+	
 	//bi-directional many-to-one association to ItemConta
 	@OneToMany(mappedBy="contaPagar")
 	private List<ItemConta> itensConta;
@@ -183,4 +195,35 @@ public class ContaPagar implements Serializable {
 		return itensConta;
 	}
 
+	public Integer getnParcelas() {
+		return nParcelas;
+	}
+
+	public void setnParcelas(Integer nParcelas) {
+		this.nParcelas = nParcelas;
+	}
+
+	public Obra getObra() {
+		return obra;
+	}
+
+	public void setObra(Obra obra) {
+		this.obra = obra;
+	}
+
+	public UnidadeObra getUnidadeObra() {
+		return unidadeObra;
+	}
+
+	public void setUnidadeObra(UnidadeObra unidadeObra) {
+		this.unidadeObra = unidadeObra;
+	}
+
+	public FaseObra getFaseObra() {
+		return faseObra;
+	}
+
+	public void setFaseObra(FaseObra faseObra) {
+		this.faseObra = faseObra;
+	}
 }

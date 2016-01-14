@@ -23,12 +23,17 @@ public class UnidadeObraController {
 		this.unidadeObraService = unidadeObraService;
 	}
 	
+	@RequestMapping(value = "/buscar/{id}", method = RequestMethod.GET)
+	public UnidadeObra buscar(@PathVariable Integer id) {
+		return this.unidadeObraService.buscarUnidadeObra(id);
+	}
+	
 	@RequestMapping(value = "/salvar", method = RequestMethod.PUT)
 	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
 		unidadeObraService.salvar(unidadeObra);
 	}		
 	
-	@RequestMapping(value = "/listar/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/listar_por_obra/{id}", method = RequestMethod.GET)
 	public List<UnidadeObra> listarUnidadesPorObra(@PathVariable Integer id) {
 		return unidadeObraService.listarPorObra(id);
 	}

@@ -3,6 +3,8 @@ app.controller('ContaPagarController',				[
 						'$uibModal',
 						'$log',
 						'contaPagarService',
+						'obrasService',
+						'unidadeService',
 						'$window',
 						'$location',
 						function($scope, $uibModal, $log, contaPagarService,
@@ -10,8 +12,11 @@ app.controller('ContaPagarController',				[
 
 							$scope.contaPagar = {};
 							$scope.contasPagar = [];
+							$scope.obras = [];
+							$scope.unidades = [];
 
 							$scope.listarContasPagar = function() {
+								console.log("listar contas sem filtro");
 								contaPagarService.listarContasPagar().success(
 										function(data) {
 											$scope.contasPagar = data;
@@ -77,4 +82,39 @@ app.controller('ContaPagarController',				[
 								});
 							};
 							
+							$scope.listarObras = function() {
+								contaPagarService.listarObras().success(
+										function(data) {
+											$scope.obras = data;
+										});
+							};
+							
+							$scope.obraAtual = $scope.obras[0];
+							$scope.listarUnidadesPorObra = function() {
+								contaPagarService.listarUnidadesPorObra($scope.obraAtual.idObra).success(function(data) {
+									$scope.unidades = data;
+								}).error(function(error) {
+									$log.error(error);
+								});
+								
+								console.log("listou Unidades por obra");
+								$scope.listarContasPagarPorObra();
+								console.log("chamou listar contas por obra");
+							};
+							
+							$scope.listarContasPagarPorObra = function() {
+								console.log("listar contas por obra");
+								contaPagarService.listarPorObra($scope.obraAtual).success(
+										function(data) {
+											$scope.contasPagar = data;
+										});
+							};
+							
+							$scope.listarContasPagarPorUnidade = function() {
+								console.log("listar contas por unidade");
+								contaPagarService.listarPorUnidade($scope.unidadeAtual).success(
+										function(data) {
+											$scope.contasPagar = data;
+										});
+							};
 }]);

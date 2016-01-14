@@ -12,8 +12,6 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 	}
 	
 	factory.listarContasPagar = function() {
-		console.log("ContaPagarService.js");
-		console.log(contasPagar);
 		return $http.get('/contasPagar/listar');
 	}
 	
@@ -29,9 +27,23 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 	}
 	
 	factory.atualizarContaPagar = function(contaPagar) {
-		console.log("ContaPagarService.js atualizar");
-		console.log(contaPagar);
 		return $http.put('/contasPagar/atualizar', contaPagar);
+	}
+	
+	factory.listarObras = function() {
+		return $http.get('/obras/listar');
+	}
+	
+	factory.listarUnidadesPorObra = function(id) {
+		return $http.get('unidades/listar_por_obra/' + id);
+	}
+	
+	factory.listarPorObra = function(obra) {
+		return $http.get('contasPagar/listar_por_obra', obra);
+	}
+	
+	factory.listarPorUnidade = function(unidade) {
+		return $http.get('contasPagar/listar_por_unidade/', unidade);
 	}
 	
 	return factory;

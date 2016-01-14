@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wms.model.entity.ContaPagar;
+import com.wms.model.entity.Obra;
+import com.wms.model.entity.UnidadeObra;
 import com.wms.model.service.ContaPagarService;
 
 @RestController
@@ -42,4 +44,16 @@ public class ContaPagarController {
 		return contaPagarService.listarContasPagar();
 	}
 
+	@RequestMapping(value = "/listar_por_obra", method = RequestMethod.GET)
+	public List<ContaPagar> listarContaPagarPorObra(@RequestBody Obra obra) {
+		System.out.println("ID da Obra: " + obra.getIdObra());
+		List<ContaPagar> lista = contaPagarService.listarPorObra(obra); 
+		System.out.println("Lista de Contas a pagar" + lista);
+		return lista;
+	}
+	
+	@RequestMapping(value = "/listar_por_unidade", method = RequestMethod.GET)
+	public List<ContaPagar> listarContaPagarPorUnidade(@RequestBody UnidadeObra unidadeObra) {
+		return contaPagarService.listarPorUnidade(unidadeObra);
+	}
 }
