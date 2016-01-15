@@ -10,7 +10,7 @@
 			 <div class="form-group">
 			 	<label class="col-lg-2 control-label">Nome</label>
 			 	<div class="col-lg-7">
-			 		<input class="form-control" text="text" ng-model="obra.nome" name="nome" required="true" placeholder="Digite o nome da Obra">
+			 		<input class="form-control" type="text" ng-model="obra.nome" name="nome" ng-required="true" placeholder="Digite o nome da Obra">
 			 	</div>
 			 </div>
 			 
@@ -30,7 +30,7 @@
 			<div class="form-group">
 				<label class="col-lg-2 control-label">CEP</label>
 				<div class="col-lg-3">
-	 				<input class="form-control" type="text" ng-model="obra.localizacao.cep" name="cep" maxLength="9" required="true" ui-br-cep-mask>
+	 				<input class="form-control" type="text" ng-model="obra.localizacao.cep" name="cep" maxLength="9" ng-required="true" ui-br-cep-mask>
 	 			</div>
  				<div>
  					<input type="button" class="btn btn-primary" ng-click="buscarCep(obra.localizacao)" ng-disabled="!obra.localizacao.cep" value="Carregar">
@@ -40,28 +40,28 @@
 			<div class="form-group">
 			 	<label class="col-lg-2 control-label">Estado</label>
 			 	<div class="col-lg-3">
-			 		<input class="form-control" type="text" ng-model="obra.localizacao.uf" name="uf" required="true" disabled>
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.uf" name="uf" ng-required="true" disabled>
 			 	</div>
 				</div>
 
 			 <div class="form-group">
 			 	<label class="col-lg-2 control-label">Cidade</label>
 			 	<div class="col-lg-6">
-			 		<input class="form-control" type="text" ng-model="obra.localizacao.localidade" name="localidade" required="true" disabled>
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.localidade" name="localidade" ng-required="true" disabled>
 			 	</div>
 			 </div>
 
 			 <div class="form-group">
 			 	<label class="col-lg-2 control-label">Bairro</label>
 			 	<div class="col-lg-7">
-			 		<input class="form-control" text="text" ng-model="obra.localizacao.bairro" name="bairro" required="true">
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.bairro" name="bairro" ng-required="true">
 			 	</div>
 			 </div>
 
 			 <div class="form-group">
 			 	<label class="col-lg-2 control-label">Logradouro</label>
 			 	<div class="col-lg-7">
-			 		<input class="form-control" type="text" ng-model="obra.localizacao.logradouro" name="logradouro" required="true" placeholder="Ex: Rua das Flores, 1000">
+			 		<input class="form-control" type="text" ng-model="obra.localizacao.logradouro" name="logradouro" ng-required="true" placeholder="Ex: Rua das Flores, 1000">
 			 	</div>
 			 </div>
 

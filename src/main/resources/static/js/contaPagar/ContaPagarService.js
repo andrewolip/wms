@@ -7,10 +7,6 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 		return $http.post('/contasPagar/inserir', contaPagar);
 	}
 	
-	factory.buscarContaPagar = function(id) {
-		return $http.get('/contasPagar/buscar/' + id);
-	}
-	
 	factory.listarContasPagar = function() {
 		return $http.get('/contasPagar/listar');
 	}
@@ -30,21 +26,25 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 		return $http.put('/contasPagar/atualizar', contaPagar);
 	}
 	
-	factory.listarObras = function() {
-		return $http.get('/obras/listar');
+	factory.listarItensConta = function(id) {
+		return $http.get('/contasPagar/listar_itens' + id);
 	}
 	
-	factory.listarUnidadesPorObra = function(id) {
-		return $http.get('unidades/listar_por_obra/' + id);
-	}
+//	factory.listarObras = function() {
+//		return $http.get('/obras/listar');
+//	}
+//	
+//	factory.listarUnidadesPorObra = function(id) {
+//		return $http.get('unidades/listar_por_obra/' + id);
+//	}
 	
-	factory.listarPorObra = function(obra) {
-		return $http.get('contasPagar/listar_por_obra', obra);
-	}
-	
-	factory.listarPorUnidade = function(unidade) {
-		return $http.get('contasPagar/listar_por_unidade/', unidade);
-	}
+//	factory.listarPorObra = function(obra) {
+//		return $http.get('contasPagar/listar_por_obra', obra);
+//	}
+//	
+//	factory.listarPorUnidade = function(unidade) {
+//		return $http.get('contasPagar/listar_por_unidade/', unidade);
+//	}
 	
 	return factory;
 	

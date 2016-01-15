@@ -181,18 +181,18 @@ public class ContaPagar implements Serializable {
 		this.itensConta = itensConta;
 	}
 
-	public ItemConta addItensConta(ItemConta itensConta) {
-		getItensConta().add(itensConta);
-		itensConta.setContaPagar(this);
+	public ItemConta addItemConta(ItemConta itemConta) {
+		getItensConta().add(itemConta);
+		itemConta.setContaPagar(this);
 
-		return itensConta;
+		return itemConta;
 	}
 
-	public ItemConta removeItensConta(ItemConta itensConta) {
-		getItensConta().remove(itensConta);
-		itensConta.setContaPagar(null);
+	public ItemConta removeItemConta(ItemConta itemConta) {
+		getItensConta().remove(itemConta);
+		itemConta.setContaPagar(null);
 
-		return itensConta;
+		return itemConta;
 	}
 
 	public Integer getnParcelas() {

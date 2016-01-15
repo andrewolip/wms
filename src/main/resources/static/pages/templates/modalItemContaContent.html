@@ -1,0 +1,65 @@
+﻿<div class="modal-header">
+	<h3 class="modal-title">Conta a Pagar</h3>
+</div>
+
+<form name="contaPagarForm">
+	<div class="modal-body">
+		<table class="table">
+			<tr>
+				<td>
+					<label>Nome do Item</label> 
+				</td>
+				<td>
+					<input class="form-control" type="text" name="nome"
+						ng-model="itemConta.nome" maxLength="25" ng-required="true" /> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Quantidade</label> 
+				</td>
+				<td>
+					 <input class="form-control" type="number" name="quantidade" 
+						ng-model="itemConta.quantidade" maxLength="6" ng-required="true" />
+				</td>
+				<td>
+					<label>Unidade de Medida</label> 
+				</td>
+				<td>
+					<input class="form-control" type="text" name="nome"
+						ng-model="itemConta.unidade" maxLength="25" ng-required="true" /> 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Valor Unitário</label> 
+				</td>
+				<td>
+					 <input class="form-control" type="text" name="valorUnitario"
+						ng-model="itemConta.valorUnitario" maxLength="25" ng-required="true" ui-money-mask/>
+				</td>
+				<td>
+					<label>Valor Total</label> 
+				</td>
+				<td>
+					 <input class="form-control" type="text" name="valorTotal" disabled="disabled"
+					 	value="{{itemConta.quantidade * itemConta.valorUnitario}}">
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+
+<div ng-show="itemConta.nome.$invalid && itemConta.nome.$dirty"
+	class="alert alert-danger">	Por favor, preencha o nome do item!</div>
+<div ng-show="itemConta.quantidade.$invalid && itemConta.quantidade.$dirty"
+	class="alert alert-danger">	Por favor, preencha a quantidade!</div>
+<div ng-show="itemConta.unidade.$invalid && itemConta.unidade.$dirty"
+	class="alert alert-danger">	Por favor, preencha a unidade de medida!</div>
+<div ng-show="itemConta.valorUnitario.$invalid && itemConta.valorUnitario.$dirty"
+	class="alert alert-danger">	Por favor, preencha o valor unitário!</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="adicionarItem(itemConta)"
+		ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade">Salvar</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>

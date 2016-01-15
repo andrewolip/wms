@@ -1,6 +1,6 @@
 Geral
-- Todos os principais CRUDs do sistema
-- Busca avançada e paginação
+> Todos os principais CRUDs do sistema
+> Busca avançada e paginação
 - Criar um WebServer para comunicar os dispositivos clientes
 - Relatórios
 - Publicar o sistema na web ou criar uma rede wireless utilizando o modem (testar)
@@ -8,7 +8,7 @@ Geral
 
 Obras
 OK - Selecionar Coordenador 
-- Botão para cadastrar uma conta a pagar da obra
+> Botão para cadastrar uma conta a pagar da obra
 - Excluir Obra = excluir tudo relacionado à obra (dentro de obra)
 - Visualizar cronograma geral da obra (Visão das unidades cadastradas)
 - Definir como será quando a Obra tiver apenas uma unidade (uma unidade é criada automaticamente para cada obra sempre?)
@@ -16,11 +16,11 @@ OK - Selecionar Coordenador
 
 Unidades da Obra
 - Botão para Cadastrar conta a receber da unidade
-- Cadastrar fases
+> Cadastrar fases
 
 Contas a Pagar
 OK - Relacionar a conta a Obra/Unidade/Fase
-- Atribuir itens para criar objetos ItemConta
+> Atribuir itens para criar objetos ItemConta
 
 Lançamento
 - vincular a uma conta a pagar/receber
