@@ -76,7 +76,7 @@ public class ContaPagar implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="id_fase_obra")
-	private FaseObra faseObra;
+	private FaseUnidade faseObra;
 	
 	//bi-directional many-to-one association to ItemConta
 	@OneToMany(mappedBy="contaPagar")
@@ -219,11 +219,11 @@ public class ContaPagar implements Serializable {
 		this.unidadeObra = unidadeObra;
 	}
 
-	public FaseObra getFaseObra() {
+	public FaseUnidade getFaseObra() {
 		return faseObra;
 	}
 
-	public void setFaseObra(FaseObra faseObra) {
+	public void setFaseObra(FaseUnidade faseObra) {
 		this.faseObra = faseObra;
 	}
 }

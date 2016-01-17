@@ -31,7 +31,7 @@ public class TarefaObra implements Serializable {
 	//bi-directional many-to-one association to FaseObra
 	@ManyToOne
 	@JoinColumn(name="id_fase")
-	private FaseObra faseObra;
+	private FaseUnidade faseObra;
 
 	//bi-directional many-to-one association to Tarefa
 	@ManyToOne
@@ -73,11 +73,11 @@ public class TarefaObra implements Serializable {
 		this.status = status;
 	}
 
-	public FaseObra getFaseObra() {
+	public FaseUnidade getFaseObra() {
 		return this.faseObra;
 	}
 
-	public void setFaseObra(FaseObra faseObra) {
+	public void setFaseObra(FaseUnidade faseObra) {
 		this.faseObra = faseObra;
 	}
 

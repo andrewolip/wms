@@ -1,0 +1,80 @@
+﻿<div class="modal-header">
+	<h3 class="modal-title">Fase</h3>
+</div>
+
+<form class="form-horizontal" name="faseForm">
+	<div class="modal-body">
+		<input class="form-control" type="hidden" ng-model="unidade.idObra">
+				
+		<div class="form-group">
+		 	<label class="col-lg-4 control-label">Unidade</label>
+			 <div ng-controller="UnidadesController">
+				 <div class="col-lg-6" ng-init="listarUnidadesPorObra()">
+					<select class="form-control" 
+					 	ng-options="unidade.idUnidadeObra as unidade.nomeUnidade for unidade in unidades"
+							ng-model="fase.idUnidadeObra">
+						<option value="" ng-select="true">Selecione a unidade</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Nome</label>
+			<div class="col-lg-6">
+				<input class="form-control" type="text"
+				ng-model="fase.nomeFase" name="nome" maxLength="25"
+				placeholder="Digite o nome da Fase" ng-required="true" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Data Início</label>
+			<div class="col-lg-4">
+				<p class="input-group">
+          			<input type="text" class="form-control" name="dataInicio" uib-datepicker-popup="{{format}}" ng-model="fase.dataInicio" is-open="dataInicio.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataInicio()" ng-blur="dataInicioChange(fase)">
+          		<span class="input-group-btn">
+            		<button type="button" class="btn btn-default" ng-click="abrirDataInicio()"><i class="glyphicon glyphicon-calendar"></i></button>
+          		</span>
+   			</p>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Previsão de Termino</label>
+			<div class="col-lg-4">
+				<p class="input-group">
+          			<input type="text" class="form-control" name="dataPrevistaTermino" uib-datepicker-popup="{{format}}" ng-model="fase.dataPrevistaTermino" is-open="dataPrevistaTermino.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataPrevistaTermino()" ng-blur="dataPrevistaChange(fase)" >
+          		<span class="input-group-btn">
+            		<button type="button" class="btn btn-default" ng-click="abrirDataPrevistaTermino()"><i class="glyphicon glyphicon-calendar"></i></button>
+          		</span>
+   			</p>
+			</div>
+		</div>
+			
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Custo Previsto</label>
+			<div class="col-lg-4">
+				<input class="form-control" ng-model="fase.custoPrevisto" maxLength="20"  ng-required="true" ui-money-mask/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Descrição</label>
+			<div class="col-lg-7">
+				<textarea class="form-control" rows="5"
+				ng-model="fase.descricao" name="descricao"></textarea>		
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="col-lg-7">
+	<div ng-show="faseForm.nome.$invalid && faseForm.nome.$dirty"
+	class="alert alert-danger">Por favor, preencha o nome da Fase!</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="salvarFase(fase)">Inserir</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>

@@ -14,15 +14,15 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="fase_obra")
-@NamedQuery(name="FaseObra.findAll", query="SELECT f FROM FaseObra f")
-public class FaseObra implements Serializable {
+@Table(name="fase_unidade")
+@NamedQuery(name="FaseUnidade.findAll", query="SELECT f FROM FaseUnidade f")
+public class FaseUnidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_fase_obra")
-	private Integer idFaseObra;
+	@Column(name="id_fase_unidade")
+	private Integer idFaseUnidade;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_inicio")
@@ -55,11 +55,6 @@ public class FaseObra implements Serializable {
 	@JoinColumn(name="id_conta")
 	private ContaPagar contaPagar;
 
-	//bi-directional many-to-one association to Fase
-	@ManyToOne
-	@JoinColumn(name="id_fase")
-	private Fase fase;
-
 	//bi-directional many-to-one association to UnidadeObra
 	@ManyToOne
 	@JoinColumn(name="id_unidade_obra")
@@ -69,15 +64,7 @@ public class FaseObra implements Serializable {
 	@OneToMany(mappedBy="faseObra")
 	private List<TarefaObra> tarefaObras;
 
-	public FaseObra() {
-	}
-
-	public Integer getIdFaseObra() {
-		return this.idFaseObra;
-	}
-
-	public void setIdFaseObra(Integer idFaseObra) {
-		this.idFaseObra = idFaseObra;
+	public FaseUnidade() {
 	}
 
 	public Date getDataInicio() {
@@ -152,14 +139,6 @@ public class FaseObra implements Serializable {
 		this.contaPagar = contaPagar;
 	}
 
-	public Fase getFase() {
-		return this.fase;
-	}
-
-	public void setFase(Fase fase) {
-		this.fase = fase;
-	}
-
 	public UnidadeObra getUnidadeObra() {
 		return this.unidadeObra;
 	}
@@ -188,6 +167,14 @@ public class FaseObra implements Serializable {
 		tarefaObra.setFaseObra(null);
 
 		return tarefaObra;
+	}
+
+	public Integer getIdFaseUnidade() {
+		return idFaseUnidade;
+	}
+
+	public void setIdFaseUnidade(Integer idFaseUnidade) {
+		this.idFaseUnidade = idFaseUnidade;
 	}
 
 }

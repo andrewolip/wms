@@ -1,7 +1,9 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -24,10 +26,7 @@ public class Fase implements Serializable {
 	@Column(name="nome_fase")
 	private String nomeFase;
 
-	//bi-directional many-to-one association to FaseObra
-	@OneToMany(mappedBy="fase")
-	private List<FaseObra> faseObras;
-
+	
 	public Fase() {
 	}
 
@@ -53,28 +52,6 @@ public class Fase implements Serializable {
 
 	public void setNomeFase(String nomeFase) {
 		this.nomeFase = nomeFase;
-	}
-
-	public List<FaseObra> getFaseObras() {
-		return this.faseObras;
-	}
-
-	public void setFaseObras(List<FaseObra> faseObras) {
-		this.faseObras = faseObras;
-	}
-
-	public FaseObra addFaseObra(FaseObra faseObra) {
-		getFaseObras().add(faseObra);
-		faseObra.setFase(this);
-
-		return faseObra;
-	}
-
-	public FaseObra removeFaseObra(FaseObra faseObra) {
-		getFaseObras().remove(faseObra);
-		faseObra.setFase(null);
-
-		return faseObra;
 	}
 
 }

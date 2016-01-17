@@ -97,6 +97,13 @@ app.config(function config($stateProvider) {
 		templateUrl: "/comentarios/",
 		controller: "ComentariosController",
 		params: null
-	})
+	});
+	
+	$stateProvider.state("fases", {
+		url: "/fases",
+		templateUrl: "pages/fases.html",
+		controller: "FasesController",
+		params: obraObject
+	});
 	
 });
