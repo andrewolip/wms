@@ -16,7 +16,7 @@
 		<class>com.wms.model.entity.ContaReceber</class>
 		<class>com.wms.model.entity.Empresa</class>
 		<class>com.wms.model.entity.Fase</class>
-		<class>com.wms.model.entity.FaseObra</class>
+		<class>com.wms.model.entity.FaseUnidade</class>
 		<class>com.wms.model.entity.FormaPagamento</class>
 		<class>com.wms.model.entity.Funcao</class>
 		<class>com.wms.model.entity.Item</class>

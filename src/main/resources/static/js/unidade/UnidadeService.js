@@ -1,20 +1,29 @@
 app.factory('unidadeService', ['$http', '$location', '$log', function($http, $location, $log) {
-	var factory = {};
 	var unidade = {};
+	unidade.fases = [];
 	
-	factory.buscarUnidade = function(id) {
+	unidade.addFase = function(fase) {
+		// se nao funcionar, colocar no formato JSON
+		unidade.fases.push(fase);
+	}
+	
+	unidade.removerFase = function(fase) {
+		unidade.fases.remove(fase);
+	} 
+	
+	unidade.buscarUnidade = function(id) {
 		return $http.get('/unidades/buscar/' + id);
 	}
 	
-	factory.listarUnidades = function() {
+	unidade.listarUnidades = function() {
 		return $http.get('/unidades/listar');
 	}
 	
-	factory.listarUnidadesPorObra = function(id) {
+	unidade.listarUnidadesPorObra = function(id) {
 		return $http.get('unidades/listar_por_obra/' + id);
 	}
 	
-	factory.removerUnidade = function(unidade) {
+	unidade.removerUnidade = function(unidade) {
 		return $http({
 			url : 'unidades/apagar/' + unidade.idUnidadeObra,
 			method : 'DELETE',
@@ -25,10 +34,10 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 		});
 	}
 	
-	factory.salvarUnidadeObra = function(unidade) {
+	unidade.salvarUnidadeObra = function(unidade) {
 		return $http.put('unidades/salvar', unidade);
 	}
 	
-	return factory;
+	return unidade;
 	
 }]);

@@ -30,7 +30,7 @@ app.controller('FasesController', ['$scope', '$uibModal', '$log', 'fasesService'
 	}
 	
 	// Abre a Modal ao clicar em 'Adicionar Unidade'
-	$scope.modalFaseUpdate = function(tamanho, faseSelecionada) {
+/*	$scope.modalFaseUpdate = function(tamanho, faseSelecionada) {
 		
 		$log.info(faseSelecionada);
 		
@@ -53,6 +53,6 @@ app.controller('FasesController', ['$scope', '$uibModal', '$log', 'fasesService'
 					$log.info('Modal foi fechada em: '
 							+ new Date());
 				});
-	};
+	}; */
 	
 }]);

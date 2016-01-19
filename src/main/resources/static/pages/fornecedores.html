@@ -46,9 +46,17 @@
                                 </td>
                                 <td>{{fornecedor.telefone}}</td>
                                 <td>{{fornecedor.contato}}</td>
-                                <td><button class="btn btn-warning"
-                                        ng-click="modalUpdate('lg', fornecedor)">Editar</button></td>
-                                <td style="width: 10%;"><button class="btn btn-danger" ng-click="removerFornecedor(fornecedor)">Remover</button></td>
+                                <td>
+                                    <button class="btn btn-warning"
+                                        ng-click="modalUpdate('lg', fornecedor)">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                </td>
+                                <td style="width: 10%;">
+                                    <button class="btn btn-danger" ng-click="removerFornecedor(fornecedor)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

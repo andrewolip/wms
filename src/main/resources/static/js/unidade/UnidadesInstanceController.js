@@ -1,7 +1,9 @@
 app.controller('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, unidadeService, unidade, $stateParams) {
+		$uibModalInstance, $log, $uibModal, unidadeService, unidade, $stateParams) {
+
 	
 	$scope.unidade = {};
+	$scope.unidade.fases = unidadeService.fases;
 	$scope.unidade.obra = $stateParams;
 	
 	//DatePicker
@@ -78,5 +80,23 @@ app.controller('UnidadesInstanceController', function($scope,
 	  $scope.dataPrevistaChange = function(unidade) {
 		  $scope.maxDate = unidade.dataPrevistaTermino;
 	  }
+	  
+		// Abre a Modal ao clicar em 'Adicionar Fases'
+		$scope.modalFasesUpdate = function() {
+			
+			var modalInstance = $uibModal.open({
+				templateUrl : 'pages/templates/modalFasesContent.html',
+				controller : 'FasesInstanceController'
+			});
+			
+		/*	modalInstance.result.then(
+					function(selectedItem) {
+						$scope.selected = selectedItem;
+						$scope.listarObras();
+					}, function() {
+						$log.info('Modal foi fechada em: '
+								+ new Date());
+					}); */
+		}; 
 	  
 });

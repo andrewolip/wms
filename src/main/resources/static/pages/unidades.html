@@ -59,9 +59,17 @@
 								<td>{{unidade.dataInicio}}</td>
 								<td>{{unidade.dataPrevistaTermino}}</td>
 								<td>{{unidade.custoPrevisto}}</td>
-								<td style="width: 10%;"><button class="btn btn-warning"
-										ng-click="modalUnidadeUpdate('md', unidade)">Editar</button></td>
-								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUnidade(unidade)">Remover</button></td>
+								<td style="width: 10%;">
+									<button class="btn btn-warning"
+										ng-click="modalUnidadeUpdate('md', unidade)">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>
+								</td>
+								<td style="width: 10%;">
+									<button class="btn btn-danger" ng-click="removerUnidade(unidade)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</td>
 								
 							</tr>
 						</tbody>

@@ -46,9 +46,17 @@
                                 <td><a ng-click="modalUpdate('lg', usuario)">{{usuario.nome}}</a></td>
                                 <td>{{usuario.login}}</td>
                                 <td>{{usuario.perfil}}</td>
-                                <td style="width: 10%;"><button class="btn btn-warning"
-                                        ng-click="modalUpdate('lg', usuario)">Editar</button></td>
-                                <td style="width: 10%;"><button class="btn btn-danger" ng-click="removerUsuario(usuario)">Remover</button></td>
+                                <td style="width: 10%;">
+                                    <button class="btn btn-warning"
+                                        ng-click="modalUpdate('lg', usuario)">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                </td>
+                                <td style="width: 10%;">
+                                    <button class="btn btn-danger" ng-click="removerUsuario(usuario)">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

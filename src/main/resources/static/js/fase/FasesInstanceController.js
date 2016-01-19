@@ -1,8 +1,8 @@
 app.controller('FasesInstanceController', function($scope,
-		$uibModalInstance, $log, fasesService, $stateParams) {
+		$uibModalInstance, $log, unidadeService, $stateParams) {
 	
 	$scope.unidade = {};
-	$scope.unidade.fases = [];
+	$scope.unidade.fases = unidadeService.fases;
 	$scope.fase = {};
 	
 	//DatePicker
@@ -69,11 +69,14 @@ app.controller('FasesInstanceController', function($scope,
 	};		  
 	
 	$scope.salvarFase = function(fase) {
-		fasesService.salvarFase(fase).success(function(){
-			$uibModalInstance.close();
-		}).error(function(error){
-			$log.error(error);
-		});
+		unidadeService.addFase(fase);
+		$uibModalInstance.close();
+		$log.info($scope.unidade.fases);
+	}
+	
+	$scope.removerFase = function(fase) {
+		unidadeService.removerFase(fase);
+		$log.info('remover fase');
 	}
 	
 });

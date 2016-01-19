@@ -6,7 +6,7 @@
 	<div class="modal-body">
 		<input class="form-control" type="hidden" ng-model="unidade.idObra">
 				
-		<div class="form-group">
+	<!--	<div class="form-group">
 		 	<label class="col-lg-4 control-label">Unidade</label>
 			 <div ng-controller="UnidadesController">
 				 <div class="col-lg-6" ng-init="listarUnidadesPorObra()">
@@ -17,7 +17,7 @@
 					</select>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="form-group">
 			<label class="col-lg-4 control-label">Nome</label>
@@ -66,6 +66,7 @@
 				ng-model="fase.descricao" name="descricao"></textarea>		
 			</div>
 		</div>
+
 	</div>
 </form>
 
@@ -75,6 +76,6 @@
 </div>
 
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="salvarFase(fase)">Inserir</button>
+	<button class="btn btn-primary" ng-click="salvarFase(fase)">Adicionar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>
