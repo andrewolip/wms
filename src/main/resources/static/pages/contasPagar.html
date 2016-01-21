@@ -40,8 +40,8 @@
 								<th>Nº de Parcelas</th>
 								<th>Data Vencimento</th>
 								<th>Valor</th>
-								<th></th>
-								<th></th>
+								<th>Editar</th>
+								<th>Excluir</th>
 							</tr>
 						</thead>
 
@@ -56,10 +56,14 @@
 								<td>{{contaPagar.valorConta}}</td>
 								<td>
 									<button class="btn btn-warning"
-                                        ng-click="modalUpdate('lg', contaPagar)">Editar</button>
+                                        ng-click="modalUpdate('lg', contaPagar)">
+                                        <span class="glyphicon glyphicon-edit"></span>
+									</button>
                                 </td>
                                 <td style="width: 10%;">
-                                	<button class="btn btn-danger" ng-click="removerContaPagar(contaPagar)">Remover</button>
+                                	<button class="btn btn-danger" ng-click="removerContaPagar(contaPagar)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
                                 </td>
 							</tr>
 						</tbody>

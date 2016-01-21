@@ -1,17 +1,16 @@
-app.factory('contaPagarService', ['$http', '$location', function($http, $location) {
-	var factory = {};
+app.factory('contaPagarService', ['$http', '$location', '$log', function($http, $location, $log) {
 	var contaPagar = {};
-	var contasPagar = [];
+	contaPagar.itensConta = [];
 
-	factory.salvarContaPagar = function(contaPagar) {
+	contaPagar.salvarContaPagar = function(contaPagar) {
 		return $http.post('/contasPagar/inserir', contaPagar);
 	}
 	
-	factory.listarContasPagar = function() {
+	contaPagar.listarContasPagar = function() {
 		return $http.get('/contasPagar/listar');
 	}
 	
-	factory.removerContaPagar = function(contaPagar) {
+	contaPagar.removerContaPagar = function(contaPagar) {
 		return $http({
 			url : '/contasPagar/remover/' + contaPagar.idContaPagar,
 			method : 'DELETE',
@@ -22,13 +21,21 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 		});
 	}
 	
-	factory.atualizarContaPagar = function(contaPagar) {
+	contaPagar.atualizarContaPagar = function(contaPagar) {
 		return $http.put('/contasPagar/atualizar', contaPagar);
 	}
 	
-	factory.listarItensConta = function(id) {
+	contaPagar.listarItensConta = function(id) {
 		return $http.get('/contasPagar/listar_itens' + id);
 	}
+	
+	contaPagar.addItemConta = function(itemConta) {
+		contaPagar.itensConta.push(itemConta);
+	}
+	
+	contaPagar.removerItemConta = function(itemConta) {
+		contaPagar.itensConta.remove(itemConta);
+	} 
 	
 //	factory.listarObras = function() {
 //		return $http.get('/obras/listar');
@@ -46,6 +53,6 @@ app.factory('contaPagarService', ['$http', '$location', function($http, $locatio
 //		return $http.get('contasPagar/listar_por_unidade/', unidade);
 //	}
 	
-	return factory;
+	return contaPagar;
 	
 }]);

@@ -1,35 +1,24 @@
-app.controller('ItemContaInstanceController', [	'$scope', 
-                                				'$log',
-                                				'contaPagarService',
-		function($scope, 
-				$log,
-				contaPagar,
-				contaPagarService) {
+app.controller('ItemContaInstanceController', [	'$scope', function($scope, 
+		$log, $stateParams, contaPagarService, $uibModalInstance) {
 	
-	$scope.contaPagar = contaPagar;
+	$scope.contaPagar = {};
+	$scope.contaPagar.itensConta = contaPagarService.itensConta;
 	$scope.itemConta = {};
-	$scope.itensConta = [];
 	
-//	$scope.cancelar = function() {
-//		$uibModalInstance.dismiss('cancelar');
-//	};
+	
+	$scope.cancelar = function() {
+		$uibModalInstance.dismiss('cancelar');
+	};	
+	
+	$scope.salvarItemConta = function(itemConta) {
+		contaPagarService.addItemConta(itemConta);
+		$uibModalInstance.close();
+		$log.info($scope.contaPagar.itensConta);
+	}
+	
+	$scope.removerItemConta = function(itemConta) {
+		contaPagarService.removerItemConta(itemConta);
+		$log.info('remover item');
+	}
 
-	$scope.adicionarItem = function(itemConta) {
-		$scope.contaPagar.addItemConta(itemConta).success(
-			function(data) {
-//				$uibModalInstance.close();
-			}).error(function(error) {
-				resultado = error.Message;
-			});
-	};
-	
-//	$scope.listarItensConta = function() {
-//		console.log("listando itens da conta");
-//		contaPagarService.listarItensConta($scope.contaPagar.idContaPagar).success(
-//			function(data) {
-//				$scope.itensConta = data;
-//			}).error(function(msg) {
-//				$log.info(msg);
-//			});
-//	}
 }]);

@@ -125,36 +125,49 @@
 				</td>
 			</tr>
 		</table>
-		<div class="table-responsive" ng-controller="ItemContaInstanceController"> 
-			<div ng-init="listarItensConta()" >
-				<table st-table="itensContaPagar" class="table table-striped"
-					st-pagination-scroll>
-					<thead>
-						<tr>
-							<th>Item</th>
-							<th>Quantidade</th>
-							<th>Valor Unitário</th>
-							<th>Valor Total</th>
-							<th></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="itemConta in itensConta | filter: buscaItemConta">
-							<td>{{itemConta.nome}}</td>
-							<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
-							<td>{{itemConta.valorUnitario}}</td>
-							<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
-							<td>
-								<button class="btn btn-warning"
-	                                      ng-click="modalUpdateItemConta('md', itemConta)">Editar</button>
-							</td>
-							<td>
-								<button class="btn btn-danger" ng-click="removerItemConta(itemConta)">Remover</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+				<div class="table-responsive" ng-controller="ItemContaInstanceController"> 
+					<div>
+						<input class="btn btn-default" type="button" ng-click="modalUpdateItemConta('md', null)" value="Adicionar Item">
+					</div>
+					<div ng-init="listarItensConta()" >
+						<table st-table="itensContaPagar" class="table table-striped"
+							st-pagination-scroll>
+							<thead>
+								<tr>
+									<th>Item</th>
+									<th>Quantidade</th>
+									<th>Valor Unitário</th>
+									<th>Valor Total</th>
+									<th>Editar</th>
+									<th>Excluir</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="itemConta in contaPagar.itensConta">
+									<td>{{itemConta.nome}}</td>
+									<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
+									<td>{{itemConta.valorUnitario}}</td>
+									<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
+									<td>
+										<button class="btn btn-warning"
+			                                 ng-click="modalUpdateItemConta('md', itemConta)">
+			                                 <span class="glyphicon glyphicon-edit"></span>
+		                                </button>
+									</td>
+									<td>
+										<button class="btn btn-danger" 
+											ng-click="removerItemConta(itemConta)">
+											<span class="glyphicon glyphicon-remove"></span>
+										</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -163,9 +176,6 @@
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
 	class="alert alert-danger">	Por favor, preencha o nº da nota fiscal </div>
 <div class="modal-footer">
-	<button class="btn btn-success" ng-click="modalUpdateItemConta('md', null)">
-		<span class="glyphicon glyphicon-plus"></span>  Adicionar Item
-	</button>
 	<button class="btn btn-primary" ng-click="atualizar(contaPagar)"
 		ng-disabled="!contaPagar.notaFiscal">Salvar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>

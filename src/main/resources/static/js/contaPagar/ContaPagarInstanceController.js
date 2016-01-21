@@ -82,11 +82,11 @@ app.controller('ContaPagarInstanceController', [ '$scope',
 	
 	$scope.dataVencimento = {
 			aberto: false
-	}
+	};
 	
 	$scope.abrirDataVencimento = function() {
 		  $scope.dataVencimento.aberto = true;
-	  }
+	};
 	
 	$scope.modalUpdateItemConta = function(tamanho, itemContaSelecionado) {
 		console.log("abrindo edit item");
@@ -101,13 +101,13 @@ app.controller('ContaPagarInstanceController', [ '$scope',
 			}
 		});
 
-		modalInstance.result.then(
-				function(selectedItem) {
-					$scope.selected = selectedItem;
-					$scope.listarItensConta();
-				}, function() {
-					$log.info('Modal foi fechada em: '
-							+ new Date());
-				});
+//		modalInstance.result.then(
+//				function(selectedItem) {
+//					$scope.selected = selectedItem;
+//					$scope.listarItensConta();
+//				}, function() {
+//					$log.info('Modal foi fechada em: '
+//							+ new Date());
+//				});
 	};
 }]);

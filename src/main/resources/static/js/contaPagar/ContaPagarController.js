@@ -1,20 +1,14 @@
-app.controller('ContaPagarController',   [ 	'$scope',
-											'$uibModal',
-											'$log',
-											'contaPagarService',
-											'$window',
-											'$location',
-						function($scope, $uibModal, $log, contaPagarService,
-								$window, $location) {
+app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'contaPagarService', '$window',	'$location',
+						function($scope, $uibModal, $log, contaPagarService, $window, $location) {
 
 							$scope.contaPagar = {};
 							$scope.contasPagar = [];
 
 							$scope.listarContasPagar = function() {
 								contaPagarService.listarContasPagar().success(
-										function(data) {
-											$scope.contasPagar = data;
-										});
+									function(data) {
+										$scope.contasPagar = data;
+									});
 							};
 							
 							$scope.removerContaPagar = function(contaPagar) {
