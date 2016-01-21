@@ -44,9 +44,17 @@
 							<tr ng-repeat="funcao in funcoes | filter: buscaFuncao">
 								<td style="width: 15%;">{{funcao.idFuncao}}</td>
 								<td><a ng-click="modalUpdate('lg', funcao)">{{funcao.nome}}</a></td>
-								<td style="width: 10%;"><button class="btn btn-warning"
-										ng-click="modalUpdate('lg', funcao)">Editar</button></td>
-								<td style="width: 10%;"><button class="btn btn-danger" ng-click="removerFuncao(funcao)">Remover</button></td>
+								<td style="width: 10%;">
+									<button class="btn btn-warning"
+										ng-click="modalUpdate('lg', funcao)">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>
+								</td>
+								<td style="width: 10%;">
+									<button class="btn btn-danger" ng-click="removerFuncao(funcao)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
