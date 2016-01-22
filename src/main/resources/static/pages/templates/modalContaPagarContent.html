@@ -2,32 +2,26 @@
 	<h3 class="modal-title">Conta a Pagar</h3>
 </div>
 
-<form name="contaPagarForm">
+<form class="form-horizontal" name="contaPagarForm">
 	<div class="modal-body">
-		<table class="table">
-			<tr>
-				<td>
-					<label>Obra</label> 
-				</td>
-				<td>
-					<div ng-init="listarObras()">
-						<select class="form-control" ng-model="contaPagar.obra" 
-							ng-options="obra as obra.nome for obra in obras track by obra.nome">
-							<option value="" ng-selected="true">Selecione a obra</option>
-						</select>
-					</div>
-				</td>
-				
-				<td>
-					<label>Unidade da Obra</label> 
-				</td>
-				<td>
+		<div class="row">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Obra</label> 
+				<div class="col-lg-3" ng-init="listarObras()">
+					<select class="form-control" ng-model="contaPagar.obra" 
+						ng-options="obra as obra.nome for obra in obras track by obra.nome">
+						<option value="" ng-selected="true">Selecione a obra</option>
+					</select>
+				</div>
+
+				<label class="col-lg-2 control-label">Unidade da Obra</label> 
+				<div class="col-lg-3">
 					<select class="form-control" ng-model="contaPagar.unidadeObra" 
 						ng-options="unidade as unidade.nomeUnidade for unidade in unidades track by unidade.nomeUnidade">
 						<option value="">Selecione a unidade</option>
 					</select>
-				</td>
-				
+				</div>
+			</div>
 				<!-- <td>
 					<label>Fase da Obra</label> 
 				</td>
@@ -39,140 +33,134 @@
 						<option value="" ng-selected="true">Selecione a unidade da obra</option>
 					</select>
 				</td> -->
-			</tr>
-			<tr>
-				<td>
-					<label>Nº Nota Fiscal</label> 
-				</td>
-				<td>
+		</div>
+		
+		<div class="row">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Nº Nota Fiscal</label> 
+				<div class="col-lg-3">
 					<input class="form-control" type="text"
 						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15"
-						placeholder="Digite o nº da nota fiscal"  /> 
-				</td>
-				<td>
-					<label>Categoria de Itens</label> 
-				</td>
-				<td>
+						placeholder="Digite o nº da nota fiscal"  />
+				</div> 
+
+				<label class="col-lg-2 control-label">Tipo da Conta</label> 
+				<div class="col-lg-3">
 					<select class="form-control"
-						ng-model="contaPagar.tipoConta" name="tipoConta"
-						>
-						<option value="" ng-selected="true">Selecione a categoria</option>
+						ng-model="contaPagar.tipoConta" name="tipoConta">
+						<option value="" ng-selected="true">Selecione o tipo</option>
 						<option value="1">Materiais</option>
 						<option value="2">Despesas Gerais</option>
 						<option value="3">Honorários</option>
 						<option value="4">Máquinas</option>
 						<option value="5">Equipamentos</option>
 					</select> 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Fornecedor</label>
-				</td>
-				<td> 
-					<div ng-controller="FornecedorController">
-						<div ng-init="listarFornecedores()" >
-							<select class="form-control" 
-									ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores track by fornecedor.nome" 
-									ng-model="contaPagar.fornecedor">
-								<option value="" ng-selected="true">Selecione o fornecedor</option>
-							</select>
-						</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Fornecedor</label>
+				<div class="col-lg-3" ng-controller="FornecedorController">
+					<div ng-init="listarFornecedores()" >
+						<select class="form-control" 
+								ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores track by fornecedor.nome" 
+								ng-model="contaPagar.fornecedor">
+							<option value="" ng-selected="true">Selecione o fornecedor</option>
+						</select>
 					</div>
-				</td>
-				<td>
-					<label>Valor Total</label> 
-				</td>
-				<td>
+				</div>
+				
+				<label class="col-lg-2 control-label">Valor Total</label> 
+				<div class="col-lg-3">
 					<input class="form-control" type="text"
 						ng-model="contaPagar.valorConta" 
-						name="valorConta" ui-money-mask/> 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>Forma de Pagamento</label> 
-				</td>
-				<td>
+						name="valorConta" ui-money-mask/>
+				</div> 
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Forma de Pagamento</label> 
+				<div class="col-lg-3">
 					<select class="form-control"
-						ng-model="contaPagar.tipoPagamento" name="tipoPagamento"
-						 >
+						ng-model="contaPagar.tipoPagamento" name="tipoPagamento">
 						<option value="" ng-selected="true">Selecione a forma de pagamento</option>
 						<option value="1">Forma 1</option>
 					</select> 
-				</td>
-				<td>
-					<label>Data de Vencimento</label> 
-				</td>
-				<td>
+				</div>
+
+				<label class="col-lg-2 control-label">Vencimento</label> 
+				<div class="col-lg-3">
 					<p class="col-lg-12 input-group">
-	              		<input type="text" 
-	              			class="form-control" 
-	              			name="dataVencimento" 
-	              			ng-model="contaPagar.dataVencimento" 
-	              			uib-datepicker-popup="{{format}}"  
-	              			is-open="dataVencimento.aberto" 
-	              			datepicker-options="dateOptions" 
-	              			close-text="Fechar"
-	              			current-text="Hoje"
-	              			clear-text="Limpar" 
-	              			alt-input-formats="altInputFormats" 
-	              			ng-focus="abrirDataVencimento()">
-	              		<span class="input-group-btn">
-	                		<button type="button" class="btn btn-default" ng-click="abrirDataVencimento()"><i class="glyphicon glyphicon-calendar"></i></button>
-	              		</span>
-           			</p>
-				</td>
-			</tr>
-		</table>
+		           		<input type="text" 
+		           			class="form-control" 
+		           			name="dataVencimento" 
+		           			ng-model="contaPagar.dataVencimento" 
+		           			uib-datepicker-popup="{{format}}"  
+		           			is-open="dataVencimento.aberto" 
+		           			datepicker-options="dateOptions" 
+		           			close-text="Fechar"
+		           			current-text="Hoje"
+		           			clear-text="Limpar" 
+		           			alt-input-formats="altInputFormats" 
+		           			ng-focus="abrirDataVencimento()">
+		       			<span class="input-group-btn">
+		            		<button type="button" class="btn btn-default" ng-click="abrirDataVencimento()"><i class="glyphicon glyphicon-calendar"></i></button>
+		           		</span>
+		    		</p>
+	    		</div>
+			</div>
+		</div>
 		
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
-				<div class="table-responsive" ng-controller="ItemContaInstanceController"> 
-					<div>
-						<input class="btn btn-default" type="button" ng-click="modalUpdateItemConta('md', null)" value="Adicionar Item">
-					</div>
-					<div ng-init="listarItensConta()" >
-						<table st-table="itensContaPagar" class="table table-striped"
-							st-pagination-scroll>
-							<thead>
-								<tr>
-									<th>Item</th>
-									<th>Quantidade</th>
-									<th>Valor Unitário</th>
-									<th>Valor Total</th>
-									<th>Editar</th>
-									<th>Excluir</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="itemConta in contaPagar.itensConta">
-									<td>{{itemConta.nome}}</td>
-									<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
-									<td>{{itemConta.valorUnitario}}</td>
-									<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
-									<td>
-										<button class="btn btn-warning"
-			                                 ng-click="modalUpdateItemConta('md', itemConta)">
-			                                 <span class="glyphicon glyphicon-edit"></span>
-		                                </button>
-									</td>
-									<td>
-										<button class="btn btn-danger" 
-											ng-click="removerItemConta(itemConta)">
-											<span class="glyphicon glyphicon-remove"></span>
-										</button>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+				<div>
+					<input class="btn btn-default" type="button" ng-click="modalUpdateItemConta('md')" value="Adicionar Item">
+				</div>
+				
+				<div class="table-responsive">
+					<table st-table="itensConta" class="table table-striped"
+						st-pagination-scroll>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Quantidade</th>
+								<th>Valor Unitário</th>
+								<th>Valor Total</th>
+								<th>Editar</th>
+								<th>Excluir</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="itemConta in contaPagar.itensConta">
+								<td>{{itemConta.nome}}</td>
+								<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
+								<td>{{itemConta.valorUnitario}}</td>
+								<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
+								<td>
+									<button class="btn btn-warning"
+		                                 ng-click="modalUpdateItemConta('md', itemConta)">
+		                                 <span class="glyphicon glyphicon-edit"></span>
+	                                </button>
+								</td>
+								<td>
+									<button class="btn btn-danger" 
+										ng-click="removerItemConta(itemConta)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-
+{{contaPagar.itensConta}}
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
 	class="alert alert-danger">	Por favor, preencha o nº da nota fiscal </div>
 <div class="modal-footer">

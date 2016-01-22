@@ -1,19 +1,5 @@
-app.controller('ContaPagarInstanceController', [ '$scope', 
-                                 				'$uibModalInstance', 
-                                				'$uibModal',
-                                				'$log', 
-                                				'contaPagarService', 
-                                				'contaPagar', 
-                                				'obrasService', 
-                                				'unidadeService',
-		function($scope, 
-				$uibModalInstance, 
-				$uibModal,
-				$log, 
-				contaPagarService, 
-				contaPagar, 
-				obrasService, 
-				unidadeService) {
+app.controller('ContaPagarInstanceController', function($scope, 
+		$uibModalInstance, $uibModal, $log, contaPagarService, contaPagar, obrasService, unidadeService) {
 	
 	$scope.contaPagar = contaPagar;
 	$scope.obras = [];
@@ -110,4 +96,4 @@ app.controller('ContaPagarInstanceController', [ '$scope',
 //							+ new Date());
 //				});
 	};
-}]);
+});

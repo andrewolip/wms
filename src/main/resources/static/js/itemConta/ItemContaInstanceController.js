@@ -1,4 +1,4 @@
-app.controller('ItemContaInstanceController', [	'$scope', function($scope, 
+app.controller('ItemContaInstanceController', function($scope, 
 		$log, $stateParams, contaPagarService, $uibModalInstance) {
 	
 	$scope.contaPagar = {};
@@ -13,6 +13,7 @@ app.controller('ItemContaInstanceController', [	'$scope', function($scope,
 	$scope.salvarItemConta = function(itemConta) {
 		contaPagarService.addItemConta(itemConta);
 		$uibModalInstance.close();
+		$log.info(itemConta);
 		$log.info($scope.contaPagar.itensConta);
 	}
 	
@@ -21,4 +22,4 @@ app.controller('ItemContaInstanceController', [	'$scope', function($scope,
 		$log.info('remover item');
 	}
 
-}]);
+});
