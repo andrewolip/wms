@@ -1,15 +1,19 @@
 app.controller('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, $uibModal, unidadeService, unidade, $stateParams) {
-
+		$uibModalInstance, $log, $uibModal, unidade, unidadeService, $stateParams) {
 	
-	$scope.unidade = {};
+	if(unidade != null) {
+		$scope.unidade = unidade;
+	} else {
+		$scope.unidade = {};
+	}
+
 	$scope.unidade.fases = unidadeService.fases;
 	$scope.unidade.obra = $stateParams;
 	
 	//DatePicker
-	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	$scope.formats = ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
-	$scope.altInputFormats = ['dd-MM-yyyy'];
+	$scope.altInputFormats = ['dd/MM/yyyy'];
 	$scope.maxDate;
 	$scope.minDate;
 
@@ -83,7 +87,7 @@ app.controller('UnidadesInstanceController', function($scope,
 	  
 		// Abre a Modal ao clicar em 'Adicionar Fases'
 		$scope.modalFasesUpdate = function() {
-			
+
 			var modalInstance = $uibModal.open({
 				templateUrl : 'pages/templates/modalFasesContent.html',
 				controller : 'FasesInstanceController'

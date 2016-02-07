@@ -71,12 +71,10 @@ app.controller('FasesInstanceController', function($scope,
 	$scope.salvarFase = function(fase) {
 		unidadeService.addFase(fase);
 		$uibModalInstance.close();
-		$log.info($scope.unidade.fases);
 	}
 	
 	$scope.removerFase = function(fase) {
 		unidadeService.removerFase(fase);
-		$log.info('remover fase');
 	}
 	
 });
