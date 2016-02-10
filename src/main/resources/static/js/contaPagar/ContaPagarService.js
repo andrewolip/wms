@@ -31,6 +31,9 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 	
 	contaPagar.addItemConta = function(itemConta) {
 		contaPagar.itensConta.push(itemConta);
+		$log.info("ContaPagarService: addItemConta");
+		$log.info(itemConta);
+		$log.info(contaPagar);
 	}
 	
 	contaPagar.removerItemConta = function(itemConta) {

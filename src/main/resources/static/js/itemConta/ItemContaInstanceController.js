@@ -5,14 +5,15 @@ app.controller('ItemContaInstanceController', function($scope,
 	$scope.contaPagar.itensConta = contaPagarService.itensConta;
 	$scope.itemConta = {};
 	
-	
 	$scope.cancelar = function() {
 		$uibModalInstance.dismiss('cancelar');
 	};	
 	
 	$scope.salvarItemConta = function(itemConta) {
+		debugger;
 		contaPagarService.addItemConta(itemConta);
 		$uibModalInstance.close();
+		$log.info("ItemContaInstCtrl: SalvarItemConta");
 		$log.info(itemConta);
 		$log.info($scope.contaPagar.itensConta);
 	}
