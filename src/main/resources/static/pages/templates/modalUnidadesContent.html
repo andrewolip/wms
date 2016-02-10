@@ -66,7 +66,7 @@
 							<tr>
 								<th>Nome</th>
 								<th>Dt Prev Term</th>
-								<th>Custo Prev.</th>
+							<!--	<th>Custo Prev.</th> -->
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
@@ -74,9 +74,9 @@
 						<tbody>
 							<tr ng-repeat="fase in unidade.fases">
 								<td>{{fase.nomeFase}}</td>
-								<td>{{fase.dataInicio}}</td>
-								<td>{{fase.dataPrevistaTermino}}</td>
-								<td>{{fase.custoPrevisto}}</td>
+								<td>{{fase.dataInicio | date: 'dd/MM/yyyy'}}</td>
+								<td>{{fase.dataPrevistaTermino | date: 'dd/MM/yyyy'}}</td>
+							<!--	<td>{{fase.custoPrevisto | currency: 'R$'}}</td> -->
 								<td>
 									<button class="btn btn-warning"
 										ng-click="modalFasesUpdate('md', fase)">

@@ -29,30 +29,4 @@ app.controller('FasesController', ['$scope', '$uibModal', '$log', 'fasesService'
 		} else{} 
 	}
 	
-	// Abre a Modal ao clicar em 'Adicionar Unidade'
-/*	$scope.modalFaseUpdate = function(tamanho, faseSelecionada) {
-		
-		$log.info(faseSelecionada);
-		
-		var modalInstance = $uibModal.open({
-			templateUrl : 'pages/templates/modalFasesContent.html',
-			controller : 'FasesInstanceController',
-			size : tamanho,
-			resolve : {
-				fase : function() {
-					return angular.copy(faseSelecionada);
-				}
-			}
-		}); 
-
-		modalInstance.result.then(
-				function(selectedItem) {
-					$scope.selected = selectedItem;
-					$scope.listarFasesPorUnidade();
-				}, function() {
-					$log.info('Modal foi fechada em: '
-							+ new Date());
-				});
-	}; */
-	
 }]);

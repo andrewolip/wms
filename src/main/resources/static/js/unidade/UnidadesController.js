@@ -31,8 +31,6 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 	// Abre a Modal ao clicar em 'Adicionar Unidade'
 	$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
 		
-		$log.info(unidadeSelecionada);
-		
 		var modalInstance = $uibModal.open({
 			templateUrl : 'pages/templates/modalUnidadesContent.html',
 			controller : 'UnidadesInstanceController',

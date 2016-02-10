@@ -15,7 +15,7 @@
 		  <li class="active"><a ui-sref="unidades(obra)">Unidades</a></li>
 		  <li><a ui-sref="comentarios(obra)">Comentários</a></li>
 		  <li><a ui-sref="anexos(obra)">Anexos</a></li>
-		  <li><a ui-sref="fases(obra)">Fases</a></li>
+		  <!--<li><a ui-sref="fases(obra)">Fases</a></li> -->
 		</ul>
 
 		<ol class="breadcrumb">
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalUnidadeUpdate('md')">
+				<button class="btn btn-success" ng-click="modalUnidadeUpdate('lg')">
 					<span class="glyphicon glyphicon-plus"></span>Adicionar Unidade
 				</button>
 			</div>
@@ -62,12 +62,12 @@
 							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
 								<td style="width: 15%;">{{unidade.idUnidadeObra}}</td>
 								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nomeUnidade}}</a></td>
-								<td>{{unidade.dataInicio}}</td>
-								<td>{{unidade.dataPrevistaTermino}}</td>
-								<td>{{unidade.custoPrevisto}}</td>
+								<td>{{unidade.dataInicio | date :'dd/MM/yyyy'}}</td>
+								<td>{{unidade.dataPrevistaTermino | date: 'dd/MM/yyyy'}}</td>
+								<td>{{unidade.custoPrevisto | currency: 'R$'}}</td>
 								<td style="width: 10%;">
 									<button class="btn btn-warning"
-										ng-click="modalUnidadeUpdate('md', unidade)">
+										ng-click="modalUnidadeUpdate('lg', unidade)">
 										<span class="glyphicon glyphicon-edit"></span>
 									</button>
 								</td>
