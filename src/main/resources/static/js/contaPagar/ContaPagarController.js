@@ -32,6 +32,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 									templateUrl : 'pages/templates/modalContaPagarContent.html',
 									controller : 'ContaPagarInstanceController',
 									size : tamanho,
+									backdrop: false,
 									resolve : {
 										contaPagar : function() {
 											return angular.copy(contaPagarSelecionada);

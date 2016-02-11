@@ -5,6 +5,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 	$scope.obras = [];
 	$scope.unidades = [];
 	$scope.obraAtual = {};
+	$scope.contaPagar.itensConta = [];
 	
 	//DatePicker
 	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -74,8 +75,46 @@ app.controller('ContaPagarInstanceController', function($scope,
 		  $scope.dataVencimento.aberto = true;
 	};
 	
+<<<<<<< HEAD
 	$scope.modalUpdateItemConta = function(tamanho, itemContaSelecionado) {
 		console.log("abrindo edit item");
+=======
+	$scope.adicionarItem = function() {
+		var itemConta = {
+				nome: "",
+				quantidade: null,
+				valorUnitario: null,
+				unidade: "",
+				isEdited: true
+		};
+		$scope.contaPagar.itensConta.push(itemConta);
+		$scope.calcularValorConta();
+	};
+	
+	$scope.calcularValorConta = function() {
+		for ( var item in $scope.contaPagar.itensConta) {
+			$scope.contaPagar.valorConta =+ ($scope.contaPagar.itensConta[item].valorUnitario * $scope.contaPagar.itensConta[item].quantidade);
+			console.log($scope.contaPagar.itensConta[item]);
+		}
+	};
+
+	$scope.removerItem = function(itemConta) {
+		itemId = itemConta.idItem;
+		
+		var i = 0;
+		for (var j in $scope.contaPagar.itensConta) {
+			if ($scope.contaPagar.itensConta[j].idItem == itemId)
+				break;
+			i++;
+		}
+		
+		$scope.contaPagar.itensConta.splice(i, 1);
+		$scope.calcularValorConta();
+	};
+	
+	$scope.modalUpdateItemConta = function() {
+		console.log("ContaPagarInstCtrl: modalUpdateItemConta");
+>>>>>>> origin/master
 		var modalInstance = $uibModal.open({
 			templateUrl : 'pages/templates/modalItemContaContent.html',
 			controller : 'ItemContaInstanceController',
