@@ -1,5 +1,5 @@
 app.controller('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, $uibModal, unidade, unidadeService, $stateParams) {
+		$uibModalInstance, $log, $uibModal, unidade, unidadeService, fasesService, $stateParams) {
 	
 	if(unidade != null) {
 		$scope.unidade = unidade;
@@ -9,24 +9,55 @@ app.controller('UnidadesInstanceController', function($scope,
 
 	$scope.unidade.fases = unidadeService.fases;
 	$scope.unidade.obra = $stateParams;
-	
+	// $scope.fase = fase;
+
 	//DatePicker
 	$scope.formats = ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
 	$scope.altInputFormats = ['dd/MM/yyyy'];
 	$scope.maxDate;
 	$scope.minDate;
-
-	$scope.cancelar = function() {
-		$uibModalInstance.dismiss('cancelar');
-	};
 	
 	$scope.salvarUnidade = function(unidade) {
-		unidadeService.salvarUnidadeObra(unidade).success(function(data) {
-			$uibModalInstance.close();
+
+		unidadeService.salvarUnidadeObra(unidade).then(function(response) {
+
+			for (var i=0; i < unidade.fases.length; i++) {
+				unidade.fases[i].idUnidadeObra = response.data.idUnidadeObra;
+
+				 fasesService.salvarListaDeFases(unidade.fases).success(function(data) {
+					 $log.info(unidade.fases);
+				}).error(function(error) {
+					$log.info(error);
+				}); 
+			}
+		},
+
+		function(error) {
+			$log.info(error);
+		});
+
+		$uibModalInstance.close();
+
+	/*	unidadeService.salvarUnidadeObra(unidade).success(function(data) {
+
+	
+			for(var i = 0; i < unidade.fases.length; i++) {
+				fase.idUnidadeObra = unidade.idUnidadeObra;
+				$log.info(unidade.fases[i]);
+			}
+
+			fasesService.salvarListaDeFases(unidade.fases).success(function(data) {
+				$uibModalInstance.close();
+
+			}).error(function(error) {
+				resultado = error.Message;
+			}); 
+
+
 		}).error(function(error) {
 			resultado = error.Message;
-		});  
+		});  */
 	}
 	
 	$scope.dataInicio = {
@@ -85,22 +116,38 @@ app.controller('UnidadesInstanceController', function($scope,
 		  $scope.maxDate = unidade.dataPrevistaTermino;
 	  }
 	  
+
+	  	$scope.cancelar = function() {
+			$uibModalInstance.dismiss('cancelar');
+		};
+
 		// Abre a Modal ao clicar em 'Adicionar Fases'
-		$scope.modalFasesUpdate = function() {
+		$scope.modalFasesUpdate = function(tamanho, faseSelecionada) {
 
 			var modalInstance = $uibModal.open({
 				templateUrl : 'pages/templates/modalFasesContent.html',
-				controller : 'FasesInstanceController'
+				controller : 'FasesInstanceController',
+				size: tamanho,
+				backdrop: 'static',
+				resolve : {
+					fase : function() {
+						return angular.copy(faseSelecionada);
+					}
+				}
+
 			});
 			
-		/*	modalInstance.result.then(
+			modalInstance.result.then(
 					function(selectedItem) {
 						$scope.selected = selectedItem;
-						$scope.listarObras();
+						//$scope.listarObras();
 					}, function() {
 						$log.info('Modal foi fechada em: '
 								+ new Date());
-					}); */
+					}); 
 		}; 
 	  
+	  $scope.removerFase = function(fase) {
+	  	
+	  }
 });

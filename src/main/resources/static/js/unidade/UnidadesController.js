@@ -35,6 +35,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 			templateUrl : 'pages/templates/modalUnidadesContent.html',
 			controller : 'UnidadesInstanceController',
 			size : tamanho,
+			backdrop: 'static',
 			resolve : {
 				unidade : function() {
 					return angular.copy(unidadeSelecionada);

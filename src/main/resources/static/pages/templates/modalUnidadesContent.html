@@ -56,17 +56,20 @@
 				ng-model="unidade.descricao" name="descricao"></textarea>		
 			</div>
 		</div>
-		
+																					
 		<div class="row">
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="table-responsive">
+
+					 {{fases}}	
+
 					<table st-table="unidades" class="table table-striped"
 						st-pagination-scroll>
 						<thead>
 							<tr>
 								<th>Nome</th>
+								<th>Data Inicio</th>
 								<th>Dt Prev Term</th>
-							<!--	<th>Custo Prev.</th> -->
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>

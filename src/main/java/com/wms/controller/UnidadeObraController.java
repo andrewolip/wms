@@ -30,8 +30,8 @@ public class UnidadeObraController {
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.PUT)
-	public void inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
-		unidadeObraService.salvar(unidadeObra);
+	public UnidadeObra inserirUnidade(@RequestBody UnidadeObra unidadeObra) {
+		return unidadeObraService.salvar(unidadeObra);
 	}		
 	
 	@RequestMapping(value = "/listar_por_obra/{id}", method = RequestMethod.GET)

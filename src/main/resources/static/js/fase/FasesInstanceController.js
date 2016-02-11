@@ -1,9 +1,9 @@
 app.controller('FasesInstanceController', function($scope,
-		$uibModalInstance, $log, unidadeService, $stateParams) {
+		$uibModalInstance, $log, unidadeService, fase, $stateParams) {
 	
 	$scope.unidade = {};
 	$scope.unidade.fases = unidadeService.fases;
-	$scope.fase = {};
+	$scope.fase = fase;
 	
 	//DatePicker
 	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];

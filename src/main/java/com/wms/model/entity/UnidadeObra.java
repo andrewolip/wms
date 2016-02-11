@@ -75,8 +75,8 @@ public class UnidadeObra implements Serializable {
 
 	//bi-directional many-to-one association to FaseObra
 	@OneToMany(mappedBy="unidadeObra", cascade = CascadeType.REMOVE)
-	private List<FaseUnidade> faseObras;
-	
+	private List<FaseUnidade> fases;
+		
 	//bi-directional many-to-one association to Cliente
 	@ManyToOne
 	@JoinColumn(name="id_cliente")
@@ -212,27 +212,9 @@ public class UnidadeObra implements Serializable {
 
 		return contaReceber;
 	}
-
-	public List<FaseUnidade> getFaseObras() {
-		return this.faseObras;
-	}
-
-	public void setFaseObras(List<FaseUnidade> faseObras) {
-		this.faseObras = faseObras;
-	}
-
-	public FaseUnidade addFaseObra(FaseUnidade faseObra) {
-		getFaseObras().add(faseObra);
-		faseObra.setUnidadeObra(this);
-
-		return faseObra;
-	}
-
-	public FaseUnidade removeFaseObra(FaseUnidade faseObra) {
-		getFaseObras().remove(faseObra);
-		faseObra.setUnidadeObra(null);
-
-		return faseObra;
+	
+	public List<FaseUnidade> getFases() {
+		return fases;
 	}
 
 	public Cliente getCliente() {
@@ -242,7 +224,6 @@ public class UnidadeObra implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
 
 	public Obra getObra() {
 		return this.obra;
