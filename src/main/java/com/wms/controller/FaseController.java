@@ -27,6 +27,11 @@ public class FaseController {
 		this.faseUnidadeService.salvar(faseUnidade);
 	}
 	
+	@RequestMapping(value = "/salvarLista", method = RequestMethod.PUT)
+	public void salvarLista(@RequestBody List<FaseUnidade> fases) {
+		this.faseUnidadeService.salvarLista(fases);
+	}
+	
 	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void remover(@RequestBody FaseUnidade fase) {
 		this.faseUnidadeService.remover(fase);

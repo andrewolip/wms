@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wms.model.entity.Fase;
 import com.wms.model.entity.FaseUnidade;
 import com.wms.model.repository.FaseUnidadeRepository;
 
@@ -36,5 +35,8 @@ public class FaseUnidadeService {
 		return this.faseUnidadeRepository.findByUnidadeObraIdUnidadeObra(id);
 	}
 	
+	public void salvarLista(List<FaseUnidade> fases) {
+		this.faseUnidadeRepository.save(fases);
+	}
 	
 }

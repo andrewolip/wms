@@ -23,6 +23,8 @@ public class FaseUnidade implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_fase_unidade")
 	private Integer idFaseUnidade;
+	
+	private String nomeFase;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_inicio")
@@ -40,7 +42,7 @@ public class FaseUnidade implements Serializable {
 	@Column(name="data_termino")
 	private Date dataTermino;
 
-	private String observacao;
+	private String descricao;
 
 	private Integer status;
 
@@ -59,9 +61,9 @@ public class FaseUnidade implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_unidade_obra")
 	private UnidadeObra unidadeObra;
-
+	
 	//bi-directional many-to-one association to TarefaObra
-	@OneToMany(mappedBy="faseObra")
+	@OneToMany(mappedBy="faseUnidade")
 	private List<TarefaObra> tarefaObras;
 
 	public FaseUnidade() {
@@ -99,12 +101,21 @@ public class FaseUnidade implements Serializable {
 		this.dataTermino = dataTermino;
 	}
 
-	public String getObservacao() {
-		return this.observacao;
+	
+	public String getNomeFase() {
+		return nomeFase;
 	}
 
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
+	public void setNomeFase(String nomeFase) {
+		this.nomeFase = nomeFase;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Integer getStatus() {
@@ -153,20 +164,6 @@ public class FaseUnidade implements Serializable {
 
 	public void setTarefaObras(List<TarefaObra> tarefaObras) {
 		this.tarefaObras = tarefaObras;
-	}
-
-	public TarefaObra addTarefaObra(TarefaObra tarefaObra) {
-		getTarefaObras().add(tarefaObra);
-		tarefaObra.setFaseObra(this);
-
-		return tarefaObra;
-	}
-
-	public TarefaObra removeTarefaObra(TarefaObra tarefaObra) {
-		getTarefaObras().remove(tarefaObra);
-		tarefaObra.setFaseObra(null);
-
-		return tarefaObra;
 	}
 
 	public Integer getIdFaseUnidade() {

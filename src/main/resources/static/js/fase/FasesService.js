@@ -30,6 +30,10 @@ app.factory('fasesService', ['$http', '$location', '$log', function($http, $loca
 		return $http.put('fases/salvar', fase);
 	}
 
+	factory.salvarListaDeFases = function(fases) {
+		return $http.put('fases/salvarLista', fases);
+	}
+
 	return factory;
 	
 }]);

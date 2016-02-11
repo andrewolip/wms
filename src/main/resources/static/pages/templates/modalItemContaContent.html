@@ -1,11 +1,9 @@
-<div class="modal-header">
+Ôªø<div class="modal-header">
 	<h3 class="modal-title">Item da Conta</h3>
 </div>
 
 <form class="form-horizontal" name="contaPagarForm">
 	<div class="modal-body">
-		<input class="form-control" type="hidden" ng-model="contaPagar.idObra">
-		
 		<div class="row">
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Nome do Item</label> 
@@ -34,7 +32,7 @@
 		
 		<div class="row">
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Valor Unit·rio</label> 
+				<label class="col-lg-3 control-label">Valor Unit√°rio</label> 
 				<div class="col-lg-3">
 					<input class="form-control" type="text" name="valorUnitario"
 						ng-model="itemConta.valorUnitario" maxLength="25" ng-required="true" ui-money-mask/>
@@ -57,7 +55,7 @@
 <div ng-show="itemConta.unidade.$invalid && itemConta.unidade.$dirty"
 	class="alert alert-danger">	Por favor, preencha a unidade de medida!</div>
 <div ng-show="itemConta.valorUnitario.$invalid && itemConta.valorUnitario.$dirty"
-	class="alert alert-danger">	Por favor, preencha o valor unit·rio!</div>
+	class="alert alert-danger">	Por favor, preencha o valor unit√°rio!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="salvarItemConta(itemConta)"> Adicionar</button>
 <!-- 		ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade"> -->

@@ -4,8 +4,6 @@
 
 <form class="form-horizontal" name="contaPagarForm">
 	<div class="modal-body">
-		<input class="form-control" type="hidden" ng-model="contaPagar.idObra">
-		
 		<div class="row">
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Obra</label> 
@@ -129,14 +127,26 @@
 						<thead>
 							<tr>
 								<th>Item</th>
+<<<<<<< HEAD
+								<th>Quantidade</th>
+=======
 								<th>Qtde</th>
 								<th>Medida</th>
+>>>>>>> origin/master
 								<th>Valor Unitário</th>
 								<th>Valor Total</th>
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
 						</thead>
+<<<<<<< HEAD
+						<tbody>
+							<tr ng-repeat="itemConta in contaPagar.itensConta">
+								<td>{{itemConta.nome}}</td>
+								<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
+								<td>{{itemConta.valorUnitario}}</td>
+								<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
+=======
 						<tbody ng-repeat="itemConta in contaPagar.itensConta">
 							<tr ng-show="itemConta.isEdited">
 								<td><input type="text" class="form-control" ng-model="itemConta.nome"/></td>
@@ -158,6 +168,7 @@
 								<td style="width: 65px">{{itemConta.unidade}}</td>
 								<td style="width: 130px">R$ {{itemConta.valorUnitario}}</td>
 								<td style="width: 130px">R$ {{itemConta.valorUnitario * itemConta.quantidade}}</td>
+>>>>>>> origin/master
 								<td>
 									<button class="btn btn-warning"
 		                                 ng-click="itemConta.isEdited = true">
@@ -178,6 +189,7 @@
 		</div>
 	</div>
 </form>
+{{contaPagar.itensConta}}
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
 	class="alert alert-danger">	Por favor, preencha o nº da nota fiscal </div>
 <div class="modal-footer">

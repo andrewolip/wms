@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wms.model.entity.Conta;
 import com.wms.model.entity.UnidadeObra;
 import com.wms.model.repository.UnidadeObraRepository;
 
@@ -18,8 +19,13 @@ public class UnidadeObraService {
 		this.unidadeObraRepository = unidadeObraRepository;
 	}
 	
-	public void salvar(UnidadeObra unidadeObra) {
+	public UnidadeObra salvar(UnidadeObra unidadeObra) {
 		this.unidadeObraRepository.save(unidadeObra);
+		return unidadeObra;
+	}
+	
+	public void salvarLista(List<UnidadeObra> fases) {
+		this.unidadeObraRepository.save(fases);
 	}
 	
 	public void remover(Integer id) {
@@ -41,5 +47,10 @@ public class UnidadeObraService {
 	public UnidadeObra buscarUnidadeObra(Integer id) {
 		return unidadeObraRepository.findOne(id);
 	}
+	
+	public void realizarLancamento(Conta conta) {
+		
+	}
+
 	
 }

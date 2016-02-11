@@ -9,5 +9,4 @@ import com.wms.model.entity.UnidadeObra;
 public interface UnidadeObraRepository extends CrudRepository<UnidadeObra, Integer>{
 
 	List<UnidadeObra> findByObraIdObra(Integer id);
-	
 }
