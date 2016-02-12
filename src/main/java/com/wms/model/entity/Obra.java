@@ -56,9 +56,6 @@ public class Obra implements Serializable {
 
 	private String nome;
 	
-	@OneToMany(mappedBy="obra", cascade = CascadeType.REMOVE)
-	private List<UnidadeObra> unidades;
-	
 	//unidirectional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="id_usuario")

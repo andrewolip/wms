@@ -57,14 +57,9 @@ public class FaseUnidade implements Serializable {
 	@JoinColumn(name="id_conta")
 	private ContaPagar contaPagar;
 
-	//bi-directional many-to-one association to UnidadeObra
 	@ManyToOne
 	@JoinColumn(name="id_unidade_obra")
 	private UnidadeObra unidadeObra;
-	
-	//bi-directional many-to-one association to TarefaObra
-	@OneToMany(mappedBy="faseUnidade")
-	private List<TarefaObra> tarefaObras;
 
 	public FaseUnidade() {
 	}
@@ -151,19 +146,11 @@ public class FaseUnidade implements Serializable {
 	}
 
 	public UnidadeObra getUnidadeObra() {
-		return this.unidadeObra;
+		return unidadeObra;
 	}
 
 	public void setUnidadeObra(UnidadeObra unidadeObra) {
 		this.unidadeObra = unidadeObra;
-	}
-
-	public List<TarefaObra> getTarefaObras() {
-		return this.tarefaObras;
-	}
-
-	public void setTarefaObras(List<TarefaObra> tarefaObras) {
-		this.tarefaObras = tarefaObras;
 	}
 
 	public Integer getIdFaseUnidade() {

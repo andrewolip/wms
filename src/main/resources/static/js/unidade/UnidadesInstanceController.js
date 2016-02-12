@@ -7,7 +7,7 @@ app.controller('UnidadesInstanceController', function($scope,
 		$scope.unidade = {};
 	}
 
-	$scope.unidade.fases = unidadeService.fases;
+	$scope.fases = unidadeService.fases;
 	$scope.unidade.obra = $stateParams;
 	// $scope.fase = fase;
 
@@ -18,19 +18,19 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.maxDate;
 	$scope.minDate;
 	
-	$scope.salvarUnidade = function(unidade) {
+	$scope.salvarUnidade = function(unidade, fases) {
 
 		unidadeService.salvarUnidadeObra(unidade).then(function(response) {
-
-			for (var i=0; i < unidade.fases.length; i++) {
-				unidade.fases[i].idUnidadeObra = response.data.idUnidadeObra;
-
-				 fasesService.salvarListaDeFases(unidade.fases).success(function(data) {
-					 $log.info(unidade.fases);
-				}).error(function(error) {
-					$log.info(error);
-				}); 
+			
+			for (var i=0; i < fases.length; i++) {
+				fases[i].unidadeObra = unidade;
 			}
+			
+			fasesService.salvarListaDeFases(fases).success(function(data) {
+				 $log.info(fases);
+			}).error(function(error) {
+				$log.info(error);
+			}); 
 		},
 
 		function(error) {
@@ -120,7 +120,8 @@ app.controller('UnidadesInstanceController', function($scope,
 	  	$scope.cancelar = function() {
 			$uibModalInstance.dismiss('cancelar');
 		};
-
+		
+		
 		// Abre a Modal ao clicar em 'Adicionar Fases'
 		$scope.modalFasesUpdate = function(tamanho, faseSelecionada) {
 
