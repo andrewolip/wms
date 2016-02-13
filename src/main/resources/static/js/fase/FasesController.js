@@ -6,6 +6,8 @@ app.controller('FasesController', ['$scope', '$uibModal', '$log', 'fasesService'
 	$scope.unidades = [];
 	$scope.unidade = {};
 
+	
+
 	$scope.listarFasesPorUnidade = function() {
 		fasesService.listarFasesPorUnidade($scope.unidade.idUnidadeObra).success(function(data) {
 			$scope.fase = data;

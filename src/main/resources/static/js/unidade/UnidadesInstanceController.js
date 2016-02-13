@@ -17,6 +17,42 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.altInputFormats = ['dd/MM/yyyy'];
 	$scope.maxDate;
 	$scope.minDate;
+
+	$scope.editorEnabled = false;
+
+	$scope.dataInicioAberto = [];
+	$scope.dataPrevistaTerminoAberto = [];
+
+	$scope.abrirFaseDataInicio = function($event, index) {
+		$event.preventDefault();
+		$event.stopPropagation();
+
+		$scope.dataInicioAberto[index] = true;
+	}
+
+	$scope.abrirFaseDataPrevistaTermino = function($event, index) {
+		$event.preventDefault();
+		$event.stopPropagation();
+
+		$scope.dataPrevistaTerminoAberto[index] = true;
+	}
+
+	$scope.enableEditor = function() {
+		$scope.editorEnabled = true;
+	}
+
+	$scope.disableEditor = function() {
+		$scope.editorEnabled = false;
+	}
+
+	$scope.salvar = function() {
+		$scope.disableEditor();
+	}
+
+	$scope.removerFase = function(fase) {
+		var index = $scope.fases.indexOf(fase);
+		$scope.fases.splice(index, 1);
+	}
 	
 	$scope.salvarUnidade = function(unidade, fases) {
 
@@ -147,8 +183,4 @@ app.controller('UnidadesInstanceController', function($scope,
 								+ new Date());
 					}); 
 		}; 
-	  
-	  $scope.removerFase = function(fase) {
-	  	
-	  }
 });

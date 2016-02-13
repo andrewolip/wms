@@ -1,4 +1,4 @@
-<div class="modal-header">
+Ôªø<div class="modal-header">
 	<h3 class="modal-title">Unidade</h3>
 </div>
 
@@ -16,7 +16,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="col-lg-4 control-label">Data InÌcio</label>
+			<label class="col-lg-4 control-label">Data In√≠cio</label>
 			<div class="col-lg-4">
 				<p class="input-group">
           			<input type="text" class="form-control" name="dataInicio" uib-datepicker-popup="{{format}}" ng-model="unidade.dataInicio" is-open="dataInicio.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataInicio()" ng-blur="dataInicioChange(unidade)">
@@ -28,7 +28,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="col-lg-4 control-label">Previs„o de Termino</label>
+			<label class="col-lg-4 control-label">Previs√£o de Termino</label>
 			<div class="col-lg-4">
 				<p class="input-group">
           			<input type="text" class="form-control" name="dataPrevistaTermino" uib-datepicker-popup="{{format}}" ng-model="unidade.dataPrevistaTermino" is-open="dataPrevistaTermino.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-focus="abrirDataPrevistaTermino()" ng-blur="dataPrevistaChange(unidade)" >
@@ -50,7 +50,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="col-lg-4 control-label">DescriÁ„o</label>
+			<label class="col-lg-4 control-label">Descri√ß√£o</label>
 			<div class="col-lg-7">
 				<textarea class="form-control" rows="5"
 				ng-model="unidade.descricao" name="descricao"></textarea>		
@@ -68,19 +68,18 @@
 								<th>Nome</th>
 								<th>Data Inicio</th>
 								<th>Dt Prev Term</th>
-								<th>Editar</th>
-								<th>Excluir</th>
+								<th>A√ß√µes</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr ng-repeat="fase in fases">
+						<tbody ng-repeat="fase in fases">
+							<tr ng-hide="editorEnabled">
 								<td>{{fase.nomeFase}}</td>
 								<td>{{fase.dataInicio | date: 'dd/MM/yyyy'}}</td>
 								<td>{{fase.dataPrevistaTermino | date: 'dd/MM/yyyy'}}</td>
 							<!--	<td>{{fase.custoPrevisto | currency: 'R$'}}</td> -->
 								<td>
 									<button class="btn btn-warning"
-										ng-click="modalFasesUpdate('md', fase)">
+										ng-click="enableEditor()">
 										<span class="glyphicon glyphicon-edit"></span>
 									</button>
 								</td>
@@ -89,7 +88,35 @@
 										<span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</td>
+							</tr>
+							<tr ng-show="editorEnabled">
+								<td>
+									<input class="form-control" ng-model="fase.nomeFase" ng-show="editorEnabled">
+								</td>
+								<td>
+										
+										<input class="form-control" ng-model="fase.dataInicio" type="text" uib-datepicker-popup="shortDate" is-open="dataInicioAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate" max-date="maxDate" ng-focus="abrirFaseDataInicio($event, $index)" ui-date-mask/> 
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" ng-click="abrirFaseDataInicio($event, $index)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
 								
+								</td>
+								<td>
+									
+										<input id="dataPrevistaTermino_{{$index}}" class="form-control" ng-model="fase.dataPrevistaTermino" type="text" uib-datepicker-popup="shortDate" is-open="dataPrevistaTerminoAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate" max-date="maxDate" ng-focus="abrirFaseDataPrevistaTermino($event, $index)" ui-date-mask/>
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" ng-click="abrirFaseDataPrevistaTermino($event, $index)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+									</span>
+								
+								</td>
+								<td style="width: 30%">
+									<button class="btn bnt-success" ng-click="salvar()">OK</button>
+									<button class="btn btn-danger" ng-click="disableEditor()">Cancelar</button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
