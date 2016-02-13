@@ -1,11 +1,12 @@
 app.controller('ContaPagarInstanceController', function($scope, 
-		$uibModalInstance, $uibModal, $log, contaPagarService, contaPagar, obrasService, unidadeService) {
+		$uibModalInstance, $uibModal, $log, contaPagarService, contaPagar, obrasService, unidadeService, $window) {
 	
 	$scope.contaPagar = contaPagar;
+	$scope.itensConta = contaPagarService.itensConta;
 	$scope.obras = [];
 	$scope.unidades = [];
 	$scope.obraAtual = {};
-	$scope.contaPagar.itensConta = [];
+	
 	
 	//DatePicker
 	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -17,8 +18,17 @@ app.controller('ContaPagarInstanceController', function($scope,
 	$scope.cancelar = function() {
 		$uibModalInstance.dismiss('cancelar');
 	};
+	
+	$scope.$watch('contaPagar', function(contaPagar){
+		debugger;
+		if(!contaPagar) {
+			$scope.contaPagar = {};
+		}
+	});
 
 	$scope.atualizar = function(contaPagar) {
+		debugger;
+		contaPagar.itensConta = $scope.itensConta;
 		contaPagarService.atualizarContaPagar(contaPagar).success(function(data) {
 			$uibModalInstance.close();
 		}).error(function(error) {
@@ -51,20 +61,24 @@ app.controller('ContaPagarInstanceController', function($scope,
 		console.log($scope.obraAtual);
 		console.log(obra);
 		
-		if(!$scope.contaPagar.unidade) {
-			$scope.listarUnidadesPorObra();
-		} else {
-			unidadeAtual = $scope.contaPagar.unidade; 
-		}
-		
-		if($scope.obraAtual == null) {
-			$scope.contaPagar.unidadeObra = null;
-			$scope.unidades = [];
+		if($scope.contaPagar) {
+			if(!$scope.contaPagar.unidade) {
+				$scope.listarUnidadesPorObra();
+			} else {
+				unidadeAtual = $scope.contaPagar.unidade; 
+			}
+				
+			if(!$scope.obraAtual) {
+				$scope.contaPagar.unidadeObra = null;
+				$scope.unidades = [];
+			}
 		}
 	});
 	
 	$scope.$watch('unidadeAtual', function(unidade){
-		$scope.contaPagar.unidade = unidade;
+		if(unidade) {
+			$scope.contaPagar.unidade = unidade;
+		}
 	});
 	
 	$scope.dataVencimento = {
@@ -75,11 +89,8 @@ app.controller('ContaPagarInstanceController', function($scope,
 		  $scope.dataVencimento.aberto = true;
 	};
 	
-<<<<<<< HEAD
-	$scope.modalUpdateItemConta = function(tamanho, itemContaSelecionado) {
-		console.log("abrindo edit item");
-=======
 	$scope.adicionarItem = function() {
+		debugger;
 		var itemConta = {
 				nome: "",
 				quantidade: null,
@@ -87,45 +98,51 @@ app.controller('ContaPagarInstanceController', function($scope,
 				unidade: "",
 				isEdited: true
 		};
-		$scope.contaPagar.itensConta.push(itemConta);
+		$scope.itensConta.push(itemConta);
 		$scope.calcularValorConta();
 	};
 	
 	$scope.calcularValorConta = function() {
-		for ( var item in $scope.contaPagar.itensConta) {
-			$scope.contaPagar.valorConta =+ ($scope.contaPagar.itensConta[item].valorUnitario * $scope.contaPagar.itensConta[item].quantidade);
-			console.log($scope.contaPagar.itensConta[item]);
+		debugger;
+		$scope.contaPagar.valorConta = 0.0;
+		for ( var item in $scope.itensConta) {
+			$scope.contaPagar.valorConta += ($scope.itensConta[item].valorUnitario * $scope.itensConta[item].quantidade);
+			console.log($scope.itensConta[item]);
 		}
 	};
 
 	$scope.removerItem = function(itemConta) {
-		itemId = itemConta.idItem;
-		
-		var i = 0;
-		for (var j in $scope.contaPagar.itensConta) {
-			if ($scope.contaPagar.itensConta[j].idItem == itemId)
-				break;
-			i++;
+		var deleteItem = $window
+		.confirm('Tem certeza que gostaria de apagar o item '
+			+ itemConta.nome + '?');
+
+		if (deleteItem) {
+			var i = 0;
+			for (var i in $scope.itensConta) {
+				if ($scope.itensConta[i] == itemConta)
+					break;
+				i++;
+			}
+			
+			$scope.itensConta.splice(i, 1);
+			$scope.calcularValorConta();
 		}
-		
-		$scope.contaPagar.itensConta.splice(i, 1);
-		$scope.calcularValorConta();
 	};
 	
-	$scope.modalUpdateItemConta = function() {
-		console.log("ContaPagarInstCtrl: modalUpdateItemConta");
->>>>>>> origin/master
-		var modalInstance = $uibModal.open({
-			templateUrl : 'pages/templates/modalItemContaContent.html',
-			controller : 'ItemContaInstanceController',
-			size : tamanho,
-			resolve : {
-				itemConta : function() {
-					return angular.copy(itemContaSelecionado);
-				}
-			}
-		});
-
+//	$scope.modalUpdateItemConta = function() {
+//		console.log("ContaPagarInstCtrl: modalUpdateItemConta");
+//		var modalInstance = $uibModal.open({
+//			templateUrl : 'pages/templates/modalItemContaContent.html',
+//			controller : 'ItemContaInstanceController',
+//			size : tamanho,
+//			backdrop: false,
+//			resolve : {
+//				itemConta : function() {
+//					return angular.copy(itemContaSelecionado);
+//				}
+//			}
+//		});
+//
 //		modalInstance.result.then(
 //				function(selectedItem) {
 //					$scope.selected = selectedItem;
@@ -134,5 +151,5 @@ app.controller('ContaPagarInstanceController', function($scope,
 //					$log.info('Modal foi fechada em: '
 //							+ new Date());
 //				});
-	};
+//	};
 });

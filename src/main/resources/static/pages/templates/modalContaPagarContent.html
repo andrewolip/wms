@@ -122,39 +122,27 @@
 				</div>
 				
 				<div class="table-responsive">
-					<table st-table="itensConta" class="table table-striped" ng-hide="contaPagar.itensConta.length == 0"
+					<table st-table="itensConta" class="table table-striped" ng-hide="itensConta.length == 0"
 						st-pagination-scroll>
 						<thead>
 							<tr>
 								<th>Item</th>
-<<<<<<< HEAD
-								<th>Quantidade</th>
-=======
 								<th>Qtde</th>
 								<th>Medida</th>
->>>>>>> origin/master
 								<th>Valor Unitário</th>
 								<th>Valor Total</th>
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
 						</thead>
-<<<<<<< HEAD
-						<tbody>
-							<tr ng-repeat="itemConta in contaPagar.itensConta">
-								<td>{{itemConta.nome}}</td>
-								<td>{{itemConta.quantidade + " " + itemConta.unidade}}</td>
-								<td>{{itemConta.valorUnitario}}</td>
-								<td>{{itemConta.valorUnitario * itemConta.quantidade}}</td>
-=======
-						<tbody ng-repeat="itemConta in contaPagar.itensConta">
+						<tbody ng-repeat="itemConta in itensConta">
 							<tr ng-show="itemConta.isEdited">
 								<td><input type="text" class="form-control" ng-model="itemConta.nome"/></td>
 								<td style="width: 65px;"><input type="text" class="form-control" ng-model="itemConta.quantidade"/></td>
 								<td style="width: 65px;"><input type="text" class="form-control" ng-model="itemConta.unidade"/></td>
 								<td style="width: 130px;"><input type="text" class="form-control" ng-model="itemConta.valorUnitario" ui-money-mask/></td>
 								<td><input type="text" class="form-control" style="width: 130px;" ng-hide="((itemConta.valorUnitario == null) || (itemConta.quantidade == null))" value="$ {{((itemConta.valorUnitario == null) || (itemConta.quantidade == null)) || (itemConta.valorUnitario * itemConta.quantidade)}}" ng-disabled="true"/></td>
-								<td><button class="btn btn-success" ng-click="itemConta.isEdited = false" ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade">Ok</button></td>
+								<td><button class="btn btn-success" ng-click="calcularValorConta(); itemConta.isEdited = false;" ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade">Ok</button></td>
 								<td>
 									<button class="btn btn-danger" 
 										ng-click="removerItem(itemConta)">
@@ -168,7 +156,6 @@
 								<td style="width: 65px">{{itemConta.unidade}}</td>
 								<td style="width: 130px">R$ {{itemConta.valorUnitario}}</td>
 								<td style="width: 130px">R$ {{itemConta.valorUnitario * itemConta.quantidade}}</td>
->>>>>>> origin/master
 								<td>
 									<button class="btn btn-warning"
 		                                 ng-click="itemConta.isEdited = true">
@@ -189,7 +176,6 @@
 		</div>
 	</div>
 </form>
-{{contaPagar.itensConta}}
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
 	class="alert alert-danger">	Por favor, preencha o nº da nota fiscal </div>
 <div class="modal-footer">

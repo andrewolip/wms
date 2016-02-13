@@ -27,7 +27,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Conta a Pagar'
-							$scope.modalUpdate = function(tamanho, contaPagarSelecionada) {
+							$scope.modalContaPagarUpdate = function(tamanho, contaPagarSelecionada) {
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalContaPagarContent.html',
 									controller : 'ContaPagarInstanceController',
