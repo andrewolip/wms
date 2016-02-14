@@ -15,8 +15,8 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.formats = ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
 	$scope.altInputFormats = ['dd/MM/yyyy'];
-	$scope.maxDate;
-	$scope.minDate;
+	$scope.maxDate = [];
+	$scope.minDate = [];
 
 	$scope.editorEnabled = false;
 
@@ -35,6 +35,18 @@ app.controller('UnidadesInstanceController', function($scope,
 		$event.stopPropagation();
 
 		$scope.dataPrevistaTerminoAberto[index] = true;
+	}
+
+	$scope.faseDataInicioChange = function(index, fase) {
+	//	$log.info('Data Inicio da Fase: ' + fase.faseDataInicio);
+
+	//	$scope.minDate[index] = fase.faseDataInicio;
+	//	$log.info('Data MIN: ' + $scope.minDate[index]);
+	}
+
+	// AUXILIO
+	$scope.dataInicioChange = function(unidade) {
+		  $scope.minDate = unidade.dataInicio;
 	}
 
 	$scope.enableEditor = function() {

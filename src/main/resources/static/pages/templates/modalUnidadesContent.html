@@ -94,23 +94,20 @@
 									<input class="form-control" ng-model="fase.nomeFase" ng-show="editorEnabled">
 								</td>
 								<td>
-										
-										<input class="form-control" ng-model="fase.dataInicio" type="text" uib-datepicker-popup="shortDate" is-open="dataInicioAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate" max-date="maxDate" ng-focus="abrirFaseDataInicio($event, $index)" ui-date-mask/> 
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-default" ng-click="abrirFaseDataInicio($event, $index)">
-												<i class="glyphicon glyphicon-calendar"></i>
-											</button>
-										</span>
-								
+									<input class="form-control" name="faseDataInicio" ng-model="fase.dataInicio" type="text" uib-datepicker-popup="{{format}}" is-open="dataInicioAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate[$index]" max-date="maxDate[$index]" ng-focus="abrirFaseDataInicio($event, $index)" ng-blur="faseDataInicioChange($index, fase)" ng-required="true"/> 
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="abrirFaseDataInicio($event, $index)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
 								</td>
 								<td>
-									
-										<input id="dataPrevistaTermino_{{$index}}" class="form-control" ng-model="fase.dataPrevistaTermino" type="text" uib-datepicker-popup="shortDate" is-open="dataPrevistaTerminoAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate" max-date="maxDate" ng-focus="abrirFaseDataPrevistaTermino($event, $index)" ui-date-mask/>
-										<span class="input-group-btn">
-											<button type="button" class="btn btn-default" ng-click="abrirFaseDataPrevistaTermino($event, $index)">
-												<i class="glyphicon glyphicon-calendar"></i>
-											</button>
-									</span>
+									<input class="form-control" ng-model="fase.dataPrevistaTermino" type="text" name="faseDataPrevistaTermino" uib-datepicker-popup="{{format}}" is-open="dataPrevistaTerminoAberto[$index]" datepicker-options="dateOptions" current-text="Hoje" clear-text="Limpar" close-text="Fechar" ng-show="editorEnabled" ng-readonly="false" alt-input-formats="altInputFormats" min-date="minDate" max-date="maxDate" ng-focus="abrirFaseDataPrevistaTermino($event, $index)"/>
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="abrirFaseDataPrevistaTermino($event, $index)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+								</span>
 								
 								</td>
 								<td style="width: 30%">

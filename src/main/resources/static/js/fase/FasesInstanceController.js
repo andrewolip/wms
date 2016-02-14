@@ -6,18 +6,18 @@ app.controller('FasesInstanceController', function($scope,
 	$scope.fase = fase;
 	
 	//DatePicker
-	$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	$scope.formats = ['dd/MM/yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
 	$scope.format = $scope.formats[0];
-	$scope.altInputFormats = ['dd-MM-yyyy'];
+	$scope.altInputFormats = ['dd/MM/yyyy'];
 	$scope.maxDate;
 	$scope.minDate;
 	
 	$scope.dataInicio = {
-			aberto: false
+		aberto: false
 	};
 	  
 	$scope.dataEntrega = {
-			aberto: false	 
+		aberto: false	 
 	}
 	  
 	$scope.dataPrevistaTermino = {
