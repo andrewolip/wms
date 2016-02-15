@@ -24,7 +24,6 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.dataPrevistaTerminoAberto = [];
 
 	$scope.adicionarFase = function() {
-		debugger;
 		var fase = {
 				nomeFase: "",
 				dataInicio: null,
