@@ -2,10 +2,10 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 	var unidade = {};
 	unidade.fases = [];
 	
-	unidade.addFase = function(fase) {
+	/*unidade.addFase = function(fase) {
 		// se nao funcionar, colocar no formato JSON
 		unidade.fases.push(fase);
-	}
+	} */
 	
 	unidade.removerFase = function(fase) {
 		unidade.fases.remove(fase);
