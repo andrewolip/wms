@@ -7,7 +7,7 @@ app.controller('UnidadesInstanceController', function($scope,
 		$scope.unidade = {};
 	}
 
-	// $scope.fases = unidadeService.fases;
+	$scope.fases = [];
 	$scope.unidade.obra = $stateParams;
 	// $scope.fase = fase;
 
