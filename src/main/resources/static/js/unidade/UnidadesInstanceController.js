@@ -69,8 +69,9 @@ app.controller('UnidadesInstanceController', function($scope,
 	};*/
 
 	$scope.removerFase = function(fase) {
-		if(fase.idFase == null) {
+		if(fase.idFaseUnidade == null) {
 			$scope.removerFaseArray(fase);
+
 		} else {
 			$scope.removerFaseBD(fase);
 		}
@@ -84,10 +85,9 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.removerFaseBD = function(fase) {
 
 		var deleteFase = $window.confirm('Tem certeza que deseja remover a Fase ' + fase.nomeFase + ' do Banco de Dados?');
-
 		if(deleteFase) {
 			fasesService.removerFase(fase).success(function(data) {
-			$scope.removerFase(fase);
+			$scope.removerFaseArray(fase);
 		}).error(function(error) {
 			$log.error(error);
 		});
@@ -114,7 +114,6 @@ app.controller('UnidadesInstanceController', function($scope,
 		});
 
 		$uibModalInstance.close();
-		unidadeService.listarUnidadesPorObra();
 	}
 	
 	$scope.dataInicio = {
