@@ -1,5 +1,5 @@
-app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeService', '$window', '$location', '$stateParams',
-                                      function($scope, $uibModal, $log, unidadeService, $window, $location, $stateParams) {
+app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeService', 'fasesService','$window', '$location', '$stateParams',
+                                      function($scope, $uibModal, $log, unidadeService, fasesService, $window, $location, $stateParams) {
 	
 	$scope.obra = $stateParams;
 	$scope.unidades = [];
