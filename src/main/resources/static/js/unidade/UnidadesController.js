@@ -1,5 +1,5 @@
-app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeService', '$window', '$location', '$stateParams',
-                                      function($scope, $uibModal, $log, unidadeService, $window, $location, $stateParams) {
+app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeService', 'fasesService','$window', '$location', '$stateParams',
+                                      function($scope, $uibModal, $log, unidadeService, fasesService, $window, $location, $stateParams) {
 	
 	$scope.obra = $stateParams;
 	$scope.unidades = [];
@@ -21,7 +21,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 		if (deleteUnidade) {
 			unidadeService.removerUnidade(unidade).success(
 					function(data) {
-						$scope.listarUnidadesPorObra();
+						$scope.listarUnidadesPorObra($scope.obra.idObra);
 					}).error(function(error) {
 				$log.error(error);
 			});
@@ -52,7 +52,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 				});
 	};
 
-	$scope.modalUnidadeEditUpdate = function(tamanho, unidadeSelecionada) {
+/*	$scope.modalUnidadeEditUpdate = function(tamanho, unidadeSelecionada) {
 		
 		var modalInstance = $uibModal.open({
 			templateUrl : 'pages/templates/modalUnidadesContentEdit.html',
@@ -74,6 +74,6 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 					$log.info('Modal foi fechada em: '
 							+ new Date());
 				});
-	};
+	}; */
 	
 }]);

@@ -88,9 +88,9 @@
 				ng-model="unidade.descricao" name="descricao"></textarea>		
 			</div>
 		</div>
-																					
+											
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
+			<div class="col-lg-10 col-lg-offset-1" ng-init="listarFasesPorUnidade(unidade)">
 				<div class="table-responsive">
 
 					<table st-table="unidades" class="table table-striped"
@@ -119,6 +119,7 @@
 									</button>
 								</td>
 							</tr>
+
 							<tr ng-show="fase.editorEnabled">
 								<td>
 									<input class="form-control" ng-model="fase.nomeFase" ng-show="fase.editorEnabled">
@@ -174,8 +175,11 @@
 								
 								</td>
 								<td style="width: 30%">
-									<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button>
-									<button class="btn btn-danger" ng-click="fase.editorEnabled = false">Cancelar</button>
+								<!--	<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button> -->
+									<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button> 
+									<button class="btn btn-danger" ng-click="removerFase(fase)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
 								</td>
 							</tr>
 						</tbody>

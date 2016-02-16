@@ -1,5 +1,5 @@
 app.controller('UnidadesInstanceController', function($scope,
-		$uibModalInstance, $log, $uibModal, unidade, unidadeService, fasesService, $stateParams) {
+		$uibModalInstance, $log, $uibModal, unidade, unidadeService, fasesService, $stateParams, $window) {
 	
 	if(unidade != null) {
 		$scope.unidade = unidade;
@@ -69,16 +69,29 @@ app.controller('UnidadesInstanceController', function($scope,
 	};*/
 
 	$scope.removerFase = function(fase) {
+		if(fase.idFaseUnidade == null) {
+			$scope.removerFaseArray(fase);
+
+		} else {
+			$scope.removerFaseBD(fase);
+		}
+	}
+
+	$scope.removerFaseArray = function(fase) {
 		var index = $scope.fases.indexOf(fase);
 		$scope.fases.splice(index, 1);
 	}
 
 	$scope.removerFaseBD = function(fase) {
-		fasesService.removerFase(fase).success(function(data) {
-			$scope.removerFase(fase);
+
+		var deleteFase = $window.confirm('Tem certeza que deseja remover a Fase ' + fase.nomeFase + ' do Banco de Dados?');
+		if(deleteFase) {
+			fasesService.removerFase(fase).success(function(data) {
+			$scope.removerFaseArray(fase);
 		}).error(function(error) {
 			$log.error(error);
 		});
+		}	
 	};
 	
 	$scope.salvarUnidade = function(unidade, fases) {
@@ -86,9 +99,9 @@ app.controller('UnidadesInstanceController', function($scope,
 		unidadeService.salvarUnidadeObra(unidade).then(function(response) {
 			
 			for (var i=0; i < fases.length; i++) {
-				fases[i].unidadeObra = unidade;
+				fases[i].unidadeObra = response.data;
 			}
-			
+
 			fasesService.salvarListaDeFases(fases).success(function(data) {
 				 $log.info(fases);
 			}).error(function(error) {
@@ -101,7 +114,6 @@ app.controller('UnidadesInstanceController', function($scope,
 		});
 
 		$uibModalInstance.close();
-		unidadeService.listarUnidadesPorObra();
 	}
 	
 	$scope.dataInicio = {

@@ -85,7 +85,7 @@ public class UnidadeObra implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_obra")
 	private Obra obra;
-	
+
 	public UnidadeObra() {
 	}
 
