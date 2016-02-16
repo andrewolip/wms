@@ -1,5 +1,6 @@
 package com.wms.model.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,11 @@ public class FaseUnidadeService {
 		this.faseUnidadeRepository.delete(faseUnidade);
 	}
 	
-	public List<FaseUnidade> listarFases() {
+	public Collection<FaseUnidade> listarFases() {
 		return (List<FaseUnidade>) this.faseUnidadeRepository.findAll();
 	}
 	
-	public List<FaseUnidade> listarPorUnidade(Integer id) {
+	public Collection<FaseUnidade> listarFasesPorUnidade(Integer id) {
 		return this.faseUnidadeRepository.findByUnidadeObraIdUnidadeObra(id);
 	}
 	

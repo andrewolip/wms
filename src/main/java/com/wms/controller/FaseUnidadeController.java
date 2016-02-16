@@ -1,8 +1,10 @@
 package com.wms.controller;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +15,7 @@ import com.wms.model.service.FaseUnidadeService;
 
 @RestController
 @RequestMapping("/fases")
-public class FaseController {
+public class FaseUnidadeController {
 
 	private FaseUnidadeService faseUnidadeService;
 	
@@ -38,13 +40,13 @@ public class FaseController {
 	}
 	
 	@RequestMapping(value = "/listar", method= RequestMethod.GET)
-	public List<FaseUnidade> listarFases() {
+	public Collection<FaseUnidade> listarFases() {
 		return this.faseUnidadeService.listarFases();
 	}
 	
 	@RequestMapping(value = "/listar_por_unidade/{id}", method = RequestMethod.GET)
-	public List<FaseUnidade> listarFasesPorUnidade(Integer id) {
-		return this.faseUnidadeService.listarPorUnidade(id);
+	public Collection<FaseUnidade> listarFasesPorUnidade(@PathVariable Integer id) {
+		return this.faseUnidadeService.listarFasesPorUnidade(id);
 	}
 	
 }

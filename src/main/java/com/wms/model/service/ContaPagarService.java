@@ -1,5 +1,6 @@
 package com.wms.model.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,8 @@ public class ContaPagarService {
 		contaPagarRepository.delete(id);
 	}
 	
-	public List<ContaPagar> listarContasPagar() {
-		return (List<ContaPagar>) contaPagarRepository.findAll();
+	public Collection<ContaPagar> listarContasPagar() {
+		return (Collection<ContaPagar>) contaPagarRepository.findAll();
 	}
 	
 	public ContaPagar getContaPagar(Integer id) {
@@ -40,11 +41,11 @@ public class ContaPagarService {
 		return contaPagarRepository.findOne(id);
 	}
 	
-	public List<ContaPagar> listarPorObra(Obra obra) {
+	public Collection<ContaPagar> listarPorObra(Obra obra) {
 		return this.contaPagarRepository.findByObra(obra);
 	}
 	
-	public List<ContaPagar> listarPorUnidade(UnidadeObra unidadeObra) {
+	public Collection<ContaPagar> listarPorUnidade(UnidadeObra unidadeObra) {
 		return this.contaPagarRepository.findByUnidadeObra(unidadeObra);
 	}
 }

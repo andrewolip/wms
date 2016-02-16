@@ -1,6 +1,6 @@
 package com.wms.model.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,8 @@ public class FuncaoService {
 		funcaoRepository.delete(id);
 	}
 	
-	public List<Funcao> listarFuncoes() {
-		return (List<Funcao>) funcaoRepository.findAll();
+	public Collection<Funcao> listarFuncoes() {
+		return (Collection<Funcao>) funcaoRepository.findAll();
 	}
 	
 	public Funcao getFuncao(Integer id) {

@@ -11,7 +11,7 @@ app.factory('fasesService', ['$http', '$location', '$log', function($http, $loca
 		return $http.get('/fases/listar');
 	}
 	
-	factory.listarPorUnidade = function(id) {
+	factory.listarFasesPorUnidade = function(id) {
 		return $http.get('fases/listar_por_unidade/' + id);
 	}
 	

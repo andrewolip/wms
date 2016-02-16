@@ -1,6 +1,6 @@
 package com.wms.model.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,8 @@ public class ObraService {
 		obraRepository.delete(id);
 	}
 	
-	public List<Obra> listarObras() {
-		return (List<Obra>) obraRepository.findAll();
+	public Collection<Obra> listarObras() {
+		return (Collection<Obra>) obraRepository.findAll();
 	}
 	
 	public Obra buscarObra(Integer id) {

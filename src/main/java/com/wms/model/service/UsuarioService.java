@@ -1,8 +1,7 @@
 package com.wms.model.service;
 
-import java.util.List;
+import java.util.Collection;
 
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +26,8 @@ public class UsuarioService {
 		usuarioRepository.delete(id);
 	}
 	
-	public List<Usuario> listarUsuarios() {
-		return (List<Usuario>) usuarioRepository.findAll();
+	public Collection<Usuario> listarUsuarios() {
+		return (Collection<Usuario>) usuarioRepository.findAll();
 	}
 	
 	public Usuario getUsuario(Integer id) {
@@ -40,8 +39,8 @@ public class UsuarioService {
 	}
 
 //	@Query("select c.nome from Usuario c where c.perfil = '2'")
-	public List<Usuario> listarCoordenadores() {
-		return (List<Usuario>) usuarioRepository.findByPerfil(2);
+	public Collection<Usuario> listarCoordenadores() {
+		return (Collection<Usuario>) usuarioRepository.findByPerfil(2);
 	}
 	
 }

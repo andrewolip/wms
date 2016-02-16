@@ -1,6 +1,6 @@
 package com.wms.model.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,8 @@ public class FornecedorService {
 		fornecedorRepository.delete(id);
 	}
 	
-	public List<Fornecedor> listarFornecedores() {
-		return (List<Fornecedor>) fornecedorRepository.findAll();
+	public Collection<Fornecedor> listarFornecedores() {
+		return (Collection<Fornecedor>) fornecedorRepository.findAll();
 	}
 	
 	public Fornecedor getFornecedor(Integer id) {

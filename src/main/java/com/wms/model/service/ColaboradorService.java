@@ -1,5 +1,6 @@
 package com.wms.model.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class ColaboradorService {
 		return colaboradorRepository.findOne(id);
 	}
 
-	public List<Colaborador> listarColaboradores() {
-		return (List<Colaborador>) colaboradorRepository.findAll();
+	public Collection<Colaborador> listarColaboradores() {
+		return (Collection<Colaborador>) colaboradorRepository.findAll();
 	}
 	
 }

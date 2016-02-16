@@ -1,6 +1,6 @@
 package com.wms.model.repository;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,7 +10,7 @@ import com.wms.model.entity.UnidadeObra;
 
 public interface ContaPagarRepository extends CrudRepository<ContaPagar, Integer>{
 	
-	List<ContaPagar> findByObra(Obra obra);
-	List<ContaPagar> findByUnidadeObra(UnidadeObra unidadeObra);
+	Collection<ContaPagar> findByObra(Obra obra);
+	Collection<ContaPagar> findByUnidadeObra(UnidadeObra unidadeObra);
 	
 }

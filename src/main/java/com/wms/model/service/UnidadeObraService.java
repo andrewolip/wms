@@ -1,5 +1,6 @@
 package com.wms.model.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,11 @@ public class UnidadeObraService {
 		return this.unidadeObraRepository.findOne(id);
 	}
 	
-	public List<UnidadeObra> listarUnidades() {
-		return (List<UnidadeObra>) this.unidadeObraRepository.findAll();
+	public Collection<UnidadeObra> listarUnidades() {
+		return (Collection<UnidadeObra>) this.unidadeObraRepository.findAll();
 	}
 	
-	public List<UnidadeObra> listarPorObra(Integer id) {
+	public Collection<UnidadeObra> listarPorObra(Integer id) {
 		return this.unidadeObraRepository.findByObraIdObra(id);
 	}
 	

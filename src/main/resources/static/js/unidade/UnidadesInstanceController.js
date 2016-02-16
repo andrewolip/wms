@@ -178,4 +178,12 @@ app.controller('UnidadesInstanceController', function($scope,
 								+ new Date());
 					}); 
 		}; 
+
+		$scope.listarFasesPorUnidade = function(unidade) {
+			fasesService.listarFasesPorUnidade(unidade.idUnidadeObra).success(function(data){
+				$scope.fases = data;
+			}).error(function(error) {
+				$log.error(error);
+			});
+		}
 });

@@ -1,6 +1,6 @@
 package com.wms.model.repository;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,5 +8,5 @@ import com.wms.model.entity.FaseUnidade;
 
 public interface FaseUnidadeRepository extends CrudRepository<FaseUnidade, Integer>{
 	
-	List<FaseUnidade> findByUnidadeObraIdUnidadeObra(Integer id);
+	Collection<FaseUnidade> findByUnidadeObraIdUnidadeObra(Integer id);
 }
