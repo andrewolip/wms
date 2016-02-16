@@ -19,7 +19,7 @@ app.factory('obrasService', ['$http', '$location', '$log', function($http, $loca
 	
 	factory.removerObra = function(obra) {
 		return $http({
-			url : '/obras/apagar/' + obra.idObra,
+			url : '/obras/remover/' + obra.idObra,
 			method : 'DELETE',
 			data : obra,
 			headers : {

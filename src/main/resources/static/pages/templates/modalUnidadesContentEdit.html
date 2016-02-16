@@ -114,7 +114,7 @@
 										ng-click="fase.editorEnabled = true">
 										<span class="glyphicon glyphicon-edit"></span>
 									</button>
-									<button class="btn btn-danger" ng-click="removerFase(fase)">
+									<button class="btn btn-danger" ng-click="removerFaseBD(fase)">
 										<span class="glyphicon glyphicon-remove"></span>
 									</button>
 								</td>
@@ -174,8 +174,11 @@
 								
 								</td>
 								<td style="width: 30%">
-									<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button>
-									<button class="btn btn-danger" ng-click="fase.editorEnabled = false">Cancelar</button>
+								<!--	<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button> -->
+									<button class="btn bnt-success" ng-click="fase.editorEnabled = false">OK</button> 
+									<button class="btn btn-danger" ng-click="removerFase(fase)">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
 								</td>
 							</tr>
 						</tbody>
@@ -194,6 +197,6 @@
 
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="salvarUnidade(unidade, fases)"
-		ng-disabled="!unidade.nomeUnidade || !unidade.dataInicio || !unidade.dataPrevistaTermino">Inserir</button>
+		ng-disabled="!unidade.nomeUnidade">Inserir</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

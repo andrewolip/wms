@@ -35,8 +35,8 @@ public class FaseUnidadeController {
 	}
 	
 	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
-	public void remover(@RequestBody FaseUnidade fase) {
-		this.faseUnidadeService.remover(fase);
+	public void remover(@PathVariable Integer id) {
+		this.faseUnidadeService.remover(id);
 	}
 	
 	@RequestMapping(value = "/listar", method= RequestMethod.GET)

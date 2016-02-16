@@ -48,6 +48,7 @@ app.controller('UnidadesInstanceController', function($scope,
 	};
 
 	$scope.faseDataInicioChange = function(index, fase) {
+		$log.info("Chamou Data Inicio Change!!!!");
 		$scope.minDate[index] = fase.dataInicio;
 	};
 
@@ -61,15 +62,23 @@ app.controller('UnidadesInstanceController', function($scope,
 
 	$scope.disableEditor = function() {
 		$scope.editorEnabled = false;
-	}; */
+	}; 
 
 	$scope.salvar = function() {
 		$scope.disableEditor();
-	};
+	};*/
 
 	$scope.removerFase = function(fase) {
 		var index = $scope.fases.indexOf(fase);
 		$scope.fases.splice(index, 1);
+	}
+
+	$scope.removerFaseBD = function(fase) {
+		fasesService.removerFase(fase).success(function(data) {
+			$scope.removerFase(fase);
+		}).error(function(error) {
+			$log.error(error);
+		});
 	};
 	
 	$scope.salvarUnidade = function(unidade, fases) {
@@ -92,6 +101,7 @@ app.controller('UnidadesInstanceController', function($scope,
 		});
 
 		$uibModalInstance.close();
+		unidadeService.listarUnidadesPorObra();
 	}
 	
 	$scope.dataInicio = {

@@ -33,7 +33,7 @@ public class ObraController {
 		obraService.salvar(obra);
 	}
 
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
 		obraService.remover(id);
 	}

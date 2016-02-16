@@ -39,7 +39,7 @@ public class UnidadeObraController {
 		return unidadeObraService.listarPorObra(id);
 	}
 	
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void removerUnidade(@PathVariable Integer id) {
 		unidadeObraService.remover(id);
 	}

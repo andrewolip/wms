@@ -24,8 +24,8 @@ public class FaseUnidadeService {
 		this.faseUnidadeRepository.save(faseUnidade);
 	}
 	
-	public void remover(FaseUnidade faseUnidade) {
-		this.faseUnidadeRepository.delete(faseUnidade);
+	public void remover(Integer id) {
+		this.faseUnidadeRepository.delete(id);
 	}
 	
 	public Collection<FaseUnidade> listarFases() {
