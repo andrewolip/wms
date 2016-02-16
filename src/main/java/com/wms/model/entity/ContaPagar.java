@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -79,7 +80,7 @@ public class ContaPagar implements Serializable {
 	private FaseUnidade faseObra;
 	
 	//bi-directional many-to-one association to ItemConta
-	@OneToMany(mappedBy="contaPagar")
+	@OneToMany(mappedBy="contaPagar", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemConta> itensConta;
 
 	public ContaPagar() {
