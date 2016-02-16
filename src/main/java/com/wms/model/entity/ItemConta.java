@@ -3,6 +3,7 @@ package com.wms.model.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class ItemConta implements Serializable {
 	private BigDecimal valorUnitario;
 
 	//bi-directional many-to-one association to ContaPagar
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="id_conta_pagar")
 	private ContaPagar contaPagar;
 

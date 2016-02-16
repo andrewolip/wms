@@ -37,22 +37,6 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 		contaPagar.itensConta.remove(itemConta);
 	} 
 	
-//	factory.listarObras = function() {
-//		return $http.get('/obras/listar');
-//	}
-//	
-//	factory.listarUnidadesPorObra = function(id) {
-//		return $http.get('unidades/listar_por_obra/' + id);
-//	}
-	
-//	factory.listarPorObra = function(obra) {
-//		return $http.get('contasPagar/listar_por_obra', obra);
-//	}
-//	
-//	factory.listarPorUnidade = function(unidade) {
-//		return $http.get('contasPagar/listar_por_unidade/', unidade);
-//	}
-	
 	return contaPagar;
 	
 }]);
