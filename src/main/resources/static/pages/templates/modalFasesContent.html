@@ -34,7 +34,22 @@
 			<label class="col-lg-4 control-label">Data Início</label>
 			<div class="col-lg-4">
 				<p class="input-group">
-          			<input type="text" class="form-control" name="dataInicio" uib-datepicker-popup="{{format}}" ng-model="fase.dataInicio" is-open="dataInicio.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" current-text="Hoje" clear-text="Limpar" close-text="Fechar" alt-input-formats="altInputFormats" ng-focus="abrirDataInicio()" ng-blur="dataInicioChange(fase)">
+          			<input type="text" 
+          			class="form-control" 
+          			name="dataInicio" 
+          			uib-datepicker-popup="{{format}}" 
+          			ng-model="fase.dataInicio" 
+          			is-open="dataInicio.aberto" 
+          			min-date="minDate" 
+          			max-date="maxDate" 
+          			datepicker-options="dateOptions" 
+          			ng-required="true" 
+          			current-text="Hoje" 
+          			clear-text="Limpar" 
+          			close-text="Fechar" 
+          			alt-input-formats="altInputFormats" 
+          			ng-focus="abrirDataInicio()" 
+          			ng-blur="dataInicioChange(fase)">
           		<span class="input-group-btn">
             		<button type="button" class="btn btn-default" ng-click="abrirDataInicio()"><i class="glyphicon glyphicon-calendar"></i></button>
           		</span>
@@ -46,7 +61,22 @@
 			<label class="col-lg-4 control-label">Previsão de Termino</label>
 			<div class="col-lg-4">
 				<p class="input-group">
-          			<input type="text" class="form-control" name="dataPrevistaTermino" uib-datepicker-popup="{{format}}" ng-model="fase.dataPrevistaTermino" is-open="dataPrevistaTermino.aberto" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" current-text="Hoje" clear-text="Limpar" close-text="Fechar" alt-input-formats="altInputFormats" ng-focus="abrirDataPrevistaTermino()" ng-blur="dataPrevistaChange(fase)" >
+          			<input type="text" 
+          			class="form-control" 
+          			name="dataPrevistaTermino" 
+          			uib-datepicker-popup="{{format}}" 
+          			ng-model="fase.dataPrevistaTermino" 
+          			is-open="dataPrevistaTermino.aberto" 
+          			min-date="minDate" 
+          			max-date="maxDate" 
+          			datepicker-options="dateOptions" 
+          			ng-required="true" 
+          			current-text="Hoje" 
+          			clear-text="Limpar" 
+          			close-text="Fechar" 
+          			alt-input-formats="altInputFormats" 
+          			ng-focus="abrirDataPrevistaTermino()" 
+          			ng-blur="dataPrevistaChange(fase)" >
           		<span class="input-group-btn">
             		<button type="button" class="btn btn-default" ng-click="abrirDataPrevistaTermino()"><i class="glyphicon glyphicon-calendar"></i></button>
           		</span>

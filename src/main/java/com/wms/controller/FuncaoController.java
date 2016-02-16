@@ -1,6 +1,6 @@
 package com.wms.controller;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,7 +38,7 @@ public class FuncaoController {
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
-	public List<Funcao> findAll() {
+	public Collection<Funcao> findAll() {
 		return funcaoService.listarFuncoes();
 	}
 

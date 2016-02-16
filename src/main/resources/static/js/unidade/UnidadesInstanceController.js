@@ -7,7 +7,7 @@ app.controller('UnidadesInstanceController', function($scope,
 		$scope.unidade = {};
 	}
 
-	$scope.fases = unidadeService.fases;
+	$scope.fases = [];
 	$scope.unidade.obra = $stateParams;
 	// $scope.fase = fase;
 
@@ -23,48 +23,63 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.dataInicioAberto = [];
 	$scope.dataPrevistaTerminoAberto = [];
 
+	$scope.adicionarFase = function() {
+		var fase = {
+				nomeFase: "",
+				dataInicio: null,
+				dataPrevistaTermino: null,
+				editorEnabled: true
+		};
+		$scope.fases.push(fase);
+	};
+
 	$scope.abrirFaseDataInicio = function($event, index) {
 		$event.preventDefault();
 		$event.stopPropagation();
 
 		$scope.dataInicioAberto[index] = true;
-	}
+	};
 
 	$scope.abrirFaseDataPrevistaTermino = function($event, index) {
 		$event.preventDefault();
 		$event.stopPropagation();
 
 		$scope.dataPrevistaTerminoAberto[index] = true;
-	}
+	};
 
 	$scope.faseDataInicioChange = function(index, fase) {
-	//	$log.info('Data Inicio da Fase: ' + fase.faseDataInicio);
+		$log.info("Chamou Data Inicio Change!!!!");
+		$scope.minDate[index] = fase.dataInicio;
+	};
 
-	//	$scope.minDate[index] = fase.faseDataInicio;
-	//	$log.info('Data MIN: ' + $scope.minDate[index]);
-	}
+	$scope.faseDataPrevistaTerminoChange = function(index, fase) {
+		$scope.maxDate[index] = fase.dataPrevistaTermino;
+	};
 
-	// AUXILIO
-	$scope.dataInicioChange = function(unidade) {
-		  $scope.minDate = unidade.dataInicio;
-	}
-
-	$scope.enableEditor = function() {
+/*	$scope.enableEditor = function() {
 		$scope.editorEnabled = true;
-	}
+	};
 
 	$scope.disableEditor = function() {
 		$scope.editorEnabled = false;
-	}
+	}; 
 
 	$scope.salvar = function() {
 		$scope.disableEditor();
-	}
+	};*/
 
 	$scope.removerFase = function(fase) {
 		var index = $scope.fases.indexOf(fase);
 		$scope.fases.splice(index, 1);
 	}
+
+	$scope.removerFaseBD = function(fase) {
+		fasesService.removerFase(fase).success(function(data) {
+			$scope.removerFase(fase);
+		}).error(function(error) {
+			$log.error(error);
+		});
+	};
 	
 	$scope.salvarUnidade = function(unidade, fases) {
 
@@ -86,26 +101,7 @@ app.controller('UnidadesInstanceController', function($scope,
 		});
 
 		$uibModalInstance.close();
-
-	/*	unidadeService.salvarUnidadeObra(unidade).success(function(data) {
-
-	
-			for(var i = 0; i < unidade.fases.length; i++) {
-				fase.idUnidadeObra = unidade.idUnidadeObra;
-				$log.info(unidade.fases[i]);
-			}
-
-			fasesService.salvarListaDeFases(unidade.fases).success(function(data) {
-				$uibModalInstance.close();
-
-			}).error(function(error) {
-				resultado = error.Message;
-			}); 
-
-
-		}).error(function(error) {
-			resultado = error.Message;
-		});  */
+		unidadeService.listarUnidadesPorObra();
 	}
 	
 	$scope.dataInicio = {
@@ -164,12 +160,10 @@ app.controller('UnidadesInstanceController', function($scope,
 		  $scope.maxDate = unidade.dataPrevistaTermino;
 	  }
 	  
-
 	  	$scope.cancelar = function() {
 			$uibModalInstance.dismiss('cancelar');
 		};
-		
-		
+				
 		// Abre a Modal ao clicar em 'Adicionar Fases'
 		$scope.modalFasesUpdate = function(tamanho, faseSelecionada) {
 
@@ -183,7 +177,6 @@ app.controller('UnidadesInstanceController', function($scope,
 						return angular.copy(faseSelecionada);
 					}
 				}
-
 			});
 			
 			modalInstance.result.then(
@@ -195,4 +188,12 @@ app.controller('UnidadesInstanceController', function($scope,
 								+ new Date());
 					}); 
 		}; 
+
+		$scope.listarFasesPorUnidade = function(unidade) {
+			fasesService.listarFasesPorUnidade(unidade.idUnidadeObra).success(function(data){
+				$scope.fases = data;
+			}).error(function(error) {
+				$log.error(error);
+			});
+		}
 });

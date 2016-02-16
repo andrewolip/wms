@@ -1,6 +1,6 @@
 package com.wms.controller;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,27 +37,27 @@ public class ContaPagarController {
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
-	public List<ContaPagar> findAll() {
+	public Collection<ContaPagar> findAll() {
 		return contaPagarService.listarContasPagar();
 	}
 	
 	@RequestMapping(value = "/listar_itens/{id}", method = RequestMethod.GET)
-	public List<ItemConta> listarItensPorContaPagar(@PathVariable Integer id) {
+	public Collection<ItemConta> listarItensPorContaPagar(@PathVariable Integer id) {
 		ContaPagar conta = new ContaPagar();
 		conta = this.contaPagarService.buscarContaPagar(id);
 		return conta.getItensConta(); 
 	}
 	
 	@RequestMapping(value = "/listar_por_obra", method = RequestMethod.GET)
-	public List<ContaPagar> listarContaPagarPorObra(@RequestBody Obra obra) {
+	public Collection<ContaPagar> listarContaPagarPorObra(@RequestBody Obra obra) {
 		System.out.println("ID da Obra: " + obra.getIdObra());
-		List<ContaPagar> lista = contaPagarService.listarPorObra(obra); 
+		Collection<ContaPagar> lista = contaPagarService.listarPorObra(obra); 
 		System.out.println("Lista de Contas a pagar" + lista);
 		return lista;
 	}
 	
 	@RequestMapping(value = "/listar_por_unidade", method = RequestMethod.GET)
-	public List<ContaPagar> listarContaPagarPorUnidade(@RequestBody UnidadeObra unidadeObra) {
+	public Collection<ContaPagar> listarContaPagarPorUnidade(@RequestBody UnidadeObra unidadeObra) {
 		return contaPagarService.listarPorUnidade(unidadeObra);
 	}
 }

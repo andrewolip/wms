@@ -28,11 +28,34 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 		} else{} 
 	}
 	
-	// Abre a Modal ao clicar em 'Adicionar Unidade'
 	$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
 		
 		var modalInstance = $uibModal.open({
 			templateUrl : 'pages/templates/modalUnidadesContent.html',
+			controller : 'UnidadesInstanceController',
+			size : tamanho,
+			backdrop: 'static',
+			resolve : {
+				unidade : function() {
+					return angular.copy(unidadeSelecionada);
+				}
+			}
+		}); 
+
+		modalInstance.result.then(
+				function(selectedItem) {
+					$scope.selected = selectedItem;
+					$scope.listarUnidadesPorObra();
+				}, function() {
+					$log.info('Modal foi fechada em: '
+							+ new Date());
+				});
+	};
+
+	$scope.modalUnidadeEditUpdate = function(tamanho, unidadeSelecionada) {
+		
+		var modalInstance = $uibModal.open({
+			templateUrl : 'pages/templates/modalUnidadesContentEdit.html',
 			controller : 'UnidadesInstanceController',
 			size : tamanho,
 			backdrop: 'static',

@@ -1,6 +1,6 @@
 package com.wms.controller;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,12 +38,12 @@ public class UsuarioController {
 //	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
-	public List<Usuario> findAll() {
+	public Collection<Usuario> findAll() {
 		return usuarioService.listarUsuarios();
 	}
 
 	@RequestMapping(value = "/listar_coordenadores", method = RequestMethod.GET)
-	public List<Usuario> findAllCoordenadores() {
+	public Collection<Usuario> findAllCoordenadores() {
 		return usuarioService.listarCoordenadores();
 	}
 	

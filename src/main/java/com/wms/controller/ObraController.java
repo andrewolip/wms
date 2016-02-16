@@ -1,6 +1,6 @@
 package com.wms.controller;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +33,13 @@ public class ObraController {
 		obraService.salvar(obra);
 	}
 
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
 		obraService.remover(id);
 	}
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
-	public List<Obra> findAll() {
+	public Collection<Obra> findAll() {
 		return obraService.listarObras();
 	}
 

@@ -1,6 +1,6 @@
 package com.wms.controller;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,11 +35,11 @@ public class UnidadeObraController {
 	}		
 	
 	@RequestMapping(value = "/listar_por_obra/{id}", method = RequestMethod.GET)
-	public List<UnidadeObra> listarUnidadesPorObra(@PathVariable Integer id) {
+	public Collection<UnidadeObra> listarUnidadesPorObra(@PathVariable Integer id) {
 		return unidadeObraService.listarPorObra(id);
 	}
 	
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void removerUnidade(@PathVariable Integer id) {
 		unidadeObraService.remover(id);
 	}
