@@ -1,7 +1,6 @@
 package com.wms.model.service;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +20,9 @@ public class ContaPagarService {
         this.contaPagarRepository = contaPagarRepository;
     }
  
-	public void salvar(ContaPagar contaPagar) {
-		contaPagarRepository.save(contaPagar);
+	public ContaPagar salvar(ContaPagar contaPagar) {
+		this.contaPagarRepository.save(contaPagar);
+		return contaPagar;
 	}
 	
 	public void remover(Integer id) {
@@ -41,6 +41,12 @@ public class ContaPagarService {
 		return contaPagarRepository.findOne(id);
 	}
 	
+	public ContaPagar buscarContaPagarPorNotaFiscal(Long notaFiscal) {
+		ContaPagar c = contaPagarRepository.findByNotaFiscal(notaFiscal);
+		return c;
+	}
+	
+	
 	public Collection<ContaPagar> listarPorObra(Obra obra) {
 		return this.contaPagarRepository.findByObra(obra);
 	}
@@ -48,4 +54,6 @@ public class ContaPagarService {
 	public Collection<ContaPagar> listarPorUnidade(UnidadeObra unidadeObra) {
 		return this.contaPagarRepository.findByUnidadeObra(unidadeObra);
 	}
+	
+	
 }

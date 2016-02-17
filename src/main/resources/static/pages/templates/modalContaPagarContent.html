@@ -1,4 +1,4 @@
-ï»¿<div class="modal-header">
+<div class="modal-header">
 	<h3 class="modal-title">Conta a Pagar</h3>
 </div>
 
@@ -37,11 +37,11 @@
 		
 		<div class="row">
 			<div class="form-group">
-				<label class="col-lg-3 control-label">NÂº Nota Fiscal</label> 
+				<label class="col-lg-3 control-label">Nº Nota Fiscal</label> 
 				<div class="col-lg-3">
 					<input class="form-control" type="text"
 						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15"
-						placeholder="Digite o nÂº da nota fiscal"  />
+						placeholder="Digite o nº da nota fiscal"  />
 				</div> 
 
 				<label class="col-lg-2 control-label">Tipo da Conta</label> 
@@ -51,8 +51,8 @@
 						<option value="" ng-selected="true">Selecione o tipo</option>
 						<option value="1">Materiais</option>
 						<option value="2">Despesas Gerais</option>
-						<option value="3">HonorÃ¡rios</option>
-						<option value="4">MÃ¡quinas</option>
+						<option value="3">Honorários</option>
+						<option value="4">Máquinas</option>
 						<option value="5">Equipamentos</option>
 					</select> 
 				</div>
@@ -123,13 +123,14 @@
 				
 				<div class="table-responsive">
 					<table st-table="itensConta" class="table table-striped" ng-hide="itensConta.length == 0"
+						ng-init="listarItensPorConta()"
 						st-pagination-scroll>
 						<thead>
 							<tr>
 								<th>Item</th>
 								<th>Qtde</th>
 								<th>Medida</th>
-								<th>Valor UnitÃ¡rio</th>
+								<th>Valor Unitário</th>
 								<th>Valor Total</th>
 								<th>Editar</th>
 								<th>Excluir</th>
@@ -177,9 +178,9 @@
 	</div>
 </form>
 <div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
-	class="alert alert-danger">	Por favor, preencha o nÂº da nota fiscal </div>
+	class="alert alert-danger">	Por favor, preencha o nº da nota fiscal </div>
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="atualizar(contaPagar)"
+	<button class="btn btn-primary" ng-click="atualizar(contaPagar, itensConta)"
 		ng-disabled="!contaPagar.notaFiscal">Salvar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

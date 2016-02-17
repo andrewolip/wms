@@ -23,7 +23,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 											}).error(function(error) {
 										console(error);
 									});
-								} else{}
+								}
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Conta a Pagar'
@@ -32,7 +32,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 									templateUrl : 'pages/templates/modalContaPagarContent.html',
 									controller : 'ContaPagarInstanceController',
 									size : tamanho,
-									backdrop: false,
+									backdrop: 'static',
 									resolve : {
 										contaPagar : function() {
 											return angular.copy(contaPagarSelecionada);
@@ -42,11 +42,13 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 
 								modalInstance.result.then(
 										function(selectedItem) {
+											debugger;
 											$scope.selected = selectedItem;
 											$scope.listarContasPagar();
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());
+											$log.info($scope.contasPagar);
 										});
 							};
 							

@@ -47,7 +47,7 @@ public class ContaPagar implements Serializable {
 	private Integer nParcelas;
 
 	@Column(name="nota_fiscal")
-	private String notaFiscal;
+	private Long notaFiscal;
 
 	private String observacao;
 
@@ -118,11 +118,11 @@ public class ContaPagar implements Serializable {
 		this.nParcelas = nParcelas;
 	}
 
-	public String getNotaFiscal() {
+	public Long getNotaFiscal() {
 		return this.notaFiscal;
 	}
 
-	public void setNotaFiscal(String notaFiscal) {
+	public void setNotaFiscal(Long notaFiscal) {
 		this.notaFiscal = notaFiscal;
 	}
 

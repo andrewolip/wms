@@ -12,5 +12,5 @@ public interface ContaPagarRepository extends CrudRepository<ContaPagar, Integer
 	
 	Collection<ContaPagar> findByObra(Obra obra);
 	Collection<ContaPagar> findByUnidadeObra(UnidadeObra unidadeObra);
-	
+	ContaPagar findByNotaFiscal(Long notaFiscal);
 }

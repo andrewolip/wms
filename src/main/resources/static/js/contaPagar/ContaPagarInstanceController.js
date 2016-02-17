@@ -1,5 +1,5 @@
 app.controller('ContaPagarInstanceController', function($scope, 
-		$uibModalInstance, $uibModal, $log, contaPagarService, contaPagar, obrasService, unidadeService, $window) {
+		$uibModalInstance, $uibModal, $log, contaPagarService, itensContaService, contaPagar, obrasService, unidadeService, $window) {
 	
 	$scope.contaPagar = contaPagar;
 	$scope.itensConta = contaPagarService.itensConta;
@@ -17,26 +17,39 @@ app.controller('ContaPagarInstanceController', function($scope,
 	
 	$scope.cancelar = function() {
 		$uibModalInstance.dismiss('cancelar');
+		for ( var item in $scope.itensConta) {
+			$scope.itensConta.splice(0, $scope.itensConta.length);
+		}
 	};
 	
 	$scope.$watch('contaPagar', function(contaPagar){
-		debugger;
 		if(!contaPagar) {
 			$scope.contaPagar = {};
 		} else {
-			$scope.listarItensConta();
+			$scope.listarItensPorConta();
 		}
 	});
 
-	$scope.atualizar = function(contaPagar) {
-		contaPagar.itensConta = $scope.itensConta;
-		
-		contaPagarService.atualizarContaPagar(contaPagar).success(function(data) {
-			$uibModalInstance.close();
-			$scope.itensConta = [];
-		}).error(function(error) {
-			resultado = error.Message;
+	$scope.atualizar = function(contaPagar, itensConta) {
+		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {
+			contaPagar = response.data;
+			
+			
+			for (var i=0; i < itensConta.length; i++) {
+				itensConta[i].contaPagar = contaPagar;
+			}
+	
+			itensContaService.salvarListaDeItens(itensConta).success(function(data) {
+				 $log.info(itensConta);
+			}).error(function(error) {
+				$log.info(error);
+			}); 
+		},
+		function(error) {
+			$log.info(error);
 		});
+		
+		$uibModalInstance.close();
 	};
 	
 	$scope.listarObras = function() {
@@ -48,6 +61,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 			});
 	};
 	
+	// Para popular a combobox Unidade da Obra na modalContaPagar
 	$scope.listarUnidadesPorObra = function() {
 		if($scope.obraAtual) {
 			unidadeService.listarUnidadesPorObra($scope.obraAtual.idObra).success(
@@ -61,8 +75,6 @@ app.controller('ContaPagarInstanceController', function($scope,
 	
 	$scope.$watch('contaPagar.obra', function(obra){
 		$scope.obraAtual = obra;
-		console.log($scope.obraAtual);
-		console.log(obra);
 		
 		if($scope.contaPagar) {
 			if(!$scope.contaPagar.unidade) {
@@ -104,6 +116,42 @@ app.controller('ContaPagarInstanceController', function($scope,
 		$scope.calcularValorConta();
 	};
 	
+	$scope.listarItensPorConta = function() {
+		if(contaPagar) {
+			itensContaService.listarItensPorConta(contaPagar.idContaPagar).success(function(data) {
+				debugger;
+				$scope.itensConta = data;
+			}).error(function(error) {
+				$log.error(error);
+			});
+		}
+	}
+	
+	$scope.removerItem = function(itemConta) {
+		if(!itemConta.idItemConta) {
+			$scope.removerItemContaArray(itemConta);
+		} else {
+			$scope.removerItemContaBD(itemConta);
+		}
+		$scope.calcularValorConta();
+	}
+	
+	$scope.removerItemContaArray = function(itemConta) {
+		var index = $scope.itemConta.indexOf(itemConta);
+		$scope.itensConta.splice(index, 1);
+	}
+	
+	$scope.removerItemContaBD = function(itemConta) {
+		var deleteItem = $window.confirm('Tem certeza que deseja remover o Item ' + itemConta.nome + ' do Banco de Dados?');
+		if(deleteItem) {
+			itensContaService.removerItemConta(itemConta).success(function(data) {
+			$scope.removerItemContaArray(itemConta);
+		}).error(function(error) {
+			$log.error(error);
+		});
+		}	
+	};
+	
 	$scope.calcularValorConta = function() {
 		$scope.contaPagar.valorConta = 0.0;
 		for ( var item in $scope.itensConta) {
@@ -111,27 +159,4 @@ app.controller('ContaPagarInstanceController', function($scope,
 			console.log($scope.itensConta[item]);
 		}
 	};
-
-	$scope.removerItem = function(itemConta) {
-		var deleteItem = $window
-		.confirm('Tem certeza que gostaria de apagar o item '
-			+ itemConta.nome + '?');
-
-		if (deleteItem) {
-			var i = 0;
-			for (var i in $scope.itensConta) {
-				if ($scope.itensConta[i] == itemConta)
-					break;
-				i++;
-			}
-			
-			$scope.itensConta.splice(i, 1);
-			$scope.calcularValorConta();
-		}
-	};
-	
-	$scope.listarItensConta = function() {
-		debugger;
-		$scope.itensConta = contaPagarService.listarItensConta($scope.contaPagar.idContaPagar);
-	}
 });

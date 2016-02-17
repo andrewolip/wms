@@ -46,7 +46,7 @@ public class ItemConta implements Serializable {
 	private BigDecimal valorUnitario;
 
 	//bi-directional many-to-one association to ContaPagar
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="id_conta_pagar")
 	private ContaPagar contaPagar;
 

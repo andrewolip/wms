@@ -2,8 +2,12 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 	var contaPagar = {};
 	contaPagar.itensConta = [];
 
+	contaPagar.buscarContaPagarPorNotaFiscal = function(notaFiscal) {
+		return $http.get('/contasPagar/buscarPorNotaFiscal/' + notaFiscal);
+	}
+	
 	contaPagar.salvarContaPagar = function(contaPagar) {
-		return $http.post('/contasPagar/inserir', contaPagar);
+		return $http.put('/contasPagar/salvar', contaPagar);
 	}
 	
 	contaPagar.listarContasPagar = function() {
@@ -25,8 +29,8 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 		return $http.put('/contasPagar/atualizar', contaPagar);
 	}
 	
-	contaPagar.listarItensConta = function(id) {
-		return $http.get('/contasPagar/listar_itens' + id);
+	contaPagar.listarItensPorConta = function(id) {
+		return $http.get('itensConta/listar_itens_por_conta/' + id);
 	}
 	
 	contaPagar.addItemConta = function(itemConta) {
@@ -36,6 +40,10 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 	contaPagar.removerItemConta = function(itemConta) {
 		contaPagar.itensConta.remove(itemConta);
 	} 
+	
+	contaPagar.salvarItensConta = function(itensConta) {
+		return $http.put('itensConta/salvarItensConta', itensConta);
+	}
 	
 	return contaPagar;
 	
