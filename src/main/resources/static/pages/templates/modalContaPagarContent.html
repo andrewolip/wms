@@ -139,10 +139,18 @@
 						<tbody ng-repeat="itemConta in itensConta">
 							<tr ng-show="itemConta.isEdited">
 								<td><input type="text" class="form-control" ng-model="itemConta.nome"/></td>
-								<td style="width: 65px;"><input type="text" class="form-control" ng-model="itemConta.quantidade"/></td>
-								<td style="width: 65px;"><input type="text" class="form-control" ng-model="itemConta.unidade"/></td>
-								<td style="width: 130px;"><input type="text" class="form-control" ng-model="itemConta.valorUnitario" ui-money-mask/></td>
-								<td><input type="text" class="form-control" style="width: 130px;" ng-hide="((itemConta.valorUnitario == null) || (itemConta.quantidade == null))" value="$ {{((itemConta.valorUnitario == null) || (itemConta.quantidade == null)) || (itemConta.valorUnitario * itemConta.quantidade)}}" ng-disabled="true"/></td>
+								<td style="width: 65px;">
+									<input type="text" class="form-control" ng-model="itemConta.quantidade"/>
+								</td>
+								<td style="width: 65px;">
+									<input type="text" class="form-control" ng-model="itemConta.unidade"/>
+								</td>
+								<td style="width: 130px;">
+									<input type="text" class="form-control" ng-model="itemConta.valorUnitario" ui-money-mask/>
+								</td>
+								<td>
+									<input type="text" class="form-control" style="width: 130px;" ng-hide="((itemConta.valorUnitario == null) || (itemConta.quantidade == null))" value="$ {{((itemConta.valorUnitario == null) || (itemConta.quantidade == null)) || (itemConta.valorUnitario * itemConta.quantidade)}}" ng-disabled="true"/>
+								</td>
 								<td><button class="btn btn-success" ng-click="calcularValorConta(); itemConta.isEdited = false;" ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade">Ok</button></td>
 								<td>
 									<button class="btn btn-danger" 

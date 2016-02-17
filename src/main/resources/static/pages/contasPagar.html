@@ -52,8 +52,8 @@
 								<td>{{contaPagar.tipoConta}}</td>
 								<td>{{contaPagar.tipoPagamento}}</td>
 								<td>{{contaPagar.nparcelas}}</td>
-								<td>{{contaPagar.dataVencimento}}</td>
-								<td>R$ {{contaPagar.valorConta}}</td>
+								<td>{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
+								<td>{{contaPagar.valorConta | currency: 'R$'}}</td>
 								<td>
 									<button class="btn btn-warning"
                                         ng-click="modalContaPagarUpdate('lg', contaPagar)">

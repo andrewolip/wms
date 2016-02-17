@@ -42,7 +42,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 
 								modalInstance.result.then(
 										function(selectedItem) {
-											debugger;
+										//	debugger;
 											$scope.selected = selectedItem;
 											$scope.listarContasPagar();
 										}, function() {

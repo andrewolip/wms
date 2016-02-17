@@ -31,12 +31,9 @@ app.controller('ContaPagarInstanceController', function($scope,
 	});
 
 	$scope.atualizar = function(contaPagar, itensConta) {
-		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {
-			contaPagar = response.data;
-			
-			
+		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {		
 			for (var i=0; i < itensConta.length; i++) {
-				itensConta[i].contaPagar = contaPagar;
+				itensConta[i].contaPagar = response.data;
 			}
 	
 			itensContaService.salvarListaDeItens(itensConta).success(function(data) {
@@ -119,7 +116,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 	$scope.listarItensPorConta = function() {
 		if(contaPagar) {
 			itensContaService.listarItensPorConta(contaPagar.idContaPagar).success(function(data) {
-				debugger;
+				//debugger;
 				$scope.itensConta = data;
 			}).error(function(error) {
 				$log.error(error);

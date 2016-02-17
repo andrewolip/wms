@@ -30,7 +30,7 @@ public class ItemContaController {
 	}
 	
 	@RequestMapping(value = "/salvarLista", method = RequestMethod.PUT)
-	public void salvarLista(@RequestBody List<ItemConta> itensConta) {
+	public void salvarLista(@RequestBody Collection<ItemConta> itensConta) {
 		this.itemContaService.salvarLista(itensConta);
 	}
 	

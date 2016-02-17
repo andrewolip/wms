@@ -18,7 +18,7 @@ public class ItemContaService {
 		this.itemContaRepository = itemContaRepository;
 	}
 
-	public void salvarLista(List<ItemConta> itensConta) {
+	public void salvarLista(Collection<ItemConta> itensConta) {
 		this.itemContaRepository.save(itensConta);
 	}
 
