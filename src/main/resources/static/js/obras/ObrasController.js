@@ -51,6 +51,7 @@
 									templateUrl : 'pages/templates/modalObrasContent.html',
 									controller : 'ObrasInstanceController',
 									size : tamanho,
+									backdrop: 'static',
 									resolve : {
 										obra : function() {
 											return angular.copy(obraSelecionada);
