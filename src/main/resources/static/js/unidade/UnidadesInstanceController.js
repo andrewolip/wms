@@ -56,18 +56,6 @@ app.controller('UnidadesInstanceController', function($scope,
 		$scope.maxDate[index] = fase.dataPrevistaTermino;
 	};
 
-/*	$scope.enableEditor = function() {
-		$scope.editorEnabled = true;
-	};
-
-	$scope.disableEditor = function() {
-		$scope.editorEnabled = false;
-	}; 
-
-	$scope.salvar = function() {
-		$scope.disableEditor();
-	};*/
-
 	$scope.removerFase = function(fase) {
 		if(fase.idFaseUnidade == null) {
 			$scope.removerFaseArray(fase);
@@ -97,7 +85,6 @@ app.controller('UnidadesInstanceController', function($scope,
 	$scope.salvarUnidade = function(unidade, fases) {
 
 		unidadeService.salvarUnidadeObra(unidade).then(function(response) {
-			
 			for (var i=0; i < fases.length; i++) {
 				fases[i].unidadeObra = response.data;
 			}
@@ -176,31 +163,6 @@ app.controller('UnidadesInstanceController', function($scope,
 			$uibModalInstance.dismiss('cancelar');
 		};
 				
-		// Abre a Modal ao clicar em 'Adicionar Fases'
-		$scope.modalFasesUpdate = function(tamanho, faseSelecionada) {
-
-			var modalInstance = $uibModal.open({
-				templateUrl : 'pages/templates/modalFasesContent.html',
-				controller : 'FasesInstanceController',
-				size: tamanho,
-				backdrop: 'static',
-				resolve : {
-					fase : function() {
-						return angular.copy(faseSelecionada);
-					}
-				}
-			});
-			
-			modalInstance.result.then(
-					function(selectedItem) {
-						$scope.selected = selectedItem;
-						//$scope.listarObras();
-					}, function() {
-						$log.info('Modal foi fechada em: '
-								+ new Date());
-					}); 
-		}; 
-
 		$scope.listarFasesPorUnidade = function(unidade) {
 			fasesService.listarFasesPorUnidade(unidade.idUnidadeObra).success(function(data){
 				$scope.fases = data;

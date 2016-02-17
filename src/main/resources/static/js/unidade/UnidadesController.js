@@ -6,7 +6,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 	$scope.unidade = {};
 	
 	$scope.listarUnidadesPorObra = function() {
-		unidadeService.listarUnidadesPorObra($scope.obra.idObra).success(function(data) {
+		unidadeService.listarUnidadesPorObra($stateParams.idObra).success(function(data) {
 			$scope.unidades = data;
 		}).error(function(error) {
 			$log.error(error);
@@ -14,15 +14,12 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 	}
 
 	$scope.removerUnidade = function(unidade){
-		var deleteUnidade = $window
-		.confirm('Tem certeza que gostaria de apagar a unidade '
-				+ unidade.nomeUnidade + '?');
+		var deleteUnidade = $window.confirm('Tem certeza que gostaria de apagar a unidade '	+ unidade.nomeUnidade + '?');
 
 		if (deleteUnidade) {
-			unidadeService.removerUnidade(unidade).success(
-					function(data) {
-						$scope.listarUnidadesPorObra($scope.obra.idObra);
-					}).error(function(error) {
+			unidadeService.removerUnidade(unidade).success(function(data) {
+				$scope.listarUnidadesPorObra($scope.obra.idObra);
+			}).error(function(error) {
 				$log.error(error);
 			});
 		} else{} 
@@ -50,30 +47,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 					$log.info('Modal foi fechada em: '
 							+ new Date());
 				});
+
 	};
 
-/*	$scope.modalUnidadeEditUpdate = function(tamanho, unidadeSelecionada) {
-		
-		var modalInstance = $uibModal.open({
-			templateUrl : 'pages/templates/modalUnidadesContentEdit.html',
-			controller : 'UnidadesInstanceController',
-			size : tamanho,
-			backdrop: 'static',
-			resolve : {
-				unidade : function() {
-					return angular.copy(unidadeSelecionada);
-				}
-			}
-		}); 
-
-		modalInstance.result.then(
-				function(selectedItem) {
-					$scope.selected = selectedItem;
-					$scope.listarUnidadesPorObra();
-				}, function() {
-					$log.info('Modal foi fechada em: '
-							+ new Date());
-				});
-	}; */
-	
 }]);
