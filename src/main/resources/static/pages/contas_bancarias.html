@@ -30,6 +30,7 @@
             <div class="col-lg-10 col-lg-offset-1">
                 <div class="table-responsive">
                     <table st-table="contasBancarias" class="table table-striped"
+                        ng-hide="contasBancarias.length == 0"
                         st-pagination-scroll>
                         <thead>
                             <tr>
@@ -50,6 +51,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <h4 ng-show="contasBancarias.length == 0" class="no-result">
+                        Não há contas bancárias registradas
+                    </h4>
                 </div>
             </div>
         </div>

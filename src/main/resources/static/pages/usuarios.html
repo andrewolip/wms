@@ -30,6 +30,7 @@
             <div class="col-lg-10 col-lg-offset-1">
                 <div class="table-responsive">
                     <table st-table="usuarios" class="table table-striped"
+                        ng-hide="usuarios.length == 0"
                         st-pagination-scroll>
                         <thead>
                             <tr>
@@ -60,6 +61,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <h4 ng-show="usuarios.length == 0" class="no-result">
+                        Não há usuários registrados
+                    </h4>
                 </div>
             </div>
         </div>

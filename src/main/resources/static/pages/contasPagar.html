@@ -11,7 +11,7 @@
 <!-- /.row -->
 
 <div class="container">
-	<div ng-init="listarContasPagar()" >
+	<div ng-init="listarContasPagar()">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-2">
 				<div class="form-group">
@@ -30,6 +30,7 @@
 			<div class="col-lg-10 col-lg-offset-1">
 				<div class="table-responsive">
 					<table st-table="contasPagar" class="table table-striped"
+						ng-hide="contasPagar.length == 0"
 						st-pagination-scroll>
 						<thead>
 							<tr>
@@ -53,7 +54,7 @@
 								<td>{{contaPagar.tipoPagamento}}</td>
 								<td>{{contaPagar.nparcelas}}</td>
 								<td>{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
-								<td>{{contaPagar.valorConta | currency: 'R$'}}</td>
+								<td>{{contaPagar.valorConta | currency: 'R$ '}}</td>
 								<td>
 									<button class="btn btn-warning"
                                         ng-click="modalContaPagarUpdate('lg', contaPagar)">
@@ -68,6 +69,9 @@
 							</tr>
 						</tbody>
 					</table>
+					<h4 ng-show="contasPagar.length == 0" class="no-result">
+						Não há contas a pagar registradas
+					</h4>
 				</div>
 			</div>
 		</div>
