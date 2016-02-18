@@ -1,18 +1,18 @@
-<div class="modal-header">
+Ôªø<div class="modal-header">
 	<h3 class="modal-title">Usuario</h3>
 </div>
 
 <form name="usuarioForm">
 	<div class="modal-body">
-		<label>Nome do Usu·rio</label> 
+		<label>Nome do Usu√°rio</label> 
 		<input class="form-control" type="text"
 			ng-model="usuario.nome" name="nome" maxLength="100"
-			placeholder="Nome do usu·rio" ng-required="true" />
+			ng-required="true" />
 
 		<label>Login</label> 
 		<input class="form-control" type="text"
 			ng-model="usuario.login" name="login" maxLength="25"
-			placeholder="Login" ng-required="true" />
+			ng-required="true" />
 
 		<label>Perfil</label> 
 		<select class="form-control"
@@ -26,7 +26,7 @@
 </form>
 
 <div ng-show="usuarioForm.nome.$invalid && usuarioForm.nome.$dirty"
-	class="alert alert-danger">Por favor, preencha o nome do usu·rio!</div>
+	class="alert alert-danger">Por favor, preencha o nome do usu√°rio!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="atualizar(usuario)"
 		ng-disabled="!usuario.nome">Salvar</button>
