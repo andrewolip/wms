@@ -39,19 +39,13 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 										}
 									}
 								});
-
-								modalInstance.result.then(
-										function(selectedItem) {
-										//	debugger;
-											$scope.selected = selectedItem;
-											$scope.listarContasPagar();
-										}, function() {
-											$log.info('Modal foi fechada em: '
-													+ new Date());
-											$log.info($scope.contasPagar);
-										});
+								
+								modalInstance.result.finally(
+									function() {
+										$scope.listarContasPagar();
+									}
+								);
 							};
-							
 							
 //							Botão Adicionar Fornecedor a partir da tela de cadastro de conta a pagar
 //							

@@ -22,17 +22,6 @@
 					</select>
 				</div>
 			</div>
-				<!-- <td>
-					<label>Fase da Obra</label> 
-				</td>
-				<td>
-					<select class="form-control" data-ng-model="contaPagar.faseObra" 
-						data-ng-options="fase as fase.nome for unidade in unidades track by fase.nome"
-						data-ng-show='unidades.length'
-						data-ng-change="listarContasPagarPorUnidade()">
-						<option value="" ng-selected="true">Selecione a unidade da obra</option>
-					</select>
-				</td> -->
 		</div>
 		
 		<div class="row">
@@ -40,8 +29,7 @@
 				<label class="col-lg-3 control-label">Nº Nota Fiscal</label> 
 				<div class="col-lg-3">
 					<input class="form-control" type="text"
-						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15"
-						placeholder="Digite o nº da nota fiscal"  />
+						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15" />
 				</div> 
 
 				<label class="col-lg-2 control-label">Tipo da Conta</label> 
@@ -87,7 +75,7 @@
 				<div class="col-lg-3">
 					<select class="form-control"
 						ng-model="contaPagar.tipoPagamento" name="tipoPagamento">
-						<option value="" ng-selected="true">Selecione a forma de pagamento</option>
+						<option value="" ng-selected="true">Selecione o pagamento</option>
 						<option value="1">Forma 1</option>
 					</select> 
 				</div>
@@ -115,7 +103,7 @@
 			</div>
 		</div>
 		
-		<div class="row">
+		<div class="row" >
 			<div class="col-lg-10 col-lg-offset-1">
 				<div>
 					<input class="btn btn-default" type="button" ng-click="adicionarItem()" value="Adicionar Item">
@@ -149,7 +137,7 @@
 									<input type="text" class="form-control" ng-model="itemConta.valorUnitario" ui-money-mask/>
 								</td>
 								<td>
-									<input type="text" class="form-control" style="width: 130px;" ng-hide="((itemConta.valorUnitario == null) || (itemConta.quantidade == null))" value="$ {{((itemConta.valorUnitario == null) || (itemConta.quantidade == null)) || (itemConta.valorUnitario * itemConta.quantidade)}}" ng-disabled="true"/>
+									<input type="text" class="form-control" style="width: 130px;" ng-hide="((itemConta.valorUnitario == null) || (itemConta.quantidade == null))" value="{{((itemConta.valorUnitario == null) || (itemConta.quantidade == null)) || (itemConta.valorUnitario * itemConta.quantidade)  | currency: 'R$'}}" ng-disabled="true"/>
 								</td>
 								<td><button class="btn btn-success" ng-click="calcularValorConta(); itemConta.isEdited = false;" ng-disabled="!itemConta.nome || !itemConta.quantidade || !itemConta.valorUnitario || !itemConta.unidade">Ok</button></td>
 								<td>
@@ -163,8 +151,8 @@
 								<td style="width: 230px">{{itemConta.nome}}</td>
 								<td style="width: 65px">{{itemConta.quantidade}}</td>
 								<td style="width: 65px">{{itemConta.unidade}}</td>
-								<td style="width: 130px">R$ {{itemConta.valorUnitario}}</td>
-								<td style="width: 130px">R$ {{itemConta.valorUnitario * itemConta.quantidade}}</td>
+								<td style="width: 130px">{{itemConta.valorUnitario | currency: 'R$ '}}</td>
+								<td style="width: 130px">{{itemConta.valorUnitario * itemConta.quantidade  | currency: 'R$ '}}</td>
 								<td>
 									<button class="btn btn-warning"
 		                                 ng-click="itemConta.isEdited = true">
@@ -180,6 +168,9 @@
 							</tr>
 						</tbody>
 					</table>
+					<h4 ng-show="itensConta.length == 0" class="no-result">
+                        Não há itens registrados para esta conta a pagar
+                    </h4>
 				</div>
 			</div>
 		</div>

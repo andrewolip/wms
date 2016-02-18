@@ -25,29 +25,39 @@ app.controller('ContaPagarInstanceController', function($scope,
 	$scope.$watch('contaPagar', function(contaPagar){
 		if(!contaPagar) {
 			$scope.contaPagar = {};
+			$scope.itensConta = [];
 		} else {
 			$scope.listarItensPorConta();
 		}
 	});
-
-	$scope.atualizar = function(contaPagar, itensConta) {
-		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {		
-			for (var i=0; i < itensConta.length; i++) {
-				itensConta[i].contaPagar = response.data;
-			}
 	
-			itensContaService.salvarListaDeItens(itensConta).success(function(data) {
-				 $log.info(itensConta);
-			}).error(function(error) {
-				$log.info(error);
-			}); 
+	$scope.atualizar = function(contaPagar, itensConta) {
+		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {
+			if(itensConta.length > 0) {
+				for (var i=0; i < itensConta.length; i++) {
+					itensConta[i].contaPagar = response.data;
+				}
+		
+				itensContaService.salvarListaDeItens(itensConta).success(function(data) {
+					 $log.info(itensConta);
+				}).error(function(error) {
+					$log.info(error);
+				}); 
+			}
 		},
 		function(error) {
 			$log.info(error);
 		});
 		
-		$uibModalInstance.close();
+		
+		setTimeout(continueExecution, 300);
+		
+		function continueExecution() {
+			$uibModalInstance.close()
+		}
 	};
+	
+	
 	
 	$scope.listarObras = function() {
 		obrasService.listarObras().success(
@@ -113,12 +123,13 @@ app.controller('ContaPagarInstanceController', function($scope,
 		$scope.calcularValorConta();
 	};
 	
+	
+	
 	$scope.listarItensPorConta = function() {
 		if(contaPagar) {
-			itensContaService.listarItensPorConta(contaPagar.idContaPagar).success(function(data) {
-				//debugger;
-				$scope.itensConta = data;
-			}).error(function(error) {
+			itensContaService.listarItensPorConta(contaPagar.idContaPagar).then(function(response) {
+				$scope.itensConta = response.data;
+			}, function(error) {
 				$log.error(error);
 			});
 		}
@@ -134,8 +145,19 @@ app.controller('ContaPagarInstanceController', function($scope,
 	}
 	
 	$scope.removerItemContaArray = function(itemConta) {
-		var index = $scope.itemConta.indexOf(itemConta);
-		$scope.itensConta.splice(index, 1);
+		var deleteItem = $window
+			.confirm('Tem certeza que gostaria de apagar o item '
+				+ itemConta.nome + '?');
+
+		if (deleteItem) {
+			var i;
+			for (i = 0; i < $scope.itensConta.length; i++) {
+				if ($scope.itensConta[i] == itemConta) {
+					break;
+				}
+			}
+			$scope.itensConta.splice(i, 1);
+		}
 	}
 	
 	$scope.removerItemContaBD = function(itemConta) {
