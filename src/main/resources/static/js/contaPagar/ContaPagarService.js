@@ -29,10 +29,6 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 		return $http.put('/contasPagar/atualizar', contaPagar);
 	}
 	
-	contaPagar.listarItensPorConta = function(id) {
-		return $http.get('itensConta/listar_itens_por_conta/' + id);
-	}
-	
 	contaPagar.addItemConta = function(itemConta) {
 		contaPagar.itensConta.push(itemConta);
 	}
