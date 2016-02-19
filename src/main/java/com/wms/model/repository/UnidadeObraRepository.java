@@ -10,4 +10,5 @@ public interface UnidadeObraRepository extends JpaRepository<UnidadeObra, Intege
 
 	Collection<UnidadeObra> findByObraIdObra(Integer id);
 	
+	
 }
