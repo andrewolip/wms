@@ -39,14 +39,12 @@
 			<li class="active"><i class="fa fa-file"></i> Obra</li>
 		</ol>
 
-		<div ng-controller="wmsChartController">
+		<div ng-controller="wmsChartController" ng-init="inicializadorJson(obra)">
 			<fieldset>
 				<legend style="text-align: center">Gantt</legend>
 				<amchart ng-model='wmsGantt'></amchart>
 			</fieldset>
-			
 		</div>
-
 	</div>
 
 

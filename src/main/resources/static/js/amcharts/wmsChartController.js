@@ -1,18 +1,33 @@
-app.controller('wmsChartController',['$scope',	function($scope) {
-	$scope.wmsGantt = {
+app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', '$log', function($scope, unidadeService, fasesService, $log) {
 
+	// $scope.unidades = unidadeService.listarUnidadesPorObra();
+
+	$scope.unidades = [];
+	$scope.unidade = {};
+	$scope.fases = [];
+
+	$scope.inicializadorJson = function(obra) {
+
+		$log.info('ID Obra ' + obra.idObra);
+
+		
+
+		$scope.wmsGantt = {
                 "type": "gantt",
+                "period": "DD",
 			    "theme": "light",
-			    "marginRight": 70,
-			    "period": "DD",
-			    "dataDateFormat":"dd/MM/yyyy",
+			/*    "dataLoader": {
+				    "url": "http://localhost:8080/fases/listar_por_unidade/" + obra.idObra
+				  }, */
+			    "valueAxis": {
+			    	"type": "date",
+			    	"minPeriod": "DD"
+			    },
+
+			  //  "marginRight": 70,
+			    
 			    "balloonDateFormat": "JJ:NN",
 			    "columnWidth": 0.5,
-			    "valueAxis": {
-			        "type": "date",
-			        "minimum": 7,
-			        "maximum": 31
-			    },
 			    "brightnessStep": 10,
 			    "graph": {
 			        "fillAlphas": 1,
@@ -21,248 +36,41 @@ app.controller('wmsChartController',['$scope',	function($scope) {
 			    "rotate": true,
 			    "categoryField": "nomeUnidade",
 			    "segmentsField": "fases",
-			    "colorField": "cor",
-			    "startDate": "2015-01-01",
-			    "startField": "start",
-			    "endField": "end",
-			    "durationField": "duracao",
+			    "dataDateFormat": "DD/MM/YYYY",
+			    "startDateField": "dataInicio",
+			   // "startField": "start",
+			    "endDateField": "dataPrevistaTermino",
 			    "dataProvider": [ {
-			        "nomeUnidade": "Unidade ",
+			        "nomeUnidade": "Unidade #1",
 			        "fases": [ {
-			            "start": 7,
-			            "duracao": 2,
-			            "cor": "#46615e",
+			            "dataInicio": "18/02/2016",
+			            "dataPrevistaTermino": "24/03/2016",
 			            "nomeFase": "Fase #1"
 			        }, {
-			            "duracao": 2,
-			            "cor": "#727d6f",
+			        	"dataInicio": "24/02/2016",
+			            "dataPrevistaTermino": "27/03/2016",
 			            "nomeFase": "Fase #2"
 			        }, {
-			            "duracao": 2,
-			            "cor": "#8dc49f",
+			        	"dataInicio": "20/02/2016",
+			            "dataPrevistaTermino": "23/03/2016",
 			            "nomeFase": "Fase #3"
 			        } ]
 			    }, {
 			        "nomeUnidade": "Unidade #2",
 			        "fases": [ {
-			            "start": 10,
-			            "duracao": 2,
-			            "cor": "#727d6f",
+			            "dataInicio": "04/04/2016",
+			            "dataPrevistaTermino": "10/04/2016",
 			            "nomeFase": "Fase #2"
 			        }, {
-			            "duracao": 1,
-			            "cor": "#8dc49f",
+			        	"dataInicio": "15/03/2016",
+			            "dataPrevistaTermino": "15/04/2016",
 			            "nomeFase": "Fase #3"
 			        }, {
-			            "duracao": 4,
-			            "cor": "#46615e",
+			        	"dataInicio": "15/03/2016",
+			            "dataPrevistaTermino": "24/04/2016",
 			            "nomeFase": "Fase #1"
 			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #3",
-			        "fases": [ {
-			            "start": 12,
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "start": 16,
-			            "duracao": 2,
-			            "cor": "#FFE4C4",
-			            "nomeFase": "nomeFase #4"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #4",
-			        "fases": [ {
-			            "start": 9,
-			            "duracao": 6,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        }, {
-			            "duracao": 4,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #5",
-			        "fases": [ {
-			            "start": 8,
-			            "duracao": 1,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        }, {
-			            "duracao": 4,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #6",
-			        "fases": [ {
-			            "start": 15,
-			            "duracao": 3,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #7",
-			        "fases": [ {
-			            "start": 9,
-			            "duracao": 2,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        }, {
-			            "duracao": 1,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 8,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #8",
-			        "fases": [ {
-			            "start": 9,
-			            "duracao": 8,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 7,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #9",
-			        "fases": [ {
-			            "start": 11,
-			            "duracao": 8,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "start": 16,
-			            "duracao": 2,
-			            "cor": "#FFE4C4",
-			            "nomeFase": "Fase #4"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #10",
-			        "fases": [ {
-			            "start": 9,
-			            "duracao": 4,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        }, {
-			            "duracao": 3,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 5,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #11",
-			        "fases": [ {
-			            "start": 6,
-			            "duracao": 3,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #12",
-			        "fases": [ {
-			            "start": 12,
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "start": 16,
-			            "duracao": 2,
-			            "cor": "#FFE4C4",
-			            "nomeFase": "Fase #4"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #13",
-			        "fases": [ {
-			            "start": 8,
-			            "duracao": 10,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        }, {
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #14",
-			        "fases": [ {
-			            "start": 12,
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 3,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #15",
-			        "fases": [ {
-			            "start": 18,
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 2,
-			            "cor": "#FFE4C4",
-			            "nomeFase": "Fase #4"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #16",
-			        "fases": [ {
-			            "start": 17,
-			            "duracao": 2,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        }, {
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 2,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #17",
-			        "fases": [ {
-			            "start": 13,
-			            "duracao": 2,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "duracao": 1,
-			            "cor": "#8dc49f",
-			            "nomeFase": "Fase #3"
-			        }, {
-			            "duracao": 4,
-			            "cor": "#46615e",
-			            "nomeFase": "Fase #1"
-			        } ]
-			    }, {
-			        "nomeUnidade": "Unidade #18",
-			        "fases": [ {
-			            "start": 10,
-			            "duracao": 3,
-			            "cor": "#727d6f",
-			            "nomeFase": "Fase #2"
-			        }, {
-			            "start": 17,
-			            "duracao": 4,
-			            "cor": "#FFE4C4",
-			            "nomeFase": "Fase #4"
-			        } ]
-			    } ],
+			    }], 
 			    "valueScrollbar": {
 			        "autoGridCount":true
 			    },
@@ -276,10 +84,16 @@ app.controller('wmsChartController',['$scope',	function($scope) {
 			        "zoomable":false,
 			        "valueZoomable":true
 			    },
+			    "chartScrollbar": {
+
+  				},
 			    "export": {
 			        "enabled": true
 			     }
 			  };
+	};
+
+	
 
 }]);
 

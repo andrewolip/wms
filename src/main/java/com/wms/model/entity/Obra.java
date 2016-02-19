@@ -19,67 +19,70 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 /**
  * The persistent class for the obra database table.
  * 
  */
 @Entity
-@NamedQuery(name="Obra.findAll", query="SELECT o FROM Obra o")
+@NamedQuery(name = "Obra.findAll", query = "SELECT o FROM Obra o")
 public class Obra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_obra")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_obra")
 	private Integer idObra;
 
-	@Column(name="custo_previsto")
+	@Column(name = "custo_previsto")
 	private BigDecimal custoPrevisto;
 
-	@Column(name="custo_realizado")
+	@Column(name = "custo_realizado")
 	private BigDecimal custoRealizado;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inicio")
+	@Column(name = "data_inicio")
 	private Date dataInicio;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_prevista_termino")
+	@Column(name = "data_prevista_termino")
 	private Date dataPrevistaTermino;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_termino")
+	@Column(name = "data_termino")
 	private Date dataTermino;
 
 	private String descricao;
 
 	private String nome;
-	
-	//unidirectional many-to-one association to Usuario
+
+	// unidirectional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario coordenador;
 
-	//bi-directional many-to-one association to Anexo
-	@OneToMany(mappedBy="obra")
+	// bi-directional many-to-one association to Anexo
+	@OneToMany(mappedBy = "obra")
 	private List<Anexo> anexos;
 
-	//bi-directional many-to-one association to CentroCusto
-	@OneToMany(mappedBy="obra")
+	// bi-directional many-to-one association to CentroCusto
+	@OneToMany(mappedBy = "obra")
 	private List<CentroCusto> centroCustos;
 
-	//bi-directional many-to-one association to Colaborador
-	@OneToMany(mappedBy="obra")
+	// bi-directional many-to-one association to Colaborador
+	@OneToMany(mappedBy = "obra")
 	private List<Colaborador> colaboradors;
 
-	//bi-directional many-to-one association to ComentarioObra
-	@OneToMany(mappedBy="obra")
+	// bi-directional many-to-one association to ComentarioObra
+	@OneToMany(mappedBy = "obra")
 	private List<ComentarioObra> comentarioObras;
-	
+
 	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="id_localizacao")
+	@JoinColumn(name = "id_localizacao")
 	private Localizacao localizacao;
+
+	// bi-directional many-to-one association to Unidade
+	@OneToMany(mappedBy = "obra", cascade = CascadeType.REMOVE)
+	private List<UnidadeObra> unidades;
 
 	public Obra() {
 	}
@@ -235,7 +238,7 @@ public class Obra implements Serializable {
 
 		return comentarioObra;
 	}
-	
+
 	public Localizacao getLocalizacao() {
 		return localizacao;
 	}
@@ -243,7 +246,7 @@ public class Obra implements Serializable {
 	public void setLocalizacao(Localizacao localizacao) {
 		this.localizacao = localizacao;
 	}
-	
+
 	public Usuario getCoordenador() {
 		return this.coordenador;
 	}
