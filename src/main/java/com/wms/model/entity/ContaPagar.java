@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
 
 /**
  * The persistent class for the conta_pagar database table.
- * @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idContaPagar")
+ * 
  */
 @Entity
 @Table(name="conta_pagar")
@@ -172,28 +172,6 @@ public class ContaPagar implements Serializable {
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
-	}
-
-	public List<ItemConta> getItensConta() {
-		return this.itensConta;
-	}
-
-	public void setItensConta(List<ItemConta> itensConta) {
-		this.itensConta = itensConta;
-	}
-
-	public ItemConta addItemConta(ItemConta itemConta) {
-		getItensConta().add(itemConta);
-		itemConta.setContaPagar(this);
-
-		return itemConta;
-	}
-
-	public ItemConta removeItemConta(ItemConta itemConta) {
-		getItensConta().remove(itemConta);
-		itemConta.setContaPagar(null);
-
-		return itemConta;
 	}
 
 	public Integer getnParcelas() {

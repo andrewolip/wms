@@ -74,7 +74,7 @@ public class UnidadeObra implements Serializable {
 	private List<ContaReceber> contaRecebers;
 
 	//bi-directional many-to-one association to FaseObra
-	@OneToMany(mappedBy="unidadeObra", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="unidadeObra", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FaseUnidade> fases;
 		
 	//bi-directional many-to-one association to Cliente

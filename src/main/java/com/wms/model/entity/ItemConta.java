@@ -24,8 +24,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name="item_conta")
-@NamedQuery(name="ItemConta.findAll", query="SELECT i FROM ItemConta i")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idItem")
+@NamedQuery(name="ItemConta.findAll", query="SELECT ic FROM ItemConta ic")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idItem")
 public class ItemConta implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -18,7 +18,6 @@ public class UnidadeObraController {
 
 	UnidadeObraService unidadeObraService;
 	
-	
 	@Autowired
 	public void setUnidadeObraService(UnidadeObraService unidadeObraService) {
 		this.unidadeObraService = unidadeObraService;

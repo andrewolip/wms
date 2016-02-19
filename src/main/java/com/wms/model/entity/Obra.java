@@ -81,7 +81,7 @@ public class Obra implements Serializable {
 	private Localizacao localizacao;
 
 	// bi-directional many-to-one association to Unidade
-	@OneToMany(mappedBy = "obra", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "obra", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UnidadeObra> unidades;
 
 	public Obra() {
