@@ -33,6 +33,10 @@ public class Obra implements Serializable {
 	@Column(name = "id_obra")
 	private Integer idObra;
 
+	// bi-directional many-to-one association to Unidade
+	@OneToMany(mappedBy = "obra", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UnidadeObra> unidades;
+
 	@Column(name = "custo_previsto")
 	private BigDecimal custoPrevisto;
 
@@ -79,10 +83,6 @@ public class Obra implements Serializable {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "id_localizacao")
 	private Localizacao localizacao;
-
-	// bi-directional many-to-one association to Unidade
-	@OneToMany(mappedBy = "obra", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<UnidadeObra> unidades;
 
 	public Obra() {
 	}

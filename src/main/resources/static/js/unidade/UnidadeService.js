@@ -22,6 +22,10 @@ app.factory('unidadeService', ['$http', '$location', '$log', function($http, $lo
 	unidade.listarUnidadesPorObra = function(id) {
 		return $http.get('unidades/listar_por_obra/' + id);
 	}
+
+	unidade.listarUnidadesFases = function(id) {
+		return $http.get('/unidades/listar_unidades_fases/' + id)
+	}
 	
 	unidade.removerUnidade = function(unidade) {
 		return $http({

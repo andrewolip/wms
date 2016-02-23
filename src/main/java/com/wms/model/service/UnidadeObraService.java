@@ -52,5 +52,9 @@ public class UnidadeObraService {
 	public void realizarLancamento(Conta conta) {
 		
 	}
-	
+
+	public Collection<UnidadeObra> listarUnidadesFases(Integer id) {
+		return unidadeObraRepository.listarUnidadesFases(id);
+	}
+
 }

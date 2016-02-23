@@ -5,20 +5,43 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 	$scope.unidades = [];
 	$scope.unidade = {};
 	$scope.fases = [];
+	var ganttJson;
 
 	$scope.inicializadorJson = function(obra) {
 
 		$log.info('ID Obra ' + obra.idObra);
-
 		
+		var jsonObj;
+
+		unidadeService.listarUnidadesFases(obra.idObra).success(function(data) {
+					
+			$log.info(data[0]);
+			
+			
+			
+		/*	for(var i = 0; i < data.length; i++) {
+				
+				ganttJson = [{
+						"nomeUnidade": data[i][0],
+						"fases": [{
+							"dataInicio": data[i][1],
+							"dataPrevistaTermino": data[i][2],
+							"nomeFase": data[i][3]
+						}]
+				}];
+				
+			} */
+			
+			
+		});
 
 		$scope.wmsGantt = {
                 "type": "gantt",
                 "period": "DD",
 			    "theme": "light",
-			/*    "dataLoader": {
-				    "url": "http://localhost:8080/fases/listar_por_unidade/" + obra.idObra
-				  }, */
+			//    "dataLoader": {
+				//    "url": "/unidades/listar_unidades_fases/" + obra.idObra
+				 // }, 
 			    "valueAxis": {
 			    	"type": "date",
 			    	"minPeriod": "DD"
@@ -40,7 +63,8 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			    "startDateField": "dataInicio",
 			   // "startField": "start",
 			    "endDateField": "dataPrevistaTermino",
-			    "dataProvider": [ {
+			    "dataProvider": ganttJson,
+			 /*   "dataProvider": [ {
 			        "nomeUnidade": "Unidade #1",
 			        "fases": [ {
 			            "dataInicio": "18/02/2016",
@@ -70,7 +94,7 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			            "dataPrevistaTermino": "24/04/2016",
 			            "nomeFase": "Fase #1"
 			        } ]
-			    }], 
+			    }],  */
 			    "valueScrollbar": {
 			        "autoGridCount":true
 			    },

@@ -19,72 +19,71 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 /**
  * The persistent class for the unidade_obra database table.
  * 
  */
 @Entity
-@Table(name="unidade_obra")
-@NamedQuery(name="UnidadeObra.findAll", query="SELECT u FROM UnidadeObra u")
+@Table(name = "unidade_obra")
+@NamedQuery(name = "UnidadeObra.findAll", query = "SELECT u FROM UnidadeObra u")
 public class UnidadeObra implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_unidade_obra")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_unidade_obra")
 	private Integer idUnidadeObra;
 
+	// bi-directional many-to-one association to FaseObra
+	@OneToMany(mappedBy = "unidadeObra", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<FaseUnidade> fases;
+
+	@ManyToOne
+	@JoinColumn(name = "id_obra")
+	private Obra obra;
+
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_entrega")
+	@Column(name = "data_entrega")
 	private Date dataEntrega;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inicio")
+	@Column(name = "data_inicio")
 	private Date dataInicio;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_prevista_termino")
+	@Column(name = "data_prevista_termino")
 	private Date dataPrevistaTermino;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_venda")
+	@Column(name = "data_venda")
 	private Date dataVenda;
 
 	private String descricao;
 
-	@Column(name="nome_unidade")
+	@Column(name = "nome_unidade")
 	private String nomeUnidade;
 
-	@Column(name="custo_previsto")
+	@Column(name = "custo_previsto")
 	private BigDecimal custoPrevisto;
 
-	@Column(name="custo_realizado")
+	@Column(name = "custo_realizado")
 	private BigDecimal custoRealizado;
-	
-	@Column(name="valor_venda")
+
+	@Column(name = "valor_venda")
 	private BigDecimal valorVenda;
 
-	//bi-directional many-to-one association to Anexo
-	@OneToMany(mappedBy="unidadeObra")
+	// bi-directional many-to-one association to Anexo
+	@OneToMany(mappedBy = "unidadeObra")
 	private List<Anexo> anexos;
 
-	//bi-directional many-to-one association to ContaReceber
-	@OneToMany(mappedBy="unidadeObra")
+	// bi-directional many-to-one association to ContaReceber
+	@OneToMany(mappedBy = "unidadeObra")
 	private List<ContaReceber> contaRecebers;
 
-	//bi-directional many-to-one association to FaseObra
-	@OneToMany(mappedBy="unidadeObra", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<FaseUnidade> fases;
-		
-	//bi-directional many-to-one association to Cliente
+	// bi-directional many-to-one association to Cliente
 	@ManyToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
-
-	@ManyToOne
-	@JoinColumn(name="id_obra")
-	private Obra obra;
 
 	public UnidadeObra() {
 	}
@@ -96,7 +95,7 @@ public class UnidadeObra implements Serializable {
 	public void setNomeUnidade(String nomeUnidade) {
 		this.nomeUnidade = nomeUnidade;
 	}
-	
+
 	public Integer getIdUnidadeObra() {
 		return this.idUnidadeObra;
 	}
