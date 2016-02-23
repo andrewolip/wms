@@ -22,7 +22,7 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 			}).error(function(error) {
 				$log.error(error);
 			});
-		} else{} 
+		}
 	}
 	
 	$scope.modalUnidadeUpdate = function(tamanho, unidadeSelecionada) {
@@ -39,10 +39,11 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 			}
 		}); 
 
+		
 		modalInstance.result.then(
 				function(selectedItem) {
 					$scope.selected = selectedItem;
-					$scope.listarUnidadesPorObra();
+					$scope.listarUnidadesPorObra($scope.obra.idObra);
 				}, function() {
 					$log.info('Modal foi fechada em: '
 							+ new Date());

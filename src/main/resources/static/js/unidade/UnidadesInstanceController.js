@@ -48,8 +48,9 @@ app.controller('UnidadesInstanceController', function($scope,
 	};
 
 	$scope.faseDataInicioChange = function(index, fase) {
-		$log.info("Chamou Data Inicio Change!!!!");
-		$scope.minDate[index] = fase.dataInicio;
+		if (fase.dataInicio) {
+			$scope.minDate[index] = fase.dataInicio;
+		}
 	};
 
 	$scope.faseDataPrevistaTerminoChange = function(index, fase) {
@@ -99,8 +100,12 @@ app.controller('UnidadesInstanceController', function($scope,
 		function(error) {
 			$log.info(error);
 		});
-
-		$uibModalInstance.close();
+		
+		setTimeout(continueExecution, 300);
+		
+		function continueExecution() {
+			$uibModalInstance.close();
+		}
 	}
 	
 	$scope.dataInicio = {
@@ -164,10 +169,12 @@ app.controller('UnidadesInstanceController', function($scope,
 		};
 				
 		$scope.listarFasesPorUnidade = function(unidade) {
-			fasesService.listarFasesPorUnidade(unidade.idUnidadeObra).success(function(data){
-				$scope.fases = data;
-			}).error(function(error) {
-				$log.error(error);
-			});
+			if(unidade.idUnidadeObra){
+				fasesService.listarFasesPorUnidade(unidade.idUnidadeObra).success(function(data){
+					$scope.fases = data;
+				}).error(function(error) {
+					$log.error(error);
+				});
+			}
 		}
 });
