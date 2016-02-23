@@ -3,8 +3,6 @@ package com.wms.model.repository;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import com.wms.model.entity.UnidadeObra;
 
@@ -20,9 +18,5 @@ public interface UnidadeObraRepository extends JpaRepository<UnidadeObra, Intege
 	
 //	@Query("SELECT new com.wms.model.dto.UnidadeDTO(u.nomeUnidade, u.fases) from UnidadeObra u JOIN u.fases f WHERE u.obra.idObra = :idObra")
 //	Collection<UnidadeDTO> listarUnidadesFases(@Param("idObra")Integer idObra);
-	
-
-	@Query("SELECT f FROM UnidadeObra u JOIN u.fases f WHERE u.obra.idObra = :idObra")
-	Collection<UnidadeObra> listarUnidadesFases(@Param("idObra")Integer idObra);
 	
 }

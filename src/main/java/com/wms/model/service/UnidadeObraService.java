@@ -53,8 +53,4 @@ public class UnidadeObraService {
 		
 	}
 
-	public Collection<UnidadeObra> listarUnidadesFases(Integer id) {
-		return unidadeObraRepository.listarUnidadesFases(id);
-	}
-
 }

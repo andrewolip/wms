@@ -43,9 +43,5 @@ public class UnidadeObraController {
 		unidadeObraService.remover(id);
 	}
 	
-	@RequestMapping(value = "/listar_unidades_fases/{id}", method = RequestMethod.GET)
-	public Collection<UnidadeObra> listarUnidadesFases(@PathVariable Integer id) {
-		return unidadeObraService.listarUnidadesFases(id);
-	}
 	
 }

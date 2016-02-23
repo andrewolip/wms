@@ -1,4 +1,4 @@
-app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', '$log', function($scope, unidadeService, fasesService, $log) {
+app.controller('wmsGanttChartController',['$scope','unidadeService', 'fasesService', '$log', function($scope, unidadeService, fasesService, $log) {
 
 	// $scope.unidades = unidadeService.listarUnidadesPorObra();
 
@@ -15,9 +15,7 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 
 		unidadeService.listarUnidadesFases(obra.idObra).success(function(data) {
 					
-			$log.info(data[0]);
-			
-			
+		//	$log.info(data[0]);
 			
 		/*	for(var i = 0; i < data.length; i++) {
 				
@@ -31,7 +29,6 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 				}];
 				
 			} */
-			
 			
 		});
 
@@ -63,8 +60,8 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			    "startDateField": "dataInicio",
 			   // "startField": "start",
 			    "endDateField": "dataPrevistaTermino",
-			    "dataProvider": ganttJson,
-			 /*   "dataProvider": [ {
+			  //  "dataProvider": ganttJson,
+			    "dataProvider": [ {
 			        "nomeUnidade": "Unidade #1",
 			        "fases": [ {
 			            "dataInicio": "18/02/2016",
@@ -94,7 +91,7 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			            "dataPrevistaTermino": "24/04/2016",
 			            "nomeFase": "Fase #1"
 			        } ]
-			    }],  */
+			    }], 
 			    "valueScrollbar": {
 			        "autoGridCount":true
 			    },
