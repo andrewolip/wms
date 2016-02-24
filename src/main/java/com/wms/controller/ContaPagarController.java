@@ -44,13 +44,10 @@ public class ContaPagarController {
 		return contaPagarService.listarContasPagar();
 	}
 	
-//	@RequestMapping(value = "/listar_por_obra", method = RequestMethod.GET)
-//	public Collection<ContaPagar> listarContaPagarPorObra(@RequestBody Obra obra) {
-//		System.out.println("ID da Obra: " + obra.getIdObra());
-//		Collection<ContaPagar> lista = contaPagarService.listarPorObra(obra); 
-//		System.out.println("Lista de Contas a pagar" + lista);
-//		return lista;
-//	}
+	@RequestMapping(value = "/listar_por_obra/{id}", method = RequestMethod.GET)
+	public Collection<ContaPagar> listarContaPagarPorObra(@PathVariable Integer id) {
+		return contaPagarService.listarPorObra(id);
+	}
 	
 	@RequestMapping(value = "/listar_por_unidade", method = RequestMethod.GET)
 	public Collection<ContaPagar> listarContaPagarPorUnidade(@RequestBody UnidadeObra unidadeObra) {

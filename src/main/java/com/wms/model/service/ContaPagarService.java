@@ -51,6 +51,10 @@ public class ContaPagarService {
 		return this.contaPagarRepository.findByObra(obra);
 	}
 	
+	public Collection<ContaPagar> listarPorObra(Integer id) {
+		return this.contaPagarRepository.findByObraIdObra(id);
+	}
+	
 	public Collection<ContaPagar> listarPorUnidade(UnidadeObra unidadeObra) {
 		return this.contaPagarRepository.findByUnidadeObra(unidadeObra);
 	}

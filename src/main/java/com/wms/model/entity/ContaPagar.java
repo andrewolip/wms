@@ -19,68 +19,67 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 /**
  * The persistent class for the conta_pagar database table.
  * 
  */
 @Entity
-@Table(name="conta_pagar")
-@NamedQuery(name="ContaPagar.findAll", query="SELECT c FROM ContaPagar c")
+@Table(name = "conta_pagar")
+@NamedQuery(name = "ContaPagar.findAll", query = "SELECT c FROM ContaPagar c")
 public class ContaPagar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_conta_pagar")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_conta_pagar")
 	private Integer idContaPagar;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_pagamento")
+	@Column(name = "data_pagamento")
 	private Date dataPagamento;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_vencimento")
+	@Column(name = "data_vencimento")
 	private Date dataVencimento;
 
-	@Column(name="n_parcelas")
+	@Column(name = "n_parcelas")
 	private Integer nParcelas;
 
-	@Column(name="nota_fiscal")
+	@Column(name = "nota_fiscal")
 	private Long notaFiscal;
 
 	private String observacao;
 
 	private Integer status;
 
-	@Column(name="tipo_conta")
+	@Column(name = "tipo_conta")
 	private Integer tipoConta;
 
-	@Column(name="tipo_pagamento")
+	@Column(name = "tipo_pagamento")
 	private Integer tipoPagamento;
 
-	@Column(name="valor_conta")
+	@Column(name = "valor_conta")
 	private BigDecimal valorConta;
 
-	//bi-directional many-to-one association to Fornecedor
+	// bi-directional many-to-one association to Fornecedor
 	@ManyToOne
-	@JoinColumn(name="id_fornecedor")
+	@JoinColumn(name = "id_fornecedor")
 	private Fornecedor fornecedor;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_obra")
+	@JoinColumn(name = "id_obra")
 	private Obra obra;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_unidade_obra")
+	@JoinColumn(name = "id_unidade_obra")
 	private UnidadeObra unidadeObra;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_fase_obra")
+	@JoinColumn(name = "id_fase_obra")
 	private FaseUnidade faseObra;
-	
-	//bi-directional many-to-one association to ItemConta
-	@OneToMany(mappedBy="contaPagar", cascade = CascadeType.ALL, orphanRemoval = true)
+
+	// bi-directional many-to-one association to ItemConta
+	@OneToMany(mappedBy = "contaPagar", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemConta> itensConta;
 
 	public ContaPagar() {
@@ -205,4 +204,5 @@ public class ContaPagar implements Serializable {
 	public void setFaseObra(FaseUnidade faseObra) {
 		this.faseObra = faseObra;
 	}
+
 }

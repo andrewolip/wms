@@ -10,8 +10,8 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 		return $http.put('/contasPagar/salvar', contaPagar);
 	}
 	
-	contaPagar.listarContasPagar = function() {
-		return $http.get('/contasPagar/listar');
+	contaPagar.listarPorObra = function(id) {
+		return $http.get('/contasPagar/listar_por_obra/' + id);
 	}
 	
 	contaPagar.removerContaPagar = function(contaPagar) {

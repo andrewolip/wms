@@ -1,81 +1,90 @@
 ﻿<!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Contas a Pagar</h1>
+		<div class="row">
+			<div class="page-header">
+				<div class="col-lg-6">
+					<h2>Obra: {{obra.nome}}</h2>
+				</div>
+			</div>
+		</div>
 		<ol class="breadcrumb">
-			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
-			<li class="active"><i class="fa fa-file"></i> Contas a Pagar</li>
+			<li><a ui-sref="dashboard">Dashboard</a></li>
+			<li><a ui-sref="obras">Obras</a></li>
+			<li><a ui-sref="obra(obra)">Obra</a></li>
+			<li class="active">Contas a Pagar</li>
 		</ol>
-	</div>
+
+		<ul class="nav nav-tabs">
+			<li><a ui-sref="obra(obra)">Geral</a></li>	
+			<li><a ui-sref="colaboradoresObra(obra)">Funcionários</a></li>
+			<li><a ui-sref="unidades(obra)">Unidades</a></li>
+			<li class="active"><a ui-sref="contasPagar(obra)">Contas a Pagar</a></li>
+<!-- 			<li><a ui-sref="comentarios">Comentários</a></li> -->
+<!-- 			<li><a ui-sref="anexos">Anexos</a></li> -->
+		</ul>
+	</div>	
 </div>
-<!-- /.row -->
 
-<div class="container">
-	<div ng-init="listarContasPagar()">
+<div class="containerNovo">
+	<div ng-init="listarContasPagarPorObra()">
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-2">
 				<div class="form-group">
-					<input ng-model="buscaContaPagar" type="text" class="form-control"
+					<input ng-model="buscaContaPagar" type="text" class="form-control searchField"
 						placeholder="Digite o nome ou ID da Conta a Pagar">
+					<button class="btn btn-success buttonAdd" ng-click="modalContaPagarUpdate('lg')">
+						<span class="glyphicon glyphicon-plus"></span> Conta a Pagar
+					</button>
 				</div>
 			</div>
-			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalContaPagarUpdate('lg')">
-					<span class="glyphicon glyphicon-plus"></span>  Adicionar Conta a Pagar
-				</button>
-			</div>
 		</div>
-
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
-				<div class="table-responsive">
-					<table st-table="contasPagar" class="table table-striped"
-						ng-hide="contasPagar.length == 0"
-						st-pagination-scroll>
-						<thead>
-							<tr>
-								<th>Nº Nota Fiscal</th>
-								<th>Fornecedor</th>
-								<th>Tipo</th>
-								<th>Forma Pagamento</th>
-								<th>Nº de Parcelas</th>
-								<th>Data Vencimento</th>
-								<th>Valor</th>
-								<th>Editar</th>
-								<th>Excluir</th>
-							</tr>
-						</thead>
+			<div class="table-responsive">
+				<table st-table="contasPagar" class="table table-striped"
+					ng-hide="contasPagar.length == 0"
+					st-pagination-scroll>
+					<thead>
+						<tr>
+							<th>Nº Nota Fiscal</th>
+							<th>Fornecedor</th>
+							<th>Tipo</th>
+							<th>Forma Pagamento</th>
+							<th>Nº de Parcelas</th>
+							<th>Data Vencimento</th>
+							<th>Valor</th>
+							<th>Editar</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
 
-						<tbody>
-							<tr ng-repeat="contaPagar in contasPagar | filter: buscaContaPagar">
-								<td>{{contaPagar.notaFiscal}}</td>
-								<td>{{contaPagar.fornecedor.nome}}</td>
-								<td>{{contaPagar.tipoConta}}</td>
-								<td>{{contaPagar.tipoPagamento}}</td>
-								<td>{{contaPagar.nparcelas}}</td>
-								<td>{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
-								<td>{{contaPagar.valorConta | currency: 'R$ '}}</td>
-								<td>
-									<button class="btn btn-warning"
-                                        ng-click="modalContaPagarUpdate('lg', contaPagar)">
-                                        <span class="glyphicon glyphicon-edit"></span>
-									</button>
-                                </td>
-                                <td style="width: 10%;">
-                                	<button class="btn btn-danger" ng-click="removerContaPagar(contaPagar)">
-										<span class="glyphicon glyphicon-remove"></span>
-									</button>
-                                </td>
-							</tr>
-						</tbody>
-					</table>
-					<h4 ng-show="contasPagar.length == 0" class="no-result">
-						Não há contas a pagar registradas
-					</h4>
-				</div>
+					<tbody>
+						<tr ng-repeat="contaPagar in contasPagar | filter: buscaContaPagar">
+							<td>{{contaPagar.notaFiscal}}</td>
+							<td>{{contaPagar.fornecedor.nome}}</td>
+							<td>{{contaPagar.tipoConta}}</td>
+							<td>{{contaPagar.tipoPagamento}}</td>
+							<td>{{contaPagar.nparcelas}}</td>
+							<td>{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
+							<td>{{contaPagar.valorConta | currency: 'R$ '}}</td>
+							<td>
+								<button class="btn btn-warning"
+                                       ng-click="modalContaPagarUpdate('lg', contaPagar)">
+                                       <span class="glyphicon glyphicon-edit"></span>
+								</button>
+                               </td>
+                               <td style="width: 10%;">
+                               	<button class="btn btn-danger" ng-click="removerContaPagar(contaPagar)">
+									<span class="glyphicon glyphicon-remove"></span>
+								</button>
+                               </td>
+						</tr>
+					</tbody>
+				</table>
+				<h4 ng-show="contasPagar.length == 0" class="no-result">
+					Não há contas a pagar registradas
+				</h4>
 			</div>
 		</div>
-
 		<!-- ContaPagarController -->
 	</div>
 </div>
