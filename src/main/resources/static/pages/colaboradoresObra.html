@@ -1,26 +1,43 @@
-﻿<!-- Page Heading -->
+﻿<!-- Page Heading --> 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Funcionários</h1>
+        <div class="row">
+            <div class="page-header">
+                <div class="col-lg-6">
+                    <h2>Obra: {{obra.nome}}</h2>
+                </div>
+            </div>
+        </div>
         <ol class="breadcrumb">
             <li><a ui-sref="dashboard">Dashboard</a></li>
-            <li class="active">Funcionários</li>
+            <li><a ui-sref="obras">Obras</a></li>
+            <li><a ui-sref="obra(obra)">Obra</a></li>
+            <li class="active"></i> Funcionários da Obra</li>
         </ol>
+
+        <ul class="nav nav-tabs">
+            <li><a ui-sref="obra(obra)">Geral</a></li>  
+            <li class="active"><a ui-sref="colaboradoresObra(obra)">Funcionários</a></li>
+            <li><a ui-sref="unidades(obra)">Unidades</a></li>
+            <li><a ui-sref="contasPagar(obra)">Contas a Pagar</a></li>
+<!--            <li><a ui-sref="comentarios">Comentários</a></li> -->
+<!--            <li><a ui-sref="anexos">Anexos</a></li> -->
+        </ul>
     </div>
 </div>
-<!-- /.row -->
 
 <div class="containerNovo">
-    <div ng-init="listarColaboradores()">
+    <div ng-init="listarColaboradoresPorObra()">
         <div class="row">
             <div class="form-group">
                 <input ng-model="buscaColaborador" type="text" class="form-control searchField"
-                    placeholder="Digite o nome do funcionário">
+                    placeholder="Digite o nome do funcionário da obra">
                 <button class="btn btn-success buttonAdd" ng-click="modalUpdate('lg')">
                     <span class="glyphicon glyphicon-plus"></span> Funcionário
                 </button>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col-lg-12">
@@ -54,7 +71,7 @@
                         </tbody>
                     </table>
                     <h4 ng-show="colaboradores.length == 0" class="no-result">
-                        Não há funcionários registrados
+                        Não há colaboradores registrados
                     </h4>
                 </div>
             </div>

@@ -15,6 +15,10 @@ app.factory('colaboradorService', ['$http', '$location', function($http, $locati
 		return $http.get('/colaboradores/listar');
 	}
 	
+	factory.listarColaboradoresPorObra = function(id) {
+		return $http.get('/colaboradores/listar_por_obra/' + id);
+	}
+	
 	factory.removerColaborador = function(colaborador) {
 		return $http({
 			url : '/colaboradores/remover/' + colaborador.idColaborador,

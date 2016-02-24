@@ -5,9 +5,11 @@ app.controller('ColaboradorController',				[
 						'colaboradorService',
 						'$window',
 						'$location',
+						'$stateParams',
 						function($scope, $uibModal, $log, colaboradorService,
-								$window, $location) {
+								$window, $location, $stateParams) {
 
+							$scope.obra = $stateParams;
 							$scope.colaborador = {};
 							$scope.colaboradores = [];
 
@@ -18,11 +20,19 @@ app.controller('ColaboradorController',				[
 										});
 							};
 							
+							$scope.listarColaboradoresPorObra = function() {
+								colaboradorService.listarColaboradoresPorObra($scope.obra.idObra).success(
+										function(data) {
+											$scope.colaboradores = data;
+										});
+							};
+							
 							$scope.inserirColaborador = function(colaborador) {
+								colaborador.obra = $scope.obra;
 								colaboradorService.inserirColaborador(colaborador).success(
 										function() {
 											$scope.colaborador = colaborador;
-											colaboradorService.listarColaboradores();
+											colaboradorService.listarColaboradoresPorObra();
 										}).error(function(error) {
 									console(error);
 								});
@@ -32,16 +42,16 @@ app.controller('ColaboradorController',				[
 
 								var deleteColaborador = $window
 										.confirm('Tem certeza que gostaria de remover a colaborador '
-												+ colaborador.nome + '?');
+												+ colaborador.nome + 'com nº de contrato ' + colaborador.numeroContrato + '?');
 
 								if (deleteColaborador) {
 									colaboradorService.removerColaborador(colaborador).success(
 											function(data) {
-												$scope.listarColaboradores();
+												$scope.listarColaboradoresPorObra();
 											}).error(function(error) {
 										console(error);
 									});
-								} else{}
+								}
 							}
 							
 							$scope.buscarColaborador = function(id) {
@@ -69,7 +79,7 @@ app.controller('ColaboradorController',				[
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
-											$scope.listarColaboradores();
+											$scope.listarColaboradoresPorObra();
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());

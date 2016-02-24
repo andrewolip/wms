@@ -3,6 +3,7 @@ package com.wms.controller;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,4 +43,9 @@ public class ColaboradorController {
 		return colaboradorService.listarColaboradores();
 	}
 
+	@RequestMapping(value = "/listar_por_obra/{id}", method = RequestMethod.GET)
+	public Collection<Colaborador> listarColaboradorPorObra(@PathVariable Integer id) {
+		return colaboradorService.listarPorObra(id);
+	}
+	
 }

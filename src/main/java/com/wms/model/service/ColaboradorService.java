@@ -1,7 +1,6 @@
 package com.wms.model.service;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +34,7 @@ public class ColaboradorService {
 		return (Collection<Colaborador>) colaboradorRepository.findAll();
 	}
 	
+	public Collection<Colaborador> listarPorObra(Integer id) {
+		return this.colaboradorRepository.findByObraIdObra(id);
+	}
 }
