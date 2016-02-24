@@ -56,4 +56,9 @@ public class ContaPagarController {
 	public Collection<ContaPagar> listarContaPagarPorUnidade(@RequestBody UnidadeObra unidadeObra) {
 		return contaPagarService.listarPorUnidade(unidadeObra);
 	}
+	
+	@RequestMapping(value = "/listar_contas_nao_pagas/{id}", method = RequestMethod.GET)
+	public Collection<ContaPagar> listarContasNaoPagas(@PathVariable Integer id) {
+		return contaPagarService.listarContasNaoPagas(id);
+	}
 }
