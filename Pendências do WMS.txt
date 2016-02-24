@@ -1,31 +1,39 @@
 Geral
-> Todos os principais CRUDs do sistema
-> Busca avançada e paginação
-- Criar um WebServer para comunicar os dispositivos clientes
-- Relatórios
-- Publicar o sistema na web ou criar uma rede wireless utilizando o modem (testar)
-- Padrões de Projeto
+- Todos os principais CRUDs do sistema
+- Busca avançada e paginação
+NOT - Criar um WebServer para comunicar os dispositivos clientes
+NOT - Relatórios
+NOT - Publicar o sistema na web ou criar uma rede wireless utilizando o modem (testar)
+NOT - Padrões de Projeto
 
 Obras
-OK - Selecionar Coordenador 
 > Botão para cadastrar uma conta a pagar da obra
-- Excluir Obra = excluir tudo relacionado à obra (dentro de obra)
-- Visualizar cronograma geral da obra (Visão das unidades cadastradas)
-- Definir como será quando a Obra tiver apenas uma unidade (uma unidade é criada automaticamente para cada obra sempre?)
-- Cadastrar Comentários
+> Visualizar cronograma geral da obra (Visão das unidades cadastradas)
+- Calcular valor gasto na obra de acordo com o valor total de contas a pagar cadastradas
+OK - Definir como será quando a Obra tiver apenas uma unidade (uma unidade é criada automaticamente para cada obra sempre?)
+OK - Excluir Obra = excluir tudo relacionado à obra (dentro de obra)
+OK - Selecionar Coordenador
+NOT - Cadastrar Comentários
 
 Unidades da Obra
-- Botão para Cadastrar conta a receber da unidade
-> Cadastrar fases
+- Deifnir Data Inicial e Final de acordo com a inicial da primeira Fase e a final da última fase
+ou
+- Deifnir a data inicial da primeira fase conforme a data inicial da Unidade e a da final da última fase conforme a data final da Unidade
+OK - Cadastrar fases
+NOT - Botão para Cadastrar conta a receber da unidade
 
 Contas a Pagar
+> Corrigir método salvar ContaPagar ao editar uma
+- Implementar Forma de Pagamento
+- Verificar se existe uma ContaPagar com o número de nota fiscal para o mesmo fornecedor já cadastrada no sistema
+- Filtrar Contas a Pagar por Obra
 OK - Relacionar a conta a Obra/Unidade/Fase
-> Atribuir itens para criar objetos ItemConta
+OK - Atribuir itens para criar objetos ItemConta
 
 Lançamento
-- vincular a uma conta a pagar/receber
-- Dar baixa no orçamento
-- Estorno do lançamento
+- Vincular a uma conta a pagar/receber
+NOT - Dar baixa no orçamento
+NOT - Estorno do lançamento
 
 Cronogramas
 - Cronograma de Obra: mostra as datas de inicio e fim (previstas e realizadas) da Obra e das unidades cadastradas
@@ -37,13 +45,13 @@ Login e Segurança
 - Definir as diferenças de acessos dos usuarios
 
 Dashboard e Template
-- Menu Superior (Notificações e Perfil)
 - Informações / Atalhos / Boas-vindas
 - Logotipo WMS
-- Cores das fontes e do background
-- Ícones
+OK - Ícones
+NOT - Menu Superior (Notificações e Perfil)
+NOT - Cores das fontes e do background
 
 Anexo
-- Permitir o cadastro de anexo para os CRUDs
-- Formatos: PNG, JPG, JPEG, DOC e PDF
-- Sem visualização do anexo no sistema, apenas download na versão inicial
+NOT - Permitir o cadastro de anexo para os CRUDs
+NOT - Formatos: PNG, JPG, JPEG, DOC e PDF
+NOT - Sem visualização do anexo no sistema, apenas download na versão inicial
