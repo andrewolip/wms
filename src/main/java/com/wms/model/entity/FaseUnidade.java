@@ -1,65 +1,74 @@
 package com.wms.model.entity;
 
 import java.io.Serializable;
-
-import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The persistent class for the fase_obra database table.
  * 
  */
 @Entity
-@Table(name="fase_unidade")
-@NamedQuery(name="FaseUnidade.findAll", query="SELECT f FROM FaseUnidade f")
+@Table(name = "fase_unidade")
+@NamedQuery(name = "FaseUnidade.findAll", query = "SELECT f FROM FaseUnidade f")
 public class FaseUnidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_fase_unidade")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_fase_unidade")
 	private Integer idFaseUnidade;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "id_unidade_obra")
+	private UnidadeObra unidadeObra;
+
 	private String nomeFase;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inicio")
+	@Column(name = "data_inicio")
 	private Date dataInicio;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_prevista_inicio")
+	@Column(name = "data_prevista_inicio")
 	private Date dataPrevistaInicio;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_prevista_termino")
+	@Column(name = "data_prevista_termino")
 	private Date dataPrevistaTermino;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_termino")
+	@Column(name = "data_termino")
 	private Date dataTermino;
 
 	private String descricao;
 
 	private Integer status;
 
-	@Column(name="valor_previsto")
+	@Column(name = "valor_previsto")
 	private BigDecimal valorPrevisto;
 
-	@Column(name="valor_realizado")
+	@Column(name = "valor_realizado")
 	private BigDecimal valorRealizado;
 
-	//bi-directional many-to-one association to ContaPagar
+	// bi-directional many-to-one association to ContaPagar
 	@ManyToOne
-	@JoinColumn(name="id_conta")
+	@JoinColumn(name = "id_conta")
 	private ContaPagar contaPagar;
-
-	@ManyToOne
-	@JoinColumn(name="id_unidade_obra")
-	private UnidadeObra unidadeObra;
 
 	public FaseUnidade() {
 	}
@@ -96,7 +105,6 @@ public class FaseUnidade implements Serializable {
 		this.dataTermino = dataTermino;
 	}
 
-	
 	public String getNomeFase() {
 		return nomeFase;
 	}

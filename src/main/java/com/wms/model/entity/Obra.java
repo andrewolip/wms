@@ -33,6 +33,8 @@ public class Obra implements Serializable {
 	@Column(name = "id_obra")
 	private Integer idObra;
 
+	
+
 	@Column(name = "custo_previsto")
 	private BigDecimal custoPrevisto;
 

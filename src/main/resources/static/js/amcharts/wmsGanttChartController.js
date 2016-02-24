@@ -1,24 +1,47 @@
-app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', '$log', function($scope, unidadeService, fasesService, $log) {
+app.controller('wmsGanttChartController',['$scope','unidadeService', 'fasesService', '$log', function($scope, unidadeService, fasesService, $log) {
 
 	// $scope.unidades = unidadeService.listarUnidadesPorObra();
 
 	$scope.unidades = [];
 	$scope.unidade = {};
 	$scope.fases = [];
+	var ganttJson;
 
 	$scope.inicializadorJson = function(obra) {
 
-		$log.info('ID Obra ' + obra.idObra);
-
+	//	$log.info('ID Obra ' + obra.idObra);
 		
+		var jsonObj;
+
+/*		unidadeService.listarUnidadesFases(obra.idObra).success(function(data) {
+					
+			$log.info(data[0]);
+			
+			
+			
+			for(var i = 0; i < data.length; i++) {
+				
+				ganttJson = [{
+						"nomeUnidade": data[i][0],
+						"fases": [{
+							"dataInicio": data[i][1],
+							"dataPrevistaTermino": data[i][2],
+							"nomeFase": data[i][3]
+						}]
+				}];
+				
+			} 
+			
+			
+		});*/
 
 		$scope.wmsGantt = {
                 "type": "gantt",
                 "period": "DD",
 			    "theme": "light",
-			/*    "dataLoader": {
-				    "url": "http://localhost:8080/fases/listar_por_unidade/" + obra.idObra
-				  }, */
+			//    "dataLoader": {
+				//    "url": "/unidades/listar_unidades_fases/" + obra.idObra
+				 // }, 
 			    "valueAxis": {
 			    	"type": "date",
 			    	"minPeriod": "DD"
@@ -40,6 +63,7 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			    "startDateField": "dataInicio",
 			   // "startField": "start",
 			    "endDateField": "dataPrevistaTermino",
+			  //  "dataProvider": ganttJson,
 			    "dataProvider": [ {
 			        "nomeUnidade": "Unidade #1",
 			        "fases": [ {
@@ -58,7 +82,7 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			    }, {
 			        "nomeUnidade": "Unidade #2",
 			        "fases": [ {
-			            "dataInicio": "04/04/2016",
+			            "dataInicio": "04/03/2016",
 			            "dataPrevistaTermino": "10/04/2016",
 			            "nomeFase": "Fase #2"
 			        }, {
@@ -66,11 +90,11 @@ app.controller('wmsChartController',['$scope','unidadeService', 'fasesService', 
 			            "dataPrevistaTermino": "15/04/2016",
 			            "nomeFase": "Fase #3"
 			        }, {
-			        	"dataInicio": "15/03/2016",
+			        	"dataInicio": "19/03/2016",
 			            "dataPrevistaTermino": "24/04/2016",
 			            "nomeFase": "Fase #1"
 			        } ]
-			    }], 
+			    }],  
 			    "valueScrollbar": {
 			        "autoGridCount":true
 			    },
