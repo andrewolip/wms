@@ -1,0 +1,47 @@
+<div class="modal-header">
+	<h3 class="modal-title">Cliente</h3>
+</div>
+
+<form name="clienteForm">
+	<div class="form-group">
+		<div class="modal-body">
+			<div class="row">
+				<label class="col-lg-2 control-label">Nome</label> 
+				<div class="col-lg-9">
+					<input class="form-control" type="text" ng-required="true"
+						ng-model="cliente.nomeFantasia" name="nome" maxLength="100" />
+				</div> 
+			</div>
+
+			<div class="row">
+				<label class="col-lg-2 control-label">RG</label> 
+				<div class="col-lg-4">
+					<input class="form-control" type="text"
+						ng-model="cliente.rg" name="rg" maxLength="15" />
+				</div> 
+
+				<label class="col-lg-1 control-label">CPF</label> 
+				<div class="col-lg-3">
+					<input class="form-control" type="text" ng-required="true"
+						ng-model="cliente.cpfCnpj" name="cpf" maxLength="11" />
+				</div> 
+			</div>
+
+			<div class="row">
+				<label class="col-lg-2 control-label">Telefone</label> 
+				<div class="col-lg-4">
+					<input class="form-control" type="text" ng-required="true"
+						ng-model="cliente.telefone" name="telefone" maxLength="14" />
+				</div> 
+			</div>
+		</div>
+	</div>
+</form>
+
+<div ng-show="clienteForm.nomeFantasia.$invalid && clienteForm.nomeFantasia.$dirty"
+	class="alert alert-danger">Por favor, preencha o nome do cliente!</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="atualizar(cliente)"
+		ng-disabled="!cliente.nomeFantasia">Salvar</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>
