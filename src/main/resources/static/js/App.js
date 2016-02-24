@@ -27,7 +27,8 @@ app.config(function config($stateProvider) {
 	$stateProvider.state("contasPagar", {
 		url: "/contasPagar",
 		templateUrl: "pages/contasPagar.html",
-		controller: "ContaPagarController"
+		controller: "ContaPagarController",
+		params: obraObject
 	});
 	
 	$stateProvider.state("funcoes", {
@@ -46,6 +47,13 @@ app.config(function config($stateProvider) {
 		url: "/colaboradores",
 		templateUrl: "pages/colaboradores.html",
 		controller: "ColaboradorController"
+	});
+	
+	$stateProvider.state("colaboradoresObra", {
+		url: "/colaboradoresObra",
+		templateUrl: "pages/colaboradoresObra.html",
+		controller: "ColaboradorController",
+		params: obraObject
 	});
 	
 	$stateProvider.state("contas_bancarias", {
