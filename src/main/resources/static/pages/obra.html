@@ -38,6 +38,14 @@
 			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Obra</a></li>
 			<li class="active"><i class="fa fa-file"></i> Obra</li>
 		</ol>
+		
+		<div ng-controller="wmsSimplePieChartUnidadeController">
+			<fieldset>
+				<legend></legend>
+				<amchart ng-model="simplePieUnidade"></amcharts>
+
+			</fieldset>
+		</div>
 
 		<div ng-controller="wmsGanttChartController" ng-init="inicializadorJson(obra)">
 			<fieldset>
@@ -45,6 +53,7 @@
 				<amchart ng-model='wmsGantt'></amchart>
 			</fieldset>
 		</div>
+
 	</div>
 
 
