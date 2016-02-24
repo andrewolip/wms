@@ -23,6 +23,7 @@
 				<button class="btn btn-success" ng-click="modalContaPagarUpdate('lg')">
 					<span class="glyphicon glyphicon-plus"></span>  Adicionar Conta a Pagar
 				</button>
+				<button class="btn btn-primary" ng-controller="LancamentoController" ng-click="modalLancamento()">Realizar Lançamento</button>
 			</div>
 		</div>
 
@@ -41,6 +42,8 @@
 								<th>Nº de Parcelas</th>
 								<th>Data Vencimento</th>
 								<th>Valor</th>
+								<th>Status</th>
+								<th>Estornar</th>
 								<th>Editar</th>
 								<th>Excluir</th>
 							</tr>
@@ -55,6 +58,8 @@
 								<td>{{contaPagar.nparcelas}}</td>
 								<td>{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
 								<td>{{contaPagar.valorConta | currency: 'R$ '}}</td>
+								<td>{{contaPagar.status}}</td>
+								<td><button class="btn btn-success">Estornar</button></td>
 								<td>
 									<button class="btn btn-warning"
                                         ng-click="modalContaPagarUpdate('lg', contaPagar)">

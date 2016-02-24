@@ -1,0 +1,48 @@
+<div class="modal-header">
+	<h3 class="modal-title">Lançamento</h3>
+</div>
+
+<form class="form-horizontal" name="lancamentoForm">
+	<div class="modal-body">
+		<input class="form-control" type="hidden" ng-model="unidade.idObra">
+		
+		<div class="form-group">
+		 	<label class="col-lg-4 control-label">Conta</label>
+			<div ng-controller="ContaPagarController">
+				 <div class="col-lg-5" ng-init="listarContaPagar()">
+					 <select class="form-control" 
+					 	ng-options="notaFiscal as notaFiscal for notaFiscal in notas track by conta.notaFiscal" 
+							ng-model="lancamento.conta">
+						<option value="" ng-select="true">Selecione a Conta</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Valor</label>
+			<div class="col-lg-4">
+				<input class="form-control" type="text" ng-model="lancamento.valor" ng-disabled="true">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Observação</label>
+			<div class="col-lg-7">
+				<textarea class="form-control" rows="5"
+				ng-model="lancamento.observacao" name="observacao"></textarea>		
+			</div>
+		</div>
+										
+	</div>
+</form>
+
+<!--<div class="col-lg-7">
+	<div ng-show="lancamentoForm.notaFiscal.$invalid && lancamentoForm.notaFiscal.$dirty"
+	class="alert alert-danger">Por favor, preencha o nome da Unidade!</div>
+</div> -->
+
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="salvarUnidade(unidade, fases)">Lançar</button>
+	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+</div>
