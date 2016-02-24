@@ -243,7 +243,7 @@ ul.alert-dropdown {
 }
 
 .dashboardButton {
-    width: 15%;
+    width: 170px;
     height: 70px;
     margin: 10px;
     margin-left: 30px;
@@ -256,4 +256,8 @@ ul.alert-dropdown {
     margin-top: 10px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.row {
+    margin-top: 10px;
 }
