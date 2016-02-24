@@ -3,31 +3,27 @@
     <div class="col-lg-12">
         <h1 class="page-header">Fornecedores</h1>
         <ol class="breadcrumb">
-            <li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
-            <li class="active"><i class="fa fa-file"></i> Fornecedores</li>
+            <li><a ui-sref="dashboard"> Dashboard</a></li>
+            <li class="active">Fornecedores</li>
         </ol>
     </div>
 </div>
 <!-- /.row -->
 
-<div class="container">
+<div class="containerNovo">
     <div ng-init="listarFornecedores()" >
         <div class="row">
-            <div class="col-lg-6 col-lg-offset-2">
-                <div class="form-group">
-                    <input ng-model="buscaFornecedor" type="text" class="form-control"
-                        placeholder="Digite o nome ou ID do Fornecedor">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <button class="btn btn-success" ng-click="modalUpdate('lg', fornecedor)">
-                    <span class="glyphicon glyphicon-plus"></span>  Adicionar Fornecedor
+            <div class="form-group">
+                <input ng-model="buscaFornecedor" type="text" class="form-control searchField"
+                    placeholder="Digite o nome do fornecedor">
+                <button class="btn btn-success buttonAdd" ng-click="modalUpdate('lg', fornecedor)">
+                    <span class="glyphicon glyphicon-plus"></span> Fornecedor
                 </button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
+            <div class="col-lg-12">
                 <div class="table-responsive">
                     <table st-table="fornecedores" class="table table-striped"
                         ng-hide="fornecedores.length == 0"
@@ -37,16 +33,16 @@
                                 <th>Fornecedor</th>
                                 <th>Telefone</th>
                                 <th>Contato</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr ng-repeat="fornecedor in fornecedores | filter: buscaFornecedor">
-                                <td>
-                                    <a ng-click="modalUpdate('lg', fornecedor)">{{fornecedor.nome}}</a>
-                                </td>
+                                <td>{{fornecedor.nome}}</td>
                                 <td>{{fornecedor.telefone}}</td>
                                 <td>{{fornecedor.contato}}</td>
+                                <td>{{fornecedor.email}}</td>
                                 <td>
                                     <button class="btn btn-warning"
                                         ng-click="modalUpdate('lg', fornecedor)">

@@ -3,31 +3,27 @@
 	<div class="col-lg-12">
 		<h1 class="page-header">Obras</h1>
 		<ol class="breadcrumb">
-			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
-			<li class="active"><i class="fa fa-file"></i> Obras</li>
+			<li><a ui-sref="dashboard">Dashboard</a></li>
+			<li class="active">Obras</li>
 		</ol>
 	</div>
 </div>
 <!-- /.row -->
 
-<div class="container">
+<div class="containerNovo">
 	<div ng-init="listarObras()">
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-2">
-				<div class="form-group">
-					<input ng-model="buscaObra" type="text" class="form-control"
-						placeholder="Digite o nome ou ID da Obra">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalObrasUpdate('md')">
-					<span class="glyphicon glyphicon-plus"></span>Adicionar Obra
+			<div class="form-group">
+				<input ng-model="buscaObra" type="text" class="form-control searchField"
+					placeholder="Digite o nome da obra">
+				<button class="btn btn-success buttonAdd" ng-click="modalObrasUpdate('md')">
+					<span class="glyphicon glyphicon-plus"></span> Obra
 				</button>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
+			<div class="col-lg-12">
 				<div class="table-responsive">
 					<table st-table="obras" class="table table-striped"
 						ng-hide="obras.length == 0"

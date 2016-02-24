@@ -3,31 +3,27 @@
     <div class="col-lg-12">
         <h1 class="page-header">Usuários</h1>
         <ol class="breadcrumb">
-            <li><i class="fa fa-dashboard"></i> <a href="../index.html">Dashboard</a></li>
-            <li class="active"><i class="fa fa-file"></i> Usuários</li>
+            <li><a ui-sref="dashboard"> Dashboard</a></li>
+            <li class="active"> Usuários</li>
         </ol>
     </div>
 </div>
 <!-- /.row -->
 
-<div class="container">
+<div class="containerNovo">
     <div ng-init="listarUsuarios()" >
         <div class="row">
-            <div class="col-lg-6 col-lg-offset-2">
-                <div class="form-group">
-                    <input ng-model="buscaUsuario" type="text" class="form-control"
-                        placeholder="Digite o nome ou ID da Usuário">
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <button class="btn btn-success" ng-click="modalUpdate()">
-                    <span class="glyphicon glyphicon-plus"></span>  Adicionar Usuário
+            <div class="form-group">
+                <input ng-model="buscaUsuario" type="text" class="form-control searchField"
+                    placeholder="Digite o nome ou ID do Usuário">
+                <button class="btn btn-success buttonAdd" ng-click="modalUpdate()">
+                    <span class="glyphicon glyphicon-plus"></span> Usuário
                 </button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1">
+            <div class="col-lg-12">
                 <div class="table-responsive">
                     <table st-table="usuarios" class="table table-striped"
                         ng-hide="usuarios.length == 0"
@@ -44,7 +40,7 @@
 
                         <tbody>
                             <tr ng-repeat="usuario in usuarios | filter: buscaUsuario">
-                                <td><a ng-click="modalUpdate('lg', usuario)">{{usuario.nome}}</a></td>
+                                <td>{{usuario.nome}}</td>
                                 <td>{{usuario.login}}</td>
                                 <td>{{usuario.perfil}}</td>
                                 <td style="width: 10%;">

@@ -1,4 +1,4 @@
-<!-- Page Heading -->
+﻿<!-- Page Heading -->
 <div class="row">
 	<div class="col-lg-12">
 		<div class="row">
@@ -8,49 +8,45 @@
 				</div>
 			</div>
 		</div>
+		<ol class="breadcrumb">
+			<li><a ui-sref="dashboard">Dashboard</a></li>
+			<li><a ui-sref="obras">Obras</a></li>
+			<li><a ui-sref="obra(obra)">Obra</a></li>
+			<li class="active">Unidades</li>
+		</ol>
 
 		<ul class="nav nav-tabs">
-		  <li><a ui-sref="obra(obra)">Geral</a></li>
-		  <li><a ui-sref="funcionarios(obra)">Funcion�rios</a></li>
-		  <li class="active"><a ui-sref="unidades(obra)">Unidades</a></li>
-		  <li><a ui-sref="comentarios(obra)">Coment�rios</a></li>
-		  <li><a ui-sref="anexos(obra)">Anexos</a></li>
-		  <!--<li><a ui-sref="fases(obra)">Fases</a></li> -->
+			<li><a ui-sref="obra(obra)">Geral</a></li>	
+			<li><a ui-sref="colaboradoresObra(obra)">Funcionários</a></li>
+			<li class="active"><a ui-sref="unidades(obra)">Unidades</a></li>
+			<li><a ui-sref="contasPagar(obra)">Contas a Pagar</a></li>
+<!-- 			<li><a ui-sref="comentarios">Comentários</a></li> -->
+<!-- 			<li><a ui-sref="anexos">Anexos</a></li> -->
 		</ul>
-
-		<ol class="breadcrumb">
-			<li><i class="fa fa-dashboard"></i> <a href="../index.html">Obra</a></li>
-			<li class="active"><i class="fa fa-file"></i> Obra</li>
-		</ol>
 	</div>	
 </div>
 
 <!-- /.row -->
-<div class="container">
+<div class="containerNovo">
 	<div ng-init="listarUnidadesPorObra()">
-		<div class="row">
-			<div class="col-lg-6 col-lg-offset-2">
-				<div class="form-group">
-					<input ng-model="buscaUnidade" type="text" class="form-control"
-						placeholder="Digite o nome ou ID da Unidade">
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<button class="btn btn-success" ng-click="modalUnidadeUpdate('lg')">
-					<span class="glyphicon glyphicon-plus"></span>Adicionar Unidade
-				</button>
-			</div>
+		<div class="form-group">
+            <input ng-model="buscaUnidade" type="text" class="form-control searchField"
+                placeholder="Digite o nome do funcionário da unidade">
+            <button class="btn btn-success buttonAdd" ng-click="modalUnidadeUpdate('lg')">
+                <span class="glyphicon glyphicon-plus"></span> Unidade
+            </button>
 		</div>
 	
 		<div class="row">
-			<div class="col-lg-10 col-lg-offset-1">
+			<div class="col-lg-12">
 				<div class="table-responsive">
 					<table st-table="unidades" class="table table-striped"
+						ng-hide="unidades.length == 0"
 						st-pagination-scroll>
 						<thead>
 							<tr>
 								<th>Nome</th>
-								<th>Data de In�cio</th>
+								<th>Data de Início</th>
 								<th>Previsao para Termino</th>
 								<th>Custo Previsto</th>
 								<th>Editar</th>
@@ -59,7 +55,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="unidade in unidades | filter: buscaUnidade">
-								<td><a href="#!/obras/{{unidade.idUnidadeObra}}">{{unidade.nomeUnidade}}</a></td>
+								<td>{{unidade.nomeUnidade}}</td>
 								<td>{{unidade.dataInicio | date :'dd/MM/yyyy'}}</td>
 								<td>{{unidade.dataPrevistaTermino | date: 'dd/MM/yyyy'}}</td>
 								<td>{{unidade.custoPrevisto | currency: 'R$'}}</td>
@@ -78,6 +74,9 @@
 							</tr>
 						</tbody>
 					</table>
+					<h4 ng-show="unidades.length == 0" class="no-result">
+						Não há unidades registradas
+					</h4>
 				</div>
 			</div>
 		</div>
