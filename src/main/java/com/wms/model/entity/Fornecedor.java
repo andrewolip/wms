@@ -38,6 +38,14 @@ public class Fornecedor implements Serializable {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="id_localizacao")
 	private Localizacao localizacao;
+	
+	public Localizacao getLocalizacao() {
+		return localizacao;
+	}
+
+	public void setLocalizacao(Localizacao localizacao) {
+		this.localizacao = localizacao;
+	}
 
 	public Fornecedor() {
 	}
