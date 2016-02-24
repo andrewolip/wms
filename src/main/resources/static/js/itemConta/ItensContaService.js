@@ -17,7 +17,7 @@ app.factory('itensContaService', ['$http', '$location', '$log', function($http, 
 	
 	factory.removerItemConta = function(itemConta) {
 		return $http({
-			url : 'itensConta/remover/' + itemConta.idItemConta,
+			url : 'itensConta/remover/' + itemConta.idItem,
 			method : 'DELETE',
 			data : itemConta,
 			headers : {
@@ -30,7 +30,7 @@ app.factory('itensContaService', ['$http', '$location', '$log', function($http, 
 		return $http.put('itensConta/salvar', itemConta);
 	}
 	
-	factory.salvarListaDeItens = function(itensConta) {
+	factory.salvarLista = function(itensConta) {
 		return $http.put('itensConta/salvarLista', itensConta);
 	}
 

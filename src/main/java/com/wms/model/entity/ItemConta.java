@@ -3,7 +3,6 @@ package com.wms.model.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,9 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 
 /**
  * The persistent class for the item_conta database table.
@@ -25,7 +21,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name="item_conta")
 @NamedQuery(name="ItemConta.findAll", query="SELECT ic FROM ItemConta ic")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idItem")
 public class ItemConta implements Serializable {
 	private static final long serialVersionUID = 1L;
 

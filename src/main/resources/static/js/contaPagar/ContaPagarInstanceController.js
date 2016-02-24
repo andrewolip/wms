@@ -6,6 +6,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 	$scope.obras = [];
 	$scope.unidades = [];
 	$scope.obraAtual = {};
+	$scope.submitted = false;
 	
 	
 	//DatePicker
@@ -32,13 +33,14 @@ app.controller('ContaPagarInstanceController', function($scope,
 	});
 	
 	$scope.atualizar = function(contaPagar, itensConta) {
+		$scope.calcularValorConta();
 		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {
 			if(itensConta.length > 0) {
 				for (var i=0; i < itensConta.length; i++) {
 					itensConta[i].contaPagar = response.data;
 				}
 		
-				itensContaService.salvarListaDeItens(itensConta).success(function(data) {
+				itensContaService.salvarLista(itensConta).success(function(data) {
 					 $log.info(itensConta);
 				}).error(function(error) {
 					$log.info(error);
@@ -53,7 +55,8 @@ app.controller('ContaPagarInstanceController', function($scope,
 		setTimeout(continueExecution, 300);
 		
 		function continueExecution() {
-			$uibModalInstance.close()
+			$uibModalInstance.close();
+			
 		}
 	};
 	
@@ -136,7 +139,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 	}
 	
 	$scope.removerItem = function(itemConta) {
-		if(!itemConta.idItemConta) {
+		if(!itemConta.idItem) {
 			$scope.removerItemContaArray(itemConta);
 		} else {
 			$scope.removerItemContaBD(itemConta);
@@ -149,22 +152,27 @@ app.controller('ContaPagarInstanceController', function($scope,
 			.confirm('Tem certeza que gostaria de apagar o item '
 				+ itemConta.nome + '?');
 
-		if (deleteItem) {
-			var i;
-			for (i = 0; i < $scope.itensConta.length; i++) {
-				if ($scope.itensConta[i] == itemConta) {
-					break;
-				}
-			}
-			$scope.itensConta.splice(i, 1);
+		if(deleteItem) {
+			$scope.deleteItem(itemConta);
 		}
+	}
+	
+	$scope.deleteItem = function(itemConta) {
+		var i;
+		for (i = 0; i < $scope.itensConta.length; i++) {
+			if ($scope.itensConta[i] == itemConta) {
+				break;
+			}
+		}
+		$scope.itensConta.splice(i, 1);
 	}
 	
 	$scope.removerItemContaBD = function(itemConta) {
 		var deleteItem = $window.confirm('Tem certeza que deseja remover o Item ' + itemConta.nome + ' do Banco de Dados?');
 		if(deleteItem) {
+			$scope.deleteItem(itemConta);
 			itensContaService.removerItemConta(itemConta).success(function(data) {
-			$scope.removerItemContaArray(itemConta);
+			
 		}).error(function(error) {
 			$log.error(error);
 		});

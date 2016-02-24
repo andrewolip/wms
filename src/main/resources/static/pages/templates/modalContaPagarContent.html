@@ -1,4 +1,4 @@
-<div class="modal-header">
+﻿<div class="modal-header">
 	<h3 class="modal-title">Conta a Pagar</h3>
 </div>
 
@@ -8,15 +8,16 @@
 			<div class="form-group">
 				<label class="col-lg-3 control-label">Obra</label> 
 				<div class="col-lg-3" ng-init="listarObras()">
-					<select class="form-control" ng-model="contaPagar.obra" 
-						ng-options="obra as obra.nome for obra in obras track by obra.nome">
+					<select class="form-control" ng-model="contaPagar.obra" name="obra"
+						ng-options="obra as obra.nome for obra in obras track by obra.nome"
+						ng-required="true">
 						<option value="" ng-selected="true">Selecione a obra</option>
 					</select>
 				</div>
 
 				<label class="col-lg-2 control-label">Unidade da Obra</label> 
 				<div class="col-lg-3">
-					<select class="form-control" ng-model="contaPagar.unidadeObra" 
+					<select class="form-control" ng-model="contaPagar.unidadeObra" name="unidadeObra"
 						ng-options="unidade as unidade.nomeUnidade for unidade in unidades track by unidade.nomeUnidade">
 						<option value="">Selecione a unidade</option>
 					</select>
@@ -26,44 +27,54 @@
 		
 		<div class="row">
 			<div class="form-group">
-				<label class="col-lg-3 control-label">N� Nota Fiscal</label> 
+				<label class="col-lg-3 control-label">Nº Nota Fiscal</label> 
 				<div class="col-lg-3">
-					<input class="form-control" type="text"
+					<input class="form-control" type="text" ng-required="true"
 						ng-model="contaPagar.notaFiscal" name="notaFiscal" maxLength="15" />
 				</div> 
 
-				<label class="col-lg-2 control-label">Tipo da Conta</label> 
-				<div class="col-lg-3">
-					<select class="form-control"
-						ng-model="contaPagar.tipoConta" name="tipoConta">
-						<option value="" ng-selected="true">Selecione o tipo</option>
-						<option value="1">Materiais</option>
-						<option value="2">Despesas Gerais</option>
-						<option value="3">Honor�rios</option>
-						<option value="4">M�quinas</option>
-						<option value="5">Equipamentos</option>
-					</select> 
-				</div>
-			</div>
-		</div>
+<!-- 				<label class="col-lg-2 control-label">Tipo da Conta</label>  -->
+<!-- 				<div class="col-lg-3"> -->
+<!-- 					<select class="form-control" -->
+<!-- 						ng-model="contaPagar.tipoConta" name="tipoConta"> -->
+<!-- 						<option value="" ng-selected="true">Selecione o tipo</option> -->
+<!-- 						<option value="1">Materiais</option> -->
+<!-- 						<option value="2">Despesas Gerais</option> -->
+<!-- 						<option value="3">Honorários</option> -->
+<!-- 						<option value="4">Máquinas</option> -->
+<!-- 						<option value="5">Equipamentos</option> -->
+<!-- 					</select>  -->
+<!-- 				</div> -->
 
-		<div class="row">
-			<div class="form-group">
-				<label class="col-lg-3 control-label">Fornecedor</label>
+				<label class="col-lg-2 control-label">Fornecedor</label>
 				<div class="col-lg-3" ng-controller="FornecedorController">
 					<div ng-init="listarFornecedores()" >
-						<select class="form-control" 
+						<select class="form-control" name="fornecedor" ng-required="true"
 								ng-options="fornecedor as fornecedor.nome for fornecedor in fornecedores track by fornecedor.nome" 
 								ng-model="contaPagar.fornecedor">
 							<option value="" ng-selected="true">Selecione o fornecedor</option>
 						</select>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Forma de Pagamento</label> 
+				<div class="col-lg-3">
+					<select class="form-control" ng-required="true"
+						ng-model="contaPagar.tipoPagamento" name="tipoPagamento">
+						<option value="" ng-selected="true">Selecione o pagamento</option>
+						<option value="1">Cartão de crédito</option>
+						
+					</select> 
+				</div>
 				
 				<label class="col-lg-2 control-label">Valor da Conta</label> 
 				<div class="col-lg-3">
 					<input class="form-control" type="text"
-						ng-model="contaPagar.valorConta" ng-disabled="true"
+						ng-model="contaPagar.valorConta" ng-disabled="true" ng-required="true"
 						name="valorConta" ui-money-mask/>
 				</div> 
 			</div>
@@ -71,21 +82,13 @@
 		
 		<div class="row">
 			<div class="form-group">
-				<label class="col-lg-3 control-label">Forma de Pagamento</label> 
-				<div class="col-lg-3">
-					<select class="form-control"
-						ng-model="contaPagar.tipoPagamento" name="tipoPagamento">
-						<option value="" ng-selected="true">Selecione o pagamento</option>
-						<option value="1">Forma 1</option>
-					</select> 
-				</div>
-
-				<label class="col-lg-2 control-label">Vencimento</label> 
+				<label class="col-lg-3 control-label">Data de Vencimento</label> 
 				<div class="col-lg-3">
 					<p class="col-lg-12 input-group">
 		           		<input type="text" 
 		           			class="form-control" 
 		           			name="dataVencimento" 
+		           			ng-required="true"
 		           			ng-model="contaPagar.dataVencimento" 
 		           			uib-datepicker-popup="{{format}}"  
 		           			is-open="dataVencimento.aberto" 
@@ -118,7 +121,7 @@
 								<th>Item</th>
 								<th>Qtde</th>
 								<th>Medida</th>
-								<th>Valor Unit�rio</th>
+								<th>Valor Unitário</th>
 								<th>Valor Total</th>
 								<th>Editar</th>
 								<th>Excluir</th>
@@ -169,17 +172,40 @@
 						</tbody>
 					</table>
 					<h4 ng-show="itensConta.length == 0" class="no-result">
-                        N�o h� itens registrados para esta conta a pagar
+                        Não há itens registrados para esta conta a pagar
                     </h4>
 				</div>
 			</div>
 		</div>
 	</div>
 </form>
-<div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty"
-	class="alert alert-danger">	Por favor, preencha o n� da nota fiscal </div>
+
+<div ng-show="(contaPagarForm.obra.$invalid && contaPagarForm.obra.$dirty) || 
+			  (contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty) || 
+			  (contaPagarForm.fornecedor.$invalid && contaPagarForm.fornecedor.$dirty) || 
+			  (contaPagarForm.tipoPagamento.$invalid && contaPagarForm.tipoPagamento.$dirty) || 
+			  (contaPagarForm.valorConta.$invalid && contaPagarForm.valorConta.$dirty) || 
+			  (contaPagarForm.dataVencimento.$invalid && contaPagarForm.dataVencimento.$dirty)" 
+	class="alert alert-danger">
+
+	<div ng-show="contaPagarForm.obra.$invalid && contaPagarForm.obra.$dirty">Não foi selecionada a obra </div>
+	<div ng-show="contaPagarForm.notaFiscal.$invalid && contaPagarForm.notaFiscal.$dirty">	Não foi informado o nº da nota fiscal </div>
+	<div ng-show="contaPagarForm.fornecedor.$invalid && contaPagarForm.fornecedor.$dirty">	Não foi selecionado o fornecedor </div>
+	<div ng-show="contaPagarForm.tipoPagamento.$invalid && contaPagarForm.tipoPagamento.$dirty">	Não foi selecionada a forma de pagamento </div>
+	<div ng-show="contaPagarForm.dataVencimento.$invalid && contaPagarForm.dataVencimento.$dirty">	Não foi informada a data de vencimento </div>	
+	<div ng-show="contaPagarForm.valorConta.$invalid && contaPagarForm.valorConta.$dirty">	Não foram adicionados itens à conta </div>
+	
+	Por favor, preencha corretamente as informações e tente novamente! </div>
+</div>
+
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="atualizar(contaPagar, itensConta)"
-		ng-disabled="!contaPagar.notaFiscal">Salvar</button>
-	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	<button class="btn btn-primary" value="" ng-click="atualizar(contaPagar, itensConta)" 
+		ng-disabled="!contaPagar.obra || !contaPagarForm.notaFiscal || 
+					 !contaPagar.fornecedor || !contaPagar.tipoPagamento ||
+					 !contaPagar.valorConta || !contaPagar.dataVencimento">
+		Salvar
+	</button>
+	<button class="btn btn-warning" ng-click="cancelar()">
+		Cancelar
+	</button>
 </div>
