@@ -22,8 +22,8 @@
 							$scope.removerObra = function(obra) {
 
 								var deleteObra = $window
-										.confirm('Tem certeza que gostaria de apagar a obra '
-												+ obra.nome + '?');
+										.confirm('Tem certeza que gostaria de remover a obra '
+												+ obra.nome + '? Todas as unidades, fases e contas a pagar associadas a esta obra serão removidas também');
 
 								if (deleteObra) {
 									obrasService.removerObra(obra).success(
