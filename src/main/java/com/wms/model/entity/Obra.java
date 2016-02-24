@@ -83,6 +83,10 @@ public class Obra implements Serializable {
 	// bi-directional many-to-one association to Unidade
 	@OneToMany(mappedBy = "obra", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UnidadeObra> unidades;
+	
+	// bi-directional many-to-one association to Unidade
+	@OneToMany(mappedBy = "obra", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ContaPagar> contasPagar;
 
 	public Obra() {
 	}
