@@ -33,7 +33,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 	
 	$scope.atualizar = function(contaPagar, itensConta) {
 
-		contaPagar.status = 'Não Paga';
+		contaPagar.status = 1;
 
 		contaPagarService.salvarContaPagar(contaPagar).then(function(response) {
 			if(itensConta.length > 0) {
