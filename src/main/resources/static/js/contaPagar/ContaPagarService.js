@@ -40,6 +40,18 @@ app.factory('contaPagarService', ['$http', '$location', '$log', function($http, 
 	contaPagar.salvarItensConta = function(itensConta) {
 		return $http.put('itensConta/salvarItensConta', itensConta);
 	}
+
+	contaPagar.listarContasNaoPagasPorObra = function(id) {
+		return $http.get('contasPagar/listar_contas_nao_pagas/' + id);
+	}
+
+	contaPagar.realizarLancamento = function(contaPagar) {
+		return $http.post('contasPagar/realizar_lancamento', contaPagar);
+	}
+
+	contaPagar.realizarEstorno = function(contaPagar) {
+		return $http.post('contasPagar/realizar_estorno', contaPagar);
+	}
 	
 	return contaPagar;
 	

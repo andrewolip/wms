@@ -12,6 +12,17 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 				});
 	};
 
+	$scope.listarContasNaoPagasPorObra = function() {
+		contaPagarService.listarContasNaoPagasPorObra($scope.obra.idObra).success(function(response) {
+			$scope.contasPagar = response;
+
+			$log.info($scope.contasPagar);
+			
+		}).error(function(error) {
+			$log.error(error);
+		});		
+	}
+
 	$scope.removerContaPagar = function(contaPagar) {
 
 		var deleteContaPagar = $window
@@ -48,6 +59,58 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 				}
 		);
 	};
+
+	$scope.modalLancamentoContaPagar = function(tamanho, contaSelecionada) {
+		
+		var modalInstance = $uibModal.open({
+			templateUrl : 'pages/templates/modalLancamentoContent.html',
+			controller : 'LancamentoInstanceController',
+			size : tamanho,
+			backdrop: 'static',
+			resolve : {
+				contaPagar : function() {
+					return angular.copy(contaSelecionada);
+				}
+			}
+		}); 
+		
+		modalInstance.result.then(
+				function(selectedItem) {
+					$scope.selected = selectedItem;
+				//	$scope.listarUnidadesPorObra($scope.obra.idObra);
+					$scope.listarContasPagarPorObra();
+				}, function() {
+					$log.info('Modal foi fechada em: '
+							+ new Date());
+				});
+	};
+
+	$scope.modalEstornoContaPagar = function(tamanho, contaSelecionada) {
+		
+		var modalInstance = $uibModal.open({
+			templateUrl : 'pages/templates/modalEstornoContent.html',
+			controller : 'EstornoInstanceController',
+			size : tamanho,
+			backdrop: 'static',
+			resolve : {
+				contaPagar : function() {
+					return angular.copy(contaSelecionada);
+				}
+			}
+		}); 
+		
+		modalInstance.result.then(
+				function(selectedItem) {
+					$scope.selected = selectedItem;
+				//	$scope.listarUnidadesPorObra($scope.obra.idObra);
+					$scope.listarContasPagarPorObra();
+				}, function() {
+					$log.info('Modal foi fechada em: '
+							+ new Date());
+				});
+
+	};
+
 
 //	Botão Adicionar Fornecedor a partir da tela de cadastro de conta a pagar
 

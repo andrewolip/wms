@@ -1,13 +1,13 @@
-﻿<div class="modal-header">
-	<h3 class="modal-title">Dados do Lançamento</h3>
+<div class="modal-header">
+	<h3 class="modal-title">Dados da Conta</h3>
 </div>
 
 <div style="padding-left: 15px;">
-	Por favor, confirme os dados para o Lançamento:
+	Por favor, confirme os dados antes de fazer o estorno:
 </div>
 
 
-<form class="form-horizontal" name="lancamentoForm">
+<form class="form-horizontal" name="estornoForm">
 	<div class="modal-body">
 		<input class="form-control" type="hidden" ng-model="unidade.idObra">
 		
@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="col-lg-4 control-label">Valor</label>
+			<label class="col-lg-4 control-label">Valor Lançado</label>
 			<div class="col-lg-4">
 				<input class="form-control" type="text" ng-model="contaPagar.valorConta" ng-disabled="true">
 			</div>
@@ -30,6 +30,13 @@
 			<label class="col-lg-4 control-label">Data de Vencimento</label>
 			<div class="col-lg-4">
 				<input class="form-control" type="text" ng-model="contaPagar.dataVencimento" ng-disabled="true">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-lg-4 control-label">Data de Lançamento</label>
+			<div class="col-lg-4">
+				<input class="form-control" type="text" ng-disabled="true">
 			</div>
 		</div>
 										
@@ -42,6 +49,6 @@
 </div> -->
 
 <div class="modal-footer">
-	<button class="btn btn-primary" ng-click="realizarLancamento(contaPagar)">Lançar</button>
+	<button class="btn btn-primary" ng-click="realizarEstorno(contaPagar)">Lançar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
 </div>

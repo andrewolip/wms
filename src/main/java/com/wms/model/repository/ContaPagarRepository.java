@@ -17,7 +17,7 @@ public interface ContaPagarRepository extends CrudRepository<ContaPagar, Integer
 	ContaPagar findByNotaFiscal(Long notaFiscal);
 	Collection<ContaPagar> findByObraIdObra(Integer id);
 	
-	@Query("SELECT cp from ContaPagar cp WHERE cp.obra.idObra = :idObra")
+	@Query("SELECT cp from ContaPagar cp WHERE cp.obra.idObra = :idObra AND cp.status = 1")
 	Collection<ContaPagar> listarContasNaoPagas(@Param("idObra")Integer idObra);
 		
 }

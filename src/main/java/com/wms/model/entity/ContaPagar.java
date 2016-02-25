@@ -79,7 +79,7 @@ public class ContaPagar implements Serializable {
 	private FaseUnidade faseObra;
 
 	// bi-directional many-to-one association to ItemConta
-	@OneToMany(mappedBy = "contaPagar", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "contaPagar", cascade = CascadeType.ALL)
 	private List<ItemConta> itensConta;
 
 	public ContaPagar() {

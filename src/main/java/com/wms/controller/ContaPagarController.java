@@ -1,5 +1,6 @@
 package com.wms.controller;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,4 +59,15 @@ public class ContaPagarController {
 	public Collection<ContaPagar> listarContasNaoPagas(@PathVariable Integer id) {
 		return contaPagarService.listarContasNaoPagas(id);
 	}
+	
+	@RequestMapping(value = "/realizar_lancamento", method = RequestMethod.POST)
+	public BigDecimal realizarLancamento(@RequestBody ContaPagar conta) {
+		return contaPagarService.realizarLancamento(conta);
+	}
+	
+	@RequestMapping(value = "/realizar_estorno", method = RequestMethod.POST)
+	public BigDecimal realizarEstorno(@RequestBody ContaPagar conta) {
+		return contaPagarService.realizarEstorno(conta);
+	}
+	
 }

@@ -71,7 +71,7 @@ app.controller('ContaPagarInstanceController', function($scope,
 				$log.error(error);
 			});
 	};
-	
+
 	// Para popular a combobox Unidade da Obra na modalContaPagar
 	$scope.listarUnidadesPorObra = function() {
 		if($scope.obraAtual) {
