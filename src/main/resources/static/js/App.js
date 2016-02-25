@@ -3,7 +3,7 @@ var app = angular.module('WmsApp', ['smart-table', 'ui.bootstrap', 'ngMessages',
 app.config(function config($stateProvider) {
 	
 	var obraObject = {idObra: null, nome: null, dataInicio: null, localizacao: {uf: null, localidade: null, logradouro: null,
-		cep: null}, dataTermino: null, dataPrevistaTermino: null};
+		cep: null}, dataTermino: null, dataPrevistaTermino: null, custoRealizado: null, custoPrevisto: null};
 	
 	$stateProvider.state("dashboard", {
 		url: "/dashboard",
