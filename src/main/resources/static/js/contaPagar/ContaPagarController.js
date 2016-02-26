@@ -1,9 +1,17 @@
-app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'contaPagarService', '$window',	'$location', '$stateParams',
-                                           	function($scope, $uibModal, $log, contaPagarService, $window, $location, $stateParams) {
+app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'contaPagarService', 'obrasService', '$window',	'$location', '$stateParams',
+                                           	function($scope, $uibModal, $log, contaPagarService, obrasService , $window, $location, $stateParams) {
 
-	$scope.obra = $stateParams;
+	$scope.obra = {};
 	$scope.contaPagar = {};
 	$scope.contasPagar = [];
+
+	$scope.init = function() {
+		obrasService.buscarObra($stateParams.idObra).success(function(data) {
+			$scope.obra = data;
+		}).error(function(error) {
+			$log.error(error);
+		});
+	}
 
 	$scope.listarContasPagarPorObra = function() {
 		contaPagarService.listarPorObra($scope.obra.idObra).success(

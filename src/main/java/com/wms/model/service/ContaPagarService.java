@@ -16,7 +16,7 @@ public class ContaPagarService {
 
 	private ContaPagarRepository contaPagarRepository;
 	private ObraService obraService;
-
+	
 	@Autowired
 	public void setObraService(ObraService obraService) {
 		this.obraService = obraService;
@@ -71,7 +71,6 @@ public class ContaPagarService {
 	}
 
 	public BigDecimal realizarLancamento(ContaPagar conta) {
-
 		Obra obra = obraService.buscarObra(conta.getObra().getIdObra());
 
 		if(obra.getCustoRealizado() == null) {
@@ -83,7 +82,7 @@ public class ContaPagarService {
 		obra.setCustoRealizado(soma);
 		
 		conta.setStatus(2);
-
+		
 		obraService.salvar(obra);
 		this.salvar(conta);
 		return soma;

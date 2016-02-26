@@ -7,11 +7,21 @@
 						'$location',
 						'$stateParams',
 						function($scope, $uibModal, $log, obrasService,
-								$window, $location, $stateParams) {
+								$window, $location, $stateParams, obra) {
 
 							$scope.obras = [];
-							$scope.obra = $stateParams;
+						//	$scope.obra = $stateParams;
+							$scope.obra = obra;
 
+							$scope.init = function() {
+								obrasService.buscarObra($stateParams.idObra).success(function(data) {
+									$log.info(data);
+									$scope.obra = data;
+								}).error(function(error) {
+									$log.error(error);
+								});
+							}
+							
 							$scope.listarObras = function() {
 								obrasService.listarObras().success(
 										function(data) {
