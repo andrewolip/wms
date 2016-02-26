@@ -54,7 +54,7 @@ app.config(function config($stateProvider, $urlRouterProvider) {
 	$stateProvider.state("colaboradoresObra", {
 		url: "/colaboradoresObra",
 		templateUrl: "pages/colaboradoresObra.html",
-		controller: "ColaboradorController",
+		controller: "ColaboradorObraController",
 		params: obraObject
 	});
 	

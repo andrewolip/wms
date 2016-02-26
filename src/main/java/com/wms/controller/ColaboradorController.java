@@ -33,7 +33,7 @@ public class ColaboradorController {
 		colaboradorService.salvar(colaborador);
 	}
 
-	@RequestMapping(value = "/apagar/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/remover/{id}", method = RequestMethod.DELETE)
 	public void delete(@RequestBody Colaborador colaborador) {
 		colaboradorService.remover(colaborador.getIdFuncionario());
 	}

@@ -21,7 +21,7 @@ app.factory('colaboradorService', ['$http', '$location', function($http, $locati
 	
 	factory.removerColaborador = function(colaborador) {
 		return $http({
-			url : '/colaboradores/remover/' + colaborador.idColaborador,
+			url : '/colaboradores/remover/' + colaborador.idFuncionario,
 			method : 'DELETE',
 			data : colaborador,
 			headers : {

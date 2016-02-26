@@ -52,7 +52,9 @@
 
 	<script src="js/plugins/angular.min.js" type="text/javascript"></script>
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js" type="text/javascript"></script>
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js" type="text/javascript"></script> -->
+
+	<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
 
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js" type="text/javascript"></script>
 
@@ -74,6 +76,8 @@
 	<!-- Módulo da Aplicação -->
 	<script src="js/App.js" type="text/javascript"></script>
 
+	
+
 	<!-- AngularJS Route -->
 	<!-- <script src="js/plugins/modules/angular-route.js"></script> -->
 	
@@ -91,7 +95,6 @@
     <!-- Lib Charts-->
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-
     <script src="js/amcharts/gantt.js"></script> 
     <script src="https://www.amcharts.com/lib/3/pie.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
@@ -101,6 +104,7 @@
     <script src="js/amcharts/wmsSimplePieController.js"></script>
     <script src="js/amcharts/wmsDonutRadialChartController.js"></script>
     <script src="js/amcharts/wmsExportingChartController.js"></script>
+    <script src="js/amcharts/wmsSimplePieChartUnidadeController.js"></script>
     <script src="http://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
 
 	<!-- Obras -->
@@ -131,15 +135,18 @@
 	<script src="js/usuario/UsuarioInstanceController.js"></script>
 	<script src="js/usuario/UsuarioService.js"></script>
 
+	<!-- Lançamento -->
+	<script src="js/lancamento/LancamentoController.js"></script> 
+	<script src="js/lancamento/LancamentoInstanceController.js"></script>
+	<script src="js/lancamento/LancamentosService.js"></script>
+
+	<!--Estorno-->
+	<script src="js/estorno/EstornoInstanceController.js"></script>
+
 	<!-- Contas a Pagar -->
 	<script src="js/contaPagar/ContaPagarController.js"></script>
 	<script src="js/contaPagar/ContaPagarInstanceController.js"></script>
 	<script src="js/contaPagar/ContaPagarService.js"></script>
-
-	<!-- Lançamento -->
-	<script src="js/lancamento/LancamentoController.js"></script>
-	<script src="js/lancamento/LancamentoInstanceController.js"></script>
-	
 
 	<!-- 	ItemConta -->
 	<script src="js/itemConta/ItemContaInstanceController.js"></script>
@@ -157,8 +164,12 @@
 
 	<!-- Colaboradores -->
 	<script src="js/colaborador/ColaboradorController.js"></script>	
-	<script src="js/colaborador/ColaboradorService.js"></script>
 	<script src="js/colaborador/ColaboradorInstanceController.js"></script>	
+	
+	<!-- Colaboradores de uma Obra -->
+	<script src="js/colaborador/ColaboradorObraController.js"></script>	
+	<script src="js/colaborador/ColaboradorObraInstanceController.js"></script>
+	<script src="js/colaborador/ColaboradorService.js"></script>
 	
 	<!-- Clientes -->
 	<script src="js/cliente/ClienteController.js"></script>	

@@ -1,4 +1,4 @@
-app.controller('ColaboradorController',				[
+app.controller('ColaboradorObraController',				[
 						'$scope',
 						'$uibModal',
 						'$log',
@@ -9,6 +9,7 @@ app.controller('ColaboradorController',				[
 						function($scope, $uibModal, $log, colaboradorService,
 								$window, $location, $stateParams) {
 
+							$scope.obra = $stateParams;
 							$scope.colaborador = {};
 							$scope.colaboradores = [];
 
@@ -19,12 +20,21 @@ app.controller('ColaboradorController',				[
 										});
 							};
 							
+							$scope.listarColaboradoresPorObra = function() {
+								colaboradorService.listarColaboradoresPorObra($scope.obra.idObra).success(
+										function(data) {
+											$scope.colaboradores = data;
+										});
+							};
+							
 							$scope.inserirColaborador = function(colaborador) {
+								colaborador.obra = $scope.obra;
 								colaboradorService.inserirColaborador(colaborador).success(
 										function() {
 											$scope.colaborador = colaborador;
-											colaboradorService.listarColaboradores();
+											colaboradorService.listarColaboradoresPorObra();
 										}).error(function(error) {
+									console(error);
 								});
 							}
 
@@ -32,13 +42,14 @@ app.controller('ColaboradorController',				[
 
 								var deleteColaborador = $window
 										.confirm('Tem certeza que gostaria de remover a colaborador '
-												+ colaborador.nome + ' que possui nº de contrato ' + colaborador.numeroContrato + '?');
+												+ colaborador.nome + 'com nº de contrato ' + colaborador.numeroContrato + '?');
 
 								if (deleteColaborador) {
 									colaboradorService.removerColaborador(colaborador).success(
 											function(data) {
-												$scope.listarColaboradores();
+												$scope.listarColaboradoresPorObra();
 											}).error(function(error) {
+										console(error);
 									});
 								}
 							}
@@ -52,13 +63,12 @@ app.controller('ColaboradorController',				[
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Colaborador'
-							$scope.modalUpdateColaborador = function(size, selectedColaborador) {
+							$scope.modalUpdate = function(size, selectedColaborador) {
 
 								var modalInstance = $uibModal.open({
 									templateUrl : 'pages/templates/modalColaboradorContent.html',
 									controller : 'ColaboradorInstanceController',
 									size : size,
-									backdrop: 'static',
 									resolve : {
 										colaborador : function() {
 											return angular.copy(selectedColaborador);
@@ -69,7 +79,7 @@ app.controller('ColaboradorController',				[
 								modalInstance.result.then(
 										function(selectedItem) {
 											$scope.selected = selectedItem;
-											$scope.listarColaboradores();
+											$scope.listarColaboradoresPorObra();
 										}, function() {
 											$log.info('Modal foi fechada em: '
 													+ new Date());
