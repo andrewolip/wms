@@ -15,7 +15,7 @@
 
 							$scope.init = function() {
 								obrasService.buscarObra($stateParams.idObra).success(function(data) {
-									$log.info(data);
+									//$log.info(data);
 									$scope.obra = data;
 								}).error(function(error) {
 									$log.error(error);

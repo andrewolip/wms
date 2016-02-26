@@ -30,13 +30,15 @@
 				<b>Endereço: </b> {{obra.localizacao.logradouro}} <br /> <b>Bairro:
 				</b> {{obra.localizacao.bairro}} <br /> <b>Cidade: </b>
 				{{obra.localizacao.localidade}} <br /> <b>Status: </b>
-				{{obra.status}} <br /> <br />
+				Em andamento <br /> <br />
 			</div>
 
 			<div class="col-lg-4 col-lg-offset-2">
-				<h2>Valor Investido: {{obra.custoRealizado | currency: 'R$'}}</h2>
+				<h2>Valor Investido: <p style="color: green;">{{obra.custoRealizado | currency: 'R$'}}</p></h2>
 			</div>
 		</div>
+
+		<hr>
 
 		<div class="row">
 			<div class="col-lg-6">
@@ -46,6 +48,35 @@
 						<amchart ng-model="simplePieUnidade">
 						</amcharts>
 					</fieldset>
+				</div>
+			</div>
+			<div ng-controller="LancamentoController">
+				<div class="col-lg-6" ng-init="listarLancamentosPorObra()">
+					<legend style="text-align: center;">Ultimos Lançamentos</legend>
+					<div class="table-responsive">
+						<table st-table="lancamentos" class="table table-striped"
+							ng-hide="lancamentos.length == 0"
+							st-pagination-scroll>
+							<thead>
+								<tr>
+									<th>Unidade da Obra</th>
+									<th>Nota Fiscal</th>
+									<th>Valor Pago</th>
+									<th>Data Vencimento</th>
+									<th>Data do Lançamento</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr ng-repeat="lancamento in lancamentos | filter: buscaLancamento">
+									
+								</tr>
+							</tbody>
+						</table>
+						<h4 ng-show="lancamentos.length == 0" class="no-result">
+							Não há obras registradas
+						</h4>
+					</div>
 				</div>
 			</div>
 		</div>

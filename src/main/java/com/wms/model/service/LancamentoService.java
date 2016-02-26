@@ -29,5 +29,9 @@ public class LancamentoService {
 	public Collection<Lancamento> listarLancamentos() {
 		return lancamentoRepository.findAll();
 	}
+	
+	public Collection<Lancamento> listarLancamentosPorObra(Integer id) {
+		return lancamentoRepository.listarLancamentosPorObra(id);
+	}
 
 }
