@@ -2,11 +2,13 @@ package com.wms.model.service;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wms.model.entity.ContaPagar;
+import com.wms.model.entity.Lancamento;
 import com.wms.model.entity.Obra;
 import com.wms.model.entity.UnidadeObra;
 import com.wms.model.repository.ContaPagarRepository;
@@ -16,7 +18,13 @@ public class ContaPagarService {
 
 	private ContaPagarRepository contaPagarRepository;
 	private ObraService obraService;
+	private LancamentoService lancamentoService;
 	
+	@Autowired
+	public void setLancamentoService(LancamentoService lancamentoService) {
+		this.lancamentoService = lancamentoService;
+	}
+
 	@Autowired
 	public void setObraService(ObraService obraService) {
 		this.obraService = obraService;
@@ -71,6 +79,9 @@ public class ContaPagarService {
 	}
 
 	public BigDecimal realizarLancamento(ContaPagar conta) {
+		
+		Lancamento lancamento = new Lancamento();
+		
 		Obra obra = obraService.buscarObra(conta.getObra().getIdObra());
 
 		if(obra.getCustoRealizado() == null) {
@@ -85,6 +96,13 @@ public class ContaPagarService {
 		
 		obraService.salvar(obra);
 		this.salvar(conta);
+		
+		lancamento.setContaPagar(conta);
+		lancamento.setDataLancamento(new Date());
+		lancamento.setValorLancamento(conta.getValorConta());
+
+		lancamentoService.salvar(lancamento);
+		
 		return soma;
 
 	}

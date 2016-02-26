@@ -4,9 +4,8 @@ app.config(function config($stateProvider, $urlRouterProvider) {
 	
 	var obraObject = {idObra: null, nome: null, dataInicio: null, localizacao: {uf: null, localidade: null, logradouro: null,
 		cep: null}, dataTermino: null, dataPrevistaTermino: null, custoRealizado: null, custoPrevisto: null};
-	
 
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('dashboard');
 
 	$stateProvider.state("dashboard", {
 		url: "/dashboard",

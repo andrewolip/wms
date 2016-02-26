@@ -38,13 +38,18 @@
 			</div>
 		</div>
 
-		<div ng-controller="wmsSimplePieChartUnidadeController">
-			<fieldset>
-				<legend></legend>
-				<amchart ng-model="simplePieUnidade">
-				</amcharts>
-			</fieldset>
+		<div class="row">
+			<div class="col-lg-6">
+				<div ng-controller="wmsSimplePieChartUnidadeController">
+					<fieldset>
+						<legend></legend>
+						<amchart ng-model="simplePieUnidade">
+						</amcharts>
+					</fieldset>
+				</div>
+			</div>
 		</div>
+		
 
 		<div ng-controller="wmsGanttChartController"
 			ng-init="inicializadorJson(obra)">
@@ -53,7 +58,5 @@
 				<amchart ng-model='wmsGantt'></amchart>
 			</fieldset>
 		</div>
-
-
 	</div>
-	<div></div>
+</div>

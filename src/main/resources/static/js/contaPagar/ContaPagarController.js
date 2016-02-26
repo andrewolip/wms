@@ -14,7 +14,7 @@ app.controller('ContaPagarController',   [ 	'$scope', '$uibModal', '$log', 'cont
 	}
 
 	$scope.listarContasPagarPorObra = function() {
-		contaPagarService.listarPorObra($scope.obra.idObra).success(
+		contaPagarService.listarPorObra($stateParams.idObra).success(
 				function(data) {
 					$scope.contasPagar = data;
 				});
