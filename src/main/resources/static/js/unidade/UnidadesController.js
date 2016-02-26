@@ -4,7 +4,8 @@ app.controller('UnidadesController', ['$scope', '$uibModal', '$log', 'unidadeSer
 	$scope.obra = $stateParams;
 	$scope.unidades = [];
 	$scope.unidade = {};
-	
+
+
 	$scope.listarUnidadesPorObra = function() {
 		unidadeService.listarUnidadesPorObra($stateParams.idObra).success(function(data) {
 			$scope.unidades = data;
