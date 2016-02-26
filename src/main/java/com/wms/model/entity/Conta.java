@@ -34,10 +34,6 @@ public class Conta {
 	@Column(name="nota_fiscal")
 	private String notaFiscal;
 
-	private String observacao;
-
-	private Integer status;
-
 	@Column(name="tipo_conta")
 	private Integer tipoConta;
 
