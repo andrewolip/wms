@@ -13,13 +13,6 @@ app.controller('ColaboradorObraController',				[
 							$scope.colaborador = {};
 							$scope.colaboradores = [];
 
-							$scope.listarColaboradores = function() {
-								colaboradorService.listarColaboradores().success(
-										function(data) {
-											$scope.colaboradores = data;
-										});
-							};
-							
 							$scope.listarColaboradoresPorObra = function() {
 								colaboradorService.listarColaboradoresPorObra($scope.obra.idObra).success(
 										function(data) {
@@ -34,7 +27,7 @@ app.controller('ColaboradorObraController',				[
 											$scope.colaborador = colaborador;
 											colaboradorService.listarColaboradoresPorObra();
 										}).error(function(error) {
-									console(error);
+									$log.info(error);
 								});
 							}
 
@@ -63,15 +56,19 @@ app.controller('ColaboradorObraController',				[
 							}
 							
 							// Abre a Modal ao clicar em 'Adicionar Colaborador'
-							$scope.modalUpdate = function(size, selectedColaborador) {
+							$scope.modalUpdateColaboradorObra = function(size, selectedColaborador) {
 
 								var modalInstance = $uibModal.open({
-									templateUrl : 'pages/templates/modalColaboradorContent.html',
-									controller : 'ColaboradorInstanceController',
-									size : size,
-									resolve : {
+									templateUrl : 'pages/templates/modalColaboradorObraContent.html',
+									controller : 'ColaboradorObraInstanceController',
+									size: size,
+									backdrop: 'static',
+									resolve: {
 										colaborador : function() {
 											return angular.copy(selectedColaborador);
+										},
+										obra : function() {
+											return $scope.obra;
 										}
 									}
 								});

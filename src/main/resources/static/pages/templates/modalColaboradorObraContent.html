@@ -1,4 +1,4 @@
-<div class="modal-header">
+Ôªø<div class="modal-header">
 	<h3 class="modal-title">Cliente</h3>
 </div>
 
@@ -6,60 +6,35 @@
 	<div class="form-group">
 		<div class="modal-body">
 			<div class="row">
-				<div class="form-group">
-					<label class="col-lg-2 control-label">N∫ Contrato</label> 
-					<div class="col-lg-4">
-						<input class="form-control" type="text"
-							ng-model="colaborador.numeroContrato" name="nContrato" maxLength="15" />
-					</div> 
+				<label class="col-lg-3 control-label">Funcion√°rio</label> 
+				<div ng-controller="ColaboradorController">
+					 <div class="col-lg-7" ng-init="listarColaboradores()">
+						 <select class="form-control" 
+						 	ng-options="funcionario as funcionario.nome for funcionario in colaboradores track by funcionario.nome" 
+								ng-model="colaborador.nome">
+							<option value="" ng-select="true">Selecione o funcion√°rio</option>
+						</select>
+					</div>
 				</div>
-				<label class="col-lg-2 control-label">Nome</label> 
-				<div class="col-lg-9">
-					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.nome" name="nome" maxLength="100" />
-				</div> 
-			</div>
-			<div class="row">
-				<label class="col-lg-2 control-label">RG</label> 
-				<div class="col-lg-4">
-					<input class="form-control" type="text"
-						ng-model="colaborador.rg" name="rg" maxLength="15" />
-				</div> 
-
-				<label class="col-lg-1 control-label">CPF</label> 
-				<div class="col-lg-3">
-					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.cpfCnpj" name="cpf" maxLength="11" />
-				</div> 
-			</div>
-
-			<div class="row">
-				<label class="col-lg-2 control-label">Telefone</label> 
-				<div class="col-lg-4">
-					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.telefone" name="telefone" maxLength="14" />
-				</div> 
-
-				<label class="col-lg-2 control-label">CTPS</label> 
-				<div class="col-lg-4">
-					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.carteiraTrabalho" name="carteiraTrabalho" maxLength="8" />
-				</div> 
-			</div>
-
-			<div class="row">
-				<label class="col-lg-2 control-label">Sal·rio</label> 
-				<div class="col-lg-4">
-					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.salario" name="salario" maxLength="8" />
-				</div> 
+				<label class="col-lg-3 control-label">Obra</label> 
+				<div ng-controller="ObrasController">
+					 <div class="col-lg-7" ng-init="listarObras()">
+						 <select class="form-control" 
+						 	ng-options="obra as obra.nome for obra in obras track by obra.nome" 
+								ng-model="colaborador.obra">
+							<option value="" ng-select="true">Selecione a obra</option>
+						</select>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </form>
 
-<div ng-show="colaboradorForm.nomeFantasia.$invalid && colaboradorForm.nomeFantasia.$dirty"
-	class="alert alert-danger">Por favor, preencha o nome do funcion·rio!</div>
+<div ng-show="colaboradorForm.funcionarioObra.$invalid"
+	class="alert alert-danger">Por favor, selecione o funcion√°rio!</div>
+<div ng-show="colaboradorForm.obra.$invalid"
+	class="alert alert-danger">Por favor, selecione a obra!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="atualizar(colaborador, obra)">Salvar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
