@@ -32,7 +32,7 @@
             <div class="form-group">
                 <input ng-model="buscaColaborador" type="text" class="form-control searchField"
                     placeholder="Digite o nome do funcionário da obra">
-                <button class="btn btn-success buttonAdd" ng-click="modalUpdate('md')">
+                <button class="btn btn-success buttonAdd" ng-click="modalUpdateColaboradorObra('md')">
                     <span class="glyphicon glyphicon-plus"></span> Funcionário
                 </button>
             </div>
@@ -47,7 +47,9 @@
                         st-pagination-scroll>
                         <thead>
                             <tr>
+                               	<th>CPF</th>
                                 <th>Nome</th>
+                                <th>Telefone</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -55,15 +57,17 @@
 
                         <tbody>
                             <tr ng-repeat="colaborador in colaboradores | filter: buscaColaborador">
+                                <td>{{colaborador.cpfCnpj}}</td>
                                 <td>{{colaborador.nome}}</td>
+                                <td>{{colaborador.telefone}}</td>
                                 <td style="width: 10%;">
                                     <button class="btn btn-warning"
-                                        ng-click="modalUpdate('lg', colaborador)">
+                                        ng-click="modalUpdateColaboradorObra('md', colaborador)">
                                         <span class="glyphicon glyphicon-edit"></span>
                                     </button>
                                 </td>
                                 <td style="width: 10%;">
-                                    <button class="btn btn-danger" ng-click="removerColaborador(colaborador)">
+                                    <button class="btn btn-danger" ng-click="removerColaboradorObra(colaborador)">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </td>
@@ -71,7 +75,7 @@
                         </tbody>
                     </table>
                     <h4 ng-show="colaboradores.length == 0" class="no-result">
-                        Não há colaboradores registrados
+                        Não há colaboradores registrados para está obra
                     </h4>
                 </div>
             </div>

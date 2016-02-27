@@ -1,5 +1,6 @@
-Ôªø<div class="modal-header">
-	<h3 class="modal-title">Funcion√°rio</h3>
+
+<div class="modal-header">
+	<h3 class="modal-title">Funcion·rio</h3>
 </div>
 
 <form name="colaboradorForm">
@@ -7,7 +8,7 @@
 		<div class="modal-body">
 			<div class="row">
 				<div class="form-group">
-					<label class="col-lg-3 control-label">N¬∫ Contrato</label> 
+					<label class="col-lg-3 control-label">N∫ Contrato</label> 
 					<div class="col-lg-3">
 						<input class="form-control" type="text"
 							ng-model="colaborador.numeroContrato" name="nContrato" maxLength="15" />
@@ -40,7 +41,7 @@
 				<label class="col-lg-3 control-label">Telefone</label> 
 				<div class="col-lg-4">
 					<input class="form-control" type="text" ng-required="true"
-						ng-model="colaborador.telefone" name="telefone" maxLength="14" />
+						ng-model="colaborador.telefone" name="telefone" maxLength="14" ui-br-phone-number/>
 				</div> 
 
 				<label class="col-lg-1 control-label">CTPS</label> 
@@ -51,7 +52,7 @@
 			</div>
 
 			<div class="row">
-				<label class="col-lg-3 control-label">Sal√°rio</label> 
+				<label class="col-lg-3 control-label">Sal·rio</label> 
 				<div class="col-lg-4">
 					<input class="form-control" type="text" ng-required="true"
 						ng-model="colaborador.salario" name="salario" maxLength="10" ui-money-mask/>
@@ -62,7 +63,7 @@
 </form>
 
 <div ng-show="colaboradorForm.nomeFantasia.$invalid && colaboradorForm.nomeFantasia.$dirty"
-	class="alert alert-danger">Por favor, preencha o nome do funcion√°rio!</div>
+	class="alert alert-danger">Por favor, preencha o nome do funcion·rio!</div>
 <div class="modal-footer">
 	<button class="btn btn-primary" ng-click="atualizar(colaborador)">Salvar</button>
 	<button class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
