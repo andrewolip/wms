@@ -261,20 +261,3 @@ ul.alert-dropdown {
 .row {
 	margin-top: 10px;
 }
-
-div.graficoPizza .amchart {
-	height: 250px !important;
-}
-
-div.graficoPizza .amcharts-chart-div {
-	height: 250px !important;
-}
-
-div.graficoPizza div.amcharts-chart-div > svg {
-	height: 287px !important;
-    top: -112.099441px !important;
-}
-
-div.graficoPizza .amcharts-balloon-div {
-	top: 64px !important;
-}
